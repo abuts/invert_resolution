@@ -1,0 +1,4685 @@
+>> horace_on
+!==================================================================!
+!         ISIS utilities for visualisation and analysis            !
+!              of neutron spectroscopy data                        !
+!------------------------------------------------------------------!
+!==================================================================!
+!                      HORACE                                      !
+!------------------------------------------------------------------!
+!  Visualisation of multi-dimensional neutron spectroscopy data    !
+!                                                                  !
+!  T.G.Perring, J van Duijn, R.A.Ewings         November 2008      !
+!------------------------------------------------------------------!
+! Matlab  code: $Revision:: 877  $ ($Date:: 2014-06-10 12:35:28 $) !
+! Mex files   :$Revisions:: 869-876($Date:: 2014-06-10 12:31:44 $) !
+!------------------------------------------------------------------!
+
+ans =
+
+/usr/local/mprogs/Horace
+
+>> makesqw_TEST2
+
+efix =
+
+    53
+
+--------------------------------------------------------------------------------
+Calculating limits of data for 231 spe files...
+Time to compute limits:
+Elapsed time is 10.404 seconds
+    CPU time is 81.98 seconds
+ System time is  2014/06/12 09:44:52
+--------------------------------------------------------------------------------
+Processing spe file 1 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 4.4178 seconds
+    CPU time is 2.52 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 7.4816 seconds
+    CPU time is 42.93 seconds
+ System time is  2014/06/12 09:45:04
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.6438 seconds
+    CPU time is 18.1 seconds
+ System time is  2014/06/12 09:45:08
+--------------------------------------------------------------------------------
+Processing spe file 2 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 3.0058 seconds
+    CPU time is 3.19 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 7.198 seconds
+    CPU time is 39.59 seconds
+ System time is  2014/06/12 09:45:18
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_2.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.1054 seconds
+    CPU time is 18.07 seconds
+ System time is  2014/06/12 09:45:21
+--------------------------------------------------------------------------------
+Processing spe file 3 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.3938 seconds
+    CPU time is 2.56 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.5789 seconds
+    CPU time is 17.99 seconds
+ System time is  2014/06/12 09:45:27
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_3.tmp...
+Time to save sqw data to file:
+Elapsed time is 2.8551 seconds
+    CPU time is 16.51 seconds
+ System time is  2014/06/12 09:45:30
+--------------------------------------------------------------------------------
+Processing spe file 4 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.4826 seconds
+    CPU time is 3.04 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.0278 seconds
+    CPU time is 18.58 seconds
+ System time is  2014/06/12 09:45:36
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_4.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.0294 seconds
+    CPU time is 15.93 seconds
+ System time is  2014/06/12 09:45:39
+--------------------------------------------------------------------------------
+Processing spe file 5 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.5575 seconds
+    CPU time is 2.7 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.7258 seconds
+    CPU time is 18.43 seconds
+ System time is  2014/06/12 09:45:46
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_5.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.0115 seconds
+    CPU time is 16.91 seconds
+ System time is  2014/06/12 09:45:49
+--------------------------------------------------------------------------------
+Processing spe file 6 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.8226 seconds
+    CPU time is 2.93 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.4925 seconds
+    CPU time is 17.26 seconds
+ System time is  2014/06/12 09:45:55
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_6.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.1152 seconds
+    CPU time is 18.61 seconds
+ System time is  2014/06/12 09:45:58
+--------------------------------------------------------------------------------
+Processing spe file 7 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.6914 seconds
+    CPU time is 2.78 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.719 seconds
+    CPU time is 18.16 seconds
+ System time is  2014/06/12 09:46:04
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_7.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.1741 seconds
+    CPU time is 18.04 seconds
+ System time is  2014/06/12 09:46:08
+--------------------------------------------------------------------------------
+Processing spe file 8 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.4792 seconds
+    CPU time is 2.62 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.4444 seconds
+    CPU time is 16.91 seconds
+ System time is  2014/06/12 09:46:14
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_8.tmp...
+Time to save sqw data to file:
+Elapsed time is 2.8307 seconds
+    CPU time is 14.99 seconds
+ System time is  2014/06/12 09:46:16
+--------------------------------------------------------------------------------
+Processing spe file 9 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.7712 seconds
+    CPU time is 2.93 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.4585 seconds
+    CPU time is 17.36 seconds
+ System time is  2014/06/12 09:46:23
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_9.tmp...
+Time to save sqw data to file:
+Elapsed time is 2.8977 seconds
+    CPU time is 15.08 seconds
+ System time is  2014/06/12 09:46:26
+--------------------------------------------------------------------------------
+Processing spe file 10 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.5708 seconds
+    CPU time is 2.73 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.5892 seconds
+    CPU time is 17.73 seconds
+ System time is  2014/06/12 09:46:32
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_10.tmp...
+Time to save sqw data to file:
+Elapsed time is 2.8875 seconds
+    CPU time is 16.04 seconds
+ System time is  2014/06/12 09:46:35
+--------------------------------------------------------------------------------
+Processing spe file 11 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.6208 seconds
+    CPU time is 2.89 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.5367 seconds
+    CPU time is 17.89 seconds
+ System time is  2014/06/12 09:46:41
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_11.tmp...
+Time to save sqw data to file:
+Elapsed time is 2.7753 seconds
+    CPU time is 16.92 seconds
+ System time is  2014/06/12 09:46:44
+--------------------------------------------------------------------------------
+Processing spe file 12 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.1954 seconds
+    CPU time is 2.11 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.9351 seconds
+    CPU time is 19.2 seconds
+ System time is  2014/06/12 09:46:50
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_12.tmp...
+Time to save sqw data to file:
+Elapsed time is 2.8618 seconds
+    CPU time is 15.03 seconds
+ System time is  2014/06/12 09:46:53
+--------------------------------------------------------------------------------
+Processing spe file 13 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.3985 seconds
+    CPU time is 2.75 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.7434 seconds
+    CPU time is 18.62 seconds
+ System time is  2014/06/12 09:46:59
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_13.tmp...
+Time to save sqw data to file:
+Elapsed time is 2.869 seconds
+    CPU time is 15.98 seconds
+ System time is  2014/06/12 09:47:02
+--------------------------------------------------------------------------------
+Processing spe file 14 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.4685 seconds
+    CPU time is 2.67 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.5609 seconds
+    CPU time is 17.6 seconds
+ System time is  2014/06/12 09:47:08
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_14.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.3824 seconds
+    CPU time is 17.88 seconds
+ System time is  2014/06/12 09:47:11
+--------------------------------------------------------------------------------
+Processing spe file 15 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.8686 seconds
+    CPU time is 3.05 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.4916 seconds
+    CPU time is 17.18 seconds
+ System time is  2014/06/12 09:47:17
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_15.tmp...
+Time to save sqw data to file:
+Elapsed time is 2.8614 seconds
+    CPU time is 16.94 seconds
+ System time is  2014/06/12 09:47:20
+--------------------------------------------------------------------------------
+Processing spe file 16 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.4865 seconds
+    CPU time is 2.65 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.5995 seconds
+    CPU time is 17.66 seconds
+ System time is  2014/06/12 09:47:26
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_16.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.0615 seconds
+    CPU time is 18.33 seconds
+ System time is  2014/06/12 09:47:29
+--------------------------------------------------------------------------------
+Processing spe file 17 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.3291 seconds
+    CPU time is 2.57 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.576 seconds
+    CPU time is 17.94 seconds
+ System time is  2014/06/12 09:47:35
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_17.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.2688 seconds
+    CPU time is 15.64 seconds
+ System time is  2014/06/12 09:47:39
+--------------------------------------------------------------------------------
+Processing spe file 18 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.3951 seconds
+    CPU time is 2.46 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.4396 seconds
+    CPU time is 17.26 seconds
+ System time is  2014/06/12 09:47:44
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_18.tmp...
+Time to save sqw data to file:
+Elapsed time is 2.8821 seconds
+    CPU time is 14.68 seconds
+ System time is  2014/06/12 09:47:47
+--------------------------------------------------------------------------------
+Processing spe file 19 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.7362 seconds
+    CPU time is 1.81 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.9461 seconds
+    CPU time is 18.26 seconds
+ System time is  2014/06/12 09:47:53
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_19.tmp...
+Time to save sqw data to file:
+Elapsed time is 2.889 seconds
+    CPU time is 17.28 seconds
+ System time is  2014/06/12 09:47:56
+--------------------------------------------------------------------------------
+Processing spe file 20 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.0979 seconds
+    CPU time is 2.27 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.8417 seconds
+    CPU time is 18.99 seconds
+ System time is  2014/06/12 09:48:02
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_20.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.1431 seconds
+    CPU time is 18.11 seconds
+ System time is  2014/06/12 09:48:05
+--------------------------------------------------------------------------------
+Processing spe file 21 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.5897 seconds
+    CPU time is 2.73 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.599 seconds
+    CPU time is 18.12 seconds
+ System time is  2014/06/12 09:48:11
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_21.tmp...
+Time to save sqw data to file:
+Elapsed time is 2.7511 seconds
+    CPU time is 18 seconds
+ System time is  2014/06/12 09:48:14
+--------------------------------------------------------------------------------
+Processing spe file 22 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.7362 seconds
+    CPU time is 1.85 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.4913 seconds
+    CPU time is 21.87 seconds
+ System time is  2014/06/12 09:48:20
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_22.tmp...
+Time to save sqw data to file:
+Elapsed time is 2.7585 seconds
+    CPU time is 18.21 seconds
+ System time is  2014/06/12 09:48:23
+--------------------------------------------------------------------------------
+Processing spe file 23 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.6523 seconds
+    CPU time is 1.73 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.5646 seconds
+    CPU time is 21.73 seconds
+ System time is  2014/06/12 09:48:29
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_23.tmp...
+Time to save sqw data to file:
+Elapsed time is 2.8992 seconds
+    CPU time is 18.69 seconds
+ System time is  2014/06/12 09:48:32
+--------------------------------------------------------------------------------
+Processing spe file 24 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.6213 seconds
+    CPU time is 1.64 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 5.1566 seconds
+    CPU time is 22.74 seconds
+ System time is  2014/06/12 09:48:39
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_24.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.4035 seconds
+    CPU time is 18.28 seconds
+ System time is  2014/06/12 09:48:42
+--------------------------------------------------------------------------------
+Processing spe file 25 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.0971 seconds
+    CPU time is 2.19 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.2683 seconds
+    CPU time is 18.13 seconds
+ System time is  2014/06/12 09:48:49
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_25.tmp...
+Time to save sqw data to file:
+Elapsed time is 2.8701 seconds
+    CPU time is 18.21 seconds
+ System time is  2014/06/12 09:48:51
+--------------------------------------------------------------------------------
+Processing spe file 26 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.0248 seconds
+    CPU time is 2.12 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.964 seconds
+    CPU time is 17.36 seconds
+ System time is  2014/06/12 09:48:57
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_26.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.2129 seconds
+    CPU time is 18.55 seconds
+ System time is  2014/06/12 09:49:01
+--------------------------------------------------------------------------------
+Processing spe file 27 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.1657 seconds
+    CPU time is 2.21 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.2187 seconds
+    CPU time is 19.03 seconds
+ System time is  2014/06/12 09:49:07
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_27.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.2118 seconds
+    CPU time is 18.61 seconds
+ System time is  2014/06/12 09:49:10
+--------------------------------------------------------------------------------
+Processing spe file 28 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.2165 seconds
+    CPU time is 2.24 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.8861 seconds
+    CPU time is 17.32 seconds
+ System time is  2014/06/12 09:49:16
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_28.tmp...
+Time to save sqw data to file:
+Elapsed time is 2.9264 seconds
+    CPU time is 18.01 seconds
+ System time is  2014/06/12 09:49:19
+--------------------------------------------------------------------------------
+Processing spe file 29 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.1438 seconds
+    CPU time is 2.17 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.1062 seconds
+    CPU time is 18.42 seconds
+ System time is  2014/06/12 09:49:26
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_29.tmp...
+Time to save sqw data to file:
+Elapsed time is 2.7727 seconds
+    CPU time is 17.96 seconds
+ System time is  2014/06/12 09:49:28
+--------------------------------------------------------------------------------
+Processing spe file 30 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.2183 seconds
+    CPU time is 2.27 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.1161 seconds
+    CPU time is 18.16 seconds
+ System time is  2014/06/12 09:49:35
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_30.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.5805 seconds
+    CPU time is 18.52 seconds
+ System time is  2014/06/12 09:49:38
+--------------------------------------------------------------------------------
+Processing spe file 31 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.29 seconds
+    CPU time is 2.36 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.5553 seconds
+    CPU time is 17.09 seconds
+ System time is  2014/06/12 09:49:44
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_31.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.2737 seconds
+    CPU time is 18.68 seconds
+ System time is  2014/06/12 09:49:47
+--------------------------------------------------------------------------------
+Processing spe file 32 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.021 seconds
+    CPU time is 2.15 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.9288 seconds
+    CPU time is 17.86 seconds
+ System time is  2014/06/12 09:49:53
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_32.tmp...
+Time to save sqw data to file:
+Elapsed time is 2.8663 seconds
+    CPU time is 17.97 seconds
+ System time is  2014/06/12 09:49:56
+--------------------------------------------------------------------------------
+Processing spe file 33 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.0462 seconds
+    CPU time is 2.17 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.1318 seconds
+    CPU time is 18.18 seconds
+ System time is  2014/06/12 09:50:02
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_33.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.1607 seconds
+    CPU time is 18.66 seconds
+ System time is  2014/06/12 09:50:06
+--------------------------------------------------------------------------------
+Processing spe file 34 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.2669 seconds
+    CPU time is 2.44 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.9332 seconds
+    CPU time is 17.46 seconds
+ System time is  2014/06/12 09:50:12
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_34.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.3483 seconds
+    CPU time is 18.71 seconds
+ System time is  2014/06/12 09:50:15
+--------------------------------------------------------------------------------
+Processing spe file 35 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.4885 seconds
+    CPU time is 2.61 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.6135 seconds
+    CPU time is 18.38 seconds
+ System time is  2014/06/12 09:50:21
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_35.tmp...
+Time to save sqw data to file:
+Elapsed time is 2.9078 seconds
+    CPU time is 18.33 seconds
+ System time is  2014/06/12 09:50:24
+--------------------------------------------------------------------------------
+Processing spe file 36 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.1769 seconds
+    CPU time is 2.35 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.082 seconds
+    CPU time is 18.59 seconds
+ System time is  2014/06/12 09:50:30
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_36.tmp...
+Time to save sqw data to file:
+Elapsed time is 2.992 seconds
+    CPU time is 17.91 seconds
+ System time is  2014/06/12 09:50:33
+--------------------------------------------------------------------------------
+Processing spe file 37 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.0685 seconds
+    CPU time is 2.14 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.0098 seconds
+    CPU time is 17.79 seconds
+ System time is  2014/06/12 09:50:39
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_37.tmp...
+Time to save sqw data to file:
+Elapsed time is 2.9558 seconds
+    CPU time is 18.47 seconds
+ System time is  2014/06/12 09:50:42
+--------------------------------------------------------------------------------
+Processing spe file 38 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.3961 seconds
+    CPU time is 2.56 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.0753 seconds
+    CPU time is 19.57 seconds
+ System time is  2014/06/12 09:50:49
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_38.tmp...
+Time to save sqw data to file:
+Elapsed time is 2.9749 seconds
+    CPU time is 17.92 seconds
+ System time is  2014/06/12 09:50:52
+--------------------------------------------------------------------------------
+Processing spe file 39 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.3301 seconds
+    CPU time is 2.34 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.83 seconds
+    CPU time is 19.32 seconds
+ System time is  2014/06/12 09:50:58
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_39.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.625 seconds
+    CPU time is 17.21 seconds
+ System time is  2014/06/12 09:51:02
+--------------------------------------------------------------------------------
+Processing spe file 40 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.58 seconds
+    CPU time is 2.7 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.6287 seconds
+    CPU time is 17.62 seconds
+ System time is  2014/06/12 09:51:08
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_40.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.275 seconds
+    CPU time is 18.43 seconds
+ System time is  2014/06/12 09:51:11
+--------------------------------------------------------------------------------
+Processing spe file 41 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.2578 seconds
+    CPU time is 2.42 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.1195 seconds
+    CPU time is 19.31 seconds
+ System time is  2014/06/12 09:51:17
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_41.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.1951 seconds
+    CPU time is 18.02 seconds
+ System time is  2014/06/12 09:51:21
+--------------------------------------------------------------------------------
+Processing spe file 42 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.0153 seconds
+    CPU time is 2.18 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.8142 seconds
+    CPU time is 18.49 seconds
+ System time is  2014/06/12 09:51:27
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_42.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.0445 seconds
+    CPU time is 18.57 seconds
+ System time is  2014/06/12 09:51:30
+--------------------------------------------------------------------------------
+Processing spe file 43 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.1809 seconds
+    CPU time is 2.34 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.9669 seconds
+    CPU time is 19.44 seconds
+ System time is  2014/06/12 09:51:36
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_43.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.3216 seconds
+    CPU time is 18.48 seconds
+ System time is  2014/06/12 09:51:39
+--------------------------------------------------------------------------------
+Processing spe file 44 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.9786 seconds
+    CPU time is 2.13 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.908 seconds
+    CPU time is 19.44 seconds
+ System time is  2014/06/12 09:51:45
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_44.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.0883 seconds
+    CPU time is 18.04 seconds
+ System time is  2014/06/12 09:51:48
+--------------------------------------------------------------------------------
+Processing spe file 45 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.9789 seconds
+    CPU time is 2.05 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.9431 seconds
+    CPU time is 19.59 seconds
+ System time is  2014/06/12 09:51:54
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_45.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.5019 seconds
+    CPU time is 19.05 seconds
+ System time is  2014/06/12 09:51:57
+--------------------------------------------------------------------------------
+Processing spe file 46 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.0042 seconds
+    CPU time is 2.04 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.7355 seconds
+    CPU time is 18.96 seconds
+ System time is  2014/06/12 09:52:03
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_46.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.5681 seconds
+    CPU time is 18.84 seconds
+ System time is  2014/06/12 09:52:07
+--------------------------------------------------------------------------------
+Processing spe file 47 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.9789 seconds
+    CPU time is 2.02 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.6848 seconds
+    CPU time is 18.69 seconds
+ System time is  2014/06/12 09:52:12
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_47.tmp...
+Time to save sqw data to file:
+Elapsed time is 2.9032 seconds
+    CPU time is 18.09 seconds
+ System time is  2014/06/12 09:52:15
+--------------------------------------------------------------------------------
+Processing spe file 48 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.1786 seconds
+    CPU time is 2.35 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.6277 seconds
+    CPU time is 17.79 seconds
+ System time is  2014/06/12 09:52:21
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_48.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.1048 seconds
+    CPU time is 19.13 seconds
+ System time is  2014/06/12 09:52:24
+--------------------------------------------------------------------------------
+Processing spe file 49 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.1888 seconds
+    CPU time is 2.27 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.592 seconds
+    CPU time is 17.48 seconds
+ System time is  2014/06/12 09:52:30
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_49.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.0836 seconds
+    CPU time is 18.56 seconds
+ System time is  2014/06/12 09:52:33
+--------------------------------------------------------------------------------
+Processing spe file 50 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.1344 seconds
+    CPU time is 2.32 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.8776 seconds
+    CPU time is 18.5 seconds
+ System time is  2014/06/12 09:52:39
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_50.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.205 seconds
+    CPU time is 18.63 seconds
+ System time is  2014/06/12 09:52:42
+--------------------------------------------------------------------------------
+Processing spe file 51 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.0696 seconds
+    CPU time is 2.16 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.6799 seconds
+    CPU time is 18.95 seconds
+ System time is  2014/06/12 09:52:48
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_51.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.5257 seconds
+    CPU time is 18.69 seconds
+ System time is  2014/06/12 09:52:52
+--------------------------------------------------------------------------------
+Processing spe file 52 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.2845 seconds
+    CPU time is 2.35 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.7306 seconds
+    CPU time is 18.77 seconds
+ System time is  2014/06/12 09:52:58
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_52.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.1934 seconds
+    CPU time is 18.85 seconds
+ System time is  2014/06/12 09:53:01
+--------------------------------------------------------------------------------
+Processing spe file 53 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.9688 seconds
+    CPU time is 1.98 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.8038 seconds
+    CPU time is 19.31 seconds
+ System time is  2014/06/12 09:53:07
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_53.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.9454 seconds
+    CPU time is 19.44 seconds
+ System time is  2014/06/12 09:53:11
+--------------------------------------------------------------------------------
+Processing spe file 54 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.117 seconds
+    CPU time is 2.15 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.7147 seconds
+    CPU time is 18.58 seconds
+ System time is  2014/06/12 09:53:16
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_54.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.1231 seconds
+    CPU time is 18.68 seconds
+ System time is  2014/06/12 09:53:20
+--------------------------------------------------------------------------------
+Processing spe file 55 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.951 seconds
+    CPU time is 1.96 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.7654 seconds
+    CPU time is 19.95 seconds
+ System time is  2014/06/12 09:53:25
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_55.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.0998 seconds
+    CPU time is 18.19 seconds
+ System time is  2014/06/12 09:53:28
+--------------------------------------------------------------------------------
+Processing spe file 56 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.0559 seconds
+    CPU time is 2.07 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.4468 seconds
+    CPU time is 17.3 seconds
+ System time is  2014/06/12 09:53:34
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_56.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.416 seconds
+    CPU time is 18.4 seconds
+ System time is  2014/06/12 09:53:37
+--------------------------------------------------------------------------------
+Processing spe file 57 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.2895 seconds
+    CPU time is 2.31 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.6709 seconds
+    CPU time is 17.87 seconds
+ System time is  2014/06/12 09:53:43
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_57.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.0481 seconds
+    CPU time is 18.35 seconds
+ System time is  2014/06/12 09:53:46
+--------------------------------------------------------------------------------
+Processing spe file 58 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.2938 seconds
+    CPU time is 2.36 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.5461 seconds
+    CPU time is 17.39 seconds
+ System time is  2014/06/12 09:53:52
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_58.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.2317 seconds
+    CPU time is 19.35 seconds
+ System time is  2014/06/12 09:53:55
+--------------------------------------------------------------------------------
+Processing spe file 59 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.1745 seconds
+    CPU time is 2.25 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.8873 seconds
+    CPU time is 18.44 seconds
+ System time is  2014/06/12 09:54:01
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_59.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.227 seconds
+    CPU time is 18.64 seconds
+ System time is  2014/06/12 09:54:05
+--------------------------------------------------------------------------------
+Processing spe file 60 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.9712 seconds
+    CPU time is 2 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.217 seconds
+    CPU time is 20.58 seconds
+ System time is  2014/06/12 09:54:11
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_60.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.2168 seconds
+    CPU time is 18.61 seconds
+ System time is  2014/06/12 09:54:14
+--------------------------------------------------------------------------------
+Processing spe file 61 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.9663 seconds
+    CPU time is 2.05 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.7987 seconds
+    CPU time is 19.61 seconds
+ System time is  2014/06/12 09:54:20
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_61.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.1754 seconds
+    CPU time is 18.41 seconds
+ System time is  2014/06/12 09:54:23
+--------------------------------------------------------------------------------
+Processing spe file 62 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.208 seconds
+    CPU time is 2.31 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.0961 seconds
+    CPU time is 20.51 seconds
+ System time is  2014/06/12 09:54:29
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_62.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.2468 seconds
+    CPU time is 18.47 seconds
+ System time is  2014/06/12 09:54:33
+--------------------------------------------------------------------------------
+Processing spe file 63 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.1743 seconds
+    CPU time is 2.32 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.7096 seconds
+    CPU time is 18.54 seconds
+ System time is  2014/06/12 09:54:38
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_63.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.8437 seconds
+    CPU time is 19.26 seconds
+ System time is  2014/06/12 09:54:42
+--------------------------------------------------------------------------------
+Processing spe file 64 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.2155 seconds
+    CPU time is 2.28 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.7654 seconds
+    CPU time is 19.17 seconds
+ System time is  2014/06/12 09:54:48
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_64.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.176 seconds
+    CPU time is 18.65 seconds
+ System time is  2014/06/12 09:54:51
+--------------------------------------------------------------------------------
+Processing spe file 65 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.957 seconds
+    CPU time is 2.06 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.2048 seconds
+    CPU time is 20.65 seconds
+ System time is  2014/06/12 09:54:58
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_65.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.6261 seconds
+    CPU time is 19.07 seconds
+ System time is  2014/06/12 09:55:01
+--------------------------------------------------------------------------------
+Processing spe file 66 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.6595 seconds
+    CPU time is 1.67 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.8714 seconds
+    CPU time is 18.43 seconds
+ System time is  2014/06/12 09:55:07
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_66.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.9371 seconds
+    CPU time is 17.13 seconds
+ System time is  2014/06/12 09:55:11
+--------------------------------------------------------------------------------
+Processing spe file 67 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.4684 seconds
+    CPU time is 1.49 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.7057 seconds
+    CPU time is 17.73 seconds
+ System time is  2014/06/12 09:55:16
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_67.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.8279 seconds
+    CPU time is 17.78 seconds
+ System time is  2014/06/12 09:55:20
+--------------------------------------------------------------------------------
+Processing spe file 68 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.5584 seconds
+    CPU time is 1.58 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.6918 seconds
+    CPU time is 17.69 seconds
+ System time is  2014/06/12 09:55:25
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_68.tmp...
+Time to save sqw data to file:
+Elapsed time is 2.9578 seconds
+    CPU time is 18.48 seconds
+ System time is  2014/06/12 09:55:28
+--------------------------------------------------------------------------------
+Processing spe file 69 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.0624 seconds
+    CPU time is 2.08 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.7529 seconds
+    CPU time is 19.05 seconds
+ System time is  2014/06/12 09:55:34
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_69.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.1441 seconds
+    CPU time is 18.6 seconds
+ System time is  2014/06/12 09:55:37
+--------------------------------------------------------------------------------
+Processing spe file 70 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.9639 seconds
+    CPU time is 2.01 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.9829 seconds
+    CPU time is 19.94 seconds
+ System time is  2014/06/12 09:55:43
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_70.tmp...
+Time to save sqw data to file:
+Elapsed time is 2.9417 seconds
+    CPU time is 18.9 seconds
+ System time is  2014/06/12 09:55:46
+--------------------------------------------------------------------------------
+Processing spe file 71 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.0008 seconds
+    CPU time is 2.01 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.9054 seconds
+    CPU time is 19.3 seconds
+ System time is  2014/06/12 09:55:52
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_71.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.0525 seconds
+    CPU time is 18.62 seconds
+ System time is  2014/06/12 09:55:55
+--------------------------------------------------------------------------------
+Processing spe file 72 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.985 seconds
+    CPU time is 2 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.867 seconds
+    CPU time is 18.44 seconds
+ System time is  2014/06/12 09:56:01
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_72.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.2945 seconds
+    CPU time is 18.12 seconds
+ System time is  2014/06/12 09:56:04
+--------------------------------------------------------------------------------
+Processing spe file 73 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.2686 seconds
+    CPU time is 2.29 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.6393 seconds
+    CPU time is 17.54 seconds
+ System time is  2014/06/12 09:56:10
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_73.tmp...
+Time to save sqw data to file:
+Elapsed time is 2.9977 seconds
+    CPU time is 18.04 seconds
+ System time is  2014/06/12 09:56:13
+--------------------------------------------------------------------------------
+Processing spe file 74 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.8014 seconds
+    CPU time is 2.84 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.6636 seconds
+    CPU time is 17.52 seconds
+ System time is  2014/06/12 09:56:19
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_74.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.5795 seconds
+    CPU time is 17.94 seconds
+ System time is  2014/06/12 09:56:23
+--------------------------------------------------------------------------------
+Processing spe file 75 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.3277 seconds
+    CPU time is 2.57 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.6528 seconds
+    CPU time is 17.67 seconds
+ System time is  2014/06/12 09:56:29
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_75.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.1836 seconds
+    CPU time is 18.35 seconds
+ System time is  2014/06/12 09:56:32
+--------------------------------------------------------------------------------
+Processing spe file 76 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.4216 seconds
+    CPU time is 2.58 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.8725 seconds
+    CPU time is 17.78 seconds
+ System time is  2014/06/12 09:56:38
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_76.tmp...
+Time to save sqw data to file:
+Elapsed time is 2.9796 seconds
+    CPU time is 18.08 seconds
+ System time is  2014/06/12 09:56:41
+--------------------------------------------------------------------------------
+Processing spe file 77 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.9521 seconds
+    CPU time is 2.06 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.8697 seconds
+    CPU time is 20.08 seconds
+ System time is  2014/06/12 09:56:47
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_77.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.1929 seconds
+    CPU time is 18.51 seconds
+ System time is  2014/06/12 09:56:50
+--------------------------------------------------------------------------------
+Processing spe file 78 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.9573 seconds
+    CPU time is 2.08 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.8832 seconds
+    CPU time is 19.67 seconds
+ System time is  2014/06/12 09:56:56
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_78.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.458 seconds
+    CPU time is 18.76 seconds
+ System time is  2014/06/12 09:57:00
+--------------------------------------------------------------------------------
+Processing spe file 79 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.9555 seconds
+    CPU time is 2.06 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.7429 seconds
+    CPU time is 18.9 seconds
+ System time is  2014/06/12 09:57:05
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_79.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.0335 seconds
+    CPU time is 17.72 seconds
+ System time is  2014/06/12 09:57:08
+--------------------------------------------------------------------------------
+Processing spe file 80 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.9672 seconds
+    CPU time is 2.07 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.6849 seconds
+    CPU time is 17.55 seconds
+ System time is  2014/06/12 09:57:14
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_80.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.5257 seconds
+    CPU time is 18.22 seconds
+ System time is  2014/06/12 09:57:18
+--------------------------------------------------------------------------------
+Processing spe file 81 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.1381 seconds
+    CPU time is 2.28 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.2139 seconds
+    CPU time is 20.21 seconds
+ System time is  2014/06/12 09:57:24
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_81.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.1605 seconds
+    CPU time is 18.31 seconds
+ System time is  2014/06/12 09:57:27
+--------------------------------------------------------------------------------
+Processing spe file 82 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.9456 seconds
+    CPU time is 2.04 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.7377 seconds
+    CPU time is 18 seconds
+ System time is  2014/06/12 09:57:33
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_82.tmp...
+Time to save sqw data to file:
+Elapsed time is 2.8548 seconds
+    CPU time is 18.31 seconds
+ System time is  2014/06/12 09:57:36
+--------------------------------------------------------------------------------
+Processing spe file 83 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.1639 seconds
+    CPU time is 2.33 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.7809 seconds
+    CPU time is 18.45 seconds
+ System time is  2014/06/12 09:57:42
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_83.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.0677 seconds
+    CPU time is 18.42 seconds
+ System time is  2014/06/12 09:57:45
+--------------------------------------------------------------------------------
+Processing spe file 84 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.1514 seconds
+    CPU time is 2.31 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.8034 seconds
+    CPU time is 18.42 seconds
+ System time is  2014/06/12 09:57:51
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_84.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.413 seconds
+    CPU time is 18.6 seconds
+ System time is  2014/06/12 09:57:54
+--------------------------------------------------------------------------------
+Processing spe file 85 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.9904 seconds
+    CPU time is 2.26 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.7566 seconds
+    CPU time is 19.18 seconds
+ System time is  2014/06/12 09:58:00
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_85.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.2654 seconds
+    CPU time is 18.75 seconds
+ System time is  2014/06/12 09:58:03
+--------------------------------------------------------------------------------
+Processing spe file 86 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.0205 seconds
+    CPU time is 2.12 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.1093 seconds
+    CPU time is 19.61 seconds
+ System time is  2014/06/12 09:58:09
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_86.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.7262 seconds
+    CPU time is 19.17 seconds
+ System time is  2014/06/12 09:58:13
+--------------------------------------------------------------------------------
+Processing spe file 87 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.8945 seconds
+    CPU time is 1.92 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.818 seconds
+    CPU time is 18.22 seconds
+ System time is  2014/06/12 09:58:19
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_87.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.4312 seconds
+    CPU time is 18.32 seconds
+ System time is  2014/06/12 09:58:22
+--------------------------------------------------------------------------------
+Processing spe file 88 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.7242 seconds
+    CPU time is 1.75 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.8408 seconds
+    CPU time is 19 seconds
+ System time is  2014/06/12 09:58:28
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_88.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.6581 seconds
+    CPU time is 19.03 seconds
+ System time is  2014/06/12 09:58:31
+--------------------------------------------------------------------------------
+Processing spe file 89 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.7551 seconds
+    CPU time is 1.77 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.8881 seconds
+    CPU time is 18.51 seconds
+ System time is  2014/06/12 09:58:37
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_89.tmp...
+Time to save sqw data to file:
+Elapsed time is 4.3203 seconds
+    CPU time is 19.71 seconds
+ System time is  2014/06/12 09:58:41
+--------------------------------------------------------------------------------
+Processing spe file 90 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.5287 seconds
+    CPU time is 1.62 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.0245 seconds
+    CPU time is 18.58 seconds
+ System time is  2014/06/12 09:58:47
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_90.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.9587 seconds
+    CPU time is 15.44 seconds
+ System time is  2014/06/12 09:58:51
+--------------------------------------------------------------------------------
+Processing spe file 91 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.4576 seconds
+    CPU time is 1.5 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.8418 seconds
+    CPU time is 18.28 seconds
+ System time is  2014/06/12 09:58:56
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_91.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.7817 seconds
+    CPU time is 19.25 seconds
+ System time is  2014/06/12 09:59:00
+--------------------------------------------------------------------------------
+Processing spe file 92 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.5525 seconds
+    CPU time is 1.62 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.6393 seconds
+    CPU time is 17.83 seconds
+ System time is  2014/06/12 09:59:05
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_92.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.9157 seconds
+    CPU time is 19.61 seconds
+ System time is  2014/06/12 09:59:09
+--------------------------------------------------------------------------------
+Processing spe file 93 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.5047 seconds
+    CPU time is 1.58 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.893 seconds
+    CPU time is 18.47 seconds
+ System time is  2014/06/12 09:59:14
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_93.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.6251 seconds
+    CPU time is 19.29 seconds
+ System time is  2014/06/12 09:59:18
+--------------------------------------------------------------------------------
+Processing spe file 94 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.6875 seconds
+    CPU time is 1.78 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.3741 seconds
+    CPU time is 20.16 seconds
+ System time is  2014/06/12 09:59:24
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_94.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.5157 seconds
+    CPU time is 18.95 seconds
+ System time is  2014/06/12 09:59:28
+--------------------------------------------------------------------------------
+Processing spe file 95 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.8366 seconds
+    CPU time is 1.98 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.1214 seconds
+    CPU time is 20 seconds
+ System time is  2014/06/12 09:59:34
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_95.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.6145 seconds
+    CPU time is 19.07 seconds
+ System time is  2014/06/12 09:59:37
+--------------------------------------------------------------------------------
+Processing spe file 96 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.8588 seconds
+    CPU time is 1.88 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.1391 seconds
+    CPU time is 19.47 seconds
+ System time is  2014/06/12 09:59:43
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_96.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.2326 seconds
+    CPU time is 18.82 seconds
+ System time is  2014/06/12 09:59:46
+--------------------------------------------------------------------------------
+Processing spe file 97 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.9423 seconds
+    CPU time is 1.96 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.8607 seconds
+    CPU time is 19.18 seconds
+ System time is  2014/06/12 09:59:52
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_97.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.653 seconds
+    CPU time is 19.17 seconds
+ System time is  2014/06/12 09:59:56
+--------------------------------------------------------------------------------
+Processing spe file 98 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.8626 seconds
+    CPU time is 1.94 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 5.2085 seconds
+    CPU time is 21.17 seconds
+ System time is  2014/06/12 10:00:03
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_98.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.9414 seconds
+    CPU time is 15.95 seconds
+ System time is  2014/06/12 10:00:07
+--------------------------------------------------------------------------------
+Processing spe file 99 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.4622 seconds
+    CPU time is 1.48 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.0657 seconds
+    CPU time is 18.66 seconds
+ System time is  2014/06/12 10:00:12
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_99.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.7687 seconds
+    CPU time is 15.92 seconds
+ System time is  2014/06/12 10:00:16
+--------------------------------------------------------------------------------
+Processing spe file 100 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.4566 seconds
+    CPU time is 1.47 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.0416 seconds
+    CPU time is 18.99 seconds
+ System time is  2014/06/12 10:00:22
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_100.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.4683 seconds
+    CPU time is 16.35 seconds
+ System time is  2014/06/12 10:00:25
+--------------------------------------------------------------------------------
+Processing spe file 101 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.5513 seconds
+    CPU time is 1.57 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.1207 seconds
+    CPU time is 19.04 seconds
+ System time is  2014/06/12 10:00:31
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_101.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.7048 seconds
+    CPU time is 15.95 seconds
+ System time is  2014/06/12 10:00:35
+--------------------------------------------------------------------------------
+Processing spe file 102 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.7871 seconds
+    CPU time is 1.8 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.1862 seconds
+    CPU time is 20.59 seconds
+ System time is  2014/06/12 10:00:41
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_102.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.8729 seconds
+    CPU time is 16.46 seconds
+ System time is  2014/06/12 10:00:44
+--------------------------------------------------------------------------------
+Processing spe file 103 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.4743 seconds
+    CPU time is 1.58 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.0234 seconds
+    CPU time is 18.74 seconds
+ System time is  2014/06/12 10:00:50
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_103.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.4657 seconds
+    CPU time is 14.2 seconds
+ System time is  2014/06/12 10:00:53
+--------------------------------------------------------------------------------
+Processing spe file 104 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.5407 seconds
+    CPU time is 1.69 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.9244 seconds
+    CPU time is 18.56 seconds
+ System time is  2014/06/12 10:00:59
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_104.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.6458 seconds
+    CPU time is 15.04 seconds
+ System time is  2014/06/12 10:01:03
+--------------------------------------------------------------------------------
+Processing spe file 105 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.4784 seconds
+    CPU time is 1.56 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.1086 seconds
+    CPU time is 18.87 seconds
+ System time is  2014/06/12 10:01:08
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_105.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.5465 seconds
+    CPU time is 18.81 seconds
+ System time is  2014/06/12 10:01:12
+--------------------------------------------------------------------------------
+Processing spe file 106 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.6014 seconds
+    CPU time is 1.72 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.2314 seconds
+    CPU time is 19.25 seconds
+ System time is  2014/06/12 10:01:18
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_106.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.7619 seconds
+    CPU time is 15.8 seconds
+ System time is  2014/06/12 10:01:21
+--------------------------------------------------------------------------------
+Processing spe file 107 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.4625 seconds
+    CPU time is 1.54 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.7785 seconds
+    CPU time is 17.96 seconds
+ System time is  2014/06/12 10:01:27
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_107.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.236 seconds
+    CPU time is 18.67 seconds
+ System time is  2014/06/12 10:01:30
+--------------------------------------------------------------------------------
+Processing spe file 108 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.2696 seconds
+    CPU time is 2.38 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.9732 seconds
+    CPU time is 20.43 seconds
+ System time is  2014/06/12 10:01:36
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_108.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.9999 seconds
+    CPU time is 19.07 seconds
+ System time is  2014/06/12 10:01:40
+--------------------------------------------------------------------------------
+Processing spe file 109 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.505 seconds
+    CPU time is 1.51 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.7795 seconds
+    CPU time is 17.75 seconds
+ System time is  2014/06/12 10:01:45
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_109.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.547 seconds
+    CPU time is 18.4 seconds
+ System time is  2014/06/12 10:01:49
+--------------------------------------------------------------------------------
+Processing spe file 110 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.5943 seconds
+    CPU time is 1.66 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.1131 seconds
+    CPU time is 19.1 seconds
+ System time is  2014/06/12 10:01:55
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_110.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.6133 seconds
+    CPU time is 19.07 seconds
+ System time is  2014/06/12 10:01:58
+--------------------------------------------------------------------------------
+Processing spe file 111 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.8242 seconds
+    CPU time is 1.84 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.8604 seconds
+    CPU time is 18.06 seconds
+ System time is  2014/06/12 10:02:04
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_111.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.8127 seconds
+    CPU time is 19.24 seconds
+ System time is  2014/06/12 10:02:08
+--------------------------------------------------------------------------------
+Processing spe file 112 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.473 seconds
+    CPU time is 1.49 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.1618 seconds
+    CPU time is 19.36 seconds
+ System time is  2014/06/12 10:02:13
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_112.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.9485 seconds
+    CPU time is 19.07 seconds
+ System time is  2014/06/12 10:02:17
+--------------------------------------------------------------------------------
+Processing spe file 113 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.4868 seconds
+    CPU time is 1.55 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.1997 seconds
+    CPU time is 19.44 seconds
+ System time is  2014/06/12 10:02:23
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_113.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.8614 seconds
+    CPU time is 17.09 seconds
+ System time is  2014/06/12 10:02:27
+--------------------------------------------------------------------------------
+Processing spe file 114 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.4678 seconds
+    CPU time is 1.56 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.8362 seconds
+    CPU time is 18.41 seconds
+ System time is  2014/06/12 10:02:32
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_114.tmp...
+Time to save sqw data to file:
+Elapsed time is 4.0099 seconds
+    CPU time is 16.49 seconds
+ System time is  2014/06/12 10:02:36
+--------------------------------------------------------------------------------
+Processing spe file 115 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.472 seconds
+    CPU time is 1.59 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.5386 seconds
+    CPU time is 21.75 seconds
+ System time is  2014/06/12 10:02:42
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_115.tmp...
+Time to save sqw data to file:
+Elapsed time is 4.2492 seconds
+    CPU time is 16.64 seconds
+ System time is  2014/06/12 10:02:46
+--------------------------------------------------------------------------------
+Processing spe file 116 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.4623 seconds
+    CPU time is 1.47 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.3266 seconds
+    CPU time is 19.72 seconds
+ System time is  2014/06/12 10:02:52
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_116.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.8912 seconds
+    CPU time is 16.96 seconds
+ System time is  2014/06/12 10:02:56
+--------------------------------------------------------------------------------
+Processing spe file 117 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.4667 seconds
+    CPU time is 1.48 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.8822 seconds
+    CPU time is 18.2 seconds
+ System time is  2014/06/12 10:03:01
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_117.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.9194 seconds
+    CPU time is 16.5 seconds
+ System time is  2014/06/12 10:03:05
+--------------------------------------------------------------------------------
+Processing spe file 118 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.4749 seconds
+    CPU time is 1.57 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.9228 seconds
+    CPU time is 18.49 seconds
+ System time is  2014/06/12 10:03:11
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_118.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.6618 seconds
+    CPU time is 15.57 seconds
+ System time is  2014/06/12 10:03:14
+--------------------------------------------------------------------------------
+Processing spe file 119 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.8526 seconds
+    CPU time is 1.97 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 5.1178 seconds
+    CPU time is 21.16 seconds
+ System time is  2014/06/12 10:03:21
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_119.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.4114 seconds
+    CPU time is 14.95 seconds
+ System time is  2014/06/12 10:03:25
+--------------------------------------------------------------------------------
+Processing spe file 120 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.7445 seconds
+    CPU time is 1.82 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.0484 seconds
+    CPU time is 18.77 seconds
+ System time is  2014/06/12 10:03:31
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_120.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.5662 seconds
+    CPU time is 19.08 seconds
+ System time is  2014/06/12 10:03:34
+--------------------------------------------------------------------------------
+Processing spe file 121 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.0607 seconds
+    CPU time is 2.09 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.8415 seconds
+    CPU time is 19.06 seconds
+ System time is  2014/06/12 10:03:40
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_121.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.2385 seconds
+    CPU time is 18.75 seconds
+ System time is  2014/06/12 10:03:43
+--------------------------------------------------------------------------------
+Processing spe file 122 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.9595 seconds
+    CPU time is 1.97 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.9942 seconds
+    CPU time is 20.24 seconds
+ System time is  2014/06/12 10:03:49
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_122.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.7383 seconds
+    CPU time is 19.04 seconds
+ System time is  2014/06/12 10:03:53
+--------------------------------------------------------------------------------
+Processing spe file 123 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.6727 seconds
+    CPU time is 1.73 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.1264 seconds
+    CPU time is 18.5 seconds
+ System time is  2014/06/12 10:03:59
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_123.tmp...
+Time to save sqw data to file:
+Elapsed time is 4.2641 seconds
+    CPU time is 18.36 seconds
+ System time is  2014/06/12 10:04:03
+--------------------------------------------------------------------------------
+Processing spe file 124 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.5229 seconds
+    CPU time is 1.62 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.0917 seconds
+    CPU time is 18.02 seconds
+ System time is  2014/06/12 10:04:09
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_124.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.5693 seconds
+    CPU time is 19.43 seconds
+ System time is  2014/06/12 10:04:12
+--------------------------------------------------------------------------------
+Processing spe file 125 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.9532 seconds
+    CPU time is 2.1 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.7592 seconds
+    CPU time is 18.98 seconds
+ System time is  2014/06/12 10:04:18
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_125.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.6707 seconds
+    CPU time is 19.25 seconds
+ System time is  2014/06/12 10:04:22
+--------------------------------------------------------------------------------
+Processing spe file 126 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.3009 seconds
+    CPU time is 2.37 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.4023 seconds
+    CPU time is 20.41 seconds
+ System time is  2014/06/12 10:04:28
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_126.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.5628 seconds
+    CPU time is 18.63 seconds
+ System time is  2014/06/12 10:04:32
+--------------------------------------------------------------------------------
+Processing spe file 127 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.9662 seconds
+    CPU time is 2.06 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.9128 seconds
+    CPU time is 18.98 seconds
+ System time is  2014/06/12 10:04:38
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_127.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.0747 seconds
+    CPU time is 18.52 seconds
+ System time is  2014/06/12 10:04:41
+--------------------------------------------------------------------------------
+Processing spe file 128 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.225 seconds
+    CPU time is 2.36 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.0145 seconds
+    CPU time is 20.39 seconds
+ System time is  2014/06/12 10:04:47
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_128.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.8701 seconds
+    CPU time is 18.86 seconds
+ System time is  2014/06/12 10:04:51
+--------------------------------------------------------------------------------
+Processing spe file 129 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.915 seconds
+    CPU time is 2.02 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.0557 seconds
+    CPU time is 18.18 seconds
+ System time is  2014/06/12 10:04:57
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_129.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.8098 seconds
+    CPU time is 16.07 seconds
+ System time is  2014/06/12 10:05:01
+--------------------------------------------------------------------------------
+Processing spe file 130 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.5031 seconds
+    CPU time is 1.53 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.0064 seconds
+    CPU time is 18.75 seconds
+ System time is  2014/06/12 10:05:06
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_130.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.636 seconds
+    CPU time is 16.17 seconds
+ System time is  2014/06/12 10:05:10
+--------------------------------------------------------------------------------
+Processing spe file 131 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.5005 seconds
+    CPU time is 1.51 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.3814 seconds
+    CPU time is 20.36 seconds
+ System time is  2014/06/12 10:05:16
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_131.tmp...
+Time to save sqw data to file:
+Elapsed time is 4.0373 seconds
+    CPU time is 17.02 seconds
+ System time is  2014/06/12 10:05:20
+--------------------------------------------------------------------------------
+Processing spe file 132 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.4642 seconds
+    CPU time is 1.48 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.1277 seconds
+    CPU time is 19.83 seconds
+ System time is  2014/06/12 10:05:25
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_132.tmp...
+Time to save sqw data to file:
+Elapsed time is 5.1349 seconds
+    CPU time is 13.09 seconds
+ System time is  2014/06/12 10:05:31
+--------------------------------------------------------------------------------
+Processing spe file 133 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.4801 seconds
+    CPU time is 1.57 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 6.2348 seconds
+    CPU time is 29.49 seconds
+ System time is  2014/06/12 10:05:38
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_133.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.4645 seconds
+    CPU time is 18.86 seconds
+ System time is  2014/06/12 10:05:42
+--------------------------------------------------------------------------------
+Processing spe file 134 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.7295 seconds
+    CPU time is 1.9 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 5.2589 seconds
+    CPU time is 22.56 seconds
+ System time is  2014/06/12 10:05:49
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_134.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.0697 seconds
+    CPU time is 17.89 seconds
+ System time is  2014/06/12 10:05:52
+--------------------------------------------------------------------------------
+Processing spe file 135 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.3337 seconds
+    CPU time is 2.34 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 5.0645 seconds
+    CPU time is 20.12 seconds
+ System time is  2014/06/12 10:05:59
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_135.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.0002 seconds
+    CPU time is 18.63 seconds
+ System time is  2014/06/12 10:06:02
+--------------------------------------------------------------------------------
+Processing spe file 136 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.4982 seconds
+    CPU time is 1.54 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.5398 seconds
+    CPU time is 18.84 seconds
+ System time is  2014/06/12 10:06:08
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_136.tmp...
+Time to save sqw data to file:
+Elapsed time is 2.9763 seconds
+    CPU time is 18.33 seconds
+ System time is  2014/06/12 10:06:11
+--------------------------------------------------------------------------------
+Processing spe file 137 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.5018 seconds
+    CPU time is 1.54 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.3656 seconds
+    CPU time is 17.76 seconds
+ System time is  2014/06/12 10:06:17
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_137.tmp...
+Time to save sqw data to file:
+Elapsed time is 2.8073 seconds
+    CPU time is 18.04 seconds
+ System time is  2014/06/12 10:06:20
+--------------------------------------------------------------------------------
+Processing spe file 138 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.6328 seconds
+    CPU time is 1.66 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.934 seconds
+    CPU time is 21.11 seconds
+ System time is  2014/06/12 10:06:27
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_138.tmp...
+Time to save sqw data to file:
+Elapsed time is 2.9746 seconds
+    CPU time is 18.26 seconds
+ System time is  2014/06/12 10:06:30
+--------------------------------------------------------------------------------
+Processing spe file 139 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.7789 seconds
+    CPU time is 1.88 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.8691 seconds
+    CPU time is 22.17 seconds
+ System time is  2014/06/12 10:06:36
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_139.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.0791 seconds
+    CPU time is 18.5 seconds
+ System time is  2014/06/12 10:06:39
+--------------------------------------------------------------------------------
+Processing spe file 140 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.6902 seconds
+    CPU time is 1.79 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.4306 seconds
+    CPU time is 20.14 seconds
+ System time is  2014/06/12 10:06:45
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_140.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.0274 seconds
+    CPU time is 18.39 seconds
+ System time is  2014/06/12 10:06:48
+--------------------------------------------------------------------------------
+Processing spe file 141 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.0972 seconds
+    CPU time is 2.25 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.98 seconds
+    CPU time is 21.58 seconds
+ System time is  2014/06/12 10:06:55
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_141.tmp...
+Time to save sqw data to file:
+Elapsed time is 2.9271 seconds
+    CPU time is 17.78 seconds
+ System time is  2014/06/12 10:06:58
+--------------------------------------------------------------------------------
+Processing spe file 142 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.5064 seconds
+    CPU time is 1.51 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.8804 seconds
+    CPU time is 19.4 seconds
+ System time is  2014/06/12 10:07:05
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_142.tmp...
+Time to save sqw data to file:
+Elapsed time is 2.8785 seconds
+    CPU time is 17.52 seconds
+ System time is  2014/06/12 10:07:08
+--------------------------------------------------------------------------------
+Processing spe file 143 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.6256 seconds
+    CPU time is 1.65 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.6901 seconds
+    CPU time is 19.06 seconds
+ System time is  2014/06/12 10:07:14
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_143.tmp...
+Time to save sqw data to file:
+Elapsed time is 2.8898 seconds
+    CPU time is 18.28 seconds
+ System time is  2014/06/12 10:07:17
+--------------------------------------------------------------------------------
+Processing spe file 144 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.711 seconds
+    CPU time is 1.72 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.4599 seconds
+    CPU time is 20.08 seconds
+ System time is  2014/06/12 10:07:23
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_144.tmp...
+Time to save sqw data to file:
+Elapsed time is 2.8924 seconds
+    CPU time is 18.18 seconds
+ System time is  2014/06/12 10:07:26
+--------------------------------------------------------------------------------
+Processing spe file 145 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.708 seconds
+    CPU time is 1.73 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.8073 seconds
+    CPU time is 20.24 seconds
+ System time is  2014/06/12 10:07:32
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_145.tmp...
+Time to save sqw data to file:
+Elapsed time is 2.8863 seconds
+    CPU time is 18.02 seconds
+ System time is  2014/06/12 10:07:35
+--------------------------------------------------------------------------------
+Processing spe file 146 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.5068 seconds
+    CPU time is 1.61 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 5.0253 seconds
+    CPU time is 19.18 seconds
+ System time is  2014/06/12 10:07:42
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_146.tmp...
+Time to save sqw data to file:
+Elapsed time is 2.909 seconds
+    CPU time is 18.17 seconds
+ System time is  2014/06/12 10:07:45
+--------------------------------------------------------------------------------
+Processing spe file 147 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.5287 seconds
+    CPU time is 1.7 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.8425 seconds
+    CPU time is 19.67 seconds
+ System time is  2014/06/12 10:07:51
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_147.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.178 seconds
+    CPU time is 18.53 seconds
+ System time is  2014/06/12 10:07:54
+--------------------------------------------------------------------------------
+Processing spe file 148 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.5596 seconds
+    CPU time is 2.13 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.7665 seconds
+    CPU time is 18.99 seconds
+ System time is  2014/06/12 10:08:01
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_148.tmp...
+Time to save sqw data to file:
+Elapsed time is 2.8479 seconds
+    CPU time is 17.68 seconds
+ System time is  2014/06/12 10:08:04
+--------------------------------------------------------------------------------
+Processing spe file 149 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.6692 seconds
+    CPU time is 1.73 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.6375 seconds
+    CPU time is 19.06 seconds
+ System time is  2014/06/12 10:08:10
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_149.tmp...
+Time to save sqw data to file:
+Elapsed time is 2.9636 seconds
+    CPU time is 18.42 seconds
+ System time is  2014/06/12 10:08:13
+--------------------------------------------------------------------------------
+Processing spe file 150 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.4975 seconds
+    CPU time is 1.52 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 34.6223 seconds
+    CPU time is 49.55 seconds
+ System time is  2014/06/12 10:08:49
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_150.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.4778 seconds
+    CPU time is 19.26 seconds
+ System time is  2014/06/12 10:08:52
+--------------------------------------------------------------------------------
+Processing spe file 151 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.6458 seconds
+    CPU time is 1.66 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 197.798 seconds
+    CPU time is 660.88 seconds
+ System time is  2014/06/12 10:12:12
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_151.tmp...
+Time to save sqw data to file:
+Elapsed time is 2.9866 seconds
+    CPU time is 18.32 seconds
+ System time is  2014/06/12 10:12:15
+--------------------------------------------------------------------------------
+Processing spe file 152 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.6493 seconds
+    CPU time is 1.84 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 149.61 seconds
+    CPU time is 411.67 seconds
+ System time is  2014/06/12 10:14:46
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_152.tmp...
+Time to save sqw data to file:
+Elapsed time is 4.0175 seconds
+    CPU time is 19.15 seconds
+ System time is  2014/06/12 10:14:50
+--------------------------------------------------------------------------------
+Processing spe file 153 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.6436 seconds
+    CPU time is 1.7 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 102.4756 seconds
+    CPU time is 497.38 seconds
+ System time is  2014/06/12 10:16:34
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_153.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.9597 seconds
+    CPU time is 19.08 seconds
+ System time is  2014/06/12 10:16:38
+--------------------------------------------------------------------------------
+Processing spe file 154 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.6594 seconds
+    CPU time is 1.79 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 193.8089 seconds
+    CPU time is 620.78 seconds
+ System time is  2014/06/12 10:19:54
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_154.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.8168 seconds
+    CPU time is 17.63 seconds
+ System time is  2014/06/12 10:19:58
+--------------------------------------------------------------------------------
+Processing spe file 155 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.7066 seconds
+    CPU time is 1.78 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 189.417 seconds
+    CPU time is 657.76 seconds
+ System time is  2014/06/12 10:23:09
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_155.tmp...
+Time to save sqw data to file:
+Elapsed time is 4.0725 seconds
+    CPU time is 17.12 seconds
+ System time is  2014/06/12 10:23:13
+--------------------------------------------------------------------------------
+Processing spe file 156 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.6165 seconds
+    CPU time is 1.66 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 214.2627 seconds
+    CPU time is 1020.26 seconds
+ System time is  2014/06/12 10:26:49
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_156.tmp...
+Time to save sqw data to file:
+Elapsed time is 4.0774 seconds
+    CPU time is 17.65 seconds
+ System time is  2014/06/12 10:26:53
+--------------------------------------------------------------------------------
+Processing spe file 157 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.4744 seconds
+    CPU time is 1.48 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 120.1682 seconds
+    CPU time is 566.6 seconds
+ System time is  2014/06/12 10:28:54
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_157.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.9128 seconds
+    CPU time is 18.41 seconds
+ System time is  2014/06/12 10:28:58
+--------------------------------------------------------------------------------
+Processing spe file 158 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.4757 seconds
+    CPU time is 1.48 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 122.6829 seconds
+    CPU time is 758.11 seconds
+ System time is  2014/06/12 10:31:02
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_158.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.7568 seconds
+    CPU time is 16.02 seconds
+ System time is  2014/06/12 10:31:06
+--------------------------------------------------------------------------------
+Processing spe file 159 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.476 seconds
+    CPU time is 1.61 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 126.761 seconds
+    CPU time is 769.44 seconds
+ System time is  2014/06/12 10:33:14
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_159.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.9819 seconds
+    CPU time is 15.88 seconds
+ System time is  2014/06/12 10:33:18
+--------------------------------------------------------------------------------
+Processing spe file 160 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.4892 seconds
+    CPU time is 1.6 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 187.6632 seconds
+    CPU time is 843.96 seconds
+ System time is  2014/06/12 10:36:28
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_160.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.4742 seconds
+    CPU time is 19.79 seconds
+ System time is  2014/06/12 10:36:31
+--------------------------------------------------------------------------------
+Processing spe file 161 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.6064 seconds
+    CPU time is 1.61 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 191.4126 seconds
+    CPU time is 731.74 seconds
+ System time is  2014/06/12 10:39:44
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_161.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.7865 seconds
+    CPU time is 19.82 seconds
+ System time is  2014/06/12 10:39:48
+--------------------------------------------------------------------------------
+Processing spe file 162 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.6482 seconds
+    CPU time is 1.72 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 137.1629 seconds
+    CPU time is 245.59 seconds
+ System time is  2014/06/12 10:42:07
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_162.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.9817 seconds
+    CPU time is 19.2 seconds
+ System time is  2014/06/12 10:42:11
+--------------------------------------------------------------------------------
+Processing spe file 163 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.4711 seconds
+    CPU time is 1.48 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 255.5044 seconds
+    CPU time is 1102.92 seconds
+ System time is  2014/06/12 10:46:28
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_163.tmp...
+Time to save sqw data to file:
+Elapsed time is 4.0298 seconds
+    CPU time is 15.99 seconds
+ System time is  2014/06/12 10:46:32
+--------------------------------------------------------------------------------
+Processing spe file 164 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.6482 seconds
+    CPU time is 1.66 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 252.5363 seconds
+    CPU time is 1384.97 seconds
+ System time is  2014/06/12 10:50:46
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_164.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.9918 seconds
+    CPU time is 18.06 seconds
+ System time is  2014/06/12 10:50:50
+--------------------------------------------------------------------------------
+Processing spe file 165 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.5992 seconds
+    CPU time is 1.61 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 163.9446 seconds
+    CPU time is 934.69 seconds
+ System time is  2014/06/12 10:53:35
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_165.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.8324 seconds
+    CPU time is 19.9 seconds
+ System time is  2014/06/12 10:53:39
+--------------------------------------------------------------------------------
+Processing spe file 166 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.7275 seconds
+    CPU time is 1.84 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 189.9238 seconds
+    CPU time is 716.08 seconds
+ System time is  2014/06/12 10:56:51
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_166.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.7163 seconds
+    CPU time is 18.92 seconds
+ System time is  2014/06/12 10:56:55
+--------------------------------------------------------------------------------
+Processing spe file 167 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.7447 seconds
+    CPU time is 1.86 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 175.302 seconds
+    CPU time is 571.58 seconds
+ System time is  2014/06/12 10:59:52
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_167.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.7671 seconds
+    CPU time is 19.06 seconds
+ System time is  2014/06/12 10:59:55
+--------------------------------------------------------------------------------
+Processing spe file 168 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.6072 seconds
+    CPU time is 1.62 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 154.0936 seconds
+    CPU time is 481.09 seconds
+ System time is  2014/06/12 11:02:31
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_168.tmp...
+Time to save sqw data to file:
+Elapsed time is 4.0297 seconds
+    CPU time is 18.43 seconds
+ System time is  2014/06/12 11:02:35
+--------------------------------------------------------------------------------
+Processing spe file 169 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.7291 seconds
+    CPU time is 1.85 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 109.7183 seconds
+    CPU time is 127.39 seconds
+ System time is  2014/06/12 11:04:27
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_169.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.4635 seconds
+    CPU time is 18.8 seconds
+ System time is  2014/06/12 11:04:30
+--------------------------------------------------------------------------------
+Processing spe file 170 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.5254 seconds
+    CPU time is 2.66 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 196.3235 seconds
+    CPU time is 466.92 seconds
+ System time is  2014/06/12 11:07:49
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_170.tmp...
+Time to save sqw data to file:
+Elapsed time is 4.0107 seconds
+    CPU time is 18.93 seconds
+ System time is  2014/06/12 11:07:53
+--------------------------------------------------------------------------------
+Processing spe file 171 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.6325 seconds
+    CPU time is 1.63 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 135.7451 seconds
+    CPU time is 452.07 seconds
+ System time is  2014/06/12 11:10:10
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_171.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.7523 seconds
+    CPU time is 18.97 seconds
+ System time is  2014/06/12 11:10:14
+--------------------------------------------------------------------------------
+Processing spe file 172 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.696 seconds
+    CPU time is 1.76 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 178.3338 seconds
+    CPU time is 624.86 seconds
+ System time is  2014/06/12 11:13:14
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_172.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.7533 seconds
+    CPU time is 19.08 seconds
+ System time is  2014/06/12 11:13:18
+--------------------------------------------------------------------------------
+Processing spe file 173 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.6785 seconds
+    CPU time is 1.77 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 153.4079 seconds
+    CPU time is 610.64 seconds
+ System time is  2014/06/12 11:15:53
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_173.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.9645 seconds
+    CPU time is 18.95 seconds
+ System time is  2014/06/12 11:15:57
+--------------------------------------------------------------------------------
+Processing spe file 174 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.7035 seconds
+    CPU time is 1.79 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 199.1702 seconds
+    CPU time is 703.82 seconds
+ System time is  2014/06/12 11:19:18
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_174.tmp...
+Time to save sqw data to file:
+Elapsed time is 4.0705 seconds
+    CPU time is 17.96 seconds
+ System time is  2014/06/12 11:19:22
+--------------------------------------------------------------------------------
+Processing spe file 175 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.625 seconds
+    CPU time is 1.64 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 157.653 seconds
+    CPU time is 612.1 seconds
+ System time is  2014/06/12 11:22:01
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_175.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.9774 seconds
+    CPU time is 17.04 seconds
+ System time is  2014/06/12 11:22:05
+--------------------------------------------------------------------------------
+Processing spe file 176 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.6242 seconds
+    CPU time is 1.77 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 231.7669 seconds
+    CPU time is 933.45 seconds
+ System time is  2014/06/12 11:25:59
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_176.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.6022 seconds
+    CPU time is 17.76 seconds
+ System time is  2014/06/12 11:26:02
+--------------------------------------------------------------------------------
+Processing spe file 177 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.7691 seconds
+    CPU time is 1.89 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 229.9763 seconds
+    CPU time is 871.03 seconds
+ System time is  2014/06/12 11:29:54
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_177.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.9468 seconds
+    CPU time is 19.06 seconds
+ System time is  2014/06/12 11:29:58
+--------------------------------------------------------------------------------
+Processing spe file 178 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.4706 seconds
+    CPU time is 1.47 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 193.4449 seconds
+    CPU time is 914.4 seconds
+ System time is  2014/06/12 11:33:13
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_178.tmp...
+Time to save sqw data to file:
+Elapsed time is 4.0293 seconds
+    CPU time is 18.96 seconds
+ System time is  2014/06/12 11:33:17
+--------------------------------------------------------------------------------
+Processing spe file 179 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.4994 seconds
+    CPU time is 1.51 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 186.2842 seconds
+    CPU time is 930.53 seconds
+ System time is  2014/06/12 11:36:25
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_179.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.8642 seconds
+    CPU time is 19.72 seconds
+ System time is  2014/06/12 11:36:28
+--------------------------------------------------------------------------------
+Processing spe file 180 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.4687 seconds
+    CPU time is 1.46 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 155.7465 seconds
+    CPU time is 706.25 seconds
+ System time is  2014/06/12 11:39:06
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_180.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.883 seconds
+    CPU time is 17.01 seconds
+ System time is  2014/06/12 11:39:10
+--------------------------------------------------------------------------------
+Processing spe file 181 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.48 seconds
+    CPU time is 1.59 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 170.7333 seconds
+    CPU time is 843.83 seconds
+ System time is  2014/06/12 11:42:02
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_181.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.7826 seconds
+    CPU time is 19.15 seconds
+ System time is  2014/06/12 11:42:06
+--------------------------------------------------------------------------------
+Processing spe file 182 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.5029 seconds
+    CPU time is 1.63 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 191.2354 seconds
+    CPU time is 762.43 seconds
+ System time is  2014/06/12 11:45:18
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_182.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.5218 seconds
+    CPU time is 19.4 seconds
+ System time is  2014/06/12 11:45:22
+--------------------------------------------------------------------------------
+Processing spe file 183 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.6824 seconds
+    CPU time is 1.7 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 86.315 seconds
+    CPU time is 104.61 seconds
+ System time is  2014/06/12 11:46:50
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_183.tmp...
+Time to save sqw data to file:
+Elapsed time is 2.9439 seconds
+    CPU time is 17.85 seconds
+ System time is  2014/06/12 11:46:53
+--------------------------------------------------------------------------------
+Processing spe file 184 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.6599 seconds
+    CPU time is 1.66 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 214.8593 seconds
+    CPU time is 455.44 seconds
+ System time is  2014/06/12 11:50:29
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_184.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.8615 seconds
+    CPU time is 19.03 seconds
+ System time is  2014/06/12 11:50:33
+--------------------------------------------------------------------------------
+Processing spe file 185 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.5468 seconds
+    CPU time is 1.64 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 250.0544 seconds
+    CPU time is 830.84 seconds
+ System time is  2014/06/12 11:54:45
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_185.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.5578 seconds
+    CPU time is 17.73 seconds
+ System time is  2014/06/12 11:54:48
+--------------------------------------------------------------------------------
+Processing spe file 186 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.6423 seconds
+    CPU time is 1.71 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 237.355 seconds
+    CPU time is 1113.06 seconds
+ System time is  2014/06/12 11:58:47
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_186.tmp...
+Time to save sqw data to file:
+Elapsed time is 4.1819 seconds
+    CPU time is 18.74 seconds
+ System time is  2014/06/12 11:58:52
+--------------------------------------------------------------------------------
+Processing spe file 187 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.6544 seconds
+    CPU time is 1.74 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 200.2792 seconds
+    CPU time is 870.26 seconds
+ System time is  2014/06/12 12:02:13
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_187.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.6001 seconds
+    CPU time is 18.33 seconds
+ System time is  2014/06/12 12:02:17
+--------------------------------------------------------------------------------
+Processing spe file 188 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.7811 seconds
+    CPU time is 1.88 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 144.9446 seconds
+    CPU time is 449.16 seconds
+ System time is  2014/06/12 12:04:44
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_188.tmp...
+Time to save sqw data to file:
+Elapsed time is 4.0045 seconds
+    CPU time is 19.24 seconds
+ System time is  2014/06/12 12:04:48
+--------------------------------------------------------------------------------
+Processing spe file 189 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.5819 seconds
+    CPU time is 1.67 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 198.1208 seconds
+    CPU time is 908.95 seconds
+ System time is  2014/06/12 12:08:08
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_189.tmp...
+Time to save sqw data to file:
+Elapsed time is 4.1629 seconds
+    CPU time is 15.14 seconds
+ System time is  2014/06/12 12:08:12
+--------------------------------------------------------------------------------
+Processing spe file 190 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.6749 seconds
+    CPU time is 1.74 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 212.5421 seconds
+    CPU time is 1073.28 seconds
+ System time is  2014/06/12 12:11:46
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_190.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.9378 seconds
+    CPU time is 18.35 seconds
+ System time is  2014/06/12 12:11:50
+--------------------------------------------------------------------------------
+Processing spe file 191 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.4733 seconds
+    CPU time is 1.46 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 173.1665 seconds
+    CPU time is 892.16 seconds
+ System time is  2014/06/12 12:14:44
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_191.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.9134 seconds
+    CPU time is 19.05 seconds
+ System time is  2014/06/12 12:14:48
+--------------------------------------------------------------------------------
+Processing spe file 192 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.4722 seconds
+    CPU time is 1.54 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 206.3636 seconds
+    CPU time is 1221.68 seconds
+ System time is  2014/06/12 12:18:16
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_192.tmp...
+Time to save sqw data to file:
+Elapsed time is 4.0368 seconds
+    CPU time is 19.43 seconds
+ System time is  2014/06/12 12:18:20
+--------------------------------------------------------------------------------
+Processing spe file 193 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.4835 seconds
+    CPU time is 1.52 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 189.2784 seconds
+    CPU time is 1006.71 seconds
+ System time is  2014/06/12 12:21:31
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_193.tmp...
+Time to save sqw data to file:
+Elapsed time is 4.0908 seconds
+    CPU time is 15.12 seconds
+ System time is  2014/06/12 12:21:35
+--------------------------------------------------------------------------------
+Processing spe file 194 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.4786 seconds
+    CPU time is 1.48 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 303.3608 seconds
+    CPU time is 1571.95 seconds
+ System time is  2014/06/12 12:26:40
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_194.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.4403 seconds
+    CPU time is 20.15 seconds
+ System time is  2014/06/12 12:26:43
+--------------------------------------------------------------------------------
+Processing spe file 195 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.7421 seconds
+    CPU time is 1.81 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 175.3767 seconds
+    CPU time is 406.24 seconds
+ System time is  2014/06/12 12:29:41
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_195.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.8859 seconds
+    CPU time is 19 seconds
+ System time is  2014/06/12 12:29:44
+--------------------------------------------------------------------------------
+Processing spe file 196 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.6379 seconds
+    CPU time is 1.74 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 250.9776 seconds
+    CPU time is 1025.31 seconds
+ System time is  2014/06/12 12:33:57
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_196.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.8253 seconds
+    CPU time is 18.91 seconds
+ System time is  2014/06/12 12:34:01
+--------------------------------------------------------------------------------
+Processing spe file 197 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.7018 seconds
+    CPU time is 1.71 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 246.8499 seconds
+    CPU time is 1403.98 seconds
+ System time is  2014/06/12 12:38:09
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_197.tmp...
+Time to save sqw data to file:
+Elapsed time is 4.0832 seconds
+    CPU time is 18.59 seconds
+ System time is  2014/06/12 12:38:14
+--------------------------------------------------------------------------------
+Processing spe file 198 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.7939 seconds
+    CPU time is 1.79 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 213.2048 seconds
+    CPU time is 775.25 seconds
+ System time is  2014/06/12 12:41:49
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_198.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.9877 seconds
+    CPU time is 18.27 seconds
+ System time is  2014/06/12 12:41:53
+--------------------------------------------------------------------------------
+Processing spe file 199 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.6944 seconds
+    CPU time is 1.7 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 252.2369 seconds
+    CPU time is 973.18 seconds
+ System time is  2014/06/12 12:46:06
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_199.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.9923 seconds
+    CPU time is 18.83 seconds
+ System time is  2014/06/12 12:46:10
+--------------------------------------------------------------------------------
+Processing spe file 200 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.0919 seconds
+    CPU time is 2.1 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 239.4948 seconds
+    CPU time is 928.29 seconds
+ System time is  2014/06/12 12:50:12
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_200.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.863 seconds
+    CPU time is 18.66 seconds
+ System time is  2014/06/12 12:50:16
+--------------------------------------------------------------------------------
+Processing spe file 201 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.59 seconds
+    CPU time is 1.6 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 151.8397 seconds
+    CPU time is 542.44 seconds
+ System time is  2014/06/12 12:52:49
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_201.tmp...
+Time to save sqw data to file:
+Elapsed time is 4.0234 seconds
+    CPU time is 18.84 seconds
+ System time is  2014/06/12 12:52:53
+--------------------------------------------------------------------------------
+Processing spe file 202 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.7236 seconds
+    CPU time is 1.87 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 173.8223 seconds
+    CPU time is 514.94 seconds
+ System time is  2014/06/12 12:55:49
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_202.tmp...
+Time to save sqw data to file:
+Elapsed time is 4.0743 seconds
+    CPU time is 17.16 seconds
+ System time is  2014/06/12 12:55:53
+--------------------------------------------------------------------------------
+Processing spe file 203 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.644 seconds
+    CPU time is 1.64 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 239.2496 seconds
+    CPU time is 821.21 seconds
+ System time is  2014/06/12 12:59:54
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_203.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.7893 seconds
+    CPU time is 19.09 seconds
+ System time is  2014/06/12 12:59:58
+--------------------------------------------------------------------------------
+Processing spe file 204 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.466 seconds
+    CPU time is 1.53 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 233.3726 seconds
+    CPU time is 1467.65 seconds
+ System time is  2014/06/12 13:03:53
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_204.tmp...
+Time to save sqw data to file:
+Elapsed time is 4.0284 seconds
+    CPU time is 18.7 seconds
+ System time is  2014/06/12 13:03:57
+--------------------------------------------------------------------------------
+Processing spe file 205 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.4793 seconds
+    CPU time is 1.57 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 286.3291 seconds
+    CPU time is 1637.37 seconds
+ System time is  2014/06/12 13:08:44
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_205.tmp...
+Time to save sqw data to file:
+Elapsed time is 4.0539 seconds
+    CPU time is 20.63 seconds
+ System time is  2014/06/12 13:08:48
+--------------------------------------------------------------------------------
+Processing spe file 206 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.4695 seconds
+    CPU time is 1.57 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 244.6673 seconds
+    CPU time is 1412.12 seconds
+ System time is  2014/06/12 13:12:55
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_206.tmp...
+Time to save sqw data to file:
+Elapsed time is 4.023 seconds
+    CPU time is 18.58 seconds
+ System time is  2014/06/12 13:12:59
+--------------------------------------------------------------------------------
+Processing spe file 207 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.4731 seconds
+    CPU time is 1.47 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 251.3885 seconds
+    CPU time is 1437.42 seconds
+ System time is  2014/06/12 13:17:11
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_207.tmp...
+Time to save sqw data to file:
+Elapsed time is 4.0598 seconds
+    CPU time is 18.68 seconds
+ System time is  2014/06/12 13:17:16
+--------------------------------------------------------------------------------
+Processing spe file 208 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.4757 seconds
+    CPU time is 1.54 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 122.8121 seconds
+    CPU time is 590.36 seconds
+ System time is  2014/06/12 13:19:20
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_208.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.9435 seconds
+    CPU time is 18.89 seconds
+ System time is  2014/06/12 13:19:24
+--------------------------------------------------------------------------------
+Processing spe file 209 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.4731 seconds
+    CPU time is 1.54 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 201.3113 seconds
+    CPU time is 1133.69 seconds
+ System time is  2014/06/12 13:22:47
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_209.tmp...
+Time to save sqw data to file:
+Elapsed time is 4.1939 seconds
+    CPU time is 19.04 seconds
+ System time is  2014/06/12 13:22:51
+--------------------------------------------------------------------------------
+Processing spe file 210 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.5293 seconds
+    CPU time is 1.63 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 154.1546 seconds
+    CPU time is 916.89 seconds
+ System time is  2014/06/12 13:25:26
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_210.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.627 seconds
+    CPU time is 18.81 seconds
+ System time is  2014/06/12 13:25:30
+--------------------------------------------------------------------------------
+Processing spe file 211 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.4732 seconds
+    CPU time is 1.57 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 328.4075 seconds
+    CPU time is 1575.72 seconds
+ System time is  2014/06/12 13:31:00
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_211.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.7038 seconds
+    CPU time is 20.71 seconds
+ System time is  2014/06/12 13:31:04
+--------------------------------------------------------------------------------
+Processing spe file 212 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.0129 seconds
+    CPU time is 2.13 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 179.6157 seconds
+    CPU time is 887.48 seconds
+ System time is  2014/06/12 13:34:05
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_212.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.6661 seconds
+    CPU time is 19.25 seconds
+ System time is  2014/06/12 13:34:09
+--------------------------------------------------------------------------------
+Processing spe file 213 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.7165 seconds
+    CPU time is 1.81 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 206.9109 seconds
+    CPU time is 864.32 seconds
+ System time is  2014/06/12 13:37:38
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_213.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.7318 seconds
+    CPU time is 18.7 seconds
+ System time is  2014/06/12 13:37:41
+--------------------------------------------------------------------------------
+Processing spe file 214 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.7157 seconds
+    CPU time is 1.8 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 209.3879 seconds
+    CPU time is 944.04 seconds
+ System time is  2014/06/12 13:41:12
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_214.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.6435 seconds
+    CPU time is 18.89 seconds
+ System time is  2014/06/12 13:41:16
+--------------------------------------------------------------------------------
+Processing spe file 215 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.7029 seconds
+    CPU time is 1.71 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 220.85 seconds
+    CPU time is 660.36 seconds
+ System time is  2014/06/12 13:44:59
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_215.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.826 seconds
+    CPU time is 18.94 seconds
+ System time is  2014/06/12 13:45:02
+--------------------------------------------------------------------------------
+Processing spe file 216 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.7397 seconds
+    CPU time is 1.88 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 254.8021 seconds
+    CPU time is 1331.41 seconds
+ System time is  2014/06/12 13:49:19
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_216.tmp...
+Time to save sqw data to file:
+Elapsed time is 4.1688 seconds
+    CPU time is 17.58 seconds
+ System time is  2014/06/12 13:49:23
+--------------------------------------------------------------------------------
+Processing spe file 217 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.6697 seconds
+    CPU time is 1.8 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 231.8387 seconds
+    CPU time is 1024.31 seconds
+ System time is  2014/06/12 13:53:17
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_217.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.9852 seconds
+    CPU time is 20.07 seconds
+ System time is  2014/06/12 13:53:21
+--------------------------------------------------------------------------------
+Processing spe file 218 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.6464 seconds
+    CPU time is 1.9 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 229.7242 seconds
+    CPU time is 933.87 seconds
+ System time is  2014/06/12 13:57:12
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_218.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.8524 seconds
+    CPU time is 18.46 seconds
+ System time is  2014/06/12 13:57:16
+--------------------------------------------------------------------------------
+Processing spe file 219 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.6969 seconds
+    CPU time is 1.71 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 179.0211 seconds
+    CPU time is 641.22 seconds
+ System time is  2014/06/12 14:00:17
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_219.tmp...
+Time to save sqw data to file:
+Elapsed time is 4.0612 seconds
+    CPU time is 18.5 seconds
+ System time is  2014/06/12 14:00:21
+--------------------------------------------------------------------------------
+Processing spe file 220 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.5099 seconds
+    CPU time is 1.61 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 210.9477 seconds
+    CPU time is 1185.31 seconds
+ System time is  2014/06/12 14:03:53
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_220.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.8223 seconds
+    CPU time is 20.04 seconds
+ System time is  2014/06/12 14:03:57
+--------------------------------------------------------------------------------
+Processing spe file 221 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.4652 seconds
+    CPU time is 1.58 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 140.6695 seconds
+    CPU time is 766.87 seconds
+ System time is  2014/06/12 14:06:19
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_221.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.9047 seconds
+    CPU time is 19.81 seconds
+ System time is  2014/06/12 14:06:23
+--------------------------------------------------------------------------------
+Processing spe file 222 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.4836 seconds
+    CPU time is 1.5 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.5921 seconds
+    CPU time is 16.16 seconds
+ System time is  2014/06/12 14:06:28
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_222.tmp...
+Time to save sqw data to file:
+Elapsed time is 2.6788 seconds
+    CPU time is 18.15 seconds
+ System time is  2014/06/12 14:06:31
+--------------------------------------------------------------------------------
+Processing spe file 223 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.4451 seconds
+    CPU time is 1.46 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.3826 seconds
+    CPU time is 16.78 seconds
+ System time is  2014/06/12 14:06:36
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_223.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.2348 seconds
+    CPU time is 18.62 seconds
+ System time is  2014/06/12 14:06:39
+--------------------------------------------------------------------------------
+Processing spe file 224 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.8087 seconds
+    CPU time is 2.01 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 143.3 seconds
+    CPU time is 669.95 seconds
+ System time is  2014/06/12 14:09:04
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_224.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.6116 seconds
+    CPU time is 18.36 seconds
+ System time is  2014/06/12 14:09:08
+--------------------------------------------------------------------------------
+Processing spe file 225 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.104 seconds
+    CPU time is 2.16 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 450.9592 seconds
+    CPU time is 1397.21 seconds
+ System time is  2014/06/12 14:16:41
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_225.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.6714 seconds
+    CPU time is 22.81 seconds
+ System time is  2014/06/12 14:16:44
+--------------------------------------------------------------------------------
+Processing spe file 226 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.9894 seconds
+    CPU time is 2.69 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 651.5532 seconds
+    CPU time is 2198.72 seconds
+ System time is  2014/06/12 14:27:38
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_226.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.6512 seconds
+    CPU time is 22.53 seconds
+ System time is  2014/06/12 14:27:42
+--------------------------------------------------------------------------------
+Processing spe file 227 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.2179 seconds
+    CPU time is 4.81 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 512.5494 seconds
+    CPU time is 1656.05 seconds
+ System time is  2014/06/12 14:36:16
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_227.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.6363 seconds
+    CPU time is 23.01 seconds
+ System time is  2014/06/12 14:36:20
+--------------------------------------------------------------------------------
+Processing spe file 228 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.8409 seconds
+    CPU time is 1.92 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 491.1174 seconds
+    CPU time is 1954.19 seconds
+ System time is  2014/06/12 14:44:33
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_228.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.3923 seconds
+    CPU time is 22.13 seconds
+ System time is  2014/06/12 14:44:36
+--------------------------------------------------------------------------------
+Processing spe file 229 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.1778 seconds
+    CPU time is 2.58 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 534.8213 seconds
+    CPU time is 1852.12 seconds
+ System time is  2014/06/12 14:53:33
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_229.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.6698 seconds
+    CPU time is 23.4 seconds
+ System time is  2014/06/12 14:53:37
+--------------------------------------------------------------------------------
+Processing spe file 230 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 2.4327 seconds
+    CPU time is 3.56 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 110.182 seconds
+    CPU time is 223.56 seconds
+ System time is  2014/06/12 14:55:30
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_230.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.251 seconds
+    CPU time is 17.25 seconds
+ System time is  2014/06/12 14:55:33
+--------------------------------------------------------------------------------
+Processing spe file 231 of 231:
+ 
+Time to read spe and detector data:
+Elapsed time is 1.9948 seconds
+    CPU time is 2.13 seconds
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 371.9143 seconds
+    CPU time is 1378.84 seconds
+ System time is  2014/06/12 15:01:47
+ 
+Writing to /data/hor_test/MER19566_52.0meV_one2one125_231.tmp...
+Time to save sqw data to file:
+Elapsed time is 3.1774 seconds
+    CPU time is 20.42 seconds
+ System time is  2014/06/12 15:01:50
+--------------------------------------------------------------------------------
+Time to create all temporary sqw files:
+Elapsed time is 19018.3052 seconds
+    CPU time is 78799.19 seconds
+ System time is  2014/06/12 15:01:50
+--------------------------------------------------------------------------------
+Creating output sqw file:
+ 
+Reading header(s) of input file(s) and checking consistency...
+ Task started on  2014/06/12 15:01:51
+Completed 10.4% of task in 1.7267 seconds
+Completed 20.8% of task in 3.4052 seconds
+Completed 31.2% of task in 5.7739 seconds
+Completed 41.6% of task in 7.4443 seconds
+Completed 51.9% of task in 8.7679 seconds
+Completed 62.3% of task in 9.3346 seconds
+Completed 72.7% of task in 9.9407 seconds
+Completed 83.1% of task in 10.6183 seconds
+Completed 93.5% of task in 11.2641 seconds
+Task completed in 11.8456 seconds
+ At the time  2014/06/12 15:02:03
+ 
+Reading and accumulating binning information of input file(s)...
+ Task started on  2014/06/12 15:02:03
+Completed 3.0% of task in 5.1913 seconds
+Completed 6.1% of task in 10.4457 seconds
+Completed 9.1% of task in 15.8476 seconds
+Completed 11.7% of task in 42.7538 seconds
+Completed 12.1% of task in 88.7038 seconds
+Completed 12.6% of task in 115.2396 seconds
+Completed 13.0% of task in 131.5379 seconds
+Completed 13.4% of task in 179.9222 seconds
+Completed 13.9% of task in 221.8413 seconds
+Completed 14.3% of task in 324.6881 seconds
+Completed 14.7% of task in 359.5473 seconds
+Completed 15.6% of task in 364.6636 seconds
+Completed 16.0% of task in 459.1213 seconds
+Completed 16.5% of task in 601.2261 seconds
+Completed 16.9% of task in 671.6044 seconds
+Completed 17.3% of task in 703.5762 seconds
+Completed 17.7% of task in 721.6488 seconds
+Completed 18.2% of task in 767.2076 seconds
+Completed 18.6% of task in 795.0816 seconds
+Completed 19.0% of task in 834.6929 seconds
+Completed 19.5% of task in 968.9156 seconds
+Completed 19.9% of task in 981.1813 seconds
+Completed 20.3% of task in 1041.3334 seconds
+Completed 20.8% of task in 1127.745 seconds
+Completed 21.6% of task in 1308.2611 seconds
+Completed 22.5% of task in 1420.5219 seconds
+Completed 22.9% of task in 1576.7593 seconds
+Completed 23.4% of task in 1615.1843 seconds
+Completed 23.8% of task in 1633.6035 seconds
+Completed 24.2% of task in 1696.8312 seconds
+Completed 24.7% of task in 1702.4411 seconds
+Completed 25.1% of task in 1796.9577 seconds
+Completed 25.5% of task in 1805.5627 seconds
+Completed 26.0% of task in 1851.503 seconds
+Completed 26.8% of task in 1928.2344 seconds
+Completed 27.3% of task in 1988.8636 seconds
+Completed 27.7% of task in 2016.4008 seconds
+Completed 28.1% of task in 2062.47 seconds
+Completed 28.6% of task in 2125.5089 seconds
+Completed 29.0% of task in 2165.4815 seconds
+Completed 29.4% of task in 2205.2745 seconds
+Completed 29.9% of task in 2298.9389 seconds
+Completed 30.3% of task in 2356.6622 seconds
+Completed 30.7% of task in 2369.8911 seconds
+Completed 31.6% of task in 2446.9285 seconds
+Completed 32.5% of task in 2481.7121 seconds
+Completed 32.9% of task in 2512.9007 seconds
+Completed 33.3% of task in 2522.8505 seconds
+Completed 33.8% of task in 2581.5955 seconds
+Completed 34.2% of task in 2587.6601 seconds
+Completed 34.6% of task in 2635.5683 seconds
+Completed 35.1% of task in 2695.6468 seconds
+Completed 35.5% of task in 2758.5726 seconds
+Completed 35.9% of task in 2770.3051 seconds
+Completed 36.4% of task in 2808.1081 seconds
+Completed 36.8% of task in 2886.1952 seconds
+Completed 37.2% of task in 2892.0174 seconds
+Completed 38.1% of task in 3019.1736 seconds
+Completed 38.5% of task in 3118.1501 seconds
+Completed 39.0% of task in 3249.0689 seconds
+Completed 39.4% of task in 3349.4716 seconds
+Completed 39.8% of task in 3402.6673 seconds
+Completed 40.3% of task in 3469.2218 seconds
+Completed 40.7% of task in 3511.811 seconds
+Completed 42.4% of task in 3516.8819 seconds
+Completed 42.9% of task in 3530.0641 seconds
+Completed 43.3% of task in 3594.9695 seconds
+Completed 43.7% of task in 3666.6003 seconds
+Completed 44.2% of task in 3747.2625 seconds
+Completed 44.6% of task in 3812.1803 seconds
+Completed 45.0% of task in 3985.9312 seconds
+Completed 45.5% of task in 4059.1139 seconds
+Completed 45.9% of task in 4123.6714 seconds
+Completed 46.3% of task in 4242.2234 seconds
+Completed 46.8% of task in 4276.2937 seconds
+Completed 49.8% of task in 4286.1916 seconds
+Completed 51.1% of task in 4295.2659 seconds
+Completed 52.8% of task in 4338.1003 seconds
+Completed 53.2% of task in 4384.2297 seconds
+Completed 53.7% of task in 4419.4709 seconds
+Completed 58.0% of task in 4426.8036 seconds
+Completed 58.4% of task in 4439.4797 seconds
+Completed 58.9% of task in 4493.5213 seconds
+Completed 59.3% of task in 4646.5882 seconds
+Completed 59.7% of task in 4710.1513 seconds
+Completed 60.2% of task in 4740.3822 seconds
+Completed 61.0% of task in 4789.9785 seconds
+Completed 61.5% of task in 4902.6809 seconds
+Completed 61.9% of task in 4945.445 seconds
+Completed 62.3% of task in 5026.5952 seconds
+Completed 67.5% of task in 5031.6189 seconds
+Completed 71.4% of task in 5043.0922 seconds
+Completed 72.7% of task in 5048.1346 seconds
+Completed 76.6% of task in 5077.9781 seconds
+Completed 77.5% of task in 5084.098 seconds
+Completed 78.8% of task in 5196.0958 seconds
+Completed 79.2% of task in 5324.4772 seconds
+Completed 79.7% of task in 5384.8696 seconds
+Completed 84.8% of task in 5390.1912 seconds
+Completed 86.1% of task in 5398.6897 seconds
+Completed 86.6% of task in 5443.5226 seconds
+Completed 88.7% of task in 5498.2407 seconds
+Completed 90.0% of task in 5506.1141 seconds
+Completed 90.5% of task in 5575.431 seconds
+Completed 90.9% of task in 5633.6306 seconds
+Completed 91.3% of task in 5684.0651 seconds
+Completed 93.1% of task in 5697.6258 seconds
+Completed 93.5% of task in 5704.6849 seconds
+Completed 93.9% of task in 5789.2809 seconds
+Completed 94.4% of task in 5855.5333 seconds
+Completed 94.8% of task in 5979.2626 seconds
+Completed 95.2% of task in 6028.9303 seconds
+Completed 95.7% of task in 6178.1216 seconds
+Completed 96.1% of task in 6188.2752 seconds
+Task completed in 6192.2696 seconds
+ At the time  2014/06/12 16:45:15
+ 
+Writing to output file /data/hor_test/Test22meV_2.sqw ...
+ Task started on  2014/06/12 16:45:16
+Completed 0.6% of task in 143.6564 seconds
+Completed 2.0% of task in 405.3479 seconds
+Completed 2.5% of task in 432.3036 seconds
+Completed 3.6% of task in 680.443 seconds
+Completed 4.3% of task in 815.3698 seconds
+Completed 5.1% of task in 988.1247 seconds
+Completed 6.2% of task in 1174.2076 seconds
+Completed 6.8% of task in 1274.2578 seconds
+Completed 8.2% of task in 1550.666 seconds
+Completed 8.6% of task in 1591.4868 seconds
+Completed 9.7% of task in 1912.8065 seconds
+Completed 10.3% of task in 1985.0038 seconds
+Completed 11.0% of task in 2125.1223 seconds
+Completed 12.1% of task in 2308.141 seconds
+Completed 12.8% of task in 2509.9598 seconds
+Completed 14.1% of task in 2844.2212 seconds
+Completed 14.6% of task in 2950.7326 seconds
+Completed 16.0% of task in 3242.4161 seconds
+Completed 16.5% of task in 3318.5807 seconds
+Completed 17.4% of task in 3670.2002 seconds
+Completed 18.3% of task in 3831.4262 seconds
+Completed 18.9% of task in 3930.8116 seconds
+Completed 20.0% of task in 4146.7401 seconds
+Completed 20.5% of task in 4292.636 seconds
+Completed 21.9% of task in 4553.1335 seconds
+Completed 22.4% of task in 4673.1075 seconds
+Completed 23.4% of task in 4964.322 seconds
+Completed 24.2% of task in 5143.2423 seconds
+Completed 25.0% of task in 5297.9055 seconds
+Completed 26.2% of task in 5615.1446 seconds
+Completed 26.7% of task in 5721.5441 seconds
+Completed 27.9% of task in 5929.1642 seconds
+Completed 28.3% of task in 6055.6067 seconds
+Completed 29.5% of task in 6460.9082 seconds
+Completed 30.1% of task in 6651.7348 seconds
+Completed 30.9% of task in 6916.0905 seconds
+Completed 32.1% of task in 7161.7509 seconds
+Completed 32.7% of task in 7305.6607 seconds
+Completed 34.1% of task in 7606.7688 seconds
+Completed 34.6% of task in 7752.3052 seconds
+Completed 35.9% of task in 8114.5441 seconds
+Completed 36.4% of task in 8214.2599 seconds
+Completed 37.1% of task in 8305.9495 seconds
+Completed 37.9% of task in 8512.9277 seconds
+Completed 38.6% of task in 8659.4275 seconds
+Completed 40.0% of task in 8956.9427 seconds
+Completed 40.5% of task in 9094.5996 seconds
+Completed 41.9% of task in 9416.3928 seconds
+Completed 42.3% of task in 9498.9938 seconds
+Completed 43.3% of task in 9635.1479 seconds
+Completed 44.2% of task in 9828.8077 seconds
+Completed 44.8% of task in 9950.8825 seconds
+Completed 45.9% of task in 10161.6771 seconds
+Completed 46.4% of task in 10287.8995 seconds
+Completed 47.8% of task in 10570.2241 seconds
+Completed 48.2% of task in 10638.3911 seconds
+Completed 49.4% of task in 10833.9687 seconds
+Completed 50.0% of task in 10929.0504 seconds
+Completed 50.9% of task in 11110.8316 seconds
+Completed 52.1% of task in 11284.6 seconds
+Completed 52.6% of task in 11388.7831 seconds
+Completed 54.1% of task in 11655.3553 seconds
+Completed 54.4% of task in 11712.0073 seconds
+Completed 55.5% of task in 11803.956 seconds
+Completed 56.0% of task in 11928.5134 seconds
+Completed 56.8% of task in 12140.6016 seconds
+Completed 57.9% of task in 12288.5539 seconds
+Completed 58.5% of task in 12369.1392 seconds
+Completed 60.0% of task in 12621.9172 seconds
+Completed 60.4% of task in 12682.8033 seconds
+Completed 61.8% of task in 12845.6591 seconds
+Completed 62.2% of task in 12887.2546 seconds
+Completed 63.0% of task in 12999.3218 seconds
+Completed 63.8% of task in 13160.5067 seconds
+Completed 64.5% of task in 13345.425 seconds
+Completed 65.9% of task in 13533.9471 seconds
+Completed 66.3% of task in 13656.4469 seconds
+Completed 67.7% of task in 13848.0804 seconds
+Completed 68.1% of task in 13905.0133 seconds
+Completed 69.2% of task in 14016.1081 seconds
+Completed 70.0% of task in 14206.134 seconds
+Completed 70.8% of task in 14326.6859 seconds
+Completed 72.1% of task in 14580.6741 seconds
+Completed 72.5% of task in 14633.3268 seconds
+Completed 73.7% of task in 14781.4514 seconds
+Completed 74.0% of task in 14816.2017 seconds
+Completed 75.3% of task in 14985.9354 seconds
+Completed 75.9% of task in 15060.4376 seconds
+Completed 76.7% of task in 15189.2722 seconds
+Completed 77.9% of task in 15311.5022 seconds
+Completed 78.5% of task in 15396.3829 seconds
+Completed 80.0% of task in 15622.2896 seconds
+Completed 80.2% of task in 15667.4239 seconds
+Completed 81.4% of task in 15814.6723 seconds
+Completed 81.7% of task in 15914.2062 seconds
+Completed 82.7% of task in 16053.9011 seconds
+Completed 83.8% of task in 16278.8899 seconds
+Completed 84.4% of task in 16369.5929 seconds
+Completed 85.8% of task in 16555.4917 seconds
+Completed 86.2% of task in 16619.6415 seconds
+Completed 87.7% of task in 16803.3929 seconds
+Completed 88.0% of task in 16878.2425 seconds
+Completed 89.0% of task in 17010.4016 seconds
+Completed 90.0% of task in 17181.2591 seconds
+Completed 90.5% of task in 17272.9006 seconds
+Completed 91.7% of task in 17459.3175 seconds
+Completed 92.1% of task in 17511.7476 seconds
+Completed 93.7% of task in 17848.1205 seconds
+Completed 93.9% of task in 17859.0765 seconds
+Completed 95.2% of task in 17970.7247 seconds
+Completed 95.9% of task in 18068.7531 seconds
+Completed 96.6% of task in 18225.8778 seconds
+Completed 97.9% of task in 18368.0747 seconds
+Completed 98.4% of task in 18524.3181 seconds
+Completed 99.9% of task in 18778.9328 seconds
+Completed 100.0% of task in 18786.089 seconds
+Task completed in 18786.0919 seconds
+ At the time  2014/06/12 21:58:22
+--------------------------------------------------------------------------------
+Your MATLAB session has timed out.  All license keys have been returned.
+>> 

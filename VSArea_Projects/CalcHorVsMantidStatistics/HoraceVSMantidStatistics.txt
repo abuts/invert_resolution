@@ -1,0 +1,44 @@
+===========    MANTID: ============>
+ Avrg time to run one of 127 instances of LoadNXSPE         = 0.665039370079,	 Sigma_T = 0.270056494573,	 min T=0.36,	 max T=1.66 (seconds)
+ Avrg time to run one of 127 instances of ConvertToMD       = 6.34322834646,	 Sigma_T = 1.99676702551,	 min T=3.75,	 max T=12.4 (seconds)
+ Avrg time to run one of 127 instances of SaveMD            = 11.9688188976,	 Sigma_T = 4.91681537259,	 min T=5.98,	 max T=35.04 (seconds)
+ Total conversion time:  40.17 min
+951012068 events in 127 files.
+MergeMDFiles successful, Duration 734.85 seconds
+Final combine time: 12.25 min
+=============================: Total conversion time :  12.25 min + 40.17 min = 52 min
+
+ Avrg time to run one of 127 instances of LoadNXSPE         = 0.449606299213,	 Sigma_T = 0.0974590693396,	 min T=0.3,	 max T=0.78 (seconds) 
+ Avrg time to run one of 127 instances of ConvertToMD       = 5.32803149606,	 Sigma_T = 0.997788925157,	 min T=3.8,	 max T=8.29 (seconds)
+ Avrg time to run one of 127 instances of SaveMD            = 8.92456692913,	 Sigma_T = 2.42305486756,	 min T=5.58, max T=18.3 (seconds)
+
+ Total conversion time:  31.12 min
+951012068 events in 127 files.
+MergeMDFiles successful, Duration 598.32 seconds
+Final combine: 9.97 min
+=============================: Total conversion time :  9.97 min + 31.12 min = 41 min
+
+
+===========    HORACE: ============>
+Horace does not separate load data from convert to MD. This is why it is one number for loadNXSPE and convertToMD operations. 
+
+MATLAB only conversion:  
+ Avrg time to run one of 127 instances of convert from spe  = 14.9553496063,	 Sigma_T = 10.2378714708,	 min T=7.2887,	 max T=82.0386 (seconds)
+ Avrg time to run one of 127 instances of save data to file = 3.45113307087,	 Sigma_T = 2.42102265862,	 min T=1.8951,	 max T=17.6636 (seconds)
+ Total conversion time:  38.96 min
+Reading header(s) of input file(s) and checking consistency...Task completed in     2.3186 seconds
+Reading and accumulating binning information of input file(s)...Task completed in  64.802 seconds
+Writing to output file /home/wkc26243/Fe400/Fe_ei401.sqw ...Task completed in    1383.3367 seconds
+Final combine: 24.17min
+=============================: Total conversion time :  24.17min+33.47min = 58 min
+
+MEX files enabled, 8 OMP threads running:
+ Avrg time to run one of 127 instances of convert from spe  = 2.7203511811,	 Sigma_T = 0.598415598989,	 min T=1.9615,	 max T=4.7711 (seconds)
+ Avrg time to run one of 127 instances of save data to file = 2.53396062992, Sigma_T = 0.528628898182,	 min T=1.9285,	 max T=3.9153 (seconds)
+ Total conversion time:  11.12 min
+Reading header(s) of input file(s) and checking consistency...Task completed in 4.2505 seconds
+Reading and accumulating binning information of input file(s)...Task completed in 62.956 seconds
+Writing to output file /home/wkc26243/Fe400/Fe_ei401a.sqw ...Task completed in 809.2184 seconds
+Final combine: 14.61 min
+=============================: Total conversion time :  14.61min+11.12min = 25 min
+===================================>

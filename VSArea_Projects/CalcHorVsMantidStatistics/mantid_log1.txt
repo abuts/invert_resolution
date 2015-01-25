@@ -1,0 +1,1990 @@
+No specialised dialog exists for the LoadMD algorithm: a generic one has been created
+LoadMD started
+vector findRun('MAP15052.nxspe', exts[3])
+
+hintPath is not empty, check in normal search locations
+getFullPath(MAP15052.nxspe)
+Unable to find files via directory search with the filename that looks like a full filename
+Looking for MAP at ISIS.
+Instrument 'MAP' found as MAPS at ISIS.
+Add facility extensions defined in the Facility.xml file
+getExtension(MAP15052.nxspe, exts[7])
+matched extension ".NXS" based on ".nxs"
+Looking for MAP at ISIS.
+Instrument 'MAP' found as MAPS at ISIS.
+found path = /archive/ndxmaps/Instrument/data/Cycle_09_5/MAP15052.raw
+LoadNXSPE started
+Algorithm: LoadNXSPE v1
+Parameters:
+  Name: Filename, Value: /archive/ndxmaps/Instrument/data/Cycle_09_5/MAP15052.raw, Default?: No, Direction: Input
+  Name: OutputWorkspace, Value: wsn, Default?: No, Direction: Output
+Error in execution of algorithm LoadNXSPE:
+Not NeXus or notNXSPE
+vector findRun('MAP15052.nxspe', exts[3])
+hintPath is not empty, check in normal search locations
+getFullPath(MAP15052.nxspe)
+found path = MAP15052.nxspe
+LoadNXSPE started
+Algorithm: LoadNXSPE v1
+Parameters:
+  Name: Filename, Value: MAP15052.nxspe, Default?: No, Direction: Input
+  Name: OutputWorkspace, Value: wsn, Default?: No, Direction: Output
+Memory: 512373500 (free), 529262052 (total).
+Add Data Object wsn successful
+LoadNXSPE successful, Duration 0.64 seconds
+SetUB started
+Algorithm: SetUB v1
+Parameters:
+  Name: Workspace, Value: wsn, Default?: No, Direction: InOut
+  Name: a, Value: 2.8700000000000001, Default?: No, Direction: Input
+  Name: b, Value: 2.8700000000000001, Default?: No, Direction: Input
+  Name: c, Value: 2.8700000000000001, Default?: No, Direction: Input
+  Name: alpha, Value: 90, Default?: Yes, Direction: Input
+  Name: beta, Value: 90, Default?: Yes, Direction: Input
+  Name: gamma, Value: 90, Default?: Yes, Direction: Input
+  Name: u, Value: 1,0,0, Default?: Yes, Direction: Input
+  Name: v, Value: 0,1,0, Default?: Yes, Direction: Input
+  Name: UB, Value: 0,0,0,0,0,0,0,0,0, Default?: Yes, Direction: Input
+  Name: MDSampleNumber, Value: 2147483647, Default?: Yes, Direction: Input
+Write-locking wsn
+Data Object 'wsn' replaced in data service.
+
+SetUB successful, Duration 0.00 seconds
+Unlocking wsn
+SetGoniometer started
+Algorithm: SetGoniometer v1
+Parameters:
+  Name: Workspace, Value: wsn, Default?: No, Direction: InOut
+  Name: Goniometers, Value: None, Specify Individually, Default?: Yes, Direction: Input
+  Name: Axis0, Value: Psi,0,1,0,1, Default?: No, Direction: Input
+  Name: Axis1, Value: , Default?: Yes, Direction: Input
+  Name: Axis2, Value: , Default?: Yes, Direction: Input
+  Name: Axis3, Value: , Default?: Yes, Direction: Input
+  Name: Axis4, Value: , Default?: Yes, Direction: Input
+  Name: Axis5, Value: , Default?: Yes, Direction: Input
+Write-locking wsn
+Data Object 'wsn' replaced in data service.
+
+SetGoniometer successful, Duration 0.00 seconds
+Unlocking wsn
+ConvertToMD started
+Algorithm: ConvertToMD v1
+Parameters:
+  Name: InputWorkspace, Value: wsn, Default?: No, Direction: Input
+  Name: OutputWorkspace, Value: md_ws, Default?: No, Direction: Output
+  Name: OverwriteExisting, Value: 1, Default?: Yes, Direction: Input
+  Name: QDimensions, Value: Q3D, Default?: No, Direction: InOut
+  Name: dEAnalysisMode, Value: Direct, Default?: Yes, Direction: InOut
+  Name: Q3DFrames, Value: HKL, Default?: No, Direction: Input
+  Name: QConversionScales, Value: HKL, Default?: No, Direction: Input
+  Name: OtherDimensions, Value: , Default?: Yes, Direction: Input
+  Name: PreprocDetectorsWS, Value: preprDet, Default?: No, Direction: Input
+  Name: UpdateMasks, Value: 0, Default?: Yes, Direction: Input
+  Name: LorentzCorrection, Value: 0, Default?: Yes, Direction: Input
+  Name: IgnoreZeroSignals, Value: 0, Default?: Yes, Direction: Input
+  Name: MinValues, Value: -7,-7,-7,-72, Default?: No, Direction: Input
+  Name: MaxValues, Value: 7,7,7,382, Default?: No, Direction: Input
+  Name: Uproj, Value: , Default?: Yes, Direction: Input
+  Name: Vproj, Value: , Default?: Yes, Direction: Input
+  Name: Wproj, Value: , Default?: Yes, Direction: Input
+  Name: SplitInto, Value: 50, Default?: No, Direction: Input
+  Name: SplitThreshold, Value: 1000, Default?: Yes, Direction: Input
+  Name: MaxRecursionDepth, Value: 1, Default?: No, Direction: Input
+  Name: MinRecursionDepth, Value: 1, Default?: Yes, Direction: Input
+Read-locking wsn
+ *********** Q-transformation matrix ***********************
+***     *qx         !     *qy         !     *qz           !
+q1= 7.3455e-17 ! 7.3455e-17 ! 0.456775 !
+q2= 0.456775 ! 2.79694e-17 ! 0 !
+q3= 0 ! 0.456775 ! 0 !
+ *********** *********************** ***********************
+Memory: 511783940 (free), 529262052 (total).
+Preprocessing detector locations in a target reciprocal space
+Source-sample distance: 10
+Finished preprocessing detector locations. Found: 36864 detectors out of: 36864 histograms
+PreprocessDetectorsToMD finished with isChild = 1
+Add Data Object preprDet successful
+ conversion started
+Add Data Object md_ws successful
+ConvertToMD successful, Duration 6.02 seconds
+Unlocking wsn
+SaveMD started
+Algorithm: SaveMD v1
+Parameters:
+  Name: InputWorkspace, Value: md_ws, Default?: No, Direction: Input
+  Name: Filename, Value: /home/wkc26243/Fe400/MDMAP15052.nxs, Default?: No, Direction: Input
+  Name: UpdateFileBackEnd, Value: 0, Default?: Yes, Direction: Input
+  Name: MakeFileBacked, Value: 0, Default?: Yes, Direction: Input
+Read-locking md_ws
+getFullPath(/home/wkc26243/Fe400/MDMAP15052.nxs)
+SaveMD successful, Duration 5.90 seconds
+Unlocking md_ws
+DeleteWorkspace started
+Algorithm: DeleteWorkspace v1
+Parameters:
+  Name: Workspace, Value: md_ws, Default?: No, Direction: Input
+Read-locking md_ws
+Data Object 'md_ws' deleted from data service.
+DeleteWorkspace successful, Duration 0.00 seconds
+Unlocking 
+DeleteWorkspace started
+Algorithm: DeleteWorkspace v1
+Parameters:
+  Name: Workspace, Value: wsn, Default?: No, Direction: Input
+Read-locking wsn
+Data Object 'wsn' deleted from data service.
+DeleteWorkspace successful, Duration 0.00 seconds
+Unlocking 
+vector findRun('MAP15053.nxspe', exts[3])
+hintPath is not empty, check in normal search locations
+getFullPath(MAP15053.nxspe)
+found path = MAP15053.nxspe
+LoadNXSPE started
+Algorithm: LoadNXSPE v1
+Parameters:
+  Name: Filename, Value: MAP15053.nxspe, Default?: No, Direction: Input
+  Name: OutputWorkspace, Value: wsn, Default?: No, Direction: Output
+Memory: 513476412 (free), 529262052 (total).
+Add Data Object wsn successful
+LoadNXSPE successful, Duration 0.30 seconds
+SetUB started
+Algorithm: SetUB v1
+Parameters:
+  Name: Workspace, Value: wsn, Default?: No, Direction: InOut
+  Name: a, Value: 2.8700000000000001, Default?: No, Direction: Input
+  Name: b, Value: 2.8700000000000001, Default?: No, Direction: Input
+  Name: c, Value: 2.8700000000000001, Default?: No, Direction: Input
+  Name: alpha, Value: 90, Default?: Yes, Direction: Input
+  Name: beta, Value: 90, Default?: Yes, Direction: Input
+  Name: gamma, Value: 90, Default?: Yes, Direction: Input
+  Name: u, Value: 1,0,0, Default?: Yes, Direction: Input
+  Name: v, Value: 0,1,0, Default?: Yes, Direction: Input
+  Name: UB, Value: 0,0,0,0,0,0,0,0,0, Default?: Yes, Direction: Input
+  Name: MDSampleNumber, Value: 2147483647, Default?: Yes, Direction: Input
+Write-locking wsn
+Data Object 'wsn' replaced in data service.
+
+SetUB successful, Duration 0.00 seconds
+Unlocking wsn
+SetGoniometer started
+Algorithm: SetGoniometer v1
+Parameters:
+  Name: Workspace, Value: wsn, Default?: No, Direction: InOut
+  Name: Goniometers, Value: None, Specify Individually, Default?: Yes, Direction: Input
+  Name: Axis0, Value: Psi,0,1,0,1, Default?: No, Direction: Input
+  Name: Axis1, Value: , Default?: Yes, Direction: Input
+  Name: Axis2, Value: , Default?: Yes, Direction: Input
+  Name: Axis3, Value: , Default?: Yes, Direction: Input
+  Name: Axis4, Value: , Default?: Yes, Direction: Input
+  Name: Axis5, Value: , Default?: Yes, Direction: Input
+Write-locking wsn
+Data Object 'wsn' replaced in data service.
+
+SetGoniometer successful, Duration 0.00 seconds
+Unlocking wsn
+ConvertToMD started
+Algorithm: ConvertToMD v1
+Parameters:
+  Name: InputWorkspace, Value: wsn, Default?: No, Direction: Input
+  Name: OutputWorkspace, Value: md_ws, Default?: No, Direction: Output
+  Name: OverwriteExisting, Value: 1, Default?: Yes, Direction: Input
+  Name: QDimensions, Value: Q3D, Default?: No, Direction: InOut
+  Name: dEAnalysisMode, Value: Direct, Default?: Yes, Direction: InOut
+  Name: Q3DFrames, Value: HKL, Default?: No, Direction: Input
+  Name: QConversionScales, Value: HKL, Default?: No, Direction: Input
+  Name: OtherDimensions, Value: , Default?: Yes, Direction: Input
+  Name: PreprocDetectorsWS, Value: preprDet, Default?: No, Direction: Input
+  Name: UpdateMasks, Value: 0, Default?: Yes, Direction: Input
+  Name: LorentzCorrection, Value: 0, Default?: Yes, Direction: Input
+  Name: IgnoreZeroSignals, Value: 0, Default?: Yes, Direction: Input
+  Name: MinValues, Value: -7,-7,-7,-72, Default?: No, Direction: Input
+  Name: MaxValues, Value: 7,7,7,382, Default?: No, Direction: Input
+  Name: Uproj, Value: , Default?: Yes, Direction: Input
+  Name: Vproj, Value: , Default?: Yes, Direction: Input
+  Name: Wproj, Value: , Default?: Yes, Direction: Input
+  Name: SplitInto, Value: 50, Default?: No, Direction: Input
+  Name: SplitThreshold, Value: 1000, Default?: Yes, Direction: Input
+  Name: MaxRecursionDepth, Value: 1, Default?: No, Direction: Input
+  Name: MinRecursionDepth, Value: 1, Default?: Yes, Direction: Input
+Read-locking wsn
+ *********** Q-transformation matrix ***********************
+***     *qx         !     *qy         !     *qz           !
+q1= 0.0159412 ! 7.3455e-17 ! 0.456496 !
+q2= 0.456496 ! 2.79694e-17 ! -0.0159412 !
+q3= 0 ! 0.456775 ! 0 !
+ *********** *********************** ***********************
+Memory: 514099796 (free), 529262052 (total).
+ conversion started
+Add Data Object md_ws successful
+ConvertToMD successful, Duration 3.80 seconds
+Unlocking wsn
+SaveMD started
+Algorithm: SaveMD v1
+Parameters:
+  Name: InputWorkspace, Value: md_ws, Default?: No, Direction: Input
+  Name: Filename, Value: /home/wkc26243/Fe400/MDMAP15053.nxs, Default?: No, Direction: Input
+  Name: UpdateFileBackEnd, Value: 0, Default?: Yes, Direction: Input
+  Name: MakeFileBacked, Value: 0, Default?: Yes, Direction: Input
+Read-locking md_ws
+SaveMD successful, Duration 5.59 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.32 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 3.82 seconds
+SaveMD started
+SaveMD successful, Duration 5.98 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.50 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 6.58 seconds
+SaveMD started
+SaveMD successful, Duration 12.85 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.63 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 7.32 seconds
+SaveMD started
+SaveMD successful, Duration 13.75 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.37 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 6.33 seconds
+SaveMD started
+SaveMD successful, Duration 10.79 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.37 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 5.13 seconds
+SaveMD started
+SaveMD successful, Duration 7.93 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.45 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 6.07 seconds
+SaveMD started
+SaveMD successful, Duration 10.80 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.46 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 6.25 seconds
+SaveMD started
+SaveMD successful, Duration 10.53 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.45 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 6.03 seconds
+SaveMD started
+SaveMD successful, Duration 8.88 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.33 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 3.98 seconds
+SaveMD started
+SaveMD successful, Duration 6.05 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.45 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 4.39 seconds
+SaveMD started
+SaveMD successful, Duration 7.55 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.40 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 4.92 seconds
+SaveMD started
+SaveMD successful, Duration 8.06 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.41 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 4.64 seconds
+SaveMD started
+SaveMD successful, Duration 7.79 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.35 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 5.03 seconds
+SaveMD started
+SaveMD successful, Duration 8.70 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.46 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 5.08 seconds
+SaveMD started
+SaveMD successful, Duration 7.91 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.34 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 4.19 seconds
+SaveMD started
+SaveMD successful, Duration 7.65 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.33 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 4.05 seconds
+SaveMD started
+SaveMD successful, Duration 6.09 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.32 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 3.90 seconds
+SaveMD started
+SaveMD successful, Duration 5.58 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.30 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 4.95 seconds
+SaveMD started
+SaveMD successful, Duration 10.30 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.50 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 5.12 seconds
+SaveMD started
+SaveMD successful, Duration 8.19 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.51 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 5.03 seconds
+SaveMD started
+SaveMD successful, Duration 8.48 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.49 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 4.96 seconds
+SaveMD started
+SaveMD successful, Duration 11.19 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.42 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 4.70 seconds
+SaveMD started
+SaveMD successful, Duration 10.78 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.52 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 6.56 seconds
+SaveMD started
+SaveMD successful, Duration 11.37 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.54 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 5.59 seconds
+SaveMD started
+SaveMD successful, Duration 11.32 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.52 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 5.24 seconds
+SaveMD started
+SaveMD successful, Duration 9.23 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.40 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 6.40 seconds
+SaveMD started
+SaveMD successful, Duration 7.27 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.36 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 4.12 seconds
+SaveMD started
+SaveMD successful, Duration 5.81 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.31 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 4.51 seconds
+SaveMD started
+SaveMD successful, Duration 12.59 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.60 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 6.95 seconds
+SaveMD started
+SaveMD successful, Duration 13.25 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.54 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 6.29 seconds
+SaveMD started
+SaveMD successful, Duration 9.68 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.46 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 5.50 seconds
+SaveMD started
+SaveMD successful, Duration 8.45 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.50 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 5.99 seconds
+SaveMD started
+SaveMD successful, Duration 9.64 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.46 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 5.53 seconds
+SaveMD started
+SaveMD successful, Duration 6.42 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.34 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 3.95 seconds
+SaveMD started
+SaveMD successful, Duration 6.24 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.39 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 5.53 seconds
+SaveMD started
+SaveMD successful, Duration 7.05 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.39 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 4.32 seconds
+SaveMD started
+SaveMD successful, Duration 6.69 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.49 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 4.68 seconds
+SaveMD started
+SaveMD successful, Duration 6.47 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.38 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 3.94 seconds
+SaveMD started
+SaveMD successful, Duration 5.96 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.33 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 6.78 seconds
+SaveMD started
+SaveMD successful, Duration 11.81 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.47 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 4.99 seconds
+SaveMD started
+SaveMD successful, Duration 11.61 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.53 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 6.45 seconds
+SaveMD started
+SaveMD successful, Duration 10.39 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.50 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 5.82 seconds
+SaveMD started
+SaveMD successful, Duration 7.37 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.32 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 3.98 seconds
+SaveMD started
+SaveMD successful, Duration 9.10 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.52 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 6.86 seconds
+SaveMD started
+SaveMD successful, Duration 12.11 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.52 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 6.69 seconds
+SaveMD started
+SaveMD successful, Duration 11.50 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.42 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 5.60 seconds
+SaveMD started
+SaveMD successful, Duration 9.62 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.55 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 6.41 seconds
+SaveMD started
+SaveMD successful, Duration 11.09 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.52 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 6.72 seconds
+SaveMD started
+SaveMD successful, Duration 11.43 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.53 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 6.69 seconds
+SaveMD started
+SaveMD successful, Duration 11.39 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.53 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 6.60 seconds
+SaveMD started
+SaveMD successful, Duration 10.98 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.36 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 4.70 seconds
+SaveMD started
+SaveMD successful, Duration 7.05 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.32 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 4.16 seconds
+SaveMD started
+SaveMD successful, Duration 15.25 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.78 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 8.29 seconds
+SaveMD started
+SaveMD successful, Duration 17.87 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.72 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 6.35 seconds
+SaveMD started
+SaveMD successful, Duration 10.37 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.52 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 6.23 seconds
+SaveMD started
+SaveMD successful, Duration 10.22 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.47 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 5.99 seconds
+SaveMD started
+SaveMD successful, Duration 9.35 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.42 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 4.71 seconds
+SaveMD started
+SaveMD successful, Duration 8.88 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.55 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 5.79 seconds
+SaveMD started
+SaveMD successful, Duration 9.90 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.48 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 4.42 seconds
+SaveMD started
+SaveMD successful, Duration 6.59 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.33 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 4.10 seconds
+SaveMD started
+SaveMD successful, Duration 5.98 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.34 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 4.03 seconds
+SaveMD started
+SaveMD successful, Duration 5.95 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.36 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 6.90 seconds
+SaveMD started
+SaveMD successful, Duration 12.11 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.57 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 6.72 seconds
+SaveMD started
+SaveMD successful, Duration 11.66 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.53 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 6.33 seconds
+SaveMD started
+SaveMD successful, Duration 10.06 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.48 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 5.35 seconds
+SaveMD started
+SaveMD successful, Duration 6.33 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.33 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 5.30 seconds
+SaveMD started
+SaveMD successful, Duration 10.91 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.56 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 5.17 seconds
+SaveMD started
+SaveMD successful, Duration 8.71 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.55 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 5.38 seconds
+SaveMD started
+SaveMD successful, Duration 8.69 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.56 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 6.29 seconds
+SaveMD started
+SaveMD successful, Duration 8.61 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.49 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 5.99 seconds
+SaveMD started
+SaveMD successful, Duration 9.60 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.54 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 6.34 seconds
+SaveMD started
+SaveMD successful, Duration 9.15 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.46 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 4.73 seconds
+SaveMD started
+SaveMD successful, Duration 7.88 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.39 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 4.35 seconds
+SaveMD started
+SaveMD successful, Duration 8.82 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.39 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 4.35 seconds
+SaveMD started
+SaveMD successful, Duration 7.52 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.37 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 4.05 seconds
+SaveMD started
+SaveMD successful, Duration 6.04 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.33 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 3.92 seconds
+SaveMD started
+SaveMD successful, Duration 5.78 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.45 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 4.58 seconds
+SaveMD started
+SaveMD successful, Duration 18.30 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.69 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 7.03 seconds
+SaveMD started
+SaveMD successful, Duration 12.09 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.51 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 6.67 seconds
+SaveMD started
+SaveMD successful, Duration 9.73 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.40 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 4.94 seconds
+SaveMD started
+SaveMD successful, Duration 8.29 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.34 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 5.93 seconds
+SaveMD started
+SaveMD successful, Duration 10.88 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.54 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 5.69 seconds
+SaveMD started
+SaveMD successful, Duration 10.28 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.50 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 5.24 seconds
+SaveMD started
+SaveMD successful, Duration 8.11 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.34 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 4.55 seconds
+SaveMD started
+SaveMD successful, Duration 6.34 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.34 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 4.11 seconds
+SaveMD started
+SaveMD successful, Duration 6.24 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.33 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 3.97 seconds
+SaveMD started
+SaveMD successful, Duration 6.06 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.33 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 3.95 seconds
+SaveMD started
+SaveMD successful, Duration 7.18 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.52 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 6.27 seconds
+SaveMD started
+SaveMD successful, Duration 7.53 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.38 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 4.40 seconds
+SaveMD started
+SaveMD successful, Duration 7.71 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.36 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 4.07 seconds
+SaveMD started
+SaveMD successful, Duration 6.55 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.36 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 5.04 seconds
+SaveMD started
+SaveMD successful, Duration 7.22 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.39 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 4.90 seconds
+SaveMD started
+SaveMD successful, Duration 5.87 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.33 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 3.86 seconds
+SaveMD started
+SaveMD successful, Duration 5.71 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.40 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 4.69 seconds
+SaveMD started
+SaveMD successful, Duration 7.47 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.40 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 4.56 seconds
+SaveMD started
+SaveMD successful, Duration 9.09 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.51 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 4.88 seconds
+SaveMD started
+SaveMD successful, Duration 7.77 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.55 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 6.47 seconds
+SaveMD started
+SaveMD successful, Duration 10.77 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.53 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 6.33 seconds
+SaveMD started
+SaveMD successful, Duration 10.66 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.52 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 6.23 seconds
+SaveMD started
+SaveMD successful, Duration 10.55 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.52 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 6.22 seconds
+SaveMD started
+SaveMD successful, Duration 10.10 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.39 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 5.79 seconds
+SaveMD started
+SaveMD successful, Duration 10.54 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.51 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 5.89 seconds
+SaveMD started
+SaveMD successful, Duration 7.29 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.33 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 3.90 seconds
+SaveMD started
+SaveMD successful, Duration 5.94 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.58 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 5.94 seconds
+SaveMD started
+SaveMD successful, Duration 10.12 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.51 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 5.04 seconds
+SaveMD started
+SaveMD successful, Duration 9.91 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.50 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 5.77 seconds
+SaveMD started
+SaveMD successful, Duration 6.11 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.35 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 4.22 seconds
+SaveMD started
+SaveMD successful, Duration 6.71 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.36 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 5.34 seconds
+SaveMD started
+SaveMD successful, Duration 11.24 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.56 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 6.27 seconds
+SaveMD started
+SaveMD successful, Duration 8.91 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.48 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 5.47 seconds
+SaveMD started
+SaveMD successful, Duration 10.12 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.50 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 5.02 seconds
+SaveMD started
+SaveMD successful, Duration 6.41 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.35 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 4.10 seconds
+SaveMD started
+SaveMD successful, Duration 6.18 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.34 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 3.94 seconds
+SaveMD started
+SaveMD successful, Duration 6.11 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.35 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 4.17 seconds
+SaveMD started
+SaveMD successful, Duration 5.86 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.34 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 5.97 seconds
+SaveMD started
+SaveMD successful, Duration 8.17 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.55 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 5.87 seconds
+SaveMD started
+SaveMD successful, Duration 7.05 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.38 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 4.26 seconds
+SaveMD started
+SaveMD successful, Duration 8.79 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.56 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 6.40 seconds
+SaveMD started
+SaveMD successful, Duration 9.86 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.45 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 4.93 seconds
+SaveMD started
+SaveMD successful, Duration 6.06 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.33 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 3.86 seconds
+SaveMD started
+SaveMD successful, Duration 10.22 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.58 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 6.68 seconds
+SaveMD started
+SaveMD successful, Duration 11.17 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.55 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 6.43 seconds
+SaveMD started
+SaveMD successful, Duration 10.10 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.56 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 5.38 seconds
+SaveMD started
+SaveMD successful, Duration 9.62 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.40 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 4.70 seconds
+SaveMD started
+SaveMD successful, Duration 8.35 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+LoadNXSPE started
+LoadNXSPE successful, Duration 0.51 seconds
+SetUB started
+SetUB successful, Duration 0.00 seconds
+SetGoniometer started
+SetGoniometer successful, Duration 0.00 seconds
+ConvertToMD started
+ConvertToMD successful, Duration 5.82 seconds
+SaveMD started
+SaveMD successful, Duration 9.64 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+DeleteWorkspace started
+DeleteWorkspace successful, Duration 0.00 seconds
+MergeMDFiles started
+Error loading instrument IDF file for 'NXSPE'.
+Setting cache to 400 MB write.
+951012068 events in 127 files.
+Starting SaveMD to update the file back-end.
+MergeMDFiles successful, Duration 598.32 seconds
+
