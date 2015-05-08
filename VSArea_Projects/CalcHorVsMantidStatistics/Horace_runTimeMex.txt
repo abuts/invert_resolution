@@ -1,0 +1,1869 @@
+>> horace_on
+!==================================================================!
+!         ISIS utilities for visualisation and analysis            !
+!              of neutron spectroscopy data                        !
+!------------------------------------------------------------------!
+!==================================================================!
+!                      HORACE                                      !
+!------------------------------------------------------------------!
+!  Visualisation of multi-dimensional neutron spectroscopy data    !
+!                                                                  !
+!  T.G.Perring, J van Duijn, R.A.Ewings         November 2008      !
+!------------------------------------------------------------------!
+! Matlab  code: $Revision:: 791  $ ($Date:: 2013-11-15 22:54:46 $) !
+! Mex code:    Disabled  or not supported on this platform         !
+!------------------------------------------------------------------!
+
+ans =
+
+/usr/local/mprogs/Horace
+
+>> hor_config
+ 
+hor_config =
+ 
+        mem_chunk_size: 200000000
+          pixel_length: 9
+               threads: 8
+            ignore_nan: 1
+            ignore_inf: 0
+      transformSPE2HDF: 0
+     horace_info_level: 1
+               use_mex: 0
+            delete_tmp: 1
+    use_par_from_nxspe: 0
+               sqw_ext: '.tmp'
+              sqw_path: ''
+         sealed_fields: {'pixel_length'}
+
+>> set(hor_config,'use_mex',1)
+ 
+hor_config =
+ 
+        mem_chunk_size: 200000000
+          pixel_length: 9
+               threads: 8
+            ignore_nan: 1
+            ignore_inf: 0
+      transformSPE2HDF: 0
+     horace_info_level: 1
+               use_mex: 1
+            delete_tmp: 1
+    use_par_from_nxspe: 0
+               sqw_ext: '.tmp'
+              sqw_path: ''
+         sealed_fields: {'pixel_length'}
+
+>> horace_on
+!==================================================================!
+!         ISIS utilities for visualisation and analysis            !
+!              of neutron spectroscopy data                        !
+!------------------------------------------------------------------!
+!==================================================================!
+!                      HORACE                                      !
+!------------------------------------------------------------------!
+!  Visualisation of multi-dimensional neutron spectroscopy data    !
+!                                                                  !
+!  T.G.Perring, J van Duijn, R.A.Ewings         November 2008      !
+!------------------------------------------------------------------!
+! Matlab  code: $Revision:: 791  $ ($Date:: 2013-11-15 22:54:46 $) !
+! Mex files   :$Revisions:: 556-679($Date:: 2013-02-08 20:30:37 $) !
+!------------------------------------------------------------------!
+
+ans =
+
+/usr/local/mprogs/Horace
+
+>> make_sqw_ei401
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+LOADER_ASCII:load_par::loaded 36864 detector(s)
+--------------------------------------------------------------------------------
+Calculating limits of data from 127 spe files...
+--------------------------------------------------------------------------------
+Processing spe file 1 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.5316 seconds
+    CPU time is 14.44 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15052.tmp...
+Time to save data to file:
+Elapsed time is 3.3306 seconds
+    CPU time is 3.57 seconds
+--------------------------------------------------------------------------------
+Processing spe file 2 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.274 seconds
+    CPU time is 12.61 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15053.tmp...
+Time to save data to file:
+Elapsed time is 2.6428 seconds
+    CPU time is 3.1 seconds
+--------------------------------------------------------------------------------
+Processing spe file 3 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.6217 seconds
+    CPU time is 15.69 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15054.tmp...
+Time to save data to file:
+Elapsed time is 3.726 seconds
+    CPU time is 3.92 seconds
+--------------------------------------------------------------------------------
+Processing spe file 4 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.089 seconds
+    CPU time is 13.14 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15055.tmp...
+Time to save data to file:
+Elapsed time is 2.0693 seconds
+    CPU time is 2.79 seconds
+--------------------------------------------------------------------------------
+Processing spe file 5 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.348 seconds
+    CPU time is 9.31 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15056.tmp...
+Time to save data to file:
+Elapsed time is 2.9345 seconds
+    CPU time is 3.41 seconds
+--------------------------------------------------------------------------------
+Processing spe file 6 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.6664 seconds
+    CPU time is 10.08 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15057.tmp...
+Time to save data to file:
+Elapsed time is 2.6716 seconds
+    CPU time is 3.03 seconds
+--------------------------------------------------------------------------------
+Processing spe file 7 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.6121 seconds
+    CPU time is 10.4 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15058.tmp...
+Time to save data to file:
+Elapsed time is 3.112 seconds
+    CPU time is 3.54 seconds
+--------------------------------------------------------------------------------
+Processing spe file 8 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.6353 seconds
+    CPU time is 9.57 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15059.tmp...
+Time to save data to file:
+Elapsed time is 2.0947 seconds
+    CPU time is 2.72 seconds
+--------------------------------------------------------------------------------
+Processing spe file 9 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.7497 seconds
+    CPU time is 10.26 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15060.tmp...
+Time to save data to file:
+Elapsed time is 3.1236 seconds
+    CPU time is 3.52 seconds
+--------------------------------------------------------------------------------
+Processing spe file 10 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.9707 seconds
+    CPU time is 11.46 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15061.tmp...
+Time to save data to file:
+Elapsed time is 2.5181 seconds
+    CPU time is 2.87 seconds
+--------------------------------------------------------------------------------
+Processing spe file 11 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.4567 seconds
+    CPU time is 10.24 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15062.tmp...
+Time to save data to file:
+Elapsed time is 3.0766 seconds
+    CPU time is 3.41 seconds
+--------------------------------------------------------------------------------
+Processing spe file 12 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.7277 seconds
+    CPU time is 10.52 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15063.tmp...
+Time to save data to file:
+Elapsed time is 3.0969 seconds
+    CPU time is 3.31 seconds
+--------------------------------------------------------------------------------
+Processing spe file 13 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.6977 seconds
+    CPU time is 10.23 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15064.tmp...
+Time to save data to file:
+Elapsed time is 3.057 seconds
+    CPU time is 3.31 seconds
+--------------------------------------------------------------------------------
+Processing spe file 14 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.7174 seconds
+    CPU time is 10.27 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15065.tmp...
+Time to save data to file:
+Elapsed time is 2.0119 seconds
+    CPU time is 2.41 seconds
+--------------------------------------------------------------------------------
+Processing spe file 15 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.114 seconds
+    CPU time is 9.48 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15066.tmp...
+Time to save data to file:
+Elapsed time is 1.9727 seconds
+    CPU time is 2.48 seconds
+--------------------------------------------------------------------------------
+Processing spe file 16 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.0994 seconds
+    CPU time is 9.14 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15067.tmp...
+Time to save data to file:
+Elapsed time is 2.0995 seconds
+    CPU time is 2.65 seconds
+--------------------------------------------------------------------------------
+Processing spe file 17 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.2773 seconds
+    CPU time is 10.87 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15068.tmp...
+Time to save data to file:
+Elapsed time is 1.995 seconds
+    CPU time is 2.31 seconds
+--------------------------------------------------------------------------------
+Processing spe file 18 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.0617 seconds
+    CPU time is 9.09 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15069.tmp...
+Time to save data to file:
+Elapsed time is 1.9821 seconds
+    CPU time is 2.45 seconds
+--------------------------------------------------------------------------------
+Processing spe file 19 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.0168 seconds
+    CPU time is 8.66 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15070.tmp...
+Time to save data to file:
+Elapsed time is 1.973 seconds
+    CPU time is 2.47 seconds
+--------------------------------------------------------------------------------
+Processing spe file 20 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 1.9683 seconds
+    CPU time is 8.55 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15071.tmp...
+Time to save data to file:
+Elapsed time is 1.9575 seconds
+    CPU time is 2.29 seconds
+--------------------------------------------------------------------------------
+Processing spe file 21 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 1.9667 seconds
+    CPU time is 8.46 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15072.tmp...
+Time to save data to file:
+Elapsed time is 1.959 seconds
+    CPU time is 2.46 seconds
+--------------------------------------------------------------------------------
+Processing spe file 22 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.9041 seconds
+    CPU time is 11.6 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15073.tmp...
+Time to save data to file:
+Elapsed time is 2.4757 seconds
+    CPU time is 2.69 seconds
+--------------------------------------------------------------------------------
+Processing spe file 23 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.7078 seconds
+    CPU time is 11.16 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15074.tmp...
+Time to save data to file:
+Elapsed time is 2.4376 seconds
+    CPU time is 2.7 seconds
+--------------------------------------------------------------------------------
+Processing spe file 24 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.0157 seconds
+    CPU time is 11.02 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15075.tmp...
+Time to save data to file:
+Elapsed time is 3.0902 seconds
+    CPU time is 3.4 seconds
+--------------------------------------------------------------------------------
+Processing spe file 25 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.122 seconds
+    CPU time is 11.74 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15076.tmp...
+Time to save data to file:
+Elapsed time is 2.1646 seconds
+    CPU time is 2.66 seconds
+--------------------------------------------------------------------------------
+Processing spe file 26 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.7252 seconds
+    CPU time is 10.89 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15077.tmp...
+Time to save data to file:
+Elapsed time is 3.2289 seconds
+    CPU time is 3.53 seconds
+--------------------------------------------------------------------------------
+Processing spe file 27 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.881 seconds
+    CPU time is 11.11 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15078.tmp...
+Time to save data to file:
+Elapsed time is 3.1834 seconds
+    CPU time is 3.48 seconds
+--------------------------------------------------------------------------------
+Processing spe file 28 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.2644 seconds
+    CPU time is 12.15 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15079.tmp...
+Time to save data to file:
+Elapsed time is 3.2122 seconds
+    CPU time is 3.65 seconds
+--------------------------------------------------------------------------------
+Processing spe file 29 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.958 seconds
+    CPU time is 11.13 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15080.tmp...
+Time to save data to file:
+Elapsed time is 3.2081 seconds
+    CPU time is 3.53 seconds
+--------------------------------------------------------------------------------
+Processing spe file 30 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.0686 seconds
+    CPU time is 11.24 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15081.tmp...
+Time to save data to file:
+Elapsed time is 3.1081 seconds
+    CPU time is 3.44 seconds
+--------------------------------------------------------------------------------
+Processing spe file 31 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.5734 seconds
+    CPU time is 9.92 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15082.tmp...
+Time to save data to file:
+Elapsed time is 2.6765 seconds
+    CPU time is 3.17 seconds
+--------------------------------------------------------------------------------
+Processing spe file 32 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.1038 seconds
+    CPU time is 9.74 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15083.tmp...
+Time to save data to file:
+Elapsed time is 2.0067 seconds
+    CPU time is 2.55 seconds
+--------------------------------------------------------------------------------
+Processing spe file 33 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 1.9981 seconds
+    CPU time is 8.68 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15084.tmp...
+Time to save data to file:
+Elapsed time is 1.9746 seconds
+    CPU time is 2.52 seconds
+--------------------------------------------------------------------------------
+Processing spe file 34 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.1894 seconds
+    CPU time is 9.43 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15085.tmp...
+Time to save data to file:
+Elapsed time is 2.2049 seconds
+    CPU time is 2.61 seconds
+--------------------------------------------------------------------------------
+Processing spe file 35 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.9586 seconds
+    CPU time is 11.27 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15086.tmp...
+Time to save data to file:
+Elapsed time is 3.197 seconds
+    CPU time is 3.5 seconds
+--------------------------------------------------------------------------------
+Processing spe file 36 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.9513 seconds
+    CPU time is 11.2 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15087.tmp...
+Time to save data to file:
+Elapsed time is 3.2075 seconds
+    CPU time is 3.55 seconds
+--------------------------------------------------------------------------------
+Processing spe file 37 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.9754 seconds
+    CPU time is 11.36 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15088.tmp...
+Time to save data to file:
+Elapsed time is 3.201 seconds
+    CPU time is 3.51 seconds
+--------------------------------------------------------------------------------
+Processing spe file 38 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.9697 seconds
+    CPU time is 11.19 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15089.tmp...
+Time to save data to file:
+Elapsed time is 2.4398 seconds
+    CPU time is 2.81 seconds
+--------------------------------------------------------------------------------
+Processing spe file 39 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.7127 seconds
+    CPU time is 11.19 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15090.tmp...
+Time to save data to file:
+Elapsed time is 2.8133 seconds
+    CPU time is 3.17 seconds
+--------------------------------------------------------------------------------
+Processing spe file 40 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.5848 seconds
+    CPU time is 10.61 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15091.tmp...
+Time to save data to file:
+Elapsed time is 3.1801 seconds
+    CPU time is 3.69 seconds
+--------------------------------------------------------------------------------
+Processing spe file 41 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.9504 seconds
+    CPU time is 11.04 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15092.tmp...
+Time to save data to file:
+Elapsed time is 3.1633 seconds
+    CPU time is 3.44 seconds
+--------------------------------------------------------------------------------
+Processing spe file 42 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.9504 seconds
+    CPU time is 11.6 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15093.tmp...
+Time to save data to file:
+Elapsed time is 3.0578 seconds
+    CPU time is 3.33 seconds
+--------------------------------------------------------------------------------
+Processing spe file 43 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.0007 seconds
+    CPU time is 11.71 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15094.tmp...
+Time to save data to file:
+Elapsed time is 2.7318 seconds
+    CPU time is 3.05 seconds
+--------------------------------------------------------------------------------
+Processing spe file 44 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.9836 seconds
+    CPU time is 11.76 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15095.tmp...
+Time to save data to file:
+Elapsed time is 3.1409 seconds
+    CPU time is 3.57 seconds
+--------------------------------------------------------------------------------
+Processing spe file 45 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.9381 seconds
+    CPU time is 11.44 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15096.tmp...
+Time to save data to file:
+Elapsed time is 2.102 seconds
+    CPU time is 2.56 seconds
+--------------------------------------------------------------------------------
+Processing spe file 46 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.7325 seconds
+    CPU time is 11.24 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15097.tmp...
+Time to save data to file:
+Elapsed time is 3.1294 seconds
+    CPU time is 3.41 seconds
+--------------------------------------------------------------------------------
+Processing spe file 47 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.9017 seconds
+    CPU time is 11.23 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15098.tmp...
+Time to save data to file:
+Elapsed time is 3.0477 seconds
+    CPU time is 3.36 seconds
+--------------------------------------------------------------------------------
+Processing spe file 48 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.9439 seconds
+    CPU time is 11.58 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15099.tmp...
+Time to save data to file:
+Elapsed time is 2.091 seconds
+    CPU time is 2.25 seconds
+--------------------------------------------------------------------------------
+Processing spe file 49 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.1865 seconds
+    CPU time is 11.23 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15100.tmp...
+Time to save data to file:
+Elapsed time is 3.0466 seconds
+    CPU time is 3.33 seconds
+--------------------------------------------------------------------------------
+Processing spe file 50 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.2328 seconds
+    CPU time is 11.21 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15101.tmp...
+Time to save data to file:
+Elapsed time is 2.1229 seconds
+    CPU time is 2.53 seconds
+--------------------------------------------------------------------------------
+Processing spe file 51 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.8355 seconds
+    CPU time is 10.98 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15102.tmp...
+Time to save data to file:
+Elapsed time is 3.0399 seconds
+    CPU time is 3.33 seconds
+--------------------------------------------------------------------------------
+Processing spe file 52 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.8038 seconds
+    CPU time is 10.79 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15103.tmp...
+Time to save data to file:
+Elapsed time is 2.727 seconds
+    CPU time is 3.04 seconds
+--------------------------------------------------------------------------------
+Processing spe file 53 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.0273 seconds
+    CPU time is 11.67 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15104.tmp...
+Time to save data to file:
+Elapsed time is 2.0571 seconds
+    CPU time is 2.56 seconds
+--------------------------------------------------------------------------------
+Processing spe file 54 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.5355 seconds
+    CPU time is 10.74 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15105.tmp...
+Time to save data to file:
+Elapsed time is 2.1643 seconds
+    CPU time is 2.31 seconds
+--------------------------------------------------------------------------------
+Processing spe file 55 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.8997 seconds
+    CPU time is 11.63 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15106.tmp...
+Time to save data to file:
+Elapsed time is 2.6217 seconds
+    CPU time is 2.99 seconds
+--------------------------------------------------------------------------------
+Processing spe file 56 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.2229 seconds
+    CPU time is 10.12 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15107.tmp...
+Time to save data to file:
+Elapsed time is 2.003 seconds
+    CPU time is 2.49 seconds
+--------------------------------------------------------------------------------
+Processing spe file 57 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.0478 seconds
+    CPU time is 8.8 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15108.tmp...
+Time to save data to file:
+Elapsed time is 2.0232 seconds
+    CPU time is 2.58 seconds
+--------------------------------------------------------------------------------
+Processing spe file 58 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 1.9777 seconds
+    CPU time is 8.64 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15109.tmp...
+Time to save data to file:
+Elapsed time is 2.0192 seconds
+    CPU time is 2.35 seconds
+--------------------------------------------------------------------------------
+Processing spe file 59 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.168 seconds
+    CPU time is 9.25 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15110.tmp...
+Time to save data to file:
+Elapsed time is 2.821 seconds
+    CPU time is 3.38 seconds
+--------------------------------------------------------------------------------
+Processing spe file 60 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.3614 seconds
+    CPU time is 15.59 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15111.tmp...
+Time to save data to file:
+Elapsed time is 3.2462 seconds
+    CPU time is 3.46 seconds
+--------------------------------------------------------------------------------
+Processing spe file 61 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.3416 seconds
+    CPU time is 15.66 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15112.tmp...
+Time to save data to file:
+Elapsed time is 3.9153 seconds
+    CPU time is 3.92 seconds
+--------------------------------------------------------------------------------
+Processing spe file 62 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.7711 seconds
+    CPU time is 16.47 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15113.tmp...
+Time to save data to file:
+Elapsed time is 3.6714 seconds
+    CPU time is 3.87 seconds
+--------------------------------------------------------------------------------
+Processing spe file 63 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.584 seconds
+    CPU time is 16.09 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15114.tmp...
+Time to save data to file:
+Elapsed time is 3.7245 seconds
+    CPU time is 3.95 seconds
+--------------------------------------------------------------------------------
+Processing spe file 64 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.7107 seconds
+    CPU time is 15.8 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15115.tmp...
+Time to save data to file:
+Elapsed time is 3.1723 seconds
+    CPU time is 3.44 seconds
+--------------------------------------------------------------------------------
+Processing spe file 65 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.3881 seconds
+    CPU time is 12.98 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15116.tmp...
+Time to save data to file:
+Elapsed time is 3.0534 seconds
+    CPU time is 3.44 seconds
+--------------------------------------------------------------------------------
+Processing spe file 66 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.9522 seconds
+    CPU time is 10.98 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15117.tmp...
+Time to save data to file:
+Elapsed time is 3.1505 seconds
+    CPU time is 3.56 seconds
+--------------------------------------------------------------------------------
+Processing spe file 67 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.6597 seconds
+    CPU time is 10.25 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15118.tmp...
+Time to save data to file:
+Elapsed time is 2.9793 seconds
+    CPU time is 3.53 seconds
+--------------------------------------------------------------------------------
+Processing spe file 68 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.0315 seconds
+    CPU time is 11.93 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15119.tmp...
+Time to save data to file:
+Elapsed time is 3.099 seconds
+    CPU time is 3.87 seconds
+--------------------------------------------------------------------------------
+Processing spe file 69 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.734 seconds
+    CPU time is 10.48 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15120.tmp...
+Time to save data to file:
+Elapsed time is 3.0971 seconds
+    CPU time is 3.57 seconds
+--------------------------------------------------------------------------------
+Processing spe file 70 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.7255 seconds
+    CPU time is 10.47 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15121.tmp...
+Time to save data to file:
+Elapsed time is 3.0466 seconds
+    CPU time is 3.53 seconds
+--------------------------------------------------------------------------------
+Processing spe file 71 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.6532 seconds
+    CPU time is 10.39 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15122.tmp...
+Time to save data to file:
+Elapsed time is 2.4145 seconds
+    CPU time is 2.78 seconds
+--------------------------------------------------------------------------------
+Processing spe file 72 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.5872 seconds
+    CPU time is 10.74 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15123.tmp...
+Time to save data to file:
+Elapsed time is 2.0712 seconds
+    CPU time is 2.64 seconds
+--------------------------------------------------------------------------------
+Processing spe file 73 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.4033 seconds
+    CPU time is 10.12 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15124.tmp...
+Time to save data to file:
+Elapsed time is 2.8876 seconds
+    CPU time is 3.23 seconds
+--------------------------------------------------------------------------------
+Processing spe file 74 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.819 seconds
+    CPU time is 11.16 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15125.tmp...
+Time to save data to file:
+Elapsed time is 3.0014 seconds
+    CPU time is 3.57 seconds
+--------------------------------------------------------------------------------
+Processing spe file 75 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 3.2409 seconds
+    CPU time is 11.33 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15126.tmp...
+Time to save data to file:
+Elapsed time is 2.0871 seconds
+    CPU time is 2.62 seconds
+--------------------------------------------------------------------------------
+Processing spe file 76 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.2072 seconds
+    CPU time is 10.06 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15127.tmp...
+Time to save data to file:
+Elapsed time is 1.9881 seconds
+    CPU time is 2.58 seconds
+--------------------------------------------------------------------------------
+Processing spe file 77 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.1788 seconds
+    CPU time is 9.5 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15128.tmp...
+Time to save data to file:
+Elapsed time is 1.9562 seconds
+    CPU time is 2.5 seconds
+--------------------------------------------------------------------------------
+Processing spe file 78 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.0745 seconds
+    CPU time is 9.39 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15129.tmp...
+Time to save data to file:
+Elapsed time is 1.9826 seconds
+    CPU time is 2.39 seconds
+--------------------------------------------------------------------------------
+Processing spe file 79 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.0373 seconds
+    CPU time is 9.13 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15130.tmp...
+Time to save data to file:
+Elapsed time is 1.9771 seconds
+    CPU time is 2.47 seconds
+--------------------------------------------------------------------------------
+Processing spe file 80 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.0101 seconds
+    CPU time is 8.73 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15131.tmp...
+Time to save data to file:
+Elapsed time is 1.9776 seconds
+    CPU time is 2.46 seconds
+--------------------------------------------------------------------------------
+Processing spe file 81 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 1.9955 seconds
+    CPU time is 8.79 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15132.tmp...
+Time to save data to file:
+Elapsed time is 1.9805 seconds
+    CPU time is 2.33 seconds
+--------------------------------------------------------------------------------
+Processing spe file 82 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 1.9712 seconds
+    CPU time is 8.66 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15133.tmp...
+Time to save data to file:
+Elapsed time is 1.9285 seconds
+    CPU time is 2.47 seconds
+--------------------------------------------------------------------------------
+Processing spe file 83 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.0228 seconds
+    CPU time is 8.64 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15134.tmp...
+Time to save data to file:
+Elapsed time is 2.799 seconds
+    CPU time is 3.29 seconds
+--------------------------------------------------------------------------------
+Processing spe file 84 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.6039 seconds
+    CPU time is 10.68 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15135.tmp...
+Time to save data to file:
+Elapsed time is 3.2025 seconds
+    CPU time is 3.53 seconds
+--------------------------------------------------------------------------------
+Processing spe file 85 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.8083 seconds
+    CPU time is 10.63 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15136.tmp...
+Time to save data to file:
+Elapsed time is 3.1874 seconds
+    CPU time is 3.5 seconds
+--------------------------------------------------------------------------------
+Processing spe file 86 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.8081 seconds
+    CPU time is 10.88 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15137.tmp...
+Time to save data to file:
+Elapsed time is 3.161 seconds
+    CPU time is 3.63 seconds
+--------------------------------------------------------------------------------
+Processing spe file 87 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.7961 seconds
+    CPU time is 11.08 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15138.tmp...
+Time to save data to file:
+Elapsed time is 2.2806 seconds
+    CPU time is 2.58 seconds
+--------------------------------------------------------------------------------
+Processing spe file 88 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.5712 seconds
+    CPU time is 10.83 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15139.tmp...
+Time to save data to file:
+Elapsed time is 2.0617 seconds
+    CPU time is 2.2 seconds
+--------------------------------------------------------------------------------
+Processing spe file 89 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.6306 seconds
+    CPU time is 10.33 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15140.tmp...
+Time to save data to file:
+Elapsed time is 2.4052 seconds
+    CPU time is 2.89 seconds
+--------------------------------------------------------------------------------
+Processing spe file 90 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.5803 seconds
+    CPU time is 10.65 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15141.tmp...
+Time to save data to file:
+Elapsed time is 2.3482 seconds
+    CPU time is 2.69 seconds
+--------------------------------------------------------------------------------
+Processing spe file 91 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.7811 seconds
+    CPU time is 10.7 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15142.tmp...
+Time to save data to file:
+Elapsed time is 2.1082 seconds
+    CPU time is 2.48 seconds
+--------------------------------------------------------------------------------
+Processing spe file 92 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.6368 seconds
+    CPU time is 10.54 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15143.tmp...
+Time to save data to file:
+Elapsed time is 2.3641 seconds
+    CPU time is 3.22 seconds
+--------------------------------------------------------------------------------
+Processing spe file 93 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.4564 seconds
+    CPU time is 10.59 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15144.tmp...
+Time to save data to file:
+Elapsed time is 2.1266 seconds
+    CPU time is 2.6 seconds
+--------------------------------------------------------------------------------
+Processing spe file 94 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.5638 seconds
+    CPU time is 10.11 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15145.tmp...
+Time to save data to file:
+Elapsed time is 1.9899 seconds
+    CPU time is 2.54 seconds
+--------------------------------------------------------------------------------
+Processing spe file 95 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.1937 seconds
+    CPU time is 9.81 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15146.tmp...
+Time to save data to file:
+Elapsed time is 1.9501 seconds
+    CPU time is 2.35 seconds
+--------------------------------------------------------------------------------
+Processing spe file 96 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 1.9615 seconds
+    CPU time is 8.4 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15147.tmp...
+Time to save data to file:
+Elapsed time is 1.9959 seconds
+    CPU time is 2.47 seconds
+--------------------------------------------------------------------------------
+Processing spe file 97 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.2318 seconds
+    CPU time is 9.64 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15148.tmp...
+Time to save data to file:
+Elapsed time is 2.1882 seconds
+    CPU time is 2.62 seconds
+--------------------------------------------------------------------------------
+Processing spe file 98 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.5862 seconds
+    CPU time is 11.01 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15149.tmp...
+Time to save data to file:
+Elapsed time is 2.134 seconds
+    CPU time is 2.63 seconds
+--------------------------------------------------------------------------------
+Processing spe file 99 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.5184 seconds
+    CPU time is 10.41 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15150.tmp...
+Time to save data to file:
+Elapsed time is 2.1453 seconds
+    CPU time is 2.49 seconds
+--------------------------------------------------------------------------------
+Processing spe file 100 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.5774 seconds
+    CPU time is 10.65 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15151.tmp...
+Time to save data to file:
+Elapsed time is 2.4417 seconds
+    CPU time is 2.82 seconds
+--------------------------------------------------------------------------------
+Processing spe file 101 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.5579 seconds
+    CPU time is 10.48 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15152.tmp...
+Time to save data to file:
+Elapsed time is 2.1006 seconds
+    CPU time is 2.64 seconds
+--------------------------------------------------------------------------------
+Processing spe file 102 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.6838 seconds
+    CPU time is 11.27 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15153.tmp...
+Time to save data to file:
+Elapsed time is 2.1327 seconds
+    CPU time is 2.44 seconds
+--------------------------------------------------------------------------------
+Processing spe file 103 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.639 seconds
+    CPU time is 10.55 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15154.tmp...
+Time to save data to file:
+Elapsed time is 2.0952 seconds
+    CPU time is 2.6 seconds
+--------------------------------------------------------------------------------
+Processing spe file 104 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.7963 seconds
+    CPU time is 10.65 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15155.tmp...
+Time to save data to file:
+Elapsed time is 2.6021 seconds
+    CPU time is 2.97 seconds
+--------------------------------------------------------------------------------
+Processing spe file 105 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.5666 seconds
+    CPU time is 9.97 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15156.tmp...
+Time to save data to file:
+Elapsed time is 2.0661 seconds
+    CPU time is 2.46 seconds
+--------------------------------------------------------------------------------
+Processing spe file 106 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.5556 seconds
+    CPU time is 10.91 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15157.tmp...
+Time to save data to file:
+Elapsed time is 2.0729 seconds
+    CPU time is 3.14 seconds
+--------------------------------------------------------------------------------
+Processing spe file 107 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.6847 seconds
+    CPU time is 10.85 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15158.tmp...
+Time to save data to file:
+Elapsed time is 2.2839 seconds
+    CPU time is 2.39 seconds
+--------------------------------------------------------------------------------
+Processing spe file 108 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.4985 seconds
+    CPU time is 10.65 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15159.tmp...
+Time to save data to file:
+Elapsed time is 2.0508 seconds
+    CPU time is 2.68 seconds
+--------------------------------------------------------------------------------
+Processing spe file 109 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.3811 seconds
+    CPU time is 10.04 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15160.tmp...
+Time to save data to file:
+Elapsed time is 2.0394 seconds
+    CPU time is 2.49 seconds
+--------------------------------------------------------------------------------
+Processing spe file 110 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.3411 seconds
+    CPU time is 10.04 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15161.tmp...
+Time to save data to file:
+Elapsed time is 2.0434 seconds
+    CPU time is 2.68 seconds
+--------------------------------------------------------------------------------
+Processing spe file 111 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.4543 seconds
+    CPU time is 10.07 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15162.tmp...
+Time to save data to file:
+Elapsed time is 2.0258 seconds
+    CPU time is 2.5 seconds
+--------------------------------------------------------------------------------
+Processing spe file 112 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.5221 seconds
+    CPU time is 10.64 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15163.tmp...
+Time to save data to file:
+Elapsed time is 2.0273 seconds
+    CPU time is 2.68 seconds
+--------------------------------------------------------------------------------
+Processing spe file 113 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.6318 seconds
+    CPU time is 11.06 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15164.tmp...
+Time to save data to file:
+Elapsed time is 2.3991 seconds
+    CPU time is 2.72 seconds
+--------------------------------------------------------------------------------
+Processing spe file 114 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.9903 seconds
+    CPU time is 11.54 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15165.tmp...
+Time to save data to file:
+Elapsed time is 2.3567 seconds
+    CPU time is 2.82 seconds
+--------------------------------------------------------------------------------
+Processing spe file 115 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.5042 seconds
+    CPU time is 10.09 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15166.tmp...
+Time to save data to file:
+Elapsed time is 2.1382 seconds
+    CPU time is 2.76 seconds
+--------------------------------------------------------------------------------
+Processing spe file 116 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.6005 seconds
+    CPU time is 10.75 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15167.tmp...
+Time to save data to file:
+Elapsed time is 2.078 seconds
+    CPU time is 2.52 seconds
+--------------------------------------------------------------------------------
+Processing spe file 117 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.432 seconds
+    CPU time is 10.21 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15168.tmp...
+Time to save data to file:
+Elapsed time is 2.1115 seconds
+    CPU time is 2.72 seconds
+--------------------------------------------------------------------------------
+Processing spe file 118 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.6286 seconds
+    CPU time is 10.72 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15169.tmp...
+Time to save data to file:
+Elapsed time is 2.3262 seconds
+    CPU time is 2.63 seconds
+--------------------------------------------------------------------------------
+Processing spe file 119 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.4672 seconds
+    CPU time is 10.36 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15170.tmp...
+Time to save data to file:
+Elapsed time is 2.5299 seconds
+    CPU time is 2.83 seconds
+--------------------------------------------------------------------------------
+Processing spe file 120 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.488 seconds
+    CPU time is 10.55 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15171.tmp...
+Time to save data to file:
+Elapsed time is 3.0934 seconds
+    CPU time is 3.4 seconds
+--------------------------------------------------------------------------------
+Processing spe file 121 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.8666 seconds
+    CPU time is 11.27 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15172.tmp...
+Time to save data to file:
+Elapsed time is 2.511 seconds
+    CPU time is 2.84 seconds
+--------------------------------------------------------------------------------
+Processing spe file 122 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.1772 seconds
+    CPU time is 9.84 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15173.tmp...
+Time to save data to file:
+Elapsed time is 1.9636 seconds
+    CPU time is 2.32 seconds
+--------------------------------------------------------------------------------
+Processing spe file 123 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.1381 seconds
+    CPU time is 9.78 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15174.tmp...
+Time to save data to file:
+Elapsed time is 1.9728 seconds
+    CPU time is 2.49 seconds
+--------------------------------------------------------------------------------
+Processing spe file 124 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.0461 seconds
+    CPU time is 8.85 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15175.tmp...
+Time to save data to file:
+Elapsed time is 1.955 seconds
+    CPU time is 2.43 seconds
+--------------------------------------------------------------------------------
+Processing spe file 125 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.0713 seconds
+    CPU time is 8.89 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15176.tmp...
+Time to save data to file:
+Elapsed time is 2.061 seconds
+    CPU time is 2.34 seconds
+--------------------------------------------------------------------------------
+Processing spe file 126 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 2.0627 seconds
+    CPU time is 8.83 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15177.tmp...
+Time to save data to file:
+Elapsed time is 2.2126 seconds
+    CPU time is 2.68 seconds
+--------------------------------------------------------------------------------
+Processing spe file 127 of 127:
+ 
+Calculating projections...
+Sorting pixels ...
+Time to convert from spe to sqw data:
+Elapsed time is 4.3276 seconds
+    CPU time is 15.52 seconds
+ 
+Writing to /home/wkc26243/Fe400/MAP15178.tmp...
+Time to save data to file:
+Elapsed time is 3.7418 seconds
+    CPU time is 4.19 seconds
+Creating output sqw file:
+ 
+Reading header(s) of input file(s) and checking consistency...
+Task completed in 4.2505 seconds
+ 
+Reading and accumulating binning information of input file(s)...
+Task completed in 62.956 seconds
+ 
+Writing to output file /home/wkc26243/Fe400/Fe_ei401a.sqw ...
+Task completed in 809.2184 seconds
+--------------------------------------------------------------------------------
+

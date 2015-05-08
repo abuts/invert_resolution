@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>3dc3a11b-16c2-4490-b6eb-24360a311e02</ProjectGuid>
+    <ProjectHome>\Mantid\Code\Mantid\scripts\Inelastic\</ProjectHome>
+    <StartupFile>DirectEnergyConversionTest.py</StartupFile>
+    <SearchPath>d:\Data\Mantid_GIT\Code\Mantid\scripts\Inelastic;c:\Mantid\Code\win64\bin\Release;d:\Data\Mantid_GIT\Code\Third_Party\lib\win64</SearchPath>
+    <WorkingDirectory>c:\Mantid\Code\win64\bin\Release</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <InterpreterId>00000000-0000-0000-0000-000000000000</InterpreterId>
+    <InterpreterVersion>
+    </InterpreterVersion>
+    <Name>DirectEnergyConversion</Name>
+    <RootNamespace>DirectEnergyConversion</RootNamespace>
+    <LaunchProvider>Standard Python launcher</LaunchProvider>
+    <CommandLineArguments>
+    </CommandLineArguments>
+    <InterpreterPath>c:\programming\Python27\python.exe</InterpreterPath>
+    <InterpreterArguments />
+    <IsWindowsApplication>False</IsWindowsApplication>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="CommonFunctions.py" />
+    <Compile Include="dgreduce.py" />
+    <Compile Include="diagnostics.py" />
+    <Compile Include="DirectEnergyConversion.py" />
+    <Compile Include="DirectEnergyConversionTest.py" />
+    <Compile Include="IndirectAbsCor.py" />
+    <Compile Include="IndirectBayes.py" />
+    <Compile Include="IndirectCommon.py" />
+    <Compile Include="IndirectDataAnalysis.py" />
+    <Compile Include="IndirectDiffractionReduction.py" />
+    <Compile Include="IndirectEnergyConversion.py" />
+    <Compile Include="IndirectForce.py" />
+    <Compile Include="IndirectImport.py" />
+    <Compile Include="IndirectMoment.py" />
+    <Compile Include="IndirectMuscat.py" />
+    <Compile Include="IndirectSymm.py" />
+    <Compile Include="IndirectTrans.py" />
+    <Compile Include="inelastic_indirect_reducer.py" />
+    <Compile Include="inelastic_indirect_reduction_steps.py" />
+    <Compile Include="msg_reducer.py" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
+</Project>

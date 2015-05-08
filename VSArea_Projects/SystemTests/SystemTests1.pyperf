@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<ProfilingTarget xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ProjectTarget>
+    <TargetProject>92bc55bb-cac3-47ad-b3a5-7172a47ef2ec</TargetProject>
+    <FriendlyName>SystemTests</FriendlyName>
+  </ProjectTarget>
+  <Reports>
+    <Report>
+      <Filename>c:\temp\SystemTests1_20130910.vsp</Filename>
+    </Report>
+  </Reports>
+</ProfilingTarget>

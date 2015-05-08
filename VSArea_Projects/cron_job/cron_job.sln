@@ -1,0 +1,18 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "cron_job", "cron_job\cron_job.pyproj", "{DBE238B9-88DA-4C36-A709-FC8CE6CE5F3A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DBE238B9-88DA-4C36-A709-FC8CE6CE5F3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBE238B9-88DA-4C36-A709-FC8CE6CE5F3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
