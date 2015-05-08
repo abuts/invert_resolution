@@ -25,6 +25,9 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="..\..\..\MantidTraining\Reduction\MARI_Sample.py">
+      <Link>MARI_Sample.py</Link>
+    </Compile>
     <Compile Include="red_debug.py">
       <SubType>Code</SubType>
     </Compile>
