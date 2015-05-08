@@ -239,7 +239,7 @@ def send_alert_email(from_address,to_address, subject, message):
     # to_address == the recipient's email address
     msg['Subject'] = subject
     msg['From'] = from_address
-    msg['To'] = to_address
+    msg['To'] =  ', '.join(to_address)
 
     # Send the message via our own SMTP server, but don't include the
     # envelope header.
@@ -247,7 +247,8 @@ def send_alert_email(from_address,to_address, subject, message):
     s.sendmail(from_address, to_address, msg.as_string())
     s.quit()
 
-sysadmin_email = "stephen.rankin@stfc.ac.uk,warren.jeffs@stfc.ac.uk,leon.nell@stfc.ac.uk"
+#sysadmin_email = "stephen.rankin@stfc.ac.uk,warren.jeffs@stfc.ac.uk,leon.nell@stfc.ac.uk"
+sysadmin_email = ["stephen.rankin@stfc.ac.uk", "warren.jeffs@stfc.ac.uk", "leon.nell@stfc.ac.uk"]
 
 def send_error(MessBody=None,ErrorCode=0,ExitScript=0):
     if ErrorCode == 1:
