@@ -77,8 +77,8 @@ if platform.system() == 'Windows':
     sys.path.insert(0,'c:/Mantid/Code/Mantid/scripts/Inelastic/Direct')
     WinDebug=True
 else:
-    #sys.path.insert(0,'/opt/mantidnightly/scripts/Inelastic/Direct/')
-    sys.path.insert(0,'/opt/Mantid/scripts/Inelastic/Direct/')
+    sys.path.insert(0,'/opt/mantidnightly/scripts/Inelastic/Direct/')
+    #sys.path.insert(0,'/opt/Mantid/scripts/Inelastic/Direct/')
     WinDebug=False
 
 try:
