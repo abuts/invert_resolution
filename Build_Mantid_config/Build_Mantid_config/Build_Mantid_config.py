@@ -231,6 +231,8 @@ for experiment in range(len(data["experiments"])):
         fedid = data["experiments"][experiment]["Permissions"][permission]["fedid"]
 
         if WinDebug:
+			# Create user for testing purpose. In real life it is created
+			# somewhere else.
             user_folder = os.path.join(rootDir,str(fedid))
             mkpath(user_folder)
             # for testing purposes we will create rb folders within users folder
@@ -258,7 +260,7 @@ for experiment in range(len(data["experiments"])):
                     os.system("chown -R " + fedid + "." + fedid + " " + san+"/"+fedid)
                     if os.path.exists("/home/"+fedid):
                         if os.path.exists("/home/" + fedid + "/" + rbnumber):
-                            print "Linkcd  exists: " + "/home/" + fedid + "/" + rbnumber
+                            print "Link  exists: " + "/home/" + fedid + "/" + rbnumber
                             os.system("/usr/sbin/usermod -a -G " + rbnumber + " " + fedid)
                         else:
                             os.symlink(rbdir, "/home/" + fedid + "/" + rbnumber)
