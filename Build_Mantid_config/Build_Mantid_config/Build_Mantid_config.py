@@ -39,7 +39,7 @@ def send_alert_email(from_address,to_address, subject, message):
     s.quit()
 
 #sysadmin_email = "stephen.rankin@stfc.ac.uk,warren.jeffs@stfc.ac.uk,leon.nell@stfc.ac.uk"
-sysadmin_email = ["stephen.rankin@stfc.ac.uk", "warren.jeffs@stfc.ac.uk", "leon.nell@stfc.ac.uk"]
+sysadmin_email = ["warren.jeffs@stfc.ac.uk", "leon.nell@stfc.ac.uk"]
 
 def send_error(MessBody=None,ErrorCode=0,ExitScript=0):
     if ErrorCode == 1:
@@ -111,20 +111,8 @@ if WinDebug:
     UserScriptRepoDir = os.path.join(analysisDir,"UserScripts")
     MapMaskDir =  os.path.join(analysisDir,"InstrumentFiles")
 else:
-    san1 = "/san1"
-    test_path(san1)
-    san2 = "/san2"
-    test_path(san2)
-    san3 = "/san3"
-    test_path(san3)
-    san4 = "/san4"
-    test_path(san4)
-    san5 = "/san5"
-    test_path(san5)
-    san6 = "/san6"
-    test_path(san6)
+    home = '/home'
 
-    san = san6
 
 
 
@@ -231,8 +219,8 @@ for experiment in range(len(data["experiments"])):
         fedid = data["experiments"][experiment]["Permissions"][permission]["fedid"]
 
         if WinDebug:
-			# Create user for testing purpose. In real life it is created
-			# somewhere else.
+            # Create user for testing purpose. In real life it is created
+            # somewhere else.
             user_folder = os.path.join(rootDir,str(fedid))
             mkpath(user_folder)
             # for testing purposes we will create rb folders within users folder
@@ -255,9 +243,9 @@ for experiment in range(len(data["experiments"])):
                         os.symlink(rbdir, "/home/" + fedid + "/" + rbnumber)
                         os.system("/usr/sbin/usermod -a -G " + rbnumber + " " + fedid)
                 else:
-                    mkpath(san + "/" + fedid)
-                    test_path(san + "/" + fedid)
-                    os.system("chown -R " + fedid + "." + fedid + " " + san+"/"+fedid)
+                    mkpath(home + "/" + fedid)
+                    test_path(home  + "/" + fedid)
+                    os.system("chown -R " + fedid + "." + fedid + " " + home +"/"+fedid)
                     if os.path.exists("/home/"+fedid):
                         if os.path.exists("/home/" + fedid + "/" + rbnumber):
                             print "Link  exists: " + "/home/" + fedid + "/" + rbnumber
@@ -266,7 +254,7 @@ for experiment in range(len(data["experiments"])):
                             os.symlink(rbdir, "/home/" + fedid + "/" + rbnumber)
                             os.system("/usr/sbin/usermod -a -G " + rbnumber + " " + fedid)
                     else:
-                        os.symlink(san+"/"+fedid,"/home/"+fedid)
+                        os.symlink(home +"/"+fedid,"/home/"+fedid)
                         os.symlink(rbdir, "/home/" + fedid + "/" + rbnumber)
                         os.system("/usr/sbin/usermod -a -G " + rbnumber + " " + fedid)
                     
