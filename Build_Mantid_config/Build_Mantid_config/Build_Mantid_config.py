@@ -231,8 +231,8 @@ for experiment in range(len(data["experiments"])):
         fedid = data["experiments"][experiment]["Permissions"][permission]["fedid"]
 
         if WinDebug:
-			# Create user for testing purpose. In real life it is created
-			# somewhere else.
+            # Create user for testing purpose. In real life it is created
+            # somewhere else.
             user_folder = os.path.join(rootDir,str(fedid))
             mkpath(user_folder)
             # for testing purposes we will create rb folders within users folder
