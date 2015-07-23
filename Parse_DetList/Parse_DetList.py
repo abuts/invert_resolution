@@ -1,6 +1,13 @@
 ﻿from collections import OrderedDict
 
 def process_detectors(filename):
+    """ Process the file containing semicolon (;) separated list of detectors information
+        imported from MANTID
+       
+        MANTID has to export detectors list as ASCII file with semicolon-separated option
+        and header retained and procedure convert this file  into map with keys as column names,
+        and the map values are the lists retrieved from column values.
+    """
 
     f=open(filename)
     det_col={}
@@ -26,6 +33,7 @@ def process_detectors(filename):
 
 #
 def find_params(det_col):
+    """ Procedure to find min-max values for detectors"""
     min_R = min(det_col['R'])
     max_R = max(det_col['R'])
     min_ind = det_col['R'].index(min_R)
@@ -38,6 +46,9 @@ def find_params(det_col):
     return (min_R,min_specID,min_detID,max_R,max_specID,max_detID)
 
 def build_rings_spectra_map(det_col):
+    """ Procedure to group spectra in lists according to Theta column values
+        with accuracy 0.5 in Theta. The round-off to 0.5 is embedded in the code.
+    """
     det_theta=det_col['Theta']
     spec_num = det_col['Spectrum No']
     distance = det_col['R']
@@ -57,9 +68,10 @@ def build_rings_spectra_map(det_col):
     return ring_list
 
 def save_rings_map(ring_dic,filename):    
-    """ Save ISIS ring map """
-    def numeric_compare(x, y):
-        return int(10*(float(x) - float(y)))
+    """ Save ISIS ring map calculated by build_rings_spectra_map procedure
+        in ISIS map format. First string of the script contains 
+        the assumptions about map accuracy (accuracy is less or equal then 0.1degree in Theta)
+    """
 
     ring_map = OrderedDict(sorted(ring_dic.iteritems(), key = lambda key_value : int(10*float(key_value[0]))))
 
@@ -80,7 +92,7 @@ def save_rings_map(ring_dic,filename):
 if __name__=="__main__":
     print '--------------   MAP  ----------------------------------'
     det_col =process_detectors('MAP_SpectraList.txt')
-    print det_col.keys()
+    print "The detector file contains the following columns: ", det_col.keys()
     ring_list = build_rings_spectra_map(det_col)
     print 'Identified ',len(ring_list),' rings'
     save_rings_map(ring_list,'MAP_rings2015.map')
