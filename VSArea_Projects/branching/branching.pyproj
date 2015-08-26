@@ -5,18 +5,20 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>41c0c461-399a-4a97-854d-486657956588</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>c:\Users\wkc26243\Documents\Visual Studio 2012\Projects\branching\br.py</StartupFile>
-    <SearchPath>c:\Users\wkc26243\Documents\Visual Studio 2012\Projects\branching\br.py</SearchPath>
-    <WorkingDirectory>.</WorkingDirectory>
+    <StartupFile>c:\Tools\br.py</StartupFile>
+    <SearchPath>C:\tools</SearchPath>
+    <WorkingDirectory>c:\Mantid</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <Name>branching</Name>
     <RootNamespace>branching</RootNamespace>
     <IsWindowsApplication>False</IsWindowsApplication>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
-    <CommandLineArguments>build release clean</CommandLineArguments>
+    <CommandLineArguments>build Debug</CommandLineArguments>
     <InterpreterPath>c:\programming\Python27\python.exe</InterpreterPath>
     <InterpreterArguments />
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
+    <InterpreterId>{2af0f10d-7135-4994-9156-5d01c9c11b7e}</InterpreterId>
+    <InterpreterVersion>2.7</InterpreterVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -27,8 +29,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="br.py" />
-    <Compile Include="c:\Tools\br.py" />
+    <InterpreterReference Include="{2af0f10d-7135-4994-9156-5d01c9c11b7e}\2.7" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
 </Project>

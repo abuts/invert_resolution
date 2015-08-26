@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>43269ed2-7b01-47bb-a583-575e7b8c7289</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>d:\Data\MantidSystemTests\SystemTests\AnalysisTests\ISIS_MERLINReduction.py</StartupFile>
+    <StartupFile>d:\Data\Mantid_Testing\15_05_01\MERReductionSample2015.py</StartupFile>
     <SearchPath>c:\Mantid\Code\builds\br_master\bin\Release;c:\Mantid\Code\Mantid\scripts\Inelastic;c:\Mantid\Code\Third_Party\lib\win64;d:\Data\MatidScripsPublicRepository\direct_inelastic\ISIS\qtiGenie</SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
@@ -13,7 +13,7 @@
     <RootNamespace>reduceMERLIN</RootNamespace>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
     <CommandLineArguments />
-    <InterpreterPath>c:\programming\Python27\python.exe</InterpreterPath>
+    <InterpreterPath>c:\Mantid\Code\builds\br_master\bin\Release\python.exe</InterpreterPath>
     <InterpreterArguments />
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
     <IsWindowsApplication>False</IsWindowsApplication>
