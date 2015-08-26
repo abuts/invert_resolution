@@ -1,2 +1,6 @@
 *.suo
 *.pyc
+/LiteKeys/LiteKeysCommon/Release
+/LiteKeys/Debug
+Debug
+Release
