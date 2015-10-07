@@ -13,7 +13,7 @@
     <RootNamespace>branching</RootNamespace>
     <IsWindowsApplication>False</IsWindowsApplication>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
-    <CommandLineArguments>build Debug</CommandLineArguments>
+    <CommandLineArguments>build debug</CommandLineArguments>
     <InterpreterPath>c:\programming\Python27\python.exe</InterpreterPath>
     <InterpreterArguments />
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
