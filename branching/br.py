@@ -325,19 +325,19 @@ class br():
             errMessage="Can not execute msbuild for : Mantid.sln"
             err=self.run_build('Mantid.sln',buildType,cleanBuildAttempted,env);
 
+        # copy Mantid.parameters to target build directory if prop file exist and target properties file does not
+        prop_file = os.path.join(repo_path,selt.self._MANT_Build_relLoc,self._prop_file);
+        if os.path.exists(prop_file):
+           targ_file = os.path.join(build_flavour_path,self._prop_file)
+           if not os.path.exists(targ_file):
+              shutil.copyfile(prop_file,targ_file);
 
         # return back to the source directory
         os.chdir(current_dir);
         if err != 0:
             raise RuntimeError(errMessage)
-        else: # copy Mantid.parameters to target build directory if prop file exist and target properties file does not
-            prop_file = os.path.join(repo_path,self._prop_file);
-            if os.path.exists(prop_file):
-                targ_file = os.path.join(build_flavour_path,self._prop_file)
-                if not os.path.exists(targ_file):
-                    shutil.copyfile(prop_file,targ_file);
-#
-    def get_environment_from_batch_command(self,env_cmd):
+ 
+#    def get_environment_from_batch_command(self,env_cmd):
         """
         Take a command (either a single command or list of arguments)
         and return the environment created after running that command.
