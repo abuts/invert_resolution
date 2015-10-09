@@ -15,7 +15,7 @@ import numpy as np
 from xml.dom import minidom
 
 
-class br():
+class br(object):
     def __init__(self):
         # the program which performs build (make) 
         self._make=['c:/Windows/Microsoft.NET/Framework64/v4.0.30319/msbuild.exe'];
@@ -121,27 +121,28 @@ class br():
         # form the build command combining make progam and its parameters
         normalBuild=self._make+self._make_par+['/p:Configuration='+buildType,target]
         if self._current_job_id is None:
-            f_stdout = 'screen'
-            f_stderr = 'screen'
+            f_errout = 'screen'
         else:
-            class_locplace = inspect.getfile(br.__class__)
+            class_locplace = inspect.getfile(self.__class__)
             br_path = os.path.split(class_locplace)[0]
-            f_stdout = os.path.join(br_path,self._current_job_id+'_out.log')
-            f_stderr = os.path.join(br_path,self._current_job_id+'_out.log')
+            f_errout = os.path.join(br_path,self._current_job_id+'_out.log')
 
-        #stdout = file_out, stderr = log_file
+
         # run build command
-        if f_stdout == 'screen':
+        if f_errout == 'screen':
             err=subprocess.call(normalBuild,env=env)
         else:
-            err=subprocess.call(normalBuild,env=env,stdout=f_stdout,stderr=f_stderr)
+            err=0
+            with open(f_errout,'w') as fout:
+                err=subprocess.call(normalBuild,env=env,stdout=fout,stderr=fout)
         if err != 0 and not(cleanBuildAttempted):
             # form the rebuild command combining make progam and its parameters
             Rebuild = self._make+self._make_par+['/p:Configuration='+buildType,'/t:Rebuild',target]
-            if f_stdout == 'screen':
+            if f_errout == 'screen':
                 err=subprocess.call(normalBuild,env=env)
             else:
-                err=subprocess.call(normalBuild,env=env,stdout=f_stdout,stderr=f_stderr)
+              with open(f_errout,'w') as fout:
+                err=subprocess.call(normalBuild,env=env,stdout=fout,stderr=fout)
 
         print "-----------------------------------------------------------------------------------------------------------"
         print "-----------------------------------------------------------------------------------------------------------"
@@ -337,7 +338,7 @@ class br():
         if err != 0:
             raise RuntimeError(errMessage)
  
-#    def get_environment_from_batch_command(self,env_cmd):
+    def get_environment_from_batch_command(self,env_cmd):
         """
         Take a command (either a single command or list of arguments)
         and return the environment created after running that command.
@@ -791,7 +792,7 @@ class br():
 
                 self.append_log("{0} Starting {3} run for Mantid, branch {1} located in: {2} \n".format(log_head,local_branch_toBuild,repo_root,build_type))
                 repo_id = os.path.split(repo_root)
-                self._current_job_id = repo_id+'_'+local_branch_toBuild+'_'+build_type
+                self._current_job_id = repo_id[1]+'_'+local_branch_toBuild+'_'+build_type
 
                 # Try to build actual project
                 try:

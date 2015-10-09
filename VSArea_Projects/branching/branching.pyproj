@@ -13,7 +13,7 @@
     <RootNamespace>branching</RootNamespace>
     <IsWindowsApplication>False</IsWindowsApplication>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
-    <CommandLineArguments>build debug</CommandLineArguments>
+    <CommandLineArguments>batch c:\Tools\master_jobs.xml</CommandLineArguments>
     <InterpreterPath>c:\programming\Python27\python.exe</InterpreterPath>
     <InterpreterArguments />
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>

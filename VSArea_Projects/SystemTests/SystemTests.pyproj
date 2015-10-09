@@ -6,7 +6,7 @@
     <ProjectGuid>92bc55bb-cac3-47ad-b3a5-7172a47ef2ec</ProjectGuid>
     <ProjectHome>D:\Data\MatidScripsPublicRepository\test\</ProjectHome>
     <StartupFile>runIndividualFromGUI.py</StartupFile>
-    <SearchPath>c:\Mantid\Code\builds\br_master\bin\Release;c:\Mantid\Code\Mantid\scripts\Inelastic;C:\Mantid\Code\Third_Party\lib\win64;c:\Mantid\Code\Mantid\Testing\SystemTests\tests\analysis;c:\Mantid\Code\Mantid\Testing\SystemTests\lib\systemtests</SearchPath>
+    <SearchPath>c:\Mantid\_builds\br_master\bin\Release;c:\Mantid\scripts\Inelastic;C:\Mantid\Third_Party\lib\win64;c:\Mantid\Testing\SystemTests\tests\analysis;c:\Mantid\Testing\SystemTests\lib\systemtests</SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <InterpreterId>00000000-0000-0000-0000-000000000000</InterpreterId>
@@ -16,7 +16,7 @@
     <RootNamespace>SystemTests</RootNamespace>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
     <CommandLineArguments />
-    <InterpreterPath>c:\Mantid\Code\builds\br_master\bin\Release\python.exe</InterpreterPath>
+    <InterpreterPath>c:\Mantid\_builds\br_master\bin\Release\python.exe</InterpreterPath>
     <InterpreterArguments />
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
     <IsWindowsApplication>False</IsWindowsApplication>
