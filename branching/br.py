@@ -327,7 +327,7 @@ class br(object):
             err=self.run_build('Mantid.sln',buildType,cleanBuildAttempted,env);
 
         # copy Mantid.parameters to target build directory if prop file exist and target properties file does not
-        prop_file = os.path.join(repo_path,selt.self._MANT_Build_relLoc,self._prop_file);
+        prop_file = os.path.join(repo_path,self._MANT_Build_relLoc,self._prop_file);
         if os.path.exists(prop_file):
            targ_file = os.path.join(build_flavour_path,self._prop_file)
            if not os.path.exists(targ_file):

@@ -2,7 +2,7 @@
 
 <job_description>
 <!--  For testing branch, which has its own build and will be in master_BrNo folder -->
-  <job branch_ID ="13349"  mantid_root="d:/Data/MantidDevArea/testing_mantid" merge_to="master"  skip_this="True">
+  <job branch_ID ="12551"  mantid_root="d:/Data/MantidDevArea/testing_mantid" merge_to="master"  skip_this="False">
     <build type ="Release"/>
     <build type ="Debug" skip_this="False"/>
     <build type ="RelWithDebInfo" skip_this="True"/>
@@ -12,7 +12,7 @@
 
   
   <!--  For building current ticket, not to constantly rebuild mantid configuration  -->
-  <job branch_ID ="13566" clean_build="True"  skip_this="False" >
+  <job branch_ID ="13566" clean_build="True"  skip_this="True" >
     <build type ="Release"  skip_this="False"/>
     <build type ="Debug" skip_this="False"/>
     <build type ="RelWithDebInfo" skip_this="True"/>
@@ -37,7 +37,7 @@
   
   
 <!--  For testing branch, which has its own build and will be in master_BrNo folder -->
-  <job branch_ID ="10167"  mantid_root="d:/Data/MantidDevArea/testing_mantid" merge_to="master"  skip_this="True">
+  <job branch_ID ="12551"  mantid_root="d:/Data/MantidDevArea/testing_mantid" merge_to="master"  skip_this="True">
     <build type ="Release"/>
     <build type ="Debug" skip_this="False"/>
     <build type ="RelWithDebInfo" skip_this="True"/>
