@@ -28,6 +28,24 @@
     <Compile Include="..\..\..\MantidTraining\Reduction\MARI_Sample.py">
       <Link>MARI_Sample.py</Link>
     </Compile>
+    <Compile Include="module1.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="module2.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="module3.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="module4.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="module5.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="module6.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="red_debug.py">
       <SubType>Code</SubType>
     </Compile>

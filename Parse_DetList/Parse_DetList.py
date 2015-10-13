@@ -1,3 +1,4 @@
+import os
 def process_detectors(filename):
 
     f=open(filename)
@@ -9,8 +10,9 @@ def process_detectors(filename):
         if ic==0:
             # parse header
             for key in cont:
-                det_col[key]=[]
-                guide_lines.append(key)
+                k_name = key.strip()
+                det_col[k_name ]=[]
+                guide_lines.append(k_name)
             ic+=1
         else:
           if line.find('yes')!=-1:
@@ -35,7 +37,6 @@ def find_params(det_col):
 if __name__=="__main__":
     print '--------------   MAP  ----------------------------------'
     det_col =process_detectors('MAP21385-Detectors-1.txt')
-
     def mapper(x):
         if float(x)<0.1:
             return '6.05'
@@ -47,18 +48,19 @@ if __name__=="__main__":
     print 'Min_det: R={0}, Spec_ID={1}, Det_ID={2}'.format(minR,min_specID,min_detID)
     print 'Max_det: R={0}, Spec_ID={1}, Det_ID={2}'.format(maxR,max_specID,max_detID)
 
-
-    print '--------------   LET  ----------------------------------'
-    det_col =process_detectors('LET00005545-Detectors-1.txt')
-    minR,min_specID,min_detID,maxR,max_specID,max_detID = find_params(det_col)
-    print 'Min_det: R={0}, Spec_ID={1}, Det_ID={2}'.format(minR,min_specID,min_detID)
-    print 'Max_det: R={0}, Spec_ID={1}, Det_ID={2}'.format(maxR,max_specID,max_detID)
-
     print '--------------   MER  ----------------------------------'
     det_col =process_detectors('MER18962-Detectors-1.txt')
     minR,min_specID,min_detID,maxR,max_specID,max_detID = find_params(det_col)
     print 'Min_det: R={0}, Spec_ID={1}, Det_ID={2}'.format(minR,min_specID,min_detID)
     print 'Max_det: R={0}, Spec_ID={1}, Det_ID={2}'.format(maxR,max_specID,max_detID)
+
+
+    print '--------------   LET  ----------------------------------'
+    det_col =process_detectors('LET00018482-Detectors-1.txt')
+    minR,min_specID,min_detID,maxR,max_specID,max_detID = find_params(det_col)
+    print 'Min_det: R={0}, Spec_ID={1}, Det_ID={2}'.format(minR,min_specID,min_detID)
+    print 'Max_det: R={0}, Spec_ID={1}, Det_ID={2}'.format(maxR,max_specID,max_detID)
+
 
 
     det_col =process_detectors('MAR11001-Detectors-1.txt')
