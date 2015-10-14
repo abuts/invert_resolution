@@ -1,11 +1,5 @@
 ----------------------------------------------------------------------
-:December,11,2013::11:34AM:: Starting cron jobs for parameters: master_jobs.xml
-:December,11,2013::11:35AM:: Starting Release run for Mantid, branch master located in: c:/Mantid/ 
-----------------------------------------------------------------------
-:December,12,2013::09:27AM:: Starting cron jobs for parameters: master_jobs.xml
-+                           , Can not prepare source branch: ERR: checkout target branch: master, scipping this job
-:December,12,2013::09:28AM:: Dry Run  build Release run for Mantid, branch master located in: d:/Data/Mantid_GIT_test/ 
-:December,12,2013::09:28AM:: Dry Run  build Debug run for Mantid, branch master located in: d:/Data/Mantid_GIT_test/ 
-:December,12,2013::09:28AM:: Dry Run  build RelWithDebInfo run for Mantid, branch master located in: d:/Data/Mantid_GIT_test/ 
-:December,12,2013::09:28AM:: finished Mantid cron job master_jobs.xml
---------------------------------
+:October,14,2015::03:34PM:: Starting cron jobs for parameters: master_jobs.xml
+:October,14,2015::03:34PM:: Skipping job with ID 12551 
+:October,14,2015::03:34PM:: Starting Release run for Mantid, branch 13566_GetAllEi located in: c:/Mantid/ 
++                           Build parameters: First build: True; Fast Build: False, Clean Build: True
