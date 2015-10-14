@@ -12,6 +12,7 @@ Logs results into log file.
 import os,sys,subprocess
 import shutil,datetime,inspect,copy
 import numpy as np
+import multiprocessing as mps
 from xml.dom import minidom
 
 
@@ -20,10 +21,11 @@ class br(object):
         # the program which performs build (make) 
         self._make=['c:/Windows/Microsoft.NET/Framework64/v4.0.30319/msbuild.exe'];
         # the parameters for this program
-        self._make_par=['/nologo','/m:12','/nr:false']
+        n_cpu=mps.cpu_count()/2
+        self._make_par=['/nologo','/m:{0}'.format(n_cpu),'/nr:false']
         # the parameters for making configuration
-        self._cmake   = ['c:/programming/CMake2.8/bin/cmake.exe']
-        self._addpath = 'c:/programming/CMake2.8/bin;'
+        self._cmake   = ['c:/programming/CMake/bin/cmake.exe']
+        self._addpath = 'c:/programming/CMake/bin;'
         # Path relative to Manitd location
         self._lib_path = 'Third_Party/lib/win64'
         # cmake parameters:
