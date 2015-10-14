@@ -20,10 +20,10 @@ class br(object):
         # the program which performs build (make) 
         self._make=['c:/Windows/Microsoft.NET/Framework64/v4.0.30319/msbuild.exe'];
         # the parameters for this program
-        self._make_par=['/nologo','/m:12','/nr:false']
+        self._make_par=['/nologo','/m:4','/nr:false']
         # the parameters for making configuration
-        self._cmake   = ['c:/programming/CMake2.8/bin/cmake.exe']
-        self._addpath = 'c:/programming/CMake2.8/bin;'
+        self._cmake   = ['c:/programming/CMake/bin/cmake.exe']
+        self._addpath = 'c:/programming/CMake/bin;'
         # Path relative to Manitd location
         self._lib_path = 'Third_Party/lib/win64'
         # cmake parameters:
