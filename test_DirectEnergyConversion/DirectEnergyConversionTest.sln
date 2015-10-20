@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "DirectEnergyConversionTest", "DirectEnergyConversionTest.pyproj", "{7DE7D019-7039-4E37-9AAB-8BC165B6ACB0}"
 EndProject
 Global

@@ -5,15 +5,17 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>26b5f999-0dab-421b-8108-f5f37d50287f</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>c:\Mantid\Code\Mantid\scripts\test\RunDescriptorTest.py</StartupFile>
-    <SearchPath>c:\Mantid\Code\Mantid\scripts\test;c:\Mantid\Code\builds\br_master\bin\Release;C:\Mantid\Code\Third_Party\lib\win64;d:\Data\MantidSystemTests\SystemTests\AnalysisTests;c:\Mantid\Code\Mantid\scripts\Inelastic</SearchPath>
-    <WorkingDirectory>c:\Mantid\Code\Mantid\scripts\test</WorkingDirectory>
+    <StartupFile>c:\Mantid\scripts\test\RunDescriptorTest.py</StartupFile>
+    <SearchPath>c:\Mantid\_builds\br_master\bin\Release;c:\Mantid\scripts\Inelastic</SearchPath>
+    <WorkingDirectory>c:\Mantid\scripts\test</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <Name>RunPropertyTest</Name>
     <RootNamespace>RunPropertyTest</RootNamespace>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
     <IsWindowsApplication>False</IsWindowsApplication>
+    <Environment>PATH=c:\Mantid\_builds\br_master\bin\Release;c:\Mantid\Third_Party\lib\win64;c:\Mantid\_builds\br_master\bin\Release\PVPlugins\PVPlugins;c:\Programming\Paraview_Dev\bin\Release</Environment>
+    <InterpreterPath>c:\Mantid\_builds\br_master\bin\Release\python.exe</InterpreterPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>

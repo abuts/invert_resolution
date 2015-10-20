@@ -4,22 +4,22 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>7de7d019-7039-4e37-9aab-8bc165b6acb0</ProjectGuid>
-    <ProjectHome>c:\Mantid\Code\Mantid\scripts\test\</ProjectHome>
-    <StartupFile>c:\Mantid\Code\Mantid\scripts\test\DirectEnergyConversionTest.py</StartupFile>
-    <SearchPath>c:\Mantid\Code\builds\br_master\bin\Release;c:\Mantid\Code\Mantid\scripts\Inelastic;c:\Mantid\Code\Third_Party\lib\win64</SearchPath>
-    <WorkingDirectory>c:\Mantid\Code\Mantid\scripts\Inelastic</WorkingDirectory>
+    <ProjectHome>c:\Mantid\scripts\test\</ProjectHome>
+    <StartupFile>c:\Mantid\scripts\test\DirectEnergyConversionTest.py</StartupFile>
+    <SearchPath>c:\Mantid\_builds\br_master\bin\Release;c:\Mantid\scripts\Inelastic</SearchPath>
+    <WorkingDirectory>c:\Mantid\scripts\Inelastic</WorkingDirectory>
     <OutputPath>.</OutputPath>
-    <InterpreterId>00000000-0000-0000-0000-000000000000</InterpreterId>
-    <InterpreterVersion>
-    </InterpreterVersion>
+    <InterpreterId>{3f5eace1-70ad-4e78-8db8-b9d1106a5738}</InterpreterId>
+    <InterpreterVersion>2.7</InterpreterVersion>
     <Name>DirectEnergyConversionTest</Name>
     <RootNamespace>DirectEnergyConversionTest</RootNamespace>
     <IsWindowsApplication>False</IsWindowsApplication>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
     <CommandLineArguments />
-    <InterpreterPath>c:\programming\Python27\python.exe</InterpreterPath>
+    <InterpreterPath>c:\Mantid\_builds\br_master\bin\Release\python.exe</InterpreterPath>
     <InterpreterArguments />
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
+    <Environment>PATH=c:\Mantid\_builds\br_master\bin\Release;c:\Mantid\Third_Party\lib\win64;c:\Mantid\_builds\br_master\bin\Release\PVPlugins\PVPlugins;c:\Programming\Paraview_Dev\bin\Release</Environment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -29,8 +29,16 @@
     <DebugSymbols>true</DebugSymbols>
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <PtvsTargetsFile>$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets</PtvsTargetsFile>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="DirectEnergyConversionTest.py" />
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
+  <ItemGroup>
+    <InterpreterReference Include="{3f5eace1-70ad-4e78-8db8-b9d1106a5738}\2.7" />
+  </ItemGroup>
+  <Import Project="$(PtvsTargetsFile)" Condition="Exists($(PtvsTargetsFile))" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="!Exists($(PtvsTargetsFile))" />
 </Project>
