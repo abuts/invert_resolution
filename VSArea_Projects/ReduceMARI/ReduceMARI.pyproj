@@ -4,9 +4,9 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>ea55edfa-8397-4b64-a035-372e8261e23a</ProjectGuid>
-    <ProjectHome>D:\Data\isis\mari\</ProjectHome>
-    <StartupFile>d:\Data\Mantid_Testing\14_12_15\ISIS_MariReduction.py </StartupFile>
-    <SearchPath>c:\Mantid\Code\builds\br_master\bin\Release;c:\Mantid\Code\Mantid\scripts\Inelastic;c:\Mantid\Code\Third_Party\lib\win64;d:\Data\MatidScripsPublicRepository\direct_inelastic\ISIS\qtiGenie</SearchPath>
+    <ProjectHome>d:\Data\Python\VSArea_Projects\ReduceMARI\</ProjectHome>
+    <StartupFile>d:\Data\ISIS_repo\MARI\template_mari.py</StartupFile>
+    <SearchPath>c:\Mantid\_builds\br_master\bin\Release;c:\Mantid\scripts\Inelastic;d:\Data\ISIS_repo\ISIS\qtiGenie</SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <InterpreterId>{9a7a9026-48c1-4688-9d5d-e5699d47d074}</InterpreterId>
@@ -16,9 +16,10 @@
     <IsWindowsApplication>False</IsWindowsApplication>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
     <CommandLineArguments />
-    <InterpreterPath>c:\programming\Python27\python.exe</InterpreterPath>
+    <InterpreterPath>c:\Mantid\_builds\br_master\bin\Release\python.exe</InterpreterPath>
     <InterpreterArguments />
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
+    <Environment>PATH=c:\Mantid\_builds\br_master\bin\Release;c:\Mantid\Third_Party\lib\win64;c:\Mantid\_builds\br_master\bin\Release\PVPlugins\PVPlugins;c:\Programming\Paraview_Dev\bin\Release</Environment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -28,12 +29,13 @@
     <DebugSymbols>true</DebugSymbols>
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
-  <ItemGroup>
-    <Compile Include="mari_example.py" />
-    <Compile Include="mari_example_sum_runs.py" />
-  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <PtvsTargetsFile>$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets</PtvsTargetsFile>
+  </PropertyGroup>
   <ItemGroup>
     <InterpreterReference Include="{9a7a9026-48c1-4688-9d5d-e5699d47d074}\2.7" />
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
+  <Import Project="$(PtvsTargetsFile)" Condition="Exists($(PtvsTargetsFile))" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="!Exists($(PtvsTargetsFile))" />
 </Project>
