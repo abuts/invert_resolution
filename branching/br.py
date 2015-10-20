@@ -1,4 +1,4 @@
-"""
+﻿"""
 Script to simplify building Mantid on Windows and testing tickets
 
 Intended to run automatically and build number of Mantid instances on Windows without user interaction.
