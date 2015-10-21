@@ -1,13 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <job_description>
-
-
   
+  <!--  For building current master or  working branch, build in master folder so that all test subproject in test folders can be used -->
+  <job branch_ID ="master" clean_build="True"  skip_this="False" >
+    <build type ="Release"  skip_this="False"/>
+    <build type ="Debug" skip_this="False"/>
+    <build type ="RelWithDebInfo" skip_this="False"/>
+  </job>
+
   <!--  For building current ticket, not to constantly rebuild mantid configuration  -->
   <job branch_ID ="14022" clean_build="True"  skip_this="False" >
     <build type ="Release"  skip_this="False"/>
     <build type ="Debug" skip_this="False"/>
+    <build type ="RelWithDebInfo" skip_this="True"/>
+  </job>
+
+ 
+  <!--  Clean master for testing and comparing against the test branch located in master -->
+  <job branch_ID ="master" mantid_root="d:/Data/MantidDevArea/testing_mantid" build_on_base="True" clean_build="True" skip_this="False">
+    <build type ="Release"/>
+    <build type ="Debug"/>
     <build type ="RelWithDebInfo" skip_this="True"/>
   </job>
 
@@ -18,24 +31,6 @@
     <build type ="RelWithDebInfo" skip_this="True"/>
   </job>
  
-  
-  <!--  For building current master or  working branch, build in master folder so that all test subproject in test folders can be used -->
-  <job branch_ID ="master" clean_build="True"  skip_this="False" >
-    <build type ="Release"  skip_this="False"/>
-    <build type ="Debug" skip_this="False"/>
-    <build type ="RelWithDebInfo" skip_this="False"/>
-  </job>
-
-
- 
-  <!--  Clean master for testing and comparing against the test branch located in master -->
-  <job branch_ID ="master" mantid_root="d:/Data/MantidDevArea/testing_mantid" build_on_base="True" clean_build="True" skip_this="False">
-    <build type ="Release"/>
-    <build type ="Debug"/>
-    <build type ="RelWithDebInfo" skip_this="True"/>
-  </job>
-
-  
   
 <!--  For testing branch, which has its own build and will be in master_BrNo folder -->
   <job branch_ID ="12551"  mantid_root="d:/Data/MantidDevArea/testing_mantid" merge_to="master"  skip_this="True">

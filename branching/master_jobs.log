@@ -14,3 +14,28 @@
 :October,20,2015::02:46AM:: Finished Release run for Mantid, branch master 
 :October,20,2015::02:46AM:: Starting Debug run for Mantid, branch master located in: d:/Data/MantidDevArea/testing_mantid/ 
 +                           Build parameters: First build: False; Fast Build: False, Clean Build: False
+----------------------------------------------------------------------
+:October,20,2015::08:12PM:: Starting cron jobs for parameters: master_jobs.xml
+:October,20,2015::08:12PM:: Starting Release run for Mantid, branch master located in: c:/Mantid/ 
++                           Build parameters: First build: True; Fast Build: False, Clean Build: True
+:October,20,2015::09:57PM:: Finished Release run for Mantid, branch master 
+:October,20,2015::09:57PM:: Starting Debug run for Mantid, branch master located in: c:/Mantid/ 
++                           Build parameters: First build: False; Fast Build: False, Clean Build: False
+:October,20,2015::11:31PM:: Finished Debug run for Mantid, branch master 
+:October,20,2015::11:31PM:: Starting RelWithDebInfo run for Mantid, branch master located in: c:/Mantid/ 
++                           Build parameters: First build: False; Fast Build: False, Clean Build: False
+:October,21,2015::01:20AM:: Finished RelWithDebInfo run for Mantid, branch master 
+:October,21,2015::01:20AM:: Starting Release run for Mantid, branch 14022_MonitorwFromPython located in: c:/Mantid/ 
++                           Build parameters: First build: True; Fast Build: False, Clean Build: True
+:October,21,2015::03:03AM:: Finished Release run for Mantid, branch 14022 
+:October,21,2015::03:03AM:: Starting Debug run for Mantid, branch 14022_MonitorwFromPython located in: c:/Mantid/ 
++                           Build parameters: First build: False; Fast Build: False, Clean Build: False
+:October,21,2015::04:36AM:: Finished Debug run for Mantid, branch 14022 
+:October,21,2015::04:36AM:: Skipping build RelWithDebInfo run for Mantid, branch 14022_MonitorwFromPython located in: c:/Mantid/ 
++                          , Can not prepare source branch: ERR: pull target branch: master, skipping this job
+:October,21,2015::04:37AM:: Skipping job with ID 13537 
+:October,21,2015::04:37AM:: Skipping job with ID 12551 
+:October,21,2015::04:37AM:: Skipping job with ID develop 
+:October,21,2015::04:37AM:: Skipping job with ID 9998 
+:October,21,2015::04:37AM:: finished Mantid cron job master_jobs.xml
+--------------------------------

@@ -6,7 +6,7 @@
     <ProjectGuid>8c35e0b0-d234-49fb-bc0d-6ce804731bde</ProjectGuid>
     <ProjectHome>.</ProjectHome>
     <StartupFile>c:\Mantid\scripts\test\DirectPropertyManagerTest.py</StartupFile>
-    <SearchPath>c:\Mantid\_builds\br_master\bin\Release;c:\Mantid\scripts\Inelastic;C:\Mantid\Third_Party\lib\win64</SearchPath>
+    <SearchPath>c:\Mantid\_builds\br_master\bin\Release;c:\Mantid\scripts\Inelastic</SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <Name>DirectPropertyManager</Name>
@@ -15,6 +15,7 @@
     <InterpreterPath>c:\Mantid\_builds\br_master\bin\Release\python.exe</InterpreterPath>
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
     <IsWindowsApplication>False</IsWindowsApplication>
+    <Environment>PATH=c:\Mantid\_builds\br_master\bin\Release;c:\Mantid\Third_Party\lib\win64;c:\Mantid\_builds\br_master\bin\Release\PVPlugins\PVPlugins;c:\Programming\Paraview_Dev\bin\Release</Environment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
