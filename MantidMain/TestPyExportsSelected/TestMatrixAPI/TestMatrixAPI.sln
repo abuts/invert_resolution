@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "SystemTests", "SystemTests.pyproj", "{92BC55BB-CAC3-47AD-B3A5-7172A47EF2EC}"
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "TestMatrixAPI", "TestMatrixAPI\TestMatrixAPI.pyproj", "{CD26B695-E20C-4F21-A3DD-93AFE6E1E058}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,8 +11,8 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{92BC55BB-CAC3-47AD-B3A5-7172A47EF2EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{92BC55BB-CAC3-47AD-B3A5-7172A47EF2EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD26B695-E20C-4F21-A3DD-93AFE6E1E058}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD26B695-E20C-4F21-A3DD-93AFE6E1E058}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

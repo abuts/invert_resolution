@@ -4,9 +4,9 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>92bc55bb-cac3-47ad-b3a5-7172a47ef2ec</ProjectGuid>
-    <ProjectHome>D:\Data\MatidScripsPublicRepository\test\</ProjectHome>
+    <ProjectHome>.</ProjectHome>
     <StartupFile>runIndividualFromGUI.py</StartupFile>
-    <SearchPath>c:\Mantid\_builds\br_master\bin\Release;c:\Mantid\scripts\Inelastic;C:\Mantid\Third_Party\lib\win64;c:\Mantid\Testing\SystemTests\tests\analysis;c:\Mantid\Testing\SystemTests\lib\systemtests</SearchPath>
+    <SearchPath>c:\Mantid\Testing\SystemTests\tests\analysis;c:\Mantid\Testing\SystemTests\lib\systemtests;c:\Mantid\_builds\br_master\bin\Release;</SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <InterpreterId>00000000-0000-0000-0000-000000000000</InterpreterId>
@@ -20,6 +20,7 @@
     <InterpreterArguments />
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
     <IsWindowsApplication>False</IsWindowsApplication>
+    <Environment>PATH=c:\Mantid\_builds\br_master\bin\Release;c:\Mantid\Third_Party\lib\win64;c:\Mantid\_builds\br_master\bin\Release\PVPlugins\PVPlugins;c:\Programming\Paraview_Dev\bin\Release</Environment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -29,8 +30,13 @@
     <DebugSymbols>true</DebugSymbols>
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <PtvsTargetsFile>$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets</PtvsTargetsFile>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="runIndividualFromGUI.py" />
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
+  <Import Project="$(PtvsTargetsFile)" Condition="Exists($(PtvsTargetsFile))" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="!Exists($(PtvsTargetsFile))" />
 </Project>

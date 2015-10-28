@@ -1,41 +1,27 @@
 ----------------------------------------------------------------------
-:October,19,2015::09:14PM:: Starting cron jobs for parameters: master_jobs.xml
-:October,19,2015::09:14PM:: Starting Release run for Mantid, branch 14022_MonitorwFromPython located in: c:/Mantid/ 
+:October,23,2015::11:57PM:: Starting cron jobs for parameters: master_jobs.xml
+:October,23,2015::11:57PM:: Starting Release run for Mantid, branch master located in: c:/Mantid/ 
 +                           Build parameters: First build: True; Fast Build: False, Clean Build: True
-:October,19,2015::11:05PM:: Finished Release run for Mantid, branch 14022 
-:October,19,2015::11:05PM:: Starting Debug run for Mantid, branch 14022_MonitorwFromPython located in: c:/Mantid/ 
-+                           Build parameters: First build: False; Fast Build: False, Clean Build: False
-:October,20,2015::12:46AM:: Finished Debug run for Mantid, branch 14022 
-:October,20,2015::12:46AM:: Skipping build RelWithDebInfo run for Mantid, branch 14022_MonitorwFromPython located in: c:/Mantid/ 
-:October,20,2015::12:46AM:: Skipping job with ID 13537 
-+                          , Can not prepare source branch: ERR: pull target branch: master, skipping this job
-:October,20,2015::12:47AM:: Starting Release run for Mantid, branch master located in: d:/Data/MantidDevArea/testing_mantid/ 
+:October,24,2015::01:43AM:: Finished Release run for Mantid, branch master 
+:October,24,2015::01:43AM:: Skipping build Debug run for Mantid, branch master located in: c:/Mantid/ 
+:October,24,2015::01:43AM:: Skipping build RelWithDebInfo run for Mantid, branch master located in: c:/Mantid/ 
+:October,24,2015::01:43AM:: Starting Release run for Mantid, branch 14071_RenameWithMon located in: c:/Mantid/ 
 +                           Build parameters: First build: True; Fast Build: False, Clean Build: True
-:October,20,2015::02:46AM:: Finished Release run for Mantid, branch master 
-:October,20,2015::02:46AM:: Starting Debug run for Mantid, branch master located in: d:/Data/MantidDevArea/testing_mantid/ 
+:October,24,2015::03:27AM:: Finished Release run for Mantid, branch 14071 
+:October,24,2015::03:27AM:: Starting Debug run for Mantid, branch 14071_RenameWithMon located in: c:/Mantid/ 
 +                           Build parameters: First build: False; Fast Build: False, Clean Build: False
-----------------------------------------------------------------------
-:October,20,2015::08:12PM:: Starting cron jobs for parameters: master_jobs.xml
-:October,20,2015::08:12PM:: Starting Release run for Mantid, branch master located in: c:/Mantid/ 
+:October,24,2015::05:03AM:: Finished Debug run for Mantid, branch 14071 
+:October,24,2015::05:03AM:: Skipping build RelWithDebInfo run for Mantid, branch 14071_RenameWithMon located in: c:/Mantid/ 
+:October,24,2015::05:04AM:: Starting Release run for Mantid, branch master located in: d:/Data/MantidDevArea/testing_mantid/ 
 +                           Build parameters: First build: True; Fast Build: False, Clean Build: True
-:October,20,2015::09:57PM:: Finished Release run for Mantid, branch master 
-:October,20,2015::09:57PM:: Starting Debug run for Mantid, branch master located in: c:/Mantid/ 
-+                           Build parameters: First build: False; Fast Build: False, Clean Build: False
-:October,20,2015::11:31PM:: Finished Debug run for Mantid, branch master 
-:October,20,2015::11:31PM:: Starting RelWithDebInfo run for Mantid, branch master located in: c:/Mantid/ 
-+                           Build parameters: First build: False; Fast Build: False, Clean Build: False
-:October,21,2015::01:20AM:: Finished RelWithDebInfo run for Mantid, branch master 
-:October,21,2015::01:20AM:: Starting Release run for Mantid, branch 14022_MonitorwFromPython located in: c:/Mantid/ 
-+                           Build parameters: First build: True; Fast Build: False, Clean Build: True
-:October,21,2015::03:03AM:: Finished Release run for Mantid, branch 14022 
-:October,21,2015::03:03AM:: Starting Debug run for Mantid, branch 14022_MonitorwFromPython located in: c:/Mantid/ 
-+                           Build parameters: First build: False; Fast Build: False, Clean Build: False
-:October,21,2015::04:36AM:: Finished Debug run for Mantid, branch 14022 
-:October,21,2015::04:36AM:: Skipping build RelWithDebInfo run for Mantid, branch 14022_MonitorwFromPython located in: c:/Mantid/ 
-+                          , Can not prepare source branch: ERR: pull target branch: master, skipping this job
-:October,21,2015::04:37AM:: Skipping job with ID 13537 
-:October,21,2015::04:37AM:: Skipping job with ID 12551 
-:October,21,2015::04:37AM:: Skipping job with ID develop 
-:October,21,2015::04:37AM:: Skipping job with ID 9998 
-:October,21,2015::04:37AM:: finished Mantid cron job master_jobs.xml
++                           ERR: Can not execute msbuild for : Mantid.sln while building target project Release
+:October,24,2015::06:57AM:: Starting Debug run for Mantid, branch master located in: d:/Data/MantidDevArea/testing_mantid/ 
++                           Build parameters: First build: True; Fast Build: False, Clean Build: False
+:October,24,2015::08:40AM:: Finished Debug run for Mantid, branch master 
+:October,24,2015::08:40AM:: Skipping build RelWithDebInfo run for Mantid, branch master located in: d:/Data/MantidDevArea/testing_mantid/ 
++                          , Can not prepare source branch: ERR: merging ERR: can not find the branch with ID 14083  to current branch to master, skipping this job
+:October,24,2015::08:41AM:: Skipping job with ID 12551 
+:October,24,2015::08:41AM:: Skipping job with ID develop 
+:October,24,2015::08:41AM:: Skipping job with ID 9998 
+:October,24,2015::08:41AM:: finished Mantid cron job master_jobs.xml
 --------------------------------
