@@ -25,3 +25,20 @@
 :October,24,2015::08:41AM:: Skipping job with ID 9998 
 :October,24,2015::08:41AM:: finished Mantid cron job master_jobs.xml
 --------------------------------
+----------------------------------------------------------------------
+:November,03,2015::05:12PM:: Starting cron jobs for parameters: master_jobs.xml
+:November,03,2015::05:14PM:: Dry Run  build Release run for Mantid, branch master located in: c:/Mantid/ 
+:November,03,2015::05:14PM:: Dry Run  build Debug run for Mantid, branch master located in: c:/Mantid/ 
+:November,03,2015::05:14PM:: Dry Run  build RelWithDebInfo run for Mantid, branch master located in: c:/Mantid/ 
+:November,03,2015::05:14PM::, No jobs found:November,03,2015::05:17PM:: Dry Run  build Release run for Mantid, branch 14071_RenameWithMon located in: c:/Mantid/ 
+:November,03,2015::05:17PM:: Dry Run  build Debug run for Mantid, branch 14071_RenameWithMon located in: c:/Mantid/ 
+:November,03,2015::05:17PM:: Dry Run  build RelWithDebInfo run for Mantid, branch 14071_RenameWithMon located in: c:/Mantid/ 
+:November,03,2015::05:18PM:: Dry Run  build Release run for Mantid, branch master located in: d:/Data/MantidDevArea/testing_mantid/ 
+:November,03,2015::05:18PM:: Dry Run  build Debug run for Mantid, branch master located in: d:/Data/MantidDevArea/testing_mantid/ 
+:November,03,2015::05:18PM:: Dry Run  build RelWithDebInfo run for Mantid, branch master located in: d:/Data/MantidDevArea/testing_mantid/ 
++                           , Can not prepare source branch: ERR: merging ERR: can not find the branch with ID 14083  to current branch to master, skipping this job
+:November,03,2015::05:19PM:: Skipping job with ID 12551 
+:November,03,2015::05:19PM:: Skipping job with ID develop 
+:November,03,2015::05:19PM:: Skipping job with ID 9998 
+:November,03,2015::05:19PM:: finished Mantid cron job master_jobs.xml
+--------------------------------

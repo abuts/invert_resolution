@@ -37,7 +37,7 @@ class br(object):
 
 
         # default Mantid git repository location:
-        self._MANTID_Loc='c:/Mantid/'
+        self._MANTID_Loc='c:/Mantid'
         # the file with user properties, located in mantid repository root and used as basic generic properties file (not to set 
         # commont searh/data directories, paraview path etc. for each build)
         self._prop_file ='Mantid.user.properties'
@@ -90,15 +90,13 @@ class br(object):
         """
         Build target build path from defaults or add branch ID to it
         """
-        if not(repo_root[len(repo_root)-1] == '/' or repo_root[len(repo_root)-1] == '\\' ):
-            repo_root +='/'
         if build_on_base :
-            build_path = repo_root+self._MANT_Build_relLoc+'br_master';
+            build_path = os.path.join(repo_root,self._MANT_Build_relLoc,'br_master');
         else:
             if merge_id == branch_id:
-                build_path = repo_root+self._MANT_Build_relLoc+'br_'+str(branch_id);
+                build_path = os.path.join(repo_root,self._MANT_Build_relLoc,'br_'+str(branch_id));
             else:
-                build_path = repo_root+self._MANT_Build_relLoc+'br_'+str(merge_id)+'_'+str(branch_id);
+                build_path = os.path.join(repo_root,self._MANT_Build_relLoc,'br_'+str(merge_id)+'_'+str(branch_id));
 
         return build_path;
 
