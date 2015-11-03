@@ -3,19 +3,19 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>a2db5394-e3f2-40f4-85e1-df9d6f07d8c2</ProjectGuid>
+    <ProjectGuid>e5b14226-d961-40a5-8bae-ec6a3b6d5484</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>c:\Mantid\scripts\test\ReductionWrapperTest.py</StartupFile>
-    <SearchPath>c:\Mantid\_builds\br_14071\bin\Release;c:\Mantid\scripts\Inelastic</SearchPath>
-    <WorkingDirectory>c:\Mantid\scripts\test</WorkingDirectory>
+    <StartupFile>c:\Mantid\Framework\PythonInterface\test\python\mantid\SimpleAPIRenameWorkspaceTest.py</StartupFile>
+    <SearchPath>c:\Mantid\Testing\SystemTests\tests\analysis;c:\Mantid\Testing\SystemTests\lib\systemtests</SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
-    <Name>TestReductionWrapper</Name>
-    <RootNamespace>TestReductionWrapper</RootNamespace>
+    <Name>TestSimpleAPI</Name>
+    <RootNamespace>TestSimpleAPI</RootNamespace>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
     <InterpreterPath>c:\Mantid\_builds\br_14071\bin\Release\python.exe</InterpreterPath>
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
-    <IsWindowsApplication>True</IsWindowsApplication>
-    <Environment>PATH=c:\Mantid\_builds\br_14071\bin\Release;c:\Mantid\Third_Party\lib\win64;c:\Mantid\_builds\br_master\bin\Release\PVPlugins\PVPlugins;c:\Programming\Paraview_Dev\bin\Release</Environment>
+    <Environment>PATH=c:\Mantid\_builds\br_14071\bin\Release;c:\Mantid\Third_Party\lib\win64;c:\Mantid\_builds\br_14071\bin\Release\PVPlugins\PVPlugins;c:\Programming\Paraview_Dev\bin\Release</Environment>
+    <IsWindowsApplication>False</IsWindowsApplication>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -25,6 +25,9 @@
     <DebugSymbols>true</DebugSymbols>
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="TestSimpleAPI.py" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <PtvsTargetsFile>$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets</PtvsTargetsFile>

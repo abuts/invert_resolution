@@ -5,17 +5,18 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>825cbf08-e9c4-43a5-bce4-06b0f6c3cb8e</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>c:\Mantid\Code\Mantid\scripts\test\DirectReductionHelpersTest.py</StartupFile>
-    <SearchPath>c:\Mantid\Code\builds\br_10803\bin\Release;c:\Mantid\Code\Mantid\scripts\Inelastic;c:\Mantid\Code\Third_Party\lib\win64</SearchPath>
+    <StartupFile>c:\Mantid\scripts\test\DirectReductionHelpersTest.py</StartupFile>
+    <SearchPath>c:\Mantid\_builds\br_14071\bin\Release;c:\Mantid\scripts\Inelastic;c:\Mantid\Third_Party\lib\win64</SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <Name>test_DirectHelpers</Name>
     <RootNamespace>test_DirectHelpers</RootNamespace>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
-    <InterpreterPath>c:\Mantid\Code\builds\br_10803\bin\Release\python.exe</InterpreterPath>
+    <InterpreterPath>c:\Mantid\_builds\br_14071\bin\Release\python.exe</InterpreterPath>
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
     <IsWindowsApplication>False</IsWindowsApplication>
     <DebugStdLib>False</DebugStdLib>
+    <Environment>PATH=c:\Mantid\_builds\br_14071\bin\Release;c:\Mantid\Third_Party\lib\win64;c:\Mantid\_builds\br_master\bin\Release\PVPlugins\PVPlugins;c:\Programming\Paraview_Dev\bin\Release</Environment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>

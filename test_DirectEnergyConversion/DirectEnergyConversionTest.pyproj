@@ -6,7 +6,7 @@
     <ProjectGuid>7de7d019-7039-4e37-9aab-8bc165b6acb0</ProjectGuid>
     <ProjectHome>c:\Mantid\scripts\test\</ProjectHome>
     <StartupFile>c:\Mantid\scripts\test\DirectEnergyConversionTest.py</StartupFile>
-    <SearchPath>c:\Mantid\_builds\br_master\bin\Release;c:\Mantid\scripts\Inelastic</SearchPath>
+    <SearchPath>c:\Mantid\_builds\br_14071\bin\Release;c:\Mantid\scripts\Inelastic</SearchPath>
     <WorkingDirectory>c:\Mantid\scripts\Inelastic</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <InterpreterId>{3f5eace1-70ad-4e78-8db8-b9d1106a5738}</InterpreterId>
@@ -16,10 +16,10 @@
     <IsWindowsApplication>False</IsWindowsApplication>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
     <CommandLineArguments />
-    <InterpreterPath>c:\Mantid\_builds\br_master\bin\Release\python.exe</InterpreterPath>
+    <InterpreterPath>c:\Mantid\_builds\br_14071\bin\Release\python.exe</InterpreterPath>
     <InterpreterArguments />
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
-    <Environment>PATH=c:\Mantid\_builds\br_master\bin\Release;c:\Mantid\Third_Party\lib\win64;c:\Mantid\_builds\br_master\bin\Release\PVPlugins\PVPlugins;c:\Programming\Paraview_Dev\bin\Release</Environment>
+    <Environment>PATH=c:\Mantid\_builds\br_14071\bin\Release;c:\Mantid\Third_Party\lib\win64;c:\Mantid\_builds\br_master\bin\Release\PVPlugins\PVPlugins;c:\Programming\Paraview_Dev\bin\Release</Environment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
