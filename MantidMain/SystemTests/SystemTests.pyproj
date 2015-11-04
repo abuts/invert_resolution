@@ -16,11 +16,11 @@
     <RootNamespace>SystemTests</RootNamespace>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
     <CommandLineArguments />
-    <InterpreterPath>c:\Mantid\_builds\br_14071\bin\Release\python.exe</InterpreterPath>
+    <InterpreterPath>c:\Mantid\_builds\br_14102\bin\Release\python.exe</InterpreterPath>
     <InterpreterArguments />
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
     <IsWindowsApplication>False</IsWindowsApplication>
-    <Environment>PATH=c:\Mantid\_builds\br_14071\bin\Release;c:\Mantid\Third_Party\lib\win64;c:\Mantid\_builds\br_14071\bin\Release\PVPlugins\PVPlugins;c:\Programming\Paraview_Dev\bin\Release</Environment>
+    <Environment>PATH=c:\Mantid\_builds\br_14102\bin\Release;c:\Mantid\Third_Party\lib\win64;c:\Mantid\_builds\br_14071\bin\Release\PVPlugins\PVPlugins;c:\Programming\Paraview_Dev\bin\Release</Environment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>

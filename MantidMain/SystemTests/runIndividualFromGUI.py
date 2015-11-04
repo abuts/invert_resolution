@@ -42,8 +42,9 @@ import inspect
 #sys.path.append(r'C:\Backup\Backup_folder1\work\code\Mantid\builds\all\bin\Debug')
 
 # Find these first
-modlToRun = ['POLDIDataAnalysisTest']
+#modlToRun = ['POLDIDataAnalysisTest']
 #modlToRun = ['ISISDirectInelastic']
+modlToRun = ['ISISDirectReductionComponents']
 #modlToRun = ['PowderDiffProfileCalibrateTest'];
 #testToRun = ['VulcanSeqRefineProfileFromScratch'];
 #modlToRun = ['DirectInelasticDiagnostic'];
@@ -54,7 +55,8 @@ modlToRun = ['POLDIDataAnalysisTest']
 #modlToRun = ['Diffraction_Workflow_Test'];
 #testToRun = ['Diffraction_Workflow_Test']
 #testToRun = ['MARIReductionSum']
-testToRun = ['POLDIDataAnalysisTestSiIndividual']
+#testToRun = ['POLDIDataAnalysisTestSiIndividual']
+testToRun = ['ISISLoadFilesLET']
 #testToRun = ['MERLINReduction']
 #testToRun = ['MARIReductionFromFile','MARIReductionSum']
 #testToRun = ['MARIReductionFromWorkspace','MARIReductionFromFile','MARIReductionSum','MAPSDgreduceReduction','LETReduction','LETReductionEvent2014Multirep','MERLINReduction']
