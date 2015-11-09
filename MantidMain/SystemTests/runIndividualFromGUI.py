@@ -43,8 +43,8 @@ import inspect
 
 # Find these first
 #modlToRun = ['POLDIDataAnalysisTest']
-#modlToRun = ['ISISDirectInelastic']
-modlToRun = ['ISISDirectReductionComponents']
+modlToRun = ['ISISDirectInelastic']
+#modlToRun = ['ISISDirectReductionComponents']
 #modlToRun = ['PowderDiffProfileCalibrateTest'];
 #testToRun = ['VulcanSeqRefineProfileFromScratch'];
 #modlToRun = ['DirectInelasticDiagnostic'];
@@ -54,9 +54,9 @@ modlToRun = ['ISISDirectReductionComponents']
 
 #modlToRun = ['Diffraction_Workflow_Test'];
 #testToRun = ['Diffraction_Workflow_Test']
-#testToRun = ['MARIReductionSum']
+testToRun = ['MARIReductionAutoEi']
 #testToRun = ['POLDIDataAnalysisTestSiIndividual']
-testToRun = ['ISISLoadFilesLET']
+#testToRun = ['ISISLoadFilesLET']
 #testToRun = ['MERLINReduction']
 #testToRun = ['MARIReductionFromFile','MARIReductionSum']
 #testToRun = ['MARIReductionFromWorkspace','MARIReductionFromFile','MARIReductionSum','MAPSDgreduceReduction','LETReduction','LETReductionEvent2014Multirep','MERLINReduction']

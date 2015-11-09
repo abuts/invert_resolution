@@ -3,20 +3,18 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>825cbf08-e9c4-43a5-bce4-06b0f6c3cb8e</ProjectGuid>
+    <ProjectGuid>d7cd4daf-0d1e-43f8-b77b-0183ec1c171d</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>c:\Mantid\scripts\test\DirectReductionHelpersTest.py</StartupFile>
-    <SearchPath>c:\Mantid\_builds\br_13980\bin\Release;c:\Mantid\scripts\Inelastic;c:\Mantid\Third_Party\lib\win64</SearchPath>
+    <StartupFile>SubminAutoJob.py</StartupFile>
+    <SearchPath>
+    </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
-    <Name>test_DirectHelpers</Name>
-    <RootNamespace>test_DirectHelpers</RootNamespace>
+    <Name>SubminAutoJob</Name>
+    <RootNamespace>SubminAutoJob</RootNamespace>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
-    <InterpreterPath>c:\Mantid\_builds\br_13980\bin\Release\python.exe</InterpreterPath>
+    <CommandLineArguments>MAPS 24029 24029 1520001 15_3</CommandLineArguments>
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
-    <IsWindowsApplication>False</IsWindowsApplication>
-    <DebugStdLib>False</DebugStdLib>
-    <Environment>PATH=c:\Mantid\_builds\br_13980\bin\Release;c:\Mantid\Third_Party\lib\win64;c:\Mantid\_builds\br_master\bin\Release\PVPlugins\PVPlugins;c:\Programming\Paraview_Dev\bin\Release</Environment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -26,6 +24,12 @@
     <DebugSymbols>true</DebugSymbols>
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Stomp_Client.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SubminAutoJob.py" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <PtvsTargetsFile>$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets</PtvsTargetsFile>

@@ -5,8 +5,8 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>92bc55bb-cac3-47ad-b3a5-7172a47ef2ec</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>runIndividualFromGUI.py</StartupFile>
-    <SearchPath>c:\Mantid\Testing\SystemTests\tests\analysis;c:\Mantid\Testing\SystemTests\lib\systemtests</SearchPath>
+    <StartupFile>reduce.py</StartupFile>
+    <SearchPath>c:\Mantid\_builds\br_14071\bin\Release;c:\Mantid\scripts\Inelastic;c:\Mantid\Testing\SystemTests\tests\analysis;c:\Mantid\Testing\SystemTests\lib\systemtests</SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <InterpreterId>00000000-0000-0000-0000-000000000000</InterpreterId>
