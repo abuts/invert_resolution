@@ -836,7 +836,7 @@ class br(object):
     # 
     def build_current_job_id(self,repo_root,local_branch_toBuild,build_type):
         """Build unique ID (name) of the job to identify log files produced by this job"""
-        if repo_root == self.__MANTID_Loc:
+        if repo_root == self._MANTID_Loc:
             local_repo_name = self._building+'Main'
         else:
             local_repo_name = ''
