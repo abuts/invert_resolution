@@ -18,6 +18,11 @@ from xml.dom import minidom
 
 class br(object):
     def __init__(self):
+        # short name of repository to work with
+        self._building = 'mantid'
+        # default Mantid git repository location:
+        self._MANTID_Loc=r'c:\Mantid'
+
         # the program which performs build (make) 
         self._make=[r"c:\Program Files (x86)\MSBuild\14.0\Bin\amd64\MSBuild.exe"];
         # the parameters for this program
@@ -25,9 +30,9 @@ class br(object):
         self._make_par=['/nologo','/m:{0}'.format(n_cpu),'/nr:false']
         # the parameters for making configuration
         self._cmake   = ['c:/programming/CMake/bin/cmake.exe']
-        self._addpath = 'c:/programming/CMake/bin;'
+        self._addpath = r'c:\programming\CMake\bin;'
         # Path relative to Manitd location
-        self._lib_path = 'Third_Party/lib'
+        self._lib_path = r'ThirdParty\lib'
         # cmake parameters:
         self._cmake_par = ['-G','Visual Studio 14 2015 Win64','-Wno-dev','-DCONSOLE=ON','-DMAKE_VATES=OFF','-DENABLE_CPACK=ON',
                           #'-DCXXTEST_ADD_PERFORMANCE=TRUE',
@@ -36,8 +41,6 @@ class br(object):
                            '-DMANTID_DATA_STORE=d:\Data\MantidDevArea\Datastore']
 
 
-        # default Mantid git repository location:
-        self._MANTID_Loc='c:/Mantid'
         # the file with user properties, located in mantid repository root and used as basic generic properties file (not to set 
         # commont searh/data directories, paraview path etc. for each build)
         self._prop_file ='Mantid.user.properties'
@@ -48,9 +51,9 @@ class br(object):
         self._MANT_Build_relLoc='_builds/'
 
         # Mantid path template specifying all additional references to libraries to build Mantid
-        self._MANTID_Path_base='c:/programming/Paraview_Dev/bin/Release;'\
-        '{MANTID}/Third_Party/bin;{MANTID}/Third_Party/lib/python2.7;{MANTID}/Third_Party/lib/qt4/bin;'\
-        '{MANTID}/Third_Party/lib/qt4/lib;{PATH}'
+        self._MANTID_Path_base=r'c:\\programming\\Paraview_Dev\\bin\\Release;'\
+        '{MANTID}\\ThirdParty\\bin;{MANTID}\\ThirdParty\\lib\\python2.7;{MANTID}\\ThirdParty\\lib\\qt4\\bin;'\
+        '{MANTID}\\ThirdParty\\lib\\qt4\\lib;{PATH}'
         # set PATH=C:\Builds\ParaView-3.98.1-source\build\bin\Release;%WORKSPACE%\Code\Third_Party\lib\win64;%WORKSPACE%\Code\Third_Party\lib\win64\Python27;%PATH%
         # Mantid projects necessary for short build (minimal projects to start Mantid):
         self._MANTID_short={'Framework':'Framework.vcxproj','MantidPlot':'MantidPlot.vcxproj','MantidQT/Python':'mantidqtpython.vcxproj'}
@@ -182,16 +185,16 @@ class br(object):
             os.chdir(repo_path);
 
 
-        branchID = self.find_cur_branch_id();
-        if len(branchID)==0:
+        branchID,repo_name = self.find_cur_branch_id();
+        if len(branchID)==0 or repo_name != self._building:
             repo_path =  self._MANTID_Loc;
-            os.chdir(repo_path)           
-            branchID = self.find_cur_branch_id();
-            if len(branchID)==0:
+            os.chdir(repo_path)
+            branchID,repo_name = self.find_cur_branch_id();
+            if len(branchID)==0 or repo_name != self._building:
                 raise EnvironmentError("Can not swich to default GIT repository location")
 
         else:
-            repo_path = os.getcwd()+'/';
+            repo_path = os.getcwd();
 
         # where to build the project
         build_path= self.find_target_build_path(branchID,branchID,repo_path,False);
@@ -210,25 +213,31 @@ class br(object):
             if build_types[0]=='rdi' :
                 build_types = ['RelWithDebInfo']
             if build_types[0] == 'Main':
-                build_types = ['Debug','Release'];
+                build_types = ['Debug','Release']
 
         # decide if it is necessary to remove a single (sub) project (Debug, Release etc) or it is better to to wipe out the whole target build branch
         if build_clean :
             if len(build_types) > 1:
-                build_single_clean = False;
-                build_clean        = True;
+                build_single_clean = False
+                build_clean        = True
             else:
-                build_clean        = False;
-                build_single_clean = True;
+                build_clean        = False
+                build_single_clean = True
         else:
-            build_single_clean = False;
+            build_single_clean = False
 
         # Run builds
+        firstBuild = True
+        # Force continuing build
+        if 'Freshness' in provided and provided['Freshness'][0] == 'old':
+            firstBuild  = False
+
         for build_type in build_types:
             if build_type=='rdi':
                 build_type = 'RelWithDebInfo';
-            self.build_project(env,repo_path,build_path,True,short,build_clean,build_type,build_single_clean)
-            build_clean = False;
+            self.build_project(env,repo_path,build_path,firstBuild,short,build_clean,build_type,build_single_clean)
+            build_clean = False
+            firstBuild  = False
 
         os.chdir(cur_path);
 
@@ -267,7 +276,7 @@ class br(object):
         loc_env = dict()
         loc_env['PATH'] = env['PATH'];
         loc_env['MANTID']= repo_path;
-        env['PATH']=self._MANTID_Path_base.format(**loc_env);  
+        env['PATH']=self._MANTID_Path_base.format(**loc_env);
         # the path to the particular build flavor (Debug|Release|DebugWithReleaseInfo etc.)
         build_flavour_path = os.path.join(build_path,'bin',buildType)
         # check if the build is locked and do not clean it otherwise
@@ -397,6 +406,10 @@ class br(object):
         err = subprocess.call(['git','status'])
         if err != 0: # not on Git
             return ""
+        remote = subprocess.check_output(['git','remote','-v']) #
+        repo_url = remote.split()[1]
+        full_repo_name = os.path.split(repo_url)[-1]
+        short_repo_name,_ = os.path.splitext(full_repo_name)
 
         # get the names of the current branch of the the repository
         result = subprocess.check_output(['git','rev-parse','--abbrev-ref','HEAD']) # 
@@ -407,7 +420,7 @@ class br(object):
         except ValueError:
             result = result.split('_')
             result = result[0]
-        return result
+        return result,short_repo_name.lower()
 
     def find_full_banch_name(self,branch_id,exclude_service=True):
         """
@@ -823,14 +836,14 @@ class br(object):
     # 
     def build_current_job_id(self,repo_root,local_branch_toBuild,build_type):
         """Build unique ID (name) of the job to identify log files produced by this job"""
-        if repo_root == self.__MANTID_Loc: 
-            repo_name = 'MANTID_main'
+        if repo_root == self.__MANTID_Loc:
+            local_repo_name = self._building+'Main'
         else:
-            repo_name = ''
+            local_repo_name = ''
             repo_path = repo_root
-            while len(repo_name) == 0 and len(repo_path) != 0:
-                repo_path,repo_name = os.path.split(repo_path)
-            return '{0}_{1}_{2}'.format(repo_name,local_branch_toBuild,build_type)
+            while len(local_repo_name) == 0 and len(repo_path) != 0:
+                repo_path,local_repo_name= os.path.split(repo_path)
+        return '{0}_{1}_{2}'.format(local_repo_name,local_branch_toBuild,build_type)
     @staticmethod
     def parse_args(accept_args,*args):
         """
