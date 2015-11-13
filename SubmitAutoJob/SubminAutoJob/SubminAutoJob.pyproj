@@ -13,7 +13,7 @@
     <Name>SubminAutoJob</Name>
     <RootNamespace>SubminAutoJob</RootNamespace>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
-    <CommandLineArguments>MAPS 24029 24029 1520001 15_3</CommandLineArguments>
+    <CommandLineArguments>MERLIN 28094 28304 1520329 15_3</CommandLineArguments>
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">

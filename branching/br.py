@@ -19,7 +19,7 @@ from xml.dom import minidom
 class br(object):
     def __init__(self):
         # the program which performs build (make) 
-        self._make=['c:/Windows/Microsoft.NET/Framework64/v4.0.30319/msbuild.exe'];
+        self._make=[r"c:\Program Files (x86)\MSBuild\14.0\Bin\amd64\MSBuild.exe"];
         # the parameters for this program
         n_cpu=mps.cpu_count()/2
         self._make_par=['/nologo','/m:{0}'.format(n_cpu),'/nr:false']
@@ -27,9 +27,9 @@ class br(object):
         self._cmake   = ['c:/programming/CMake/bin/cmake.exe']
         self._addpath = 'c:/programming/CMake/bin;'
         # Path relative to Manitd location
-        self._lib_path = 'Third_Party/lib/win64'
+        self._lib_path = 'Third_Party/lib'
         # cmake parameters:
-        self._cmake_par = ['-G','Visual Studio 11 Win64','-Wno-dev','-DCONSOLE=ON','-DMAKE_VATES=ON','-DENABLE_CPACK=ON',
+        self._cmake_par = ['-G','Visual Studio 14 2015 Win64','-Wno-dev','-DCONSOLE=ON','-DMAKE_VATES=OFF','-DENABLE_CPACK=ON',
                           #'-DCXXTEST_ADD_PERFORMANCE=TRUE',
                            '-DQT_ASSISTANT_FETCH_IMAGES=OFF','-DUSE_PRECOMPILED_HEADERS=OFF','-DParaView_DIR=c:/programming/Paraview_Dev/',
                            '-DExternalData_BINARY_ROOT=d:\Data\MantidDevArea\Datastore\DataCopies',
@@ -46,8 +46,11 @@ class br(object):
 
         # build location with respect to the Mantid Git repository location
         self._MANT_Build_relLoc='_builds/'
+
         # Mantid path template specifying all additional references to libraries to build Mantid
-        self._MANTID_Path_base='c:/programming/Paraview_Dev/bin/Release;{MANTID}Third_Party/lib/win64;{MANTID}/Third_Party/lib/win64/Python27;{PATH}'
+        self._MANTID_Path_base='c:/programming/Paraview_Dev/bin/Release;'\
+        '{MANTID}/Third_Party/bin;{MANTID}/Third_Party/lib/python2.7;{MANTID}/Third_Party/lib/qt4/bin;'\
+        '{MANTID}/Third_Party/lib/qt4/lib;{PATH}'
         # set PATH=C:\Builds\ParaView-3.98.1-source\build\bin\Release;%WORKSPACE%\Code\Third_Party\lib\win64;%WORKSPACE%\Code\Third_Party\lib\win64\Python27;%PATH%
         # Mantid projects necessary for short build (minimal projects to start Mantid):
         self._MANTID_short={'Framework':'Framework.vcxproj','MantidPlot':'MantidPlot.vcxproj','MantidQT/Python':'mantidqtpython.vcxproj'}
@@ -55,7 +58,7 @@ class br(object):
         # cmd: the command processor for the environment to build the project and the batch files to set up necessary environment
         self._cmd = 'cmd.exe /s /c "{0} && echo "{1}" && set"'
         # the bat file used to set up environment for visual studio and C++ or nothing if the environment to build has been set up globally on the current machine
-        self._set_up_env = 'c:/programming/VS2012/VC/vcvarsall.bat';
+        self._set_up_env = 'c:/programming/VS2015_com/VC/vcvarsall.bat'
 
         # default file name for the log file
         path = os.getcwd();
@@ -792,7 +795,7 @@ class br(object):
 
                 self.append_log("{0} Starting {3} run for Mantid, branch {1} located in: {2} \n".format(log_head,local_branch_toBuild,repo_root,build_type))
                 repo_id = os.path.split(repo_root)
-                self._current_job_id = repo_id[1]+'_'+local_branch_toBuild+'_'+build_type
+                self._current_job_id = self.build_current_job_id(repo_root,local_branch_toBuild,build_type)
 
                 # Try to build actual project
                 try:
@@ -816,7 +819,18 @@ class br(object):
 
         log_head=datetime.datetime.now().strftime(":%B,%d,%Y::%I:%M%p::")
         self.append_log(("{0} finished Mantid cron job {1}\n"+
-                         "--------------------------------\n").format(log_head,job_description_file))     
+                         "--------------------------------\n").format(log_head,job_description_file))
+    # 
+    def build_current_job_id(self,repo_root,local_branch_toBuild,build_type):
+        """Build unique ID (name) of the job to identify log files produced by this job"""
+        if repo_root == self.__MANTID_Loc: 
+            repo_name = 'MANTID_main'
+        else:
+            repo_name = ''
+            repo_path = repo_root
+            while len(repo_name) == 0 and len(repo_path) != 0:
+                repo_path,repo_name = os.path.split(repo_path)
+            return '{0}_{1}_{2}'.format(repo_name,local_branch_toBuild,build_type)
     @staticmethod
     def parse_args(accept_args,*args):
         """
