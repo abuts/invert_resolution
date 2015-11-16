@@ -405,7 +405,7 @@ class br(object):
         """
         err = subprocess.call(['git','status'])
         if err != 0: # not on Git
-            return ""
+            return "",""
         remote = subprocess.check_output(['git','remote','-v']) #
         repo_url = remote.split()[1]
         full_repo_name = os.path.split(repo_url)[-1]
@@ -1038,5 +1038,4 @@ if __name__ == '__main__':
 
 #env = builder.get_environment_from_batch_command(builder._set_up_env)
  #builder.build_project(env,builder._MANT_Build_relLoc,True,True);
-
 
