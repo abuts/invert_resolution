@@ -13,7 +13,7 @@
     <RootNamespace>branching</RootNamespace>
     <IsWindowsApplication>False</IsWindowsApplication>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
-    <CommandLineArguments>build debug Old</CommandLineArguments>
+    <CommandLineArguments>build dwri</CommandLineArguments>
     <InterpreterPath>c:\Programming\Python2_7\python.exe</InterpreterPath>
     <InterpreterArguments />
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>

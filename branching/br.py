@@ -163,10 +163,10 @@ class br(object):
     def build_single_proj(self,*args):
         """ build single project from command line:
 
-        >>br build [*Release|Debug|DWRI|All,Main] [*Full|Fast] [*Old|Clean]
+        >>br build [*Release|Debug|RDI|All,Main] [*Full|Fast] [*Old|Clean]
 
         assumes that the branch to build is checked out 
-        where DWRI means DebugWithReleaseInfo, All -- all three builds and Main == [Debug & Release]
+        where RDI means ReleaseWithDebugInfo, All -- all three builds and Main == [Debug & Release]
         Full/Fast -- build full project or minimal projects sufficient to build Mantid
         Old/Clean -- try to build the project over existing branch or clean project first.
 
