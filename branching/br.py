@@ -32,7 +32,7 @@ class br(object):
         self._cmake   = ['c:/programming/CMake/bin/cmake.exe']
         self._addpath = r'c:\programming\CMake\bin;'
         # Path relative to Manitd location
-        self._lib_path = r'ThirdParty\lib'
+        self._lib_rel_path = r'external\src\ThirdParty'
         # cmake parameters:
         self._cmake_par = ['-G','Visual Studio 14 2015 Win64','-Wno-dev','-DCONSOLE=ON','-DMAKE_VATES=OFF','-DENABLE_CPACK=ON',
                           #'-DCXXTEST_ADD_PERFORMANCE=TRUE',
@@ -52,8 +52,8 @@ class br(object):
 
         # Mantid path template specifying all additional references to libraries to build Mantid
         self._MANTID_Path_base=r'c:\\programming\\Paraview_Dev\\bin\\Release;'\
-        '{MANTID}\\ThirdParty\\bin;{MANTID}\\ThirdParty\\lib\\python2.7;{MANTID}\\ThirdParty\\lib\\qt4\\bin;'\
-        '{MANTID}\\ThirdParty\\lib\\qt4\\lib;{PATH}'
+        '{MANTID}\\ThirdParty\\bin;{MANTID}\\{LIB_PATH}\\python2.7;{MANTID}\\{LIB_PATH}\\qt4\\bin;'\
+        '{MANTID}\\{LIB_PATH}\\qt4\\lib;{PATH}'
         # set PATH=C:\Builds\ParaView-3.98.1-source\build\bin\Release;%WORKSPACE%\Code\Third_Party\lib\win64;%WORKSPACE%\Code\Third_Party\lib\win64\Python27;%PATH%
         # Mantid projects necessary for short build (minimal projects to start Mantid):
         self._MANTID_short={'Framework':'Framework.vcxproj','MantidPlot':'MantidPlot.vcxproj','MantidQT/Python':'mantidqtpython.vcxproj'}
@@ -276,6 +276,7 @@ class br(object):
         loc_env = dict()
         loc_env['PATH'] = env['PATH'];
         loc_env['MANTID']= repo_path;
+        loc_env['LIB_PATH']=self._lib_rel_path
         env['PATH']=self._MANTID_Path_base.format(**loc_env);
         # the path to the particular build flavor (Debug|Release|DebugWithReleaseInfo etc.)
         build_flavour_path = os.path.join(build_path,'bin',buildType)
@@ -319,7 +320,7 @@ class br(object):
             code_path  = repo_path #os.path.join(repo_path,'Code/Mantid')
             cmake = self._cmake+self._cmake_par+[code_path]
             # run cmake
-            env['PATH']=self._addpath+';'+os.path.join(self._MANTID_Loc,self._lib_path)+';'+os.environ["PATH"]
+            env['PATH']=self._addpath+';'+os.path.join(self._MANTID_Loc,self._lib_rel_path)+';'+os.environ["PATH"]
             err=subprocess.call(cmake,env=env)
             if err != 0:
                 os.chdir(current_dir);
