@@ -28,9 +28,8 @@ class br(object):
         # the parameters for this program
         n_cpu=mps.cpu_count()/2
         self._make_par=['/nologo','/m:{0}'.format(n_cpu),'/nr:false']
-        # the parameters for making configuration
-        self._cmake   = ['c:/programming/CMake/bin/cmake.exe']
-        self._addpath = r'c:\programming\CMake\bin;'
+        #cmake location (cmake.exe)
+        self._cmake_path = r'c:\programming\CMake\bin'
         # Path relative to Manitd location
         self._lib_rel_path = r'external\src\ThirdParty'
         # cmake parameters:
@@ -43,7 +42,7 @@ class br(object):
 
         # the file with user properties, located in mantid repository root and used as basic generic properties file (not to set 
         # commont searh/data directories, paraview path etc. for each build)
-        self._prop_file ='Mantid.user.properties'
+        self._copy_files =['Mantid.user.properties','Mantid.bat']
         #self._MANTID_Loc='d:/Data/Mantid_GIT_dev/'
         #self._MANTID_Loc='d:/Data/Mantid_GIT/'
 
@@ -51,9 +50,11 @@ class br(object):
         self._MANT_Build_relLoc='_builds/'
 
         # Mantid path template specifying all additional references to libraries to build Mantid
-        self._MANTID_Path_base=r'c:\\programming\\Paraview_Dev\\bin\\Release;'\
-        '{MANTID}\\ThirdParty\\bin;{MANTID}\\{LIB_PATH}\\python2.7;{MANTID}\\{LIB_PATH}\\qt4\\bin;'\
-        '{MANTID}\\{LIB_PATH}\\qt4\\lib;{PATH}'
+        self._MANTID_Path_base=r'c:\programming\Paraview_Dev\bin\\Release;'\
+        '{MANTID}\\{LIB_PATH};{MANTID}\\{LIB_PATH}\\bin;'\
+        '{MANTID}\\{LIB_PATH}\\lib\\python2.7;'\
+        '{MANTID}\\{LIB_PATH}\\lib\\qt4\\bin;'\
+        '{MANTID}\\{LIB_PATH}\\lib\\qt4\\lib;{PATH}'
         # set PATH=C:\Builds\ParaView-3.98.1-source\build\bin\Release;%WORKSPACE%\Code\Third_Party\lib\win64;%WORKSPACE%\Code\Third_Party\lib\win64\Python27;%PATH%
         # Mantid projects necessary for short build (minimal projects to start Mantid):
         self._MANTID_short={'Framework':'Framework.vcxproj','MantidPlot':'MantidPlot.vcxproj','MantidQT/Python':'mantidqtpython.vcxproj'}
@@ -61,7 +62,7 @@ class br(object):
         # cmd: the command processor for the environment to build the project and the batch files to set up necessary environment
         self._cmd = 'cmd.exe /s /c "{0} && echo "{1}" && set"'
         # the bat file used to set up environment for visual studio and C++ or nothing if the environment to build has been set up globally on the current machine
-        self._set_up_env = 'c:/programming/VS2015_com/VC/vcvarsall.bat'
+        self._set_up_env = r'c:\programming\VS2015_com\VC\bin\x86_amd64\vcvarsx86_amd64.bat'
 
         # default file name for the log file
         path = os.getcwd();
@@ -163,15 +164,16 @@ class br(object):
     def build_single_proj(self,*args):
         """ build single project from command line:
 
-        >>br build [*Release|Debug|RDI|All,Main] [*Full|Fast] [*Old|Clean]
+        >>br build [*Release|Debug|RDI|All,Main] [*Full|Fast] [*Old|Clean|First]
 
         assumes that the branch to build is checked out 
         where RDI means ReleaseWithDebugInfo, All -- all three builds and Main == [Debug & Release]
         Full/Fast -- build full project or minimal projects sufficient to build Mantid
         Old/Clean -- try to build the project over existing branch or clean project first.
+        First     -- do not delete existing project but rerun cmake
 
         """
-        accepted_args ={"Type":"*Release|Debug|RDI|All|Main","Kind":"*Full|Fast","Freshness":"*Old|Clean",'RepoPath':"$Path"};
+        accepted_args ={"Type":"*Release|Debug|RDI|All|Main","Kind":"*Full|Fast","Freshness":"*Old|Clean|First",'RepoPath':"$Path"};
        
         provided=self.parse_args(accepted_args,*args);
         for key,val in provided.iteritems():
@@ -231,6 +233,9 @@ class br(object):
         # Force continuing build
         if 'Freshness' in provided and provided['Freshness'][0] == 'old':
             firstBuild  = False
+        if 'Freshness' in provided and provided['Freshness'][0] == 'first':
+            firstBuild  = True
+
 
         for build_type in build_types:
             if build_type=='rdi':
@@ -270,14 +275,22 @@ class br(object):
 
         assumes that the brunch to build is current branch
         """
+        # This is werid prblem, as path on some systems has random case
+        path_cases = ['PATH','Path','path']
+        cur_path_case = path_cases[0]
+        for case in path_cases:
+            if case in env:
+                cur_path_case = case
+                break
 
 
         # modify path to understand Mantid project and Mantid libraries. 
         loc_env = dict()
-        loc_env['PATH'] = env['PATH'];
-        loc_env['MANTID']= repo_path;
+        loc_env['PATH'] = env[cur_path_case];
+        loc_env['MANTID']= repo_path.rstrip('/\\');
         loc_env['LIB_PATH']=self._lib_rel_path
         env['PATH']=self._MANTID_Path_base.format(**loc_env);
+
         # the path to the particular build flavor (Debug|Release|DebugWithReleaseInfo etc.)
         build_flavour_path = os.path.join(build_path,'bin',buildType)
         # check if the build is locked and do not clean it otherwise
@@ -317,11 +330,14 @@ class br(object):
         if first_build:
             # form cmake command:
             # code path:
-            code_path  = repo_path #os.path.join(repo_path,'Code/Mantid')
-            cmake = self._cmake+self._cmake_par+[code_path]
+            code_path  = repo_path.rstrip('/\\') #os.path.join(repo_path,'Code/Mantid')
+            cmake = [os.path.join(self._cmake_path,'cmake.exe')]+self._cmake_par+[code_path]
             # run cmake
-            env['PATH']=self._addpath+';'+os.path.join(self._MANTID_Loc,self._lib_rel_path)+';'+os.environ["PATH"]
+            old_path = env['PATH']
+            env['PATH']=self._cmake_path+';'+env['PATH']
             err=subprocess.call(cmake,env=env)
+            env['PATH']= old_path
+
             if err != 0:
                 os.chdir(current_dir);
                 raise RuntimeError("Can not execute cmake")
@@ -340,11 +356,12 @@ class br(object):
             err=self.run_build('Mantid.sln',buildType,cleanBuildAttempted,env);
 
         # copy Mantid.parameters to target build directory if prop file exist and target properties file does not
-        prop_file = os.path.join(repo_path,self._MANT_Build_relLoc,self._prop_file);
-        if os.path.exists(prop_file):
-           targ_file = os.path.join(build_flavour_path,self._prop_file)
-           if not os.path.exists(targ_file):
-              shutil.copyfile(prop_file,targ_file);
+        for the_file in self._copy_files:
+            full_file = os.path.join(repo_path,self._MANT_Build_relLoc,the_file);
+            if os.path.exists(full_file):
+                targ_file = os.path.join(build_flavour_path,the_file)
+                if os.path.isdir(build_flavour_path) and not os.path.exists(targ_file):
+                   shutil.copyfile(full_file,targ_file);
 
         # return back to the source directory
         os.chdir(current_dir);
