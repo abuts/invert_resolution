@@ -3,26 +3,25 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>92bc55bb-cac3-47ad-b3a5-7172a47ef2ec</ProjectGuid>
-    <ProjectHome>.</ProjectHome>
-    <StartupFile>runIndividualFromGUI.py</StartupFile>
+    <ProjectGuid>7de7d019-7039-4e37-9aab-8bc165b6acb0</ProjectGuid>
+    <ProjectHome>c:\Mantid\scripts\test\</ProjectHome>
+    <StartupFile>c:\Mantid\scripts\test\DirectEnergyConversionTest.py</StartupFile>
     <SearchPath>
     </SearchPath>
-    <WorkingDirectory>.</WorkingDirectory>
+    <WorkingDirectory>c:\Mantid\scripts\Inelastic</WorkingDirectory>
     <OutputPath>.</OutputPath>
-    <InterpreterId>00000000-0000-0000-0000-000000000000</InterpreterId>
-    <InterpreterVersion>
-    </InterpreterVersion>
-    <Name>SystemTests</Name>
-    <RootNamespace>SystemTests</RootNamespace>
+    <InterpreterId>{3f5eace1-70ad-4e78-8db8-b9d1106a5738}</InterpreterId>
+    <InterpreterVersion>2.7</InterpreterVersion>
+    <Name>DirectEnergyConversionTest</Name>
+    <RootNamespace>DirectEnergyConversionTest</RootNamespace>
+    <IsWindowsApplication>False</IsWindowsApplication>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
     <CommandLineArguments />
     <InterpreterPath>c:\Mantid\external\src\ThirdParty\lib\python2.7\python.exe</InterpreterPath>
     <InterpreterArguments />
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
-    <IsWindowsApplication>False</IsWindowsApplication>
     <Environment>PATH=c:\Mantid\_builds\br_14456\bin\Release;c:\Mantid\_builds\br_14456\bin\Release\PVPlugins\PVPlugins;c:\Mantid\external\src\ThirdParty\bin;c:\Programming\Paraview_Dev\bin\Release;
-PYTHONPATH=c:/Mantid/_builds/br_14456/bin/Release;c:/Mantid/_builds/br_14456/bin/Release/mantid;c:/Mantid/scripts/Inelastic;c:\Mantid\Testing\SystemTests\lib\systemtests;c:\Mantid\Testing\SystemTests\tests\analysis;d:/Data/Mantid_ScriptRepo_eqPublicRepo/direct_inelastic/ISIS/qtiGenie</Environment>
+PYTHONPATH=c:/Mantid/_builds/br_14456/bin/Release;c:/Mantid/_builds/br_14456/bin/Release/mantid;c:/Mantid/scripts/Inelastic;d:/Data/Mantid_ScriptRepo_eqPublicRepo/direct_inelastic/ISIS/qtiGenie</Environment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -37,7 +36,10 @@ PYTHONPATH=c:/Mantid/_builds/br_14456/bin/Release;c:/Mantid/_builds/br_14456/bin
     <PtvsTargetsFile>$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets</PtvsTargetsFile>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="runIndividualFromGUI.py" />
+    <Compile Include="DirectEnergyConversionTest.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterpreterReference Include="{3f5eace1-70ad-4e78-8db8-b9d1106a5738}\2.7" />
   </ItemGroup>
   <Import Project="$(PtvsTargetsFile)" Condition="Exists($(PtvsTargetsFile))" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="!Exists($(PtvsTargetsFile))" />

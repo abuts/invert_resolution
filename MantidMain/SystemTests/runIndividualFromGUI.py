@@ -35,6 +35,10 @@ import inspect
 #config['defaultsave.directory'] = data_dir # folder to save resulting spe/nxspe files. Defaults are in
 
 # data search directories
+MARITests = ['MARIReductionFromFile','MARIReductionAutoEi','MARIReductionFromFileCache',
+             'MARIReductionFromWorkspace','MARIReductionMon2Norm','MARIReductionMonSeparate',
+             'MARIReductionSum','MARIReductionWaitAndSum'];
+MARIComponentTests = ['ISIS_ReductionWebLike','ISIS_ReductionWrapperValidate']
 
 
 #reference_dir = 'C:/Backup/Backup_folder1/work/code/Mantid/git/mantid/Test/systemTests/SystemTests/AnalysisTests/ReferenceResults'
@@ -54,16 +58,16 @@ modlToRun = ['ISISDirectInelastic']
 
 #modlToRun = ['Diffraction_Workflow_Test'];
 #testToRun = ['Diffraction_Workflow_Test']
-testToRun = ['MARIReductionAutoEi']
+#testToRun = ['MARIReductionAutoEi']
 #testToRun = ['POLDIDataAnalysisTestSiIndividual']
 #testToRun = ['ISISLoadFilesLET']
-#testToRun = ['MERLINReduction']
+testToRun = ['MERLINReduction']
 #testToRun = ['MARIReductionFromFile','MARIReductionSum']
-#testToRun = ['MARIReductionFromWorkspace','MARIReductionFromFile','MARIReductionSum','MAPSDgreduceReduction','LETReduction','LETReductionEvent2014Multirep','MERLINReduction']
-#testToRun = ['LETReductionEvent2014Multirep']
-#testToRun = ['MARIReductionFromWorkspace','MARIReductionFromFile','MARIReductionSum'];
-#testToRun = []
+#testToRun = ['MARIReductionFromWorkspace','MARIReductionFromFile','MARIReductionSum','MAPSDgreduceReduction','LETReduction','LETReductionEvent2015Multirep','MERLINReduction']
+#testToRun = ['LETReductionEvent2015Multirep']
+testToRun = MARITests
 #,
+#testToRun = ['ISIS_ReductionWebLike','ISIS_ReductionWrapperValidate']
 
 
 
