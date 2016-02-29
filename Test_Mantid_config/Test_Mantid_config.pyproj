@@ -5,16 +5,18 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>8c7fe82f-dedc-45a7-b287-2fec77e9d53a</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>c:\Mantid\Code\Mantid\scripts\test\ISISDirecInelasticConfigTest.py</StartupFile>
-    <SearchPath>c:/Mantid/Code/builds/br_master/bin/Release;c:\Mantid\Code\Mantid\scripts\test;C:\Mantid\Code\Third_Party\lib\win64;c:\Mantid\Code\Mantid\scripts\Inelastic</SearchPath>
+    <StartupFile>c:\Mantid\scripts\test\ISISDirecInelasticConfigTest.py</StartupFile>
+    <SearchPath>c:\Mantid\scripts\test;c:\Mantid\scripts\Inelastic</SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <Name>Build_Mantid_config</Name>
     <RootNamespace>Build_Mantid_config</RootNamespace>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
-    <InterpreterPath>c:\Mantid\Code\builds\br_master\bin\Release\python.exe</InterpreterPath>
+    <InterpreterPath>c:\mprogs\MantidBuildInstall\bin\python.exe</InterpreterPath>
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
     <IsWindowsApplication>False</IsWindowsApplication>
+    <Environment>PATH=c:\mprogs\MantidBuildInstall\bin;c:\mprogs\MantidBuildInstall\PVPlugins;c:\mprogs\MantidBuildInstall\PVPlugins\PVPlugins;c:\Programming\Paraview_Dev\bin\Release</Environment>
+    <CommandLineArguments>wkc26243 MARI 1520335 153 20151104</CommandLineArguments>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>

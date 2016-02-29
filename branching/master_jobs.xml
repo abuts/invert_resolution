@@ -10,7 +10,7 @@
   </job>
 
   <!--  For building current ticket, not to constantly rebuild mantid configuration  -->
-  <job branch_ID ="14071" clean_build="True"  skip_this="False" >
+  <job branch_ID ="14071" clean_build="True"  skip_this="True" >
     <build type ="Release"  skip_this="False"/>
     <build type ="Debug" skip_this="False"/>
     <build type ="RelWithDebInfo" skip_this="True"/>
@@ -25,35 +25,13 @@
   </job>
 
   <!--  For testing branch, which has its own build and will be in master_BrNo folder -->
-  <job branch_ID ="14083"  mantid_root="d:/Data/MantidDevArea/testing_mantid" merge_to="master"  skip_this="False">
+  <job branch_ID ="14083"  mantid_root="d:/Data/MantidDevArea/testing_mantid" merge_to="master"  skip_this="True">
     <build type ="Release"/>
     <build type ="Debug" skip_this="False"/>
     <build type ="RelWithDebInfo" skip_this="True"/>
   </job>
  
-  
-<!--  For testing branch, which has its own build and will be in master_BrNo folder -->
-  <job branch_ID ="12551"  mantid_root="d:/Data/MantidDevArea/testing_mantid" merge_to="master"  skip_this="True">
-    <build type ="Release"/>
-    <build type ="Debug" skip_this="False"/>
-    <build type ="RelWithDebInfo" skip_this="True"/>
-  </job>
-
-
-  
-  <!--  For builing current master or  working branch, build in master folder so that all test subprojecrs in test folders can be used -->
-  <job branch_ID ="develop" clean_build="True"  skip_this="True" >
-    <build type ="Release"  skip_this="False"/>
-    <build type ="Debug" skip_this="False"/>
-  </job>
-  
-  
-   
-  <job branch_ID ="9998" clean_build="True"  skip_this="True" >
-    <build type ="Release"  skip_this="False"/>
-    <build type ="Debug" skip_this="False"/>
-    <build type ="RelWithDebInfo" skip_this="True"/>
-  </job>
+ 
   
 
 </job_description>

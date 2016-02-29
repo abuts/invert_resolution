@@ -1,4 +1,5 @@
 ﻿from collections import OrderedDict
+from  math import ceil,floor
 
 def process_detectors(filename):
     """ Process the file containing semicolon (;) separated list of detectors information
@@ -45,21 +46,29 @@ def find_params(det_col):
 
     return (min_R,min_specID,min_detID,max_R,max_specID,max_detID)
 
-def build_rings_spectra_map(det_col):
+def build_rings_spectra_map(det_col,step=0.5):
     """ Procedure to group spectra in lists according to Theta column values
-        with accuracy 0.5 in Theta. The round-off to 0.5 is embedded in the code.
+        with accuracy 0.5 in Theta. 
     """
     det_theta=det_col['Theta']
+    for i,th in enumerate(det_theta):
+        det_theta[i] = float(th)
+
     spec_num = det_col['Spectrum No']
     distance = det_col['R']
+    theta_min = min(det_theta)
+    theta_max = max(det_theta)
+    n_steps = (ceil(theta_max) - floor(theta_min))/step
+    #indexes = range(0,n_steps)
 
     ring_list = {};
     for det in zip(det_theta,spec_num,distance):
-        if(float(det[2]) > 5.5):
+        if(float(det[2]) > 5.5): #Skip monitors
             theta = float(det[0])
-            theta0 = round(theta,0)
-            theta1 = round(theta+0.5,0)
-            key = '{0:.1f}'.format(0.5*(theta0+theta1))
+            #theta0 = round(theta,0)
+            #theta1 = round(theta+0.5,0)
+            #key = '{0:.1f}'.format(0.5*(theta0+theta1))
+            key = floor((theta-floor(theta_min))/step)
             spec_id = det[1].replace(',','')
             if key in ring_list:
                 ring_list[key].append(spec_id)
@@ -67,7 +76,7 @@ def build_rings_spectra_map(det_col):
                 ring_list[key] = [spec_id]
     return ring_list
 
-def save_rings_map(ring_dic,filename):    
+def save_rings_map(ring_dic,filename):
     """ Save ISIS ring map calculated by build_rings_spectra_map procedure
         in ISIS map format. First string of the script contains 
         the assumptions about map accuracy (accuracy is less or equal then 0.1degree in Theta)
@@ -91,6 +100,7 @@ def save_rings_map(ring_dic,filename):
 
 if __name__=="__main__":
     print '--------------   MAP  ----------------------------------'
+    i=10
     det_col =process_detectors('MAP_SpectraList.txt')
     print "The detector file contains the following columns: ", det_col.keys()
     ring_list = build_rings_spectra_map(det_col)

@@ -12,6 +12,9 @@
     <OutputPath>.</OutputPath>
     <Name>Parse_DetList</Name>
     <RootNamespace>Parse_DetList</RootNamespace>
+    <LaunchProvider>Standard Python launcher</LaunchProvider>
+    <InterpreterPath>c:\Programming\Python2_7\python.exe</InterpreterPath>
+    <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>

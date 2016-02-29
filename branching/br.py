@@ -40,11 +40,9 @@ class br(object):
                            '-DMANTID_DATA_STORE=d:\Data\MantidDevArea\Datastore']
 
 
-        # the file with user properties, located in mantid repository root and used as basic generic properties file (not to set 
+        # the file with user properties, located in Mantid repository root and used as basic generic properties file (not to set 
         # commont searh/data directories, paraview path etc. for each build)
         self._copy_files =['Mantid.user.properties','Mantid.bat']
-        #self._MANTID_Loc='d:/Data/Mantid_GIT_dev/'
-        #self._MANTID_Loc='d:/Data/Mantid_GIT/'
 
         # build location with respect to the Mantid Git repository location
         self._MANT_Build_relLoc='_builds/'
