@@ -42,3 +42,31 @@
 :November,03,2015::05:19PM:: Skipping job with ID 9998 
 :November,03,2015::05:19PM:: finished Mantid cron job master_jobs.xml
 --------------------------------
+----------------------------------------------------------------------
+:November,13,2015::05:50PM:: Starting cron jobs for parameters: master_jobs.xml
+:November,13,2015::05:50PM:: Starting Release run for Mantid, branch master located in: c:\Mantid/ 
+----------------------------------------------------------------------
+:November,13,2015::05:53PM:: Starting cron jobs for parameters: master_jobs.xml
+:November,13,2015::05:54PM:: Starting Release run for Mantid, branch master located in: c:\Mantid/ 
++                            Build parameters: First build: True; Fast Build: False, Clean Build: True
+----------------------------------------------------------------------
+:November,14,2015::12:58PM:: Starting cron jobs for parameters: master_jobs.xml
+:November,14,2015::12:59PM:: Starting Release run for Mantid, branch master located in: c:\Mantid/ 
++                            Build parameters: First build: True; Fast Build: False, Clean Build: True
++                            ERR: Can not execute msbuild for : Mantid.sln while building target project Release
+:November,14,2015::06:12PM:: Skipping build Debug run for Mantid, branch master located in: c:\Mantid/ 
+:November,14,2015::06:12PM:: Skipping build RelWithDebInfo run for Mantid, branch master located in: c:\Mantid/ 
+:November,14,2015::06:12PM:: Skipping job with ID 14071 
+:November,14,2015::06:12PM:: Starting Release run for Mantid, branch master located in: d:/Data/MantidDevArea/testing_mantid/ 
++                            Build parameters: First build: True; Fast Build: False, Clean Build: True
++                            ERR: Can not execute msbuild for : Mantid.sln while building target project Release
+:November,14,2015::07:24PM:: Starting Debug run for Mantid, branch master located in: d:/Data/MantidDevArea/testing_mantid/ 
++                            Build parameters: First build: True; Fast Build: False, Clean Build: False
++                            ERR: Can not execute msbuild for : Mantid.sln while building target project Debug
+:November,14,2015::10:00PM:: Skipping build RelWithDebInfo run for Mantid, branch master located in: d:/Data/MantidDevArea/testing_mantid/ 
++                           , Can not prepare source branch: ERR: merging ERR: can not find the branch with ID 14083  to current branch to master, skipping this job
+:November,14,2015::10:01PM:: Skipping job with ID 12551 
+:November,14,2015::10:01PM:: Skipping job with ID develop 
+:November,14,2015::10:01PM:: Skipping job with ID 9998 
+:November,14,2015::10:01PM:: finished Mantid cron job master_jobs.xml
+--------------------------------

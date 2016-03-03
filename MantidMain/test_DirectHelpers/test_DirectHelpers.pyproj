@@ -3,19 +3,22 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>a2db5394-e3f2-40f4-85e1-df9d6f07d8c2</ProjectGuid>
+    <ProjectGuid>825cbf08-e9c4-43a5-bce4-06b0f6c3cb8e</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>c:\Mantid\scripts\test\ReductionWrapperTest.py</StartupFile>
-    <SearchPath>c:\Mantid\_builds\br_14071\bin\Release;c:\Mantid\scripts\Inelastic</SearchPath>
-    <WorkingDirectory>c:\Mantid\scripts\test</WorkingDirectory>
+    <StartupFile>c:\Mantid\scripts\test\DirectReductionHelpersTest.py</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
-    <Name>TestReductionWrapper</Name>
-    <RootNamespace>TestReductionWrapper</RootNamespace>
+    <Name>test_DirectHelpers</Name>
+    <RootNamespace>test_DirectHelpers</RootNamespace>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
-    <InterpreterPath>c:\Mantid\_builds\br_14071\bin\Release\python.exe</InterpreterPath>
+    <InterpreterPath>c:\Mantid\external\src\ThirdParty\lib\python2.7\python.exe</InterpreterPath>
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
-    <IsWindowsApplication>True</IsWindowsApplication>
-    <Environment>PATH=c:\Mantid\_builds\br_14071\bin\Release;c:\Mantid\Third_Party\lib\win64;c:\Mantid\_builds\br_master\bin\Release\PVPlugins\PVPlugins;c:\Programming\Paraview_Dev\bin\Release</Environment>
+    <IsWindowsApplication>False</IsWindowsApplication>
+    <DebugStdLib>False</DebugStdLib>
+    <Environment>PATH=c:\Mantid\_builds\br_master\bin\Release;c:\Mantid\_builds\br_master\bin\Release\PVPlugins\PVPlugins;c:\Mantid\external\src\ThirdParty\bin;c:\Programming\Paraview_Dev\bin\Release;
+PYTHONPATH=c:/Mantid/_builds/br_master/bin/Release;c:/Mantid/_builds/br_master/bin/Release/mantid;c:/Mantid/scripts/Inelastic;c:\Mantid\Testing\SystemTests\lib\systemtests;c:\Mantid\Testing\SystemTests\tests\analysis;d:/Data/Mantid_ScriptRepo_eqPublicRepo/direct_inelastic/ISIS/qtiGenie</Environment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>

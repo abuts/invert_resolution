@@ -65,7 +65,7 @@ testToRun = ['MERLINReduction']
 #testToRun = ['MARIReductionFromFile','MARIReductionSum']
 #testToRun = ['MARIReductionFromWorkspace','MARIReductionFromFile','MARIReductionSum','MAPSDgreduceReduction','LETReduction','LETReductionEvent2015Multirep','MERLINReduction']
 #testToRun = ['LETReductionEvent2015Multirep']
-testToRun = MARITests
+testToRun = ['MARIReductionWaitAndSum']
 #,
 #testToRun = ['ISIS_ReductionWebLike','ISIS_ReductionWrapperValidate']
 
