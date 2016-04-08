@@ -33,7 +33,7 @@ class br(object):
         # Path relative to Manitd location
         self._lib_rel_path = r'external\src\ThirdParty'
         # cmake parameters:
-        self._cmake_par = ['-G','Visual Studio 14 2015 Win64','-Wno-dev','-DCONSOLE=ON','-DMAKE_VATES=OFF','-DENABLE_CPACK=ON',
+        self._cmake_par = ['-G','Visual Studio 14 2015 Win64','-Wno-dev','-DCONSOLE=ON','-DMAKE_VATES=ON','-DENABLE_CPACK=ON',
                           #'-DCXXTEST_ADD_PERFORMANCE=TRUE',
                            '-DQT_ASSISTANT_FETCH_IMAGES=OFF','-DUSE_PRECOMPILED_HEADERS=OFF','-DParaView_DIR=c:/programming/Paraview_Dev/',
                            '-DExternalData_BINARY_ROOT=d:\Data\MantidDevArea\Datastore\DataCopies',
