@@ -98,7 +98,7 @@ def filter_spurion(ws,Emin,Emax,NBins,visualize_result=True,use_proton_chare_log
                 try:
                     chunk_ws = NormaliseByCurrent(chunk_ws)
                 except RuntimeError as rer:
-                    filter_result = "frame: {0:5}; time: {1:10}sec; ---- proton charge is zero. Frame ignored".format(ind,bin)
+                    filter_result = "frame: {0:5}; time: {1:10}sec; ---- proton charge is zero. Frame ignored".format(ind,bin_)
                     print filter_result  
                     frame_signal = 0
                     data_present = False
@@ -145,7 +145,7 @@ def filter_spurion(ws,Emin,Emax,NBins,visualize_result=True,use_proton_chare_log
 
 if __name__ == '__main__':
         fname = r'd:\Data\Python_proj\ProcessSpurion\MER30314.nxs'
-        ws_name = 'MER30302'
+        ws_name = 'LET00026647'
         #fname = r'd:\Data\Python_proj\ProcessSpurion\LET00026647.nxs'
         #ws_name = 'LET00026647'
 
