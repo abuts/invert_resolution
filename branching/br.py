@@ -31,11 +31,10 @@ class br(object):
         #cmake location (cmake.exe)
         self._cmake_path = r'c:\programming\CMake\bin'
         # Path relative to Manitd location
-        self._lib_rel_path = r'external\src\ThirdParty'
         # cmake parameters:
-        self._cmake_par = ['-G','Visual Studio 14 2015 Win64','-Wno-dev','-DCONSOLE=ON','-DMAKE_VATES=OFF','-DENABLE_CPACK=ON',
+        self._cmake_par = ['-G','Visual Studio 14 2015 Win64','-Wno-dev','-DCONSOLE=ON','-DMAKE_VATES=ON','-DENABLE_CPACK=ON',
                           #'-DCXXTEST_ADD_PERFORMANCE=TRUE',
-                           '-DQT_ASSISTANT_FETCH_IMAGES=OFF','-DUSE_PRECOMPILED_HEADERS=OFF','-DParaView_DIR=c:/programming/Paraview_Dev/',
+                           '-DQT_ASSISTANT_FETCH_IMAGES=OFF','-DUSE_PRECOMPILED_HEADERS=OFF','-DParaView_DIR=D:/Data/MantidDevArea/paraview/Build/ParaView-5.0.0',
                            '-DExternalData_BINARY_ROOT=d:\Data\MantidDevArea\Datastore\DataCopies',
                            '-DMANTID_DATA_STORE=d:\Data\MantidDevArea\Datastore']
 
@@ -43,16 +42,26 @@ class br(object):
         # the file with user properties, located in Mantid repository root and used as basic generic properties file (not to set 
         # commont searh/data directories, paraview path etc. for each build)
         self._copy_files =['Mantid.user.properties','Mantid.bat']
+        # the name of PATH env variable (it can be any case on windows, and as not relevant for win environent,
+        # but do relevant to env dictionary in python
+        self._PATH = 'PATH'
 
         # build location with respect to the Mantid Git repository location
         self._MANT_Build_relLoc='_builds/'
+        self._ThirdParty = {'THIRD_PARTY':r'C:/Mantid/external/src/ThirdParty'}
+        self._MiskEnv = {'QT4_BIN':r'{THIRD_PARTY}\lib\qt4\bin;{THIRD_PARTY}\lib\qt4\lib',\
+         'PYTHONHOME':r'{THIRD_PARTY}\lib\python2.7',\
+         'MISC_BIN':r'{THIRD_PARTY}\bin;{THIRD_PARTY}\bin\mingw',\
+         'PYTHONPATH':r'{THIRD_PARTY}\lib\python2.7;{THIRD_PARTY}\lib\qt4\bin;{THIRD_PARTY}\lib\qt4\lib;{THIRD_PARTY}\lib\python2.7\sip\PyQt4'}
+        for key,val in self._MiskEnv.items():
+            self._MiskEnv[key] = val.format(**self._ThirdParty)
 
         # Mantid path template specifying all additional references to libraries to build Mantid
-        self._MANTID_Path_base=r'c:\programming\Paraview_Dev\bin\\Release;'\
-        '{MANTID}\\{LIB_PATH};{MANTID}\\{LIB_PATH}\\bin;'\
-        '{MANTID}\\{LIB_PATH}\\lib\\python2.7;'\
-        '{MANTID}\\{LIB_PATH}\\lib\\qt4\\bin;'\
-        '{MANTID}\\{LIB_PATH}\\lib\\qt4\\lib;{PATH}'
+        self._MANTID_Path_base=r'c:\mprogs\Paraview_Dev\bin\Release'
+        for val in self._MiskEnv.values():
+            self._MANTID_Path_base=self._MANTID_Path_base+';'+val
+        self._MANTID_Path_base = self._MANTID_Path_base+';{PATH}'
+
         # set PATH=C:\Builds\ParaView-3.98.1-source\build\bin\Release;%WORKSPACE%\Code\Third_Party\lib\win64;%WORKSPACE%\Code\Third_Party\lib\win64\Python27;%PATH%
         # Mantid projects necessary for short build (minimal projects to start Mantid):
         self._MANTID_short={'Framework':'Framework.vcxproj','MantidPlot':'MantidPlot.vcxproj','MantidQT/Python':'mantidqtpython.vcxproj'}
@@ -281,13 +290,13 @@ class br(object):
                 cur_path_case = case
                 break
 
+        self._PATH = cur_path_case
 
         # modify path to understand Mantid project and Mantid libraries. 
         loc_env = dict()
-        loc_env['PATH'] = env[cur_path_case];
+        loc_env['PATH'] = env[self._PATH];
         loc_env['MANTID']= repo_path.rstrip('/\\');
-        loc_env['LIB_PATH']=self._lib_rel_path
-        env['PATH']=self._MANTID_Path_base.format(**loc_env);
+        env[self._PATH]=self._MANTID_Path_base.format(**loc_env);
 
         # the path to the particular build flavor (Debug|Release|DebugWithReleaseInfo etc.)
         build_flavour_path = os.path.join(build_path,'bin',buildType)
@@ -331,10 +340,10 @@ class br(object):
             code_path  = repo_path.rstrip('/\\') #os.path.join(repo_path,'Code/Mantid')
             cmake = [os.path.join(self._cmake_path,'cmake.exe')]+self._cmake_par+[code_path]
             # run cmake
-            old_path = env['PATH']
-            env['PATH']=self._cmake_path+';'+env['PATH']
+            old_path = env[self._PATH]
+            env[self._PATH]=self._cmake_path+';'+env[self._PATH]
             err=subprocess.call(cmake,env=env)
-            env['PATH']= old_path
+            env[self._PATH]= old_path
 
             if err != 0:
                 os.chdir(current_dir);
@@ -387,7 +396,9 @@ class br(object):
         proc = subprocess.Popen(cmd, stdout=subprocess.PIPE)
         # parse the output sent to stdout
         reject = True
-        result={};
+        #First, take auxiliary variables necessary for proper operations
+        result=self._MiskEnv.copy()
+
     # define a way to handle each KEY=VALUE line
         handle_line = lambda l: l.rstrip().split('=',1)
         for line in proc.stdout:
@@ -401,6 +412,7 @@ class br(object):
 
         # let the process finish
         proc.communicate()
+
         return result
 #
     def build_target_br_name(self,br_ID_to_merge_to,source_br_ID):

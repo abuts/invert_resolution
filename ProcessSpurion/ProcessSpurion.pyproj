@@ -5,16 +5,21 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>2ec30ae4-7da5-4675-9dba-325a6a748b10</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>d:\users\abuts\SVN\ISIS\Python\ProcessSpurion\process_spurion2D.py</StartupFile>
-    <SearchPath>c:\Mantid\Code\builds\br_master\bin\Release;c:\Mantid\Code\Mantid\scripts\Inelastic;c:\Mantid\Code\Third_Party\lib\win64</SearchPath>
+    <StartupFile>d:\Users\wkc26243\Data\Python_proj\ProcessSpurion\process_spurion2D.py</StartupFile>
+    <SearchPath>c:\mprogs\MantidInstall\bin; c:\mprogs\MantidInstall\PVPlugins;c:\mprogs\MantidInstall\plugins;$(PATH)</SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <Name>ProcessSpurion</Name>
     <RootNamespace>ProcessSpurion</RootNamespace>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
-    <InterpreterPath>c:\Mantid\Code\builds\br_master\bin\Release\python.exe</InterpreterPath>
+    <InterpreterPath>c:\mprogs\MantidInstall\bin\python.exe</InterpreterPath>
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
     <IsWindowsApplication>False</IsWindowsApplication>
+    <Environment>%INSTALL_DIR% = c:\mprogs\MantidInstall
+%MANTIDPATH% = c:\mprogs\MantidInstall\bin
+PYTHONPATH = c:\mprogs\MantidInstall\bin;%PYTHONPATH%
+PATH= c:\mprogs\MantidInstall\bin; c:\mprogs\MantidInstall\PVPlugins;c:\mprogs\MantidInstall\plugins;$(PATH)
+</Environment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
