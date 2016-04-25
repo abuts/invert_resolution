@@ -12,7 +12,7 @@
     <Name>Build_Mantid_config</Name>
     <RootNamespace>Build_Mantid_config</RootNamespace>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
-    <InterpreterPath>c:\Mantid\Code\builds\br_master\bin\Release\python.exe</InterpreterPath>
+    <InterpreterPath>c:\Mantid\ThirdParty\lib\python2.7\python.exe</InterpreterPath>
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
     <IsWindowsApplication>False</IsWindowsApplication>
   </PropertyGroup>

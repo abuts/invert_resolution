@@ -6,15 +6,17 @@
     <ProjectGuid>4629c50d-0f55-4661-bd17-95494f137a3b</ProjectGuid>
     <ProjectHome>.</ProjectHome>
     <StartupFile>red_debug.py</StartupFile>
-    <SearchPath>c:\Mantid\Code\builds\br_10803\bin\Release;c:\Mantid\Code\Mantid\scripts\Inelastic;d:\Data\MantidSystemTests\SystemTests\AnalysisTests;c:\Mantid\Code\Third_Party\lib\win64;d:\Data\Mantid_ScriptRepo_eqPublicRepo\direct_inelastic\ISIS\qtiGenie</SearchPath>
+    <SearchPath>c:\Mantid\_builds\br_master\bin\Release;c:\Mantid\scripts\Inelastic</SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <Name>RunReduction</Name>
     <RootNamespace>RunReduction</RootNamespace>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
-    <InterpreterPath>c:\Mantid\Code\builds\br_10803\bin\Release\python.exe</InterpreterPath>
+    <InterpreterPath>c:\Mantid\ThirdParty\lib\python2.7\python.exe</InterpreterPath>
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
     <IsWindowsApplication>False</IsWindowsApplication>
+    <Environment>PATH=c:\Mantid\_builds\br_master\bin\Release;c:\Mantid\external\src\ThirdParty\bin;c:\Mantid\external\src\ThirdParty\lib\qt4\bin;c:\Mantid\external\src\ThirdParty\lib\qt4\lib;c:\Mantid\_builds\br_master\bin\Release\PVPlugins\PVPlugins;c:\Programming\Paraview_Dev\bin\Release;
+PYTHONPATH=c:/Mantid/_builds/br_master/bin/Release;c:/Mantid/_builds/br_master/bin/Release/mantid;c:/Mantid/scripts/Inelastic;d:\Data\MantidDevArea\script_repo_mantid/ c:\Mantid\Testing\SystemTests\lib\systemtests;c:\Mantid\Testing\SystemTests\tests\analysis;d:\Data\MantidDevArea\script_repo_mantid\direct_inelastic\ISIS\qtiGenie</Environment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
