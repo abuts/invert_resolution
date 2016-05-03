@@ -4,12 +4,12 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>ea55edfa-8397-4b64-a035-372e8261e23a</ProjectGuid>
-    <StartupFile>d:\Data\Mantid_ScriptRepo_eqPublicRepo\direct_inelastic\MARI\MARIReduction_Sample.py</StartupFile>
+    <StartupFile>d:\Data\Python_proj\MantidMain\ReduceMARI\reduce_mari.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
-    <InterpreterId>{55b03ede-8c5d-4fce-b889-29a02cde6fe0}</InterpreterId>
+    <InterpreterId>{bba9b81f-c745-4c7c-a04b-86b47e034eb6}</InterpreterId>
     <InterpreterVersion>2.7</InterpreterVersion>
     <Name>ReduceMARI</Name>
     <RootNamespace>ReduceMARI</RootNamespace>
@@ -19,8 +19,8 @@
     <InterpreterPath>c:\Mantid\external\src\ThirdParty\lib\python2.7\python.exe</InterpreterPath>
     <InterpreterArguments />
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
-    <Environment>PATH=c:\Mantid\_builds\br_14456\bin\Release;c:\Mantid\_builds\br_14456\bin\Release\PVPlugins\PVPlugins;c:\Mantid\external\src\ThirdParty\bin;c:\Programming\Paraview_Dev\bin\Release;
-PYTHONPATH=c:/Mantid/_builds/br_14456/bin/Release;c:/Mantid/_builds/br_14456/bin/Release/mantid;c:/Mantid/scripts/Inelastic;d:/Data/Mantid_ScriptRepo_eqPublicRepo/direct_inelastic/ISIS/qtiGenie</Environment>
+    <Environment>PATH=c:\Mantid\_builds\br_master\bin\Release;c:\Mantid\external\src\ThirdParty\bin;c:\Mantid\external\src\ThirdParty\lib\qt4\bin;c:\Mantid\external\src\ThirdParty\lib\qt4\lib;c:\Mantid\_builds\br_master\bin\Release\PVPlugins\PVPlugins;c:\Programming\Paraview_Dev\bin\Release;
+PYTHONPATH=c:/Mantid/_builds/br_master/bin/Release;c:/Mantid/_builds/br_master/bin/Release/mantid;c:/Mantid/scripts/Inelastic;c:\Mantid\Testing\SystemTests\lib\systemtests;c:\Mantid\Testing\SystemTests\tests\analysis;d:/Data/Mantid_ScriptRepo_eqPublicRepo/direct_inelastic/ISIS/qtiGenie</Environment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -36,6 +36,7 @@ PYTHONPATH=c:/Mantid/_builds/br_14456/bin/Release;c:/Mantid/_builds/br_14456/bin
   </PropertyGroup>
   <ItemGroup>
     <InterpreterReference Include="{55b03ede-8c5d-4fce-b889-29a02cde6fe0}\2.7" />
+    <InterpreterReference Include="{bba9b81f-c745-4c7c-a04b-86b47e034eb6}\2.7" />
   </ItemGroup>
   <Import Project="$(PtvsTargetsFile)" Condition="Exists($(PtvsTargetsFile))" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="!Exists($(PtvsTargetsFile))" />

@@ -6,17 +6,20 @@
     <ProjectGuid>8c7fe82f-dedc-45a7-b287-2fec77e9d53a</ProjectGuid>
     <ProjectHome>.</ProjectHome>
     <StartupFile>c:\Mantid\scripts\test\ISISDirecInelasticConfigTest.py</StartupFile>
-    <SearchPath>c:\Mantid\scripts\test;c:\Mantid\scripts\Inelastic</SearchPath>
+    <SearchPath>c:\Mantid\_builds\br_master\bin\Release;c:\Mantid\scripts\Inelastic</SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <Name>Build_Mantid_config</Name>
     <RootNamespace>Build_Mantid_config</RootNamespace>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
-    <InterpreterPath>c:\mprogs\MantidBuildInstall\bin\python.exe</InterpreterPath>
+    <InterpreterPath>c:\Mantid\ThirdParty\lib\python2.7\python.exe</InterpreterPath>
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
     <IsWindowsApplication>False</IsWindowsApplication>
-    <Environment>PATH=c:\mprogs\MantidBuildInstall\bin;c:\mprogs\MantidBuildInstall\PVPlugins;c:\mprogs\MantidBuildInstall\PVPlugins\PVPlugins;c:\Programming\Paraview_Dev\bin\Release</Environment>
-    <CommandLineArguments>wkc26243 MARI 1520335 153 20151104</CommandLineArguments>
+    <Environment>PATH=c:\Mantid\_builds\br_master\bin\Release;c:\Mantid\external\src\ThirdParty\bin;c:\Mantid\external\src\ThirdParty\lib\qt4\bin;c:\Mantid\external\src\ThirdParty\lib\qt4\lib;c:\Mantid\_builds\br_master\bin\Release\PVPlugins\PVPlugins;c:\Programming\Paraview_Dev\bin\Release;
+PYTHONPATH=c:/Mantid/_builds/br_master/bin/Release;c:/Mantid/_builds/br_master/bin/Release/mantid;c:/Mantid/scripts/Inelastic;d:\Data\MantidDevArea\script_repo_mantid/ c:\Mantid\Testing\SystemTests\lib\systemtests;c:\Mantid\Testing\SystemTests\tests\analysis;d:\Data\MantidDevArea\script_repo_mantid\direct_inelastic\ISIS\qtiGenie
+</Environment>
+    <CommandLineArguments>
+    </CommandLineArguments>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
