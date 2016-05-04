@@ -107,8 +107,8 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(OutDir);..\..\..\..\_builds\$(BuildBranch)\bin\Debug;..\..\..\..\Third_Party\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;boost_date_time-mt-gd.lib;boost_regex-mt-gd.lib;PocoFoundationd.lib;PocoUtild.lib;PocoXMLd.lib;PocoNetd.lib;PocoCryptod.lib;PocoNetSSLd.lib;muparserd.lib;gsl_d.lib;cblas_d.lib;gmock.lib;MantidKernel.lib;MantidGeometry.lib;MantidAPI.lib;MantidDataObjects.lib;MantidCurveFitting.lib;MantidAlgorithms.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(OutDir);..\..\..\..\_builds\$(BuildBranch)\bin\Debug;c:\Mantid\external\src\ThirdParty\lib\;c:\Mantid\external\src\ThirdParty\lib\qt4\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;boost_date_time-mt-gd.lib;boost_regex-mt-gd.lib;PocoFoundationd.lib;PocoUtild.lib;PocoXMLd.lib;PocoNetd.lib;PocoCryptod.lib;PocoNetSSLd.lib;muparserd.lib;gsl_d.lib;cblas_d.lib;MantidKernel.lib;MantidGeometry.lib;MantidAPI.lib;MantidDataObjects.lib;MantidCurveFitting.lib;MantidAlgorithms.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -148,14 +148,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <Text Include="ReadMe.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <CustomBuild Include="test_header.h">
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\programming\Python27\Lib\site-packages\cxxtest\cxxtestgenx.py  --runner=ParenPrinter -o "%(Filename).cpp" "%(FullPath)"</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\programming\Python27\Lib\site-packages\cxxtest\cxxtestgenx.py  --runner=ParenPrinter -o "%(Filename).cpp" "%(FullPath)"</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\programming\Python27\Lib\site-packages\cxxtest\cxxtestgenx.py  --runner=ParenPrinter -o TestSelectedAlgorithms.cpp "%(FullPath)"</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\programming\Python27\Lib\site-packages\cxxtest\cxxtestgenx.py  --runner=ParenPrinter -o "%(Filename).cpp" "%(FullPath)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">c:\Programming\Python2_7\Lib\site-packages\cxxtest\cxxtestgen.py  --runner=ParenPrinter -o TestSelectedAlgorithms.cpp "%(FullPath)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">c:\Programming\Python2_7\Lib\site-packages\cxxtest\cxxtestgen.py  --runner=ParenPrinter -o TestSelectedAlgorithms.cpp "%(FullPath)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">c:\Programming\Python2_7\Lib\site-packages\cxxtest\cxxtestgen.py  --runner=ParenPrinter -o TestSelectedAlgorithms.cpp "%(FullPath)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">c:\Programming\Python2_7\Lib\site-packages\cxxtest\cxxtestgen.py  --runner=ParenPrinter -o TestSelectedAlgorithms.cpp "%(FullPath)"</Command>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">building main header for testing selected algorithms</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">TestSelectedAlgorithms.cpp</Outputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">building main header for testing selected algorithms</Message>
@@ -168,37 +165,21 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\TestHelpers\src\ComponentCreationHelper.cpp" />
+    <ClCompile Include="..\..\..\TestHelpers\src\InstrumentCreationHelper.cpp" />
     <ClCompile Include="..\..\..\TestHelpers\src\WorkspaceCreationHelper.cpp" />
-    <ClCompile Include="CalculateFlatBackgroundTest.cpp" />
-    <ClCompile Include="RemoveBackgroundTest.cpp" />
+    <ClCompile Include="GetEiV1Test.cpp" />
     <ClCompile Include="TestSelectedAlgorithms.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="..\NormaliseByCurrentTest.h">
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\programming\Python27\Lib\site-packages\cxxtest\cxxtestgenx.py --part -o "%(Filename).cpp" "%(FullPath)"</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">building test for: %(FileName)</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(FileName).cpp</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\programming\Python27\Lib\site-packages\cxxtest\cxxtestgenx.py --part -o "%(Filename).cpp" "%(FullPath)"</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">building test for: %(FileName)</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(FileName).cpp</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\programming\Python27\Lib\site-packages\cxxtest\cxxtestgenx.py --part -o "%(Filename).cpp" "%(FullPath)"</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">building test for: %(FileName)</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(FileName).cpp</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\programming\Python27\Lib\site-packages\cxxtest\cxxtestgenx.py --part -o "%(Filename).cpp" "%(FullPath)"</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">building test for: %(FileName)</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(FileName).cpp</Outputs>
-    </CustomBuild>
-  </ItemGroup>
-  <ItemGroup>
-    <CustomBuild Include="..\He3TubeEfficiencyTest.h">
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\programming\Python27\Lib\site-packages\cxxtest\cxxtestgenx.py --part -o "%(Filename).cpp" "%(FullPath)"</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\programming\Python27\Lib\site-packages\cxxtest\cxxtestgenx.py --part -o "%(Filename).cpp" "%(FullPath)"</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\programming\Python27\Lib\site-packages\cxxtest\cxxtestgenx.py --part -o "%(Filename).cpp" "%(FullPath)"</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\programming\Python27\Lib\site-packages\cxxtest\cxxtestgenx.py --part -o "%(Filename).cpp" "%(FullPath)"</Command>
+    <CustomBuild Include="..\GetEiV1Test.h">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">c:\Programming\Python2_7\Lib\site-packages\cxxtest\cxxtestgen.py --part -o "%(Filename).cpp" "%(FullPath)"</Command>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">building test for: %(FileName)</Message>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">building test for: %(FileName)</Message>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">building test for: %(FileName)</Message>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">building test for: %(FileName)</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">c:\Programming\Python2_7\Lib\site-packages\cxxtest\cxxtestgen.py --part -o "%(Filename).cpp" "%(FullPath)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">c:\Programming\Python2_7\Lib\site-packages\cxxtest\cxxtestgen.py --part -o "%(Filename).cpp" "%(FullPath)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">c:\Programming\Python2_7\Lib\site-packages\cxxtest\cxxtestgen.py --part -o "%(Filename).cpp" "%(FullPath)"</Command>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(FileName).cpp</Outputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(FileName).cpp</Outputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(FileName).cpp</Outputs>
@@ -206,31 +187,9 @@
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\TestHelpers\inc\MantidTestHelpers\ComponentCreationHelper.h" />
+    <ClInclude Include="..\..\..\TestHelpers\inc\MantidTestHelpers\InstrumentCreationHelper.h" />
     <ClInclude Include="..\..\..\TestHelpers\inc\MantidTestHelpers\WorkspaceCreationHelper.h" />
-    <CustomBuild Include="..\RemoveBackgroundTest.h">
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\programming\Python27\Lib\site-packages\cxxtest\cxxtestgenx.py --part -o "%(Filename).cpp" "%(FullPath)"</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">building test for: %(FileName)</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(FileName).cpp</Outputs>
-    </CustomBuild>
-    <CustomBuild Include="..\CalculateFlatBackgroundTest.h">
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\programming\Python27\Lib\site-packages\cxxtest\cxxtestgenx.py --part -o "%(Filename).cpp" "%(FullPath)"</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">building test for: %(FileName)</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(FileName).cpp</Outputs>
-    </CustomBuild>
-    <CustomBuild Include="..\RenameWorkspaceTest.h">
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\programming\Python27\Lib\site-packages\cxxtest\cxxtestgenx.py --part -o "%(Filename).cpp" "%(FullPath)"</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">building test for: %(FileName)</Message>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">building test for: %(FileName)</Message>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">building test for: %(FileName)</Message>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">building test for: %(FileName)</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\programming\Python27\Lib\site-packages\cxxtest\cxxtestgenx.py --part -o "%(Filename).cpp" "%(FullPath)"</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\programming\Python27\Lib\site-packages\cxxtest\cxxtestgenx.py --part -o "%(Filename).cpp" "%(FullPath)"</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\programming\Python27\Lib\site-packages\cxxtest\cxxtestgenx.py --part -o "%(Filename).cpp" "%(FullPath)"</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(FileName).cpp</Outputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(FileName).cpp</Outputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(FileName).cpp</Outputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(FileName).cpp</Outputs>
-    </CustomBuild>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
