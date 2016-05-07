@@ -15,25 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="ReadMe.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <CustomBuild Include="test_header.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="..\NormaliseByCurrentTest.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="..\He3TubeEfficiencyTest.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="..\RenameWorkspaceTest.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="..\CalculateFlatBackgroundTest.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="..\RemoveBackgroundTest.h">
+    <CustomBuild Include="..\GetEiV1Test.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
   </ItemGroup>
@@ -47,15 +32,21 @@
     <ClCompile Include="TestSelectedAlgorithms.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CalculateFlatBackgroundTest.cpp">
+    <ClCompile Include="..\..\..\TestHelpers\src\InstrumentCreationHelper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="RemoveBackgroundTest.cpp">
+    <ClCompile Include="GetEiV1Test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\TestHelpers\inc\MantidTestHelpers\WorkspaceCreationHelper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\TestHelpers\inc\MantidTestHelpers\ComponentCreationHelper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\TestHelpers\inc\MantidTestHelpers\InstrumentCreationHelper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
