@@ -2,11 +2,11 @@ import math
 import os
 import datetime, time
 import numpy
-os.environ["PATH"] = r"c:\mprogs\MantidInstall\bin;"+os.environ["PATH"]
+#os.environ["PATH"] = r"c:\mprogs\MantidInstall\bin;"+os.environ["PATH"]
 from mantid.simpleapi import *
 from mantid import config,api
 
-def filter_spurion(ws,Emin,Emax,NBins,visualize_result=True,use_proton_chare_log=True,trust_good_frames=True,log_name = "block_count_rate"):
+def calc_count_rate(ws,Emin,Emax,NBins,visualize_result=True,use_proton_chare_log=True,trust_good_frames=True,log_name = "block_count_rate"):
     """ Filter workspace from spurion appearing in specified energy range
         Inputs:
         ws -- the name or pointer to workspace to filter
@@ -144,13 +144,13 @@ def filter_spurion(ws,Emin,Emax,NBins,visualize_result=True,use_proton_chare_log
     return total_signal/n_chunks
 
 if __name__ == '__main__':
-        fname = r'd:\Data\Python_proj\ProcessSpurion\MER30314.nxs'
-        ws_name = 'LET00026647'
+        #fname = r'd:\Data\Python_proj\ProcessSpurion\MER30314.nxs'
+        ws_name = 'LET00027215'
         #fname = r'd:\Data\Python_proj\ProcessSpurion\LET00026647.nxs'
         #ws_name = 'LET00026647'
 
         #LoadEventNexus(Filename=fname,OutputWorkspace=ws_name,SingleBankPixelsOnly='0',LoadMonitors='1',MonitorsAsEvents='0')
         #ws_name = 'MER30314'
 
-        av_signal = filter_spurion(ws_name,0.1,100.,200,True,False,False)
+        av_signal = calc_count_rate(ws_name,1.,4.,100,True,True,True)
         print "avrg_signal : ",av_signal 
