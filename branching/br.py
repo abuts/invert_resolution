@@ -334,7 +334,7 @@ class br(object):
 
         os.chdir(build_path )
 
-        if first_build:
+        if first_build or cleanBuildAttempted:
             # form cmake command:
             # code path:
             code_path  = repo_path.rstrip('/\\') #os.path.join(repo_path,'Code/Mantid')
