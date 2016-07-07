@@ -32,6 +32,9 @@
     <ClCompile Include="..\..\..\TestHelpers\src\InstrumentCreationHelper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MaskDetectorsTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\TestHelpers\inc\MantidTestHelpers\WorkspaceCreationHelper.h">
@@ -41,6 +44,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\TestHelpers\inc\MantidTestHelpers\InstrumentCreationHelper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MaskDetectorsTest.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

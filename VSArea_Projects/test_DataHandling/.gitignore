@@ -1,0 +1,4 @@
+*.cpp
+/*.opendb
+/*.db
+/mantid.log
