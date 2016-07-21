@@ -18,6 +18,12 @@
     <CustomBuild Include="test_header.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
+    <CustomBuild Include="..\LoadMaskTest.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\MaskDetectorsTest.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\TestHelpers\src\ComponentCreationHelper.cpp">
@@ -35,6 +41,15 @@
     <ClCompile Include="MaskDetectorsTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="LoadMaskTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\TestHelpers\src\ScopedFileHelper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SaveMaskTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\TestHelpers\inc\MantidTestHelpers\WorkspaceCreationHelper.h">
@@ -46,7 +61,10 @@
     <ClInclude Include="..\..\..\TestHelpers\inc\MantidTestHelpers\InstrumentCreationHelper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\MaskDetectorsTest.h">
+    <ClInclude Include="..\..\..\TestHelpers\inc\MantidTestHelpers\ScopedFileHelper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SaveMaskTest.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

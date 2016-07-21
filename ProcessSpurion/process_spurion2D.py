@@ -2,7 +2,7 @@ import math
 import os
 import datetime, time
 import numpy
-#os.environ["PATH"] = r"c:\mprogs\MantidInstall\bin;"+os.environ["PATH"]
+os.environ["PATH"] = r"c:\mprogs\MantidInstall\bin;"+os.environ["PATH"]
 from mantid.simpleapi import *
 from mantid import config,api
 
@@ -145,12 +145,12 @@ def calc_count_rate(ws,Emin,Emax,NBins,visualize_result=True,use_proton_chare_lo
 
 if __name__ == '__main__':
         #fname = r'd:\Data\Python_proj\ProcessSpurion\MER30314.nxs'
-        ws_name = 'LET00027215'
-        #fname = r'd:\Data\Python_proj\ProcessSpurion\LET00026647.nxs'
+        ws_name = 'LET00024415'
+        fname = r'd:\Data\Python_proj\ProcessSpurion\LET00024415.nxs'
         #ws_name = 'LET00026647'
 
-        #LoadEventNexus(Filename=fname,OutputWorkspace=ws_name,SingleBankPixelsOnly='0',LoadMonitors='1',MonitorsAsEvents='0')
+        LoadEventNexus(Filename=fname,OutputWorkspace=ws_name,SingleBankPixelsOnly='0',LoadMonitors='1',MonitorsAsEvents='0')
         #ws_name = 'MER30314'
 
-        av_signal = calc_count_rate(ws_name,1.,4.,100,True,True,True)
+        av_signal = calc_count_rate(ws_name,1.,12.,100,True,True,True)
         print "avrg_signal : ",av_signal 

@@ -102,13 +102,13 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;WIN32;_WINDOWS;MS_VISUAL_STUDIO;_USE_MATH_DEFINES;NOMINMAX;GSL_DLL;JSON_DLL;POCO_NO_UNWINDOWS;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;_variadic_max=10;HAVE_STDINT_H;BOOST_ALL_DYN_LINK;BOOST_ALL_NO_LIB;BOOST_DATE_TIME_POSIX_TIME_STD_CONFIG;WNT;ENABLE_OPENCASCADE;CMAKE_INTDIR="Debug";Algorithms_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\inc;..\..\..\Kernel\inc;..\..\..\Geometry\inc;..\..\..\TestHelpers\inc;..\..\..\DataObjects\inc;..\..\..\DataHandling\inc;..\..\..\API\inc;..\..\..\CurveFitting\inc;..\..\..\Nexus\include;..\..\..\..\Third_Party\include;..\..\..\..\Third_Party\Include\jsoncpp;..\..\..\..\Third_Party\Include\OpenCascade;..\..\..\..\Third_Party\Include\muParser;..\..\..\..\Third_Party\include\hdf5;..\..\..\..\Third_Party\include\hdf5\c++;..\..\..\..\Third_Party\include\hdf5\hl;..\..\..\..\Testing\Tools\gmock-1.6.0\include;..\..\..\..\Testing\Tools\gmock-1.6.0\gtest\include;..\..\..\..\Testing\Tools\cxxtest;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\inc;..\..\..\Kernel\inc;..\..\..\HistogramData\inc;..\..\..\Geometry\inc;..\..\..\TestHelpers\inc;..\..\..\DataObjects\inc;..\..\..\DataHandling\inc;..\..\..\API\inc;..\..\..\CurveFitting\inc;..\..\..\Nexus\include;..\..\..\..\Third_Party\include;..\..\..\..\Third_Party\Include\jsoncpp;..\..\..\..\Third_Party\Include\OpenCascade;..\..\..\..\Third_Party\Include\muParser;..\..\..\..\Third_Party\include\hdf5;..\..\..\..\Third_Party\include\hdf5\c++;..\..\..\..\Third_Party\include\hdf5\hl;..\..\..\..\Testing\Tools\gmock-1.6.0\include;..\..\..\..\Testing\Tools\gmock-1.6.0\gtest\include;..\..\..\..\Testing\Tools\cxxtest;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(OutDir);..\..\..\..\_builds\$(BuildBranch)\bin\Debug;c:\Mantid\external\src\ThirdParty\lib\;c:\Mantid\external\src\ThirdParty\lib\qt4\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;boost_date_time-mt-gd.lib;boost_regex-mt-gd.lib;PocoFoundationd.lib;PocoUtild.lib;PocoXMLd.lib;PocoNetd.lib;PocoCryptod.lib;PocoNetSSLd.lib;muparserd.lib;gsl_d.lib;cblas_d.lib;MantidKernel.lib;MantidGeometry.lib;MantidAPI.lib;MantidDataObjects.lib;MantidCurveFitting.lib;MantidAlgorithms.lib;MantidDataHandling.lib</AdditionalDependencies>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;boost_date_time-mt-gd.lib;boost_regex-mt-gd.lib;PocoFoundationd.lib;PocoUtild.lib;PocoXMLd.lib;PocoNetd.lib;PocoCryptod.lib;PocoNetSSLd.lib;muparserd.lib;gsl_d.lib;cblas_d.lib;MantidKernel.lib;MantidHistogramData.lib;MantidGeometry.lib;MantidAPI.lib;MantidDataObjects.lib;MantidCurveFitting.lib;MantidAlgorithms.lib;MantidDataHandling.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -137,14 +137,14 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\inc;..\..\..\Kernel\inc;..\..\..\Geometry\inc;..\..\..\TestHelpers\inc;..\..\..\DataObjects\inc;..\..\..\DataHandling\inc;..\..\..\API\inc;..\..\..\CurveFitting\inc;..\..\..\Nexus\include;..\..\..\..\..\Third_Party\include;..\..\..\..\..\Third_Party\Include\jsoncpp;..\..\..\..\..\Third_Party\Include\OpenCascade;..\..\..\..\..\Third_Party\Include\muParser;..\..\..\..\..\Third_Party\include\hdf5;..\..\..\..\..\Third_Party\include\hdf5\c++;..\..\..\..\..\Third_Party\include\hdf5\hl;..\..\..\..\..\Mantid\Testing\Tools\gmock-1.6.0\include;..\..\..\..\..\Mantid\Testing\Tools\gmock-1.6.0\gtest\include;..\..\..\..\..\Mantid\Testing\Tools\cxxtest;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\inc;..\..\..\Kernel\inc;..\..\..\HistogramData\inc;..\..\..\Geometry\inc;..\..\..\TestHelpers\inc;..\..\..\DataObjects\inc;..\..\..\DataHandling\inc;..\..\..\API\inc;..\..\..\CurveFitting\inc;..\..\..\Nexus\include;..\..\..\..\..\Third_Party\include;..\..\..\..\..\Third_Party\Include\jsoncpp;..\..\..\..\..\Third_Party\Include\OpenCascade;..\..\..\..\..\Third_Party\Include\muParser;..\..\..\..\..\Third_Party\include\hdf5;..\..\..\..\..\Third_Party\include\hdf5\c++;..\..\..\..\..\Third_Party\include\hdf5\hl;..\..\..\..\..\Mantid\Testing\Tools\gmock-1.6.0\include;..\..\..\..\..\Mantid\Testing\Tools\gmock-1.6.0\gtest\include;..\..\..\..\..\Mantid\Testing\Tools\cxxtest;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;boost_date_time-mt-gd.lib;boost_regex-mt-gd.lib;PocoFoundationd.lib;PocoUtild.lib;PocoXMLd.lib;PocoNetd.lib;PocoCryptod.lib;PocoNetSSLd.lib;muparserd.lib;gsl_d.lib;cblas_d.lib;gmock.lib;MantidKernel.lib;MantidGeometry.lib;MantidAPI.lib;MantidDataObjects.lib;MantidAlgorithms.lib</AdditionalDependencies>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;boost_date_time-mt-gd.lib;boost_regex-mt-gd.lib;PocoFoundationd.lib;PocoUtild.lib;PocoXMLd.lib;PocoNetd.lib;PocoCryptod.lib;PocoNetSSLd.lib;muparserd.lib;gsl_d.lib;cblas_d.lib;MantidKernel.lib;MantidHistogramData.lib;MantidGeometry.lib;MantidAPI.lib;MantidDataObjects.lib;MantidCurveFitting.lib;MantidAlgorithms.lib;MantidDataHandling.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(OutDir);..\..\..\..\_builds\$(BuildBranch)\bin\Release;c:\Mantid\external\src\ThirdParty\lib\;c:\Mantid\external\src\ThirdParty\lib\qt4\lib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
@@ -167,14 +167,46 @@
   <ItemGroup>
     <ClCompile Include="..\..\..\TestHelpers\src\ComponentCreationHelper.cpp" />
     <ClCompile Include="..\..\..\TestHelpers\src\InstrumentCreationHelper.cpp" />
+    <ClCompile Include="..\..\..\TestHelpers\src\ScopedFileHelper.cpp" />
     <ClCompile Include="..\..\..\TestHelpers\src\WorkspaceCreationHelper.cpp" />
+    <ClCompile Include="LoadMaskTest.cpp" />
     <ClCompile Include="MaskDetectorsTest.cpp" />
+    <ClCompile Include="SaveMaskTest.cpp" />
     <ClCompile Include="TestSelectedDataH.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\TestHelpers\inc\MantidTestHelpers\ComponentCreationHelper.h" />
     <ClInclude Include="..\..\..\TestHelpers\inc\MantidTestHelpers\InstrumentCreationHelper.h" />
+    <ClInclude Include="..\..\..\TestHelpers\inc\MantidTestHelpers\ScopedFileHelper.h" />
     <ClInclude Include="..\..\..\TestHelpers\inc\MantidTestHelpers\WorkspaceCreationHelper.h" />
+    <CustomBuild Include="..\SaveMaskTest.h">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">c:\Programming\Python2_7\Lib\site-packages\cxxtest\cxxtestgenx.py --part -o "%(Filename).cpp" "%(FullPath)</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">c:\Programming\Python2_7\Lib\site-packages\cxxtest\cxxtestgenx.py --part -o "%(Filename).cpp" "%(FullPath)</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">c:\Programming\Python2_7\Lib\site-packages\cxxtest\cxxtestgenx.py --part -o "%(Filename).cpp" "%(FullPath)</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">c:\Programming\Python2_7\Lib\site-packages\cxxtest\cxxtestgenx.py --part -o "%(Filename).cpp" "%(FullPath)</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">building test for: %(FileName)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">building test for: %(FileName)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">building test for: %(FileName)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">building test for: %(FileName)</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(FileName).cpp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(FileName).cpp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(FileName).cpp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(FileName).cpp</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\LoadMaskTest.h">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">c:\Programming\Python2_7\Lib\site-packages\cxxtest\cxxtestgenx.py --part -o "%(Filename).cpp" "%(FullPath)</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">c:\Programming\Python2_7\Lib\site-packages\cxxtest\cxxtestgenx.py --part -o "%(Filename).cpp" "%(FullPath)</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">c:\Programming\Python2_7\Lib\site-packages\cxxtest\cxxtestgenx.py --part -o "%(Filename).cpp" "%(FullPath)</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">c:\Programming\Python2_7\Lib\site-packages\cxxtest\cxxtestgenx.py --part -o "%(Filename).cpp" "%(FullPath)</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">building test for: %(FileName)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">building test for: %(FileName)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">building test for: %(FileName)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">building test for: %(FileName)</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(FileName).cpp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(FileName).cpp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(FileName).cpp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(FileName).cpp</Outputs>
+    </CustomBuild>
     <CustomBuild Include="..\MaskDetectorsTest.h">
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">c:\Programming\Python2_7\Lib\site-packages\cxxtest\cxxtestgenx.py --part -o "%(Filename).cpp" "%(FullPath)</Command>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">building test for: %(FileName)</Message>

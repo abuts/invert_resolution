@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>2ec30ae4-7da5-4675-9dba-325a6a748b10</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>d:\Users\wkc26243\Data\Python_proj\ProcessSpurion\process_spurion2D.py</StartupFile>
+    <StartupFile>d:\Data\Python_proj\ProcessSpurion\process_spurion2D.py</StartupFile>
     <SearchPath>c:\mprogs\MantidInstall\bin; c:\mprogs\MantidInstall\PVPlugins;c:\mprogs\MantidInstall\plugins;$(PATH)</SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
