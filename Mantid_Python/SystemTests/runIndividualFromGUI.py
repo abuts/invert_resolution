@@ -62,10 +62,10 @@ modlToRun = ['ISISDirectInelastic']
 #testToRun = ['POLDIDataAnalysisTestSiIndividual']
 #testToRun = ['ISISLoadFilesLET']
 testToRun = ['MERLINReduction']
-#testToRun = ['MARIReductionFromFile','MARIReductionSum']
+testToRun = ['MARIReductionFromFile','MARIReductionSum']
 #testToRun = ['MARIReductionFromWorkspace','MARIReductionFromFile','MARIReductionSum','MAPSDgreduceReduction','LETReduction','LETReductionEvent2015Multirep','MERLINReduction']
 #testToRun = ['LETReductionEvent2015Multirep']
-testToRun = ['LETReduction']
+#testToRun = ['LETReduction']
 #,
 #testToRun = ['ISIS_ReductionWebLike','ISIS_ReductionWrapperValidate']
 

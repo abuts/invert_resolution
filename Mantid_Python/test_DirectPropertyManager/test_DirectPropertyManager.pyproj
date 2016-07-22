@@ -16,8 +16,8 @@
     <InterpreterPath>c:\Mantid\external\src\ThirdParty\lib\python2.7\python.exe</InterpreterPath>
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
     <IsWindowsApplication>False</IsWindowsApplication>
-    <Environment>PATH=c:\Mantid\_builds\br_14456\bin\Release;c:\Mantid\_builds\br_14456\bin\Release\PVPlugins\PVPlugins;c:\Mantid\external\src\ThirdParty\bin;c:\Programming\Paraview_Dev\bin\Release
-PYTHONPATH=c:/Mantid/_builds/br_14456/bin/Release;c:/Mantid/_builds/br_14456/bin/Release/mantid;c:/Mantid/scripts/Inelastic;d:/Data/Mantid_ScriptRepo_eqPublicRepo/direct_inelastic/ISIS/qtiGenie</Environment>
+    <Environment>PATH=c:\Mantid\_builds\br_16808\bin\Release;c:\Mantid\_builds\br_16808\bin\Release\PVPlugins\PVPlugins;c:\Mantid\external\src\ThirdParty\bin;c:\Programming\Paraview_Dev\bin\Release
+PYTHONPATH=c:/Mantid/_builds/br_16808/bin/Release;c:/Mantid/_builds/br_16808/bin/Release/mantid;c:/Mantid/scripts/Inelastic;d:/Data/Mantid_ScriptRepo_eqPublicRepo/direct_inelastic/ISIS/qtiGenie</Environment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
