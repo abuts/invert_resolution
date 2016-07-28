@@ -48,6 +48,7 @@ MARIComponentTests = ['ISIS_ReductionWebLike','ISIS_ReductionWrapperValidate']
 # Find these first
 #modlToRun = ['POLDIDataAnalysisTest']
 modlToRun = ['ISISDirectInelastic']
+#modlToRun = ['DirectInelasticDiagnostic']
 #modlToRun = ['ISISDirectReductionComponents']
 #modlToRun = ['PowderDiffProfileCalibrateTest'];
 #testToRun = ['VulcanSeqRefineProfileFromScratch'];
@@ -61,11 +62,13 @@ modlToRun = ['ISISDirectInelastic']
 #testToRun = ['MARIReductionAutoEi']
 #testToRun = ['POLDIDataAnalysisTestSiIndividual']
 #testToRun = ['ISISLoadFilesLET']
-testToRun = ['MERLINReduction']
-testToRun = ['MARIReductionFromFile','MARIReductionSum']
+#testToRun = ['DirectInelasticDiagnostic2']
+#testToRun = ['MARIReductionMonSeparate']
+#testToRun = ['MARIReductionFromFile','MARIReductionSum']
 #testToRun = ['MARIReductionFromWorkspace','MARIReductionFromFile','MARIReductionSum','MAPSDgreduceReduction','LETReduction','LETReductionEvent2015Multirep','MERLINReduction']
 #testToRun = ['LETReductionEvent2015Multirep']
-#testToRun = ['LETReduction']
+testToRun = ['LETReductionEvent2015Multirep']
+#testToRun = ['DirectInelasticDiagnostic']
 #,
 #testToRun = ['ISIS_ReductionWebLike','ISIS_ReductionWrapperValidate']
 
