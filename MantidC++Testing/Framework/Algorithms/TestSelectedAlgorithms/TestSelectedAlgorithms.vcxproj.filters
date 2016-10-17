@@ -21,6 +21,12 @@
     <CustomBuild Include="..\GetEiV1Test.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
+    <CustomBuild Include="..\FindDetectorsOutsideLimitsTest.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\CalculateCountRateTest.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\TestHelpers\src\ComponentCreationHelper.cpp">
@@ -35,10 +41,7 @@
     <ClCompile Include="..\..\..\TestHelpers\src\InstrumentCreationHelper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GetEiV1Test.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="FindDetectorsOutsideLimitsTest.cpp">
+    <ClCompile Include="CalculateCountRateTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -50,12 +53,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\TestHelpers\inc\MantidTestHelpers\InstrumentCreationHelper.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\FindDetectorsOutsideLimitsTest.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CalcCountRateTest.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

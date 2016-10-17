@@ -34,7 +34,7 @@ class br(object):
         # cmake parameters:
         self._cmake_par = ['-G','Visual Studio 14 2015 Win64','-Wno-dev','-DCONSOLE=ON','-DMAKE_VATES=ON','-DENABLE_CPACK=ON',
                           #'-DCXXTEST_ADD_PERFORMANCE=TRUE',
-                           '-DQT_ASSISTANT_FETCH_IMAGES=OFF','-DUSE_PRECOMPILED_HEADERS=OFF','-DParaView_DIR=D:/Data/MantidDevArea/paraview/Build/ParaView-5.0.0',
+                           '-DQT_ASSISTANT_FETCH_IMAGES=OFF','-DUSE_PRECOMPILED_HEADERS=OFF','-DParaView_DIR=d:/Data/MantidDevArea/paraview/Build',
                            '-DExternalData_BINARY_ROOT=d:\Data\MantidDevArea\Datastore\DataCopies',
                            '-DMANTID_DATA_STORE=d:\Data\MantidDevArea\Datastore']
 
@@ -57,7 +57,7 @@ class br(object):
             self._MiskEnv[key] = val.format(**self._ThirdParty)
 
         # Mantid path template specifying all additional references to libraries to build Mantid
-        self._MANTID_Path_base=r'c:\mprogs\Paraview_Dev\bin\Release'
+        self._MANTID_Path_base=r'd:\Data\MantidDevArea\paraview\Build\bin'
         for val in self._MiskEnv.values():
             self._MANTID_Path_base=self._MANTID_Path_base+';'+val
         self._MANTID_Path_base = self._MANTID_Path_base+';{PATH}'
