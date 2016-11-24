@@ -167,8 +167,7 @@
     <ClCompile Include="..\..\..\TestHelpers\src\ComponentCreationHelper.cpp" />
     <ClCompile Include="..\..\..\TestHelpers\src\InstrumentCreationHelper.cpp" />
     <ClCompile Include="..\..\..\TestHelpers\src\WorkspaceCreationHelper.cpp" />
-    <ClCompile Include="FindDetectorsOutsideLimitsTest.cpp" />
-    <ClCompile Include="GetEiV1Test.cpp" />
+    <ClCompile Include="CalculateCountRateTest.cpp" />
     <ClCompile Include="TestSelectedAlgorithms.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -191,12 +190,25 @@
     <ClInclude Include="..\..\..\TestHelpers\inc\MantidTestHelpers\ComponentCreationHelper.h" />
     <ClInclude Include="..\..\..\TestHelpers\inc\MantidTestHelpers\InstrumentCreationHelper.h" />
     <ClInclude Include="..\..\..\TestHelpers\inc\MantidTestHelpers\WorkspaceCreationHelper.h" />
-    <ClInclude Include="..\CalcCountRateTest.h" />
-    <CustomBuild Include="..\FindDetectorsOutsideLimitsTest.h">
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">c:\Programming\Python2_7\Lib\site-packages\cxxtest\cxxtestgen.py --part -o "%(Filename).cpp" "%(FullPath)"</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">c:\Programming\Python2_7\Lib\site-packages\cxxtest\cxxtestgen.py --part -o "%(Filename).cpp" "%(FullPath)"</Command>
+    <CustomBuild Include="..\CalculateCountRateTest.h">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">c:\Programming\Python2_7\Lib\site-packages\cxxtest\cxxtestgenx.py --part -o "%(Filename).cpp" "%(FullPath)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">c:\Programming\Python2_7\Lib\site-packages\cxxtest\cxxtestgenx.py --part -o "%(Filename).cpp" "%(FullPath)"</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">c:\Programming\Python2_7\Lib\site-packages\cxxtest\cxxtestgenx.py --part -o "%(Filename).cpp" "%(FullPath)"</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">c:\Programming\Python2_7\Lib\site-packages\cxxtest\cxxtestgen.py --part -o "%(Filename).cpp" "%(FullPath)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">c:\Programming\Python2_7\Lib\site-packages\cxxtest\cxxtestgenx.py --part -o "%(Filename).cpp" "%(FullPath)"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">building test for: %(FileName)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">building test for: %(FileName)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">building test for: %(FileName)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">building test for: %(FileName)</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(FileName).cpp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(FileName).cpp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(FileName).cpp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(FileName).cpp</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\FindDetectorsOutsideLimitsTest.h">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">c:\Programming\Python2_7\Lib\site-packages\cxxtest\cxxtestgenx.py --part -o "%(Filename).cpp" "%(FullPath)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">c:\Programming\Python2_7\Lib\site-packages\cxxtest\cxxtestgenx.py --part -o "%(Filename).cpp" "%(FullPath)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">c:\Programming\Python2_7\Lib\site-packages\cxxtest\cxxtestgenx.py --part -o "%(Filename).cpp" "%(FullPath)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">c:\Programming\Python2_7\Lib\site-packages\cxxtest\cxxtestgenx.py --part -o "%(Filename).cpp" "%(FullPath)"</Command>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">building test for: %(FileName)</Message>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">building test for: %(FileName)</Message>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">building test for: %(FileName)</Message>
