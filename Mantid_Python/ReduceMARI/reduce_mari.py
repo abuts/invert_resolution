@@ -1,5 +1,5 @@
 from mantid import config
-from MARIReduction_2016_1 import *
+from ReduceMARI_2016_1 import *
 import time
 import os
 import datetime
@@ -7,7 +7,7 @@ import sys
 try:
     #Note: due to the mantid-python implementation, one needs to run this 
     #script in Mantid  script window  TWICE!!!  to deploy the the changes made to MARIReduction_2016_1.py file.
-    reload(sys.modules['MARIReduction_2016_1'])
+    reload(sys.modules['ReduceMARI_2016_1'])
 except:
     print "*** WARNING can not reload MARIReduction_2016_1 file"
     pass
@@ -39,7 +39,7 @@ remove_bkg = True
 # If necessary, add any sequence of reduction paramerters defined in MARIParameters.xml file 
 # to the end ot the illiad string using the form: property=value 
 # (e.g.:  iliad_mari(runno,ei,wbvan,monovan,sam_mass,sam_rmm,sum_runs,check_background=False)
-iliad_mari(runno,ei,wbvan,monovan,sam_mass,sam_rmm,sum_runs,check_background=remove_bkg)
+iliad_mari(runno,ei,wbvan,monovan,sam_mass,sam_rmm,sum_runs,check_background=remove_bkg,save_file_name='tt')
 
 # Empty can measurement from other user. Ei=50meV 350Hz
 #iliad_mari(21435,ei,wbvan,monovan,sam_mass,sam_rmm,sum_runs,check_background=remove_bkg)
