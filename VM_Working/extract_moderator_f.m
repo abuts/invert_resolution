@@ -1,11 +1,15 @@
 function [f_mod,t_chop,v_chop] = extract_moderator_f(in_mat,time_mod,mod_Energy,tau,L,tau_char,nip)
-% in_mat -- 2D moderator function in units tau(mks) vs lambda (A)
+% in_mat -- 2D moderator function in units tau(mks) vs energy (mEv)
 % time_mod - time axis at moderator  in mks
 % lambda_mod - wavelength axis at moderator (in A)
 % mod_Energy - energy at moderator array (in mEv)
 % tau -- time at choper to shift function around (in chopper opening time
 % units)
-%
+% Output:
+% Interpolated fime-velocity profile at choper position
+% t_chop -- time axis for the profile above (in units of chopper opening
+%           time)
+% v_chop -- velocity axis for the profile above (in m/s)
 
 dt = 2/(nip-1);
 
@@ -26,7 +30,7 @@ tau_mod_max = max(time_mod);
 non_zero = tau_at_chop>=tau_mod_min & tau_at_chop<=tau_mod_max;
 
 nL = numel(V_mod);
-V_mod_w   = reshape(repmat(V_mod,1,nip),nL,nip);
+V_mod_w   = reshape(repmat(V_mod,1,nip),nL,nip); % moderator velocity axis
 v_chop    = V_mod_w(non_zero);
 v_ch_min  = min(v_chop);
 v_ch_max  = max(v_chop);
