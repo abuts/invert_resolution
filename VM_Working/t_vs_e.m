@@ -2,8 +2,15 @@ function [tau,tau_char,R_chop] = t_vs_e(en,L)
 % Get time of flight to the distance L in the units of the chopper
 % opening for given energy
 %
-% L in meters
-% energy in mEv;
+% InputS:
+% L -- distance to chopper in meters
+% en -- array of neutron enegies to process (in mEv);
+%
+% tau      -- time, the neutrons with energy en reach the chopper at
+%             distance L
+% Tau_char -- chopper opening time in sec
+% R_chop   -- chopper curvature radius in m
+%
 %
 % Chopper parameters:
 R_ch = 5; %mm

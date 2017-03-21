@@ -1,4 +1,6 @@
 function [f_samp,t_samp,v_samp] = propagate_pulse(mod_mat,time_mod,vel_mod,L,tau_char)
+% Calculate interpolited time-velocity profile at sample position
+% 
 % mod_mat -- 2D moderator function in units tau(mks) vs 
 % time_mod - time axis at moderator  in chop opening
 % vel_mod  - velocity 
@@ -7,7 +9,7 @@ function [f_samp,t_samp,v_samp] = propagate_pulse(mod_mat,time_mod,vel_mod,L,tau
 % units)
 
 % Output:
-% Interpolated fime-velocity profile at choper position
+% Interpolated fime-velocity profile at sample position
 % t_samp -- time axis for the profile above (in units of chopper opening
 %           time)
 % v_samp -- velocity axis for the profile above (in m/s)
