@@ -40,9 +40,3 @@ xi = xi - (L/tau_char)./yi; % t_samp-L/v;
 
 f_samp = interp2(xb,yb,mod_mat,xi,yi,'nearest',0);
 
-
-
-
-
-
-

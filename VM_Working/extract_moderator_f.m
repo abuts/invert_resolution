@@ -49,6 +49,61 @@ v_chop = v_ch_min:dV:v_ch_max;
 xi = xi - (L/tau_char)./yi;
 
 f_mod = interp2(xb,yb,in_mat',xi,yi,'nearest',0);
+
+[tau1,tau2,t0,R,a0] = evaluate_tau(yi(:,1),f_mod(:,1));
+
+
+function y = ikeda(x,pin)
+
+a = pin(1);
+b = pin(2);
+R = pin(3);
+
+t0 = pin(5);
+xs = x-t0;
+
+
+y = ((1-R)*(xs*a).^2.*exp(-xs*a)+...
+    (R*a*a*b/(a-b)^3)*...
+    (2*exp(-xs*b) - (2+2*(a-b)*xs + (a+b)^2*xs.*xs).*exp(-xs*a)));
+
+
+function [aa,be,t0,R,a0] = evaluate_tau(tf,sf)
+
+
+np = numel(tf);
+nf = floor(0.8*np);
+t_tail = tf(nf:np);
+s_tail = log(sf(nf:np));
+t0 = t_tail(1);
+t_tail = t_tail-t0;
+f_tail = polyfit(t_tail,s_tail,1);
+be = -f_tail(1);
+U  = exp(f_tail(2));
+dt = tf(2)-tf(1);
+Norma = sum(sf)*dt;
+aa = 2/Norma*(1-2*U);
+
+i1 = find(sf>1.e-6,1);
+t_head = tf(i1:i1+7)-tf(i1);
+s_head = sf(i1:i1+7);
+f_head = polyfit(t_head,s_head,2);
+C2 = f_head(1);
+R = 1-C2/(2*aa*aa)-2*U;
+
+
+t0=0;
+a0=0;
+
+
+
+
+
+
+
+
+
+
 %f_mod = interp2(yb',xb',in_mat,yi,xi,'nearest',0);
 
 % convert velocity m/s to mEv

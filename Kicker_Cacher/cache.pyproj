@@ -6,7 +6,7 @@
     <ProjectGuid>cb163a13-b68e-4382-a92d-e06744ef3db8</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>cache.py</StartupFile>
+    <StartupFile>kick_and_test.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -15,7 +15,7 @@
     <RootNamespace>cache</RootNamespace>
     <IsWindowsApplication>False</IsWindowsApplication>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
-    <CommandLineArguments>d:\users\abuts\SVN\Fe\Data\sqw\Fe_ei200.sqw    -n 3</CommandLineArguments>
+    <CommandLineArguments>-n 3</CommandLineArguments>
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -28,6 +28,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="cache.py" />
+    <Compile Include="kick_and_test.py" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
