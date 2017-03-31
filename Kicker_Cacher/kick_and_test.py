@@ -3,7 +3,7 @@
 import multiprocessing
 import threading
 import time
-import sys
+import os,sys
 import argparse
 import numpy
 # Emulate multithreaded Horace workflow to check CEPH validity
@@ -12,7 +12,7 @@ class arr_holder(threading.Thread):
     """ Class to generate test data"""
 
     def __init__(self,n_chunk=0,chunk_size=1024,n_chunks=None):
-        threading.Thread.__init__(self)
+        threading.Thread.__init__(self,group=None,target=None,name='TestDataGenerator')
 
         self.rc = 0
         self.data_lock = threading.Condition()
@@ -37,8 +37,10 @@ class arr_holder(threading.Thread):
     def gen_test_data(self,n_chunk):
         numpy.random.seed(n_chunk)
         tmp = self._arr_holder
-        #self._arr_holder = numpy.random.normal(-1,1,self._chunk_size);
-        self._arr_holder = numpy.ones(self._chunk_size)*n_chunk;
+        if n_chunk % 2:
+            self._arr_holder = numpy.random.normal(-1,1,self._chunk_size);
+        else:
+            self._arr_holder = numpy.ones(self._chunk_size)*n_chunk;
 
         return tmp;
 
@@ -72,78 +74,39 @@ class arr_holder(threading.Thread):
        self.write_lock.acquire()
        self.ready_to_write = True
        self.write_lock.release()
+       return
 
-               # try:
-               #     self.write_lock.wait()
-               # except RuntimeError:
-                #    pass
+
+class check_file_thread_wrapper(threading.Thread):
+    """ wrapper around check file to run it in the thread loop"""
+    total_check = True
+
+    def __init__(self,filename,file_size,chunk_size,n_processes):
+        threading.Thread.__init__(self,group=None,target=None,name = 'testing_file:{0}'.format(filename))
+        #
+        self._filename = filename
+        self._file_size = file_size
+        self._chunk_size = chunk_size
+        self._n_processes = n_processes
+
+    def run(self):
+        if not check_file_thread_wrapper.total_check:
+            raise IOError("Error checking previous file on another thread")
+        print(" Checking file: {0}".format(self._filename))
+        ok = True
+        try:
+            ok = check_file(self._filename,self._file_size,self._chunk_size,self._n_processes)
+        except ValueError:
+            check_file_thread_wrapper.total_check = False
+            raise
+        if not ok:
+            check_file_thread_wrapper.total_check = False
+            raise IOError("Error when testing file {0}".format(self._filename))
+        return
 
 
 
 #
-input_data = arr_holder()
-
-
-class progress_rep:
-    """ report progress of the chunk-reading job"""
-
-    def __init__(self,all_size,n_threads=None):
-        """ Constructor, initiating progress reporting
-            Usage:
-            prog = progress_rep(total_size, n_threads)
-            where:
-            total_size -- the data size to be read
-            n_threads  -- number of threads will be used
-                          to read the file.
-        """
-        self._all_size = all_size
-        self._tick_size = all_size/100
-        if n_threads is None:
-            self._n_threads = 1
-        else:
-            self._n_threads = n_threads
-
-        self._tick_cnt = 0
-        self._tick_barrier = self._tick_size
-        self._prev_size = 0
-        self._start_time = time.time()
-        self._prev_time = self._start_time
-        self._run_time  = self._start_time
-    #
-    def check_progress(self,cur_size):
-        """ check current progress and report if achieved the limit for reporting.
-
-            Adjust the reporting limit to the next position if current limit was achieved.
-            Usage:
-            prog.check_progress(size)
-            where:
-            size -- the amount of data read by current thread.
-        """
-
-        self._tick_cnt += 1
-        if cur_size >=self._tick_barrier:
-            self._report_progress(cur_size)
-            self._tick_barrier += self._tick_size
-    #
-    def _report_progress(self,cur_size):
-        """ Internal method used to check time and print progress message"""
-
-        pers = 100*float(cur_size)/float(self._all_size);
-        self._prev_time  = self._run_time
-        self._run_time   = time.time()
-        tot_size = float(cur_size*self._n_threads)/(1024*1024)
-        block_size = float(cur_size - self._prev_size)*self._n_threads/(1024*1024)
-        tot_time = self._run_time-self._start_time
-        block_time = self._run_time-self._prev_time
-        Av_speed = tot_size / tot_time
-        Loc_speed = block_size / block_time
-        sys.stdout.write(\
-           "Read: {0:.1f}MB Completed: {1:3.1f}% Av Speed: {2:3.2f}MB/s: Loc speed: {3:3.2f}MB/s\r"\
-           .format(tot_size,pers,Av_speed,Loc_speed))
-        sys.stdout.flush()
-        self._prev_size = cur_size
-
-
 
 
 def write_test_file(filename,fielsize,chunk_size):
@@ -154,7 +117,8 @@ def write_test_file(filename,fielsize,chunk_size):
         raise RuntimeError("Can not open test file %s".format(filename))
     n_chunks = fielsize/chunk_size
 
-    input_data.reset_data(0,chunk_size,n_chunks)
+    input_data = arr_holder(0,chunk_size,n_chunks)
+    #input_data.reset_data(0,chunk_size,n_chunks)
     input_data.generating = True
     input_data.start()
     #input_data.run()
@@ -190,8 +154,8 @@ def write_test_file(filename,fielsize,chunk_size):
         dt = cur_time - time1
         Wr_speed = ds / dt
         sys.stdout.write(\
-           "Wrote: {0:.1f}MB Completed: {1:3.1f}% Write Speed: {2:3.2f}MB/s\r"\
-           .format(cur_size,pers,Wr_speed))
+           "file: {0} Wrote: {1:.1f}MB Completed: {2:3.1f}% Write Speed: {3:3.2f}MB/s\r"\
+           .format(filename,cur_size,pers,Wr_speed))
         sys.stdout.flush()
         size1 = cur_size
         time1 = cur_time
@@ -293,7 +257,7 @@ def check_file(filename,file_size,chunk_size,n_threads):
         out = proc_out.recv()
         if not out[0]:
             ok = False
-            print('Error reading chunk N {0}'.format(out[1]))
+            print('file: {0} Error reading chunk N:{1}'.format(filename,out[1]))
         p.join()
     return ok
 #------------------------------------------------
@@ -302,15 +266,51 @@ if __name__ == '__main__':
     """test io operations over large files on CEPH"""
 
     parser = argparse.ArgumentParser(add_help=True, version='0.1',description='test Horace-like IO operations on CEPHs')
-    parser.add_argument('-n',action='store', dest='nthreads',type=int,default=16,help='number of threads to process file. Default is 16 threads')
-    parser.add_argument('-b',action='store', dest='buffer',type=int,default=4096,help='Buffer size to read each chunk of data. Default is 4096 bytes.')
+    parser.add_argument('-nthreads',action='store', dest='n_threads',type=int,default=8,help='number of threads to process file. Default is 16 threads')
+    parser.add_argument('-buffer',action='store', dest='buffer',type=int,default=10000000,help='Horace buffer size to read/write each chunk of data.'+ \
+            'Expressed in Horace "pseudopixels" with default  10^7 pseudopixels. One pseudopixel occupies 40 bytes.')
+    parser.add_argument('-nchunks',action='store', dest='n_chunks',type=int,default=250,help='Number of chunks (buffers) to write. Default 250. Test file size is equal to n_chunks*buffer.')
+    parser.add_argument('-nfiles',action='store', dest='n_files',type=int,default=100,help='Number of files to test. (write and read) Default -- 100')
+
 
     args = vars(parser.parse_args())
     #process_file(args)
     #chunk_size = 5*10000000
-    chunk_size =  5*1000000
-    filesize = 100*chunk_size
+    chunk_size = args['buffer']*5
+    filesize   = args['n_chunks']*chunk_size
+    nthreads   = args['n_threads']
+    n_files    = args['n_files']
 
-    write_test_file("test_file.tmp",filesize,chunk_size)
+#    write_test_file("test_file.tmp",filesize,chunk_size)
 #    ok=read_and_test_chunk("test_file.tmp",75,chunk_size,25)
-    ok = check_file("test_file.tmp",filesize,chunk_size,4)
+    #ok = check_file("test_file.tmp",filesize,chunk_size,4)
+    #if not ok:
+    #    raise IOError("Errors in file")
+    filelist = map(lambda i: 'test_file{0:0>3}.tmp'.format(i),range(0,n_files))
+    write_test_file(filelist[0],filesize,chunk_size)
+    for ind in xrange(1,n_files):
+        checker = check_file_thread_wrapper(filelist[ind-1],filesize,chunk_size,nthreads)
+        checker.start()
+
+        write_test_file(filelist[ind],filesize,chunk_size)
+        checker.join()
+        checker = []
+        try:
+            os.remove(filelist[ind-1])
+        except:
+            pass
+    #---------------------------------
+    ok = check_file(filelist[n_files-1],filesize,chunk_size,nthreads)
+    try:
+        os.remove(filelist[n_files-1])
+    except:
+        pass
+    if not ok:
+        raise IOError("Errors in file {0}".format(filelist[n_files-1]))
+    else:
+        print ("Successfully wrote and verified {0} test files".format(n_files))
+        for fl in filelist:
+            try:
+                os.remove(fl)
+            except:
+                pass

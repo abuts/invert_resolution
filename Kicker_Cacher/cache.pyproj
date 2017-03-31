@@ -15,7 +15,7 @@
     <RootNamespace>cache</RootNamespace>
     <IsWindowsApplication>False</IsWindowsApplication>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
-    <CommandLineArguments>-n 3</CommandLineArguments>
+    <CommandLineArguments>-nthreads 4 -buffer 1000000 -nchunks 100 -nfiles 5</CommandLineArguments>
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
