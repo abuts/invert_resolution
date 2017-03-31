@@ -37,7 +37,7 @@ class arr_holder(threading.Thread):
     def gen_test_data(self,n_chunk):
         numpy.random.seed(n_chunk)
         tmp = self._arr_holder
-        if n_chunk % 2:
+        if n_chunk % 2 == 0:
             self._arr_holder = numpy.random.normal(-1,1,self._chunk_size);
         else:
             self._arr_holder = numpy.ones(self._chunk_size)*n_chunk;
@@ -154,7 +154,7 @@ def write_test_file(filename,fielsize,chunk_size):
         dt = cur_time - time1
         Wr_speed = ds / dt
         sys.stdout.write(\
-           "file: {0} Wrote: {1:.1f}MB Completed: {2:3.1f}% Write Speed: {3:3.2f}MB/s\r"\
+           "file: {0} Written: {1:.1f}MB Completed: {2:3.1f}% Write Speed: {3:3.2f}MB/s\r"\
            .format(filename,cur_size,pers,Wr_speed))
         sys.stdout.flush()
         size1 = cur_size
