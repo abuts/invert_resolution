@@ -34,7 +34,7 @@ class br(object):
         # cmake parameters:
         self._cmake_par = ['-G','Visual Studio 14 2015 Win64','-Wno-dev','-DCONSOLE=ON','-DMAKE_VATES=ON','-DENABLE_CPACK=ON',
                           #'-DCXXTEST_ADD_PERFORMANCE=TRUE',
-                           '-DQT_ASSISTANT_FETCH_IMAGES=OFF','-DUSE_PRECOMPILED_HEADERS=OFF','-DParaView_DIR=d:/Data/MantidDevArea/paraview/Build',
+                           '-DQT_ASSISTANT_FETCH_IMAGES=OFF','-DUSE_PRECOMPILED_HEADERS=ON','-DParaView_DIR=d:/Data/MantidDevArea/paraview/Build',
                            '-DExternalData_BINARY_ROOT=d:\Data\MantidDevArea\Datastore\DataCopies',
                            '-DMANTID_DATA_STORE=d:\Data\MantidDevArea\Datastore']
 

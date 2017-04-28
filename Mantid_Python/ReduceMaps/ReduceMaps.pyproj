@@ -3,26 +3,23 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>cf9daed3-ef50-4812-852e-427a71c524e8</ProjectGuid>
-    <ProjectHome>D:\Data\isis\maps\sample_run2013_june\</ProjectHome>
-    <StartupFile>d:\Data\MantidSystemTests\SystemTests\AnalysisTests\ISIS_MAPS_DGSReduction.py </StartupFile>
-    <SearchPath>c:\Mantid\Code\builds\br_10803\bin\Release;c:\Mantid\Code\Mantid\scripts\Inelastic;c:\Mantid\Code\Third_Party\lib\win64;c:\Mantid\Code\Mantid\scripts\Inelastic;d:\Data\MatidScripsPublicRepository\direct_inelastic\ISIS\qtiGenie</SearchPath>
-    <WorkingDirectory>
-    </WorkingDirectory>
+    <ProjectGuid>43269ed2-7b01-47bb-a583-575e7b8c7289</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>d:\Data\Mantid_Testing\2017\maps\MAPSReduction_Sample.py</StartupFile>
+    <SearchPath>d:\Data\MantidDevArea\script_repo_mantid\direct_inelastic\ISIS\qtiGenie</SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
-    <InterpreterId>00000000-0000-0000-0000-000000000000</InterpreterId>
-    <InterpreterVersion>
-    </InterpreterVersion>
-    <Name>ReduceMaps</Name>
-    <RootNamespace>ReduceMaps</RootNamespace>
-    <IsWindowsApplication>False</IsWindowsApplication>
+    <Name>reduceMaps</Name>
+    <RootNamespace>reduceMaps</RootNamespace>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
-    <CommandLineArguments>
-    </CommandLineArguments>
-    <InterpreterPath>c:\programming\Python27\python.exe</InterpreterPath>
-    <InterpreterArguments>
-    </InterpreterArguments>
+    <CommandLineArguments />
+    <InterpreterPath>c:/mprogs/MantidInstall/bin/python.exe</InterpreterPath>
+    <InterpreterArguments />
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
+    <IsWindowsApplication>False</IsWindowsApplication>
+    <Environment>PATH=c:/mprogs/MantidInstall/bin;c:/mprogs/MantidInstall/plugins;;c:/mprogs/MantidInstall/PVPlugins;%PATH%
+PYTHONPATH=c:/mprogs/MantidInstall/bin;c:/mprogs/MantidInstall/plugins;c:/mprogs/MantidInstall/PVPlugins;c:/mprogs/MantidInstall/scripts/Inelastic;c:\Mantid\Testing\SystemTests\lib\systemtests;c:\Mantid\Testing\SystemTests\tests\analysis
+MPLBACKEND=qt4agg</Environment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -32,12 +29,15 @@
     <DebugSymbols>true</DebugSymbols>
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <PtvsTargetsFile>$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets</PtvsTargetsFile>
+  </PropertyGroup>
   <ItemGroup>
-    <Compile Include="iliad_python.py" />
-    <Compile Include="iliad_python_m.py" />
-    <Compile Include="reduce_fe400Mev.py">
-      <SubType>Code</SubType>
+    <Compile Include="d:\Data\MantidDevArea\script_repo_mantid\direct_inelastic\MAPS\MAPSReduction_Sample.py">
+      <Link>iliad_merlin_eventmode.py</Link>
     </Compile>
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
+  <Import Project="$(PtvsTargetsFile)" Condition="Exists($(PtvsTargetsFile))" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="!Exists($(PtvsTargetsFile))" />
 </Project>
