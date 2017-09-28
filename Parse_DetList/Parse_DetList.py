@@ -48,23 +48,29 @@ def find_params(det_col):
 
 def build_rings_spectra_map(det_col,step=0.5):
     """ Procedure to group spectra in lists according to Theta column values
-        with accuracy 0.5 in Theta. 
+        with accuracy 0.5 in Theta.
     """
     det_theta=det_col['Theta']
+    theta_min = 360;
     for i,th in enumerate(det_theta):
-        det_theta[i] = float(th)
+        TH = float(th)
+        if TH !=0 and TH<theta_min:
+            theta_min = TH
+        det_theta[i] = TH
 
     spec_num = det_col['Spectrum No']
     distance = det_col['R']
-    theta_min = min(det_theta)
+
     theta_max = max(det_theta)
     n_steps = (ceil(theta_max) - floor(theta_min))/step
     #indexes = range(0,n_steps)
-
+    tml = 0
     ring_list = {};
     for det in zip(det_theta,spec_num,distance):
-        if(float(det[2]) > 5.5): #Skip monitors
+        if(float(det[2]) < 5 and  float(det[1]) > 0): #Skip monitors && missing spectra
             theta = float(det[0])
+            if theta > tml:
+                tml = theta
             #theta0 = round(theta,0)
             #theta1 = round(theta+0.5,0)
             #key = '{0:.1f}'.format(0.5*(theta0+theta1))
@@ -101,11 +107,11 @@ def save_rings_map(ring_dic,filename):
 if __name__=="__main__":
     print '--------------   MAP  ----------------------------------'
     i=10
-    det_col =process_detectors('MAP_SpectraList.txt')
+    det_col =process_detectors('HET05240-Detectors-1.txt')
     print "The detector file contains the following columns: ", det_col.keys()
-    ring_list = build_rings_spectra_map(det_col)
+    ring_list = build_rings_spectra_map(det_col,0.2)
     print 'Identified ',len(ring_list),' rings'
-    save_rings_map(ring_list,'MAP_rings2015.map')
+    save_rings_map(ring_list,'HET_Rings_NoPSD_2017.map')
     #det_col =process_detectors('MAP21385-Detectors-1.txt')
 
     #def mapper(x):

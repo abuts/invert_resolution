@@ -4,10 +4,12 @@ within Mantid environent
 It can be useful for debugging because the errors do not alway 'get out' of
 the sub-process used for running the tests in the regular way
 '''
-from mantid.simpleapi import *
-from mantid import config
+
 import sys
 import os
+print sys.path
+from mantid.simpleapi import *
+from mantid import config
 import inspect
 
 #this_dir = sys.path[0]
@@ -47,7 +49,7 @@ MARIComponentTests = ['ISIS_ReductionWebLike','ISIS_ReductionWrapperValidate']
 
 # Find these first
 #modlToRun = ['POLDIDataAnalysisTest']
-modlToRun = ['ISISDirectInelastic']
+modlToRun = ['ISISDirectReductionComponents']
 #modlToRun = ['DirectInelasticDiagnostic']
 #modlToRun = ['ISISDirectReductionComponents']
 #modlToRun = ['PowderDiffProfileCalibrateTest'];
@@ -67,7 +69,7 @@ modlToRun = ['ISISDirectInelastic']
 #testToRun = ['MARIReductionFromFile','MARIReductionSum']
 #testToRun = ['MARIReductionFromWorkspace','MARIReductionFromFile','MARIReductionSum','MAPSDgreduceReduction','LETReduction','LETReductionEvent2015Multirep','MERLINReduction']
 #testToRun = ['LETReductionEvent2015Multirep']
-testToRun = ['LETReductionEvent2015Multirep']
+testToRun = ['ISISLoadFilesMER']
 #testToRun = ['DirectInelasticDiagnostic']
 #,
 #testToRun = ['ISIS_ReductionWebLike','ISIS_ReductionWrapperValidate']
