@@ -1,5 +1,6 @@
 function chop_shape = chop_pulse(velocity,time,t_opening,R_chop)
-% Calculate chopper pulse shape as function of time and chopper velocity 
+% Calculate chopper pulse shape as function of time and neutrons velocity 
+% at chopper position
 %
 % Additional parameters are:
 % t_opening -- chopper opening time.
