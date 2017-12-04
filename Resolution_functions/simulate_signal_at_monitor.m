@@ -1,10 +1,11 @@
 %function calc_
 
-[f_samp,t_samp,v_samp,tau_char,V_char] = propagate_pulse_to_sample(5);
+[f_samp,t_samp,v_samp,tau_char,V_char] = propagate_pulse_to_sample(1);
 
 num_pulses = numel(t_samp);
 for i=1:num_pulses
-    [f_as,t_as,v_as] = convolute_with_vel_distr(f_samp{i},t_samp{i},v_samp{i},tau_char,V_char);
+    %[f_as,t_as,v_as] = convolute_with_vel_distr(f_samp{i},t_samp{i},v_samp{i},tau_char,V_char);
+    [f_as,t_as,v_as] = fft_convolute_with_vel_distr(f_samp{i},t_samp{i},v_samp{i},tau_char,V_char);
     [xi,yi]=meshgrid(t_as,v_as);
     figure('Name',sprintf('Sample time/velocity profile N %d',i));
     surf(xi,yi,f_as,'EdgeColor','none');
