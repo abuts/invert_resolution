@@ -1,5 +1,5 @@
-function [f_samp,t_samp,v_samp] = propagate_pulse(mod_mat,time_mod,vel_mod,L,tau_char)
-% Calculate interpolited time-velocity profile at sample position
+function [f_out,t_out,v_out] = propagate_pulse(f_in,time_in,vel_in,L,tau_char)
+% Calculate interpolited time-velocity profile at the position L
 % 
 % mod_mat -- 2D moderator function in units tau(mks) vs 
 % time_mod - time axis at moderator  in chop opening
@@ -16,27 +16,27 @@ function [f_samp,t_samp,v_samp] = propagate_pulse(mod_mat,time_mod,vel_mod,L,tau
 
 
 
-tau_shift = (L/tau_char)./vel_mod; %
+tau_shift = (L/tau_char)./vel_in; %
 
-tau_at_sample = bsxfun(@plus, time_mod, tau_shift'); % t+L/v;
+tau_at_sample = bsxfun(@plus, time_in, tau_shift'); % t+L/v;
 
-non_zero = mod_mat>0;
+non_zero = f_in>0;
 t_min = min(min((tau_at_sample(non_zero))));
 t_max = max(max((tau_at_sample(non_zero))));
 
-v_at_sample=reshape(repmat(vel_mod,1,numel(time_mod)),numel(vel_mod),numel(time_mod));
-v_min = min(min((v_at_sample(non_zero))));
-v_max = max(max((v_at_sample(non_zero))));
+v_at_end=reshape(repmat(vel_in,1,numel(time_in)),numel(vel_in),numel(time_in));
+v_min = min(min((v_at_end(non_zero))));
+v_max = max(max((v_at_end(non_zero))));
 
-dt = (t_max-t_min)/(numel(time_mod)-1);
-t_samp = t_min:dt:t_max;
-dv = (v_max -v_min)/(numel(vel_mod)-1);
-v_samp = v_min:dv:v_max;
+dt = (t_max-t_min)/(numel(time_in)-1);
+t_out = t_min:dt:t_max;
+dv = (v_max -v_min)/(numel(vel_in)-1);
+v_out = v_min:dv:v_max;
 
-[xb,yb]=meshgrid(time_mod,vel_mod);
-[xi,yi]= meshgrid(t_samp,v_samp);
+[xb,yb]=meshgrid(time_in,vel_in);
+[xi,yi]= meshgrid(t_out,v_out);
 xi = xi - (L/tau_char)./yi; % t_samp-L/v;
 
 
-f_samp = interp2(xb,yb,mod_mat,xi,yi,'nearest',0);
+f_out = interp2(xb,yb,f_in,xi,yi,'nearest',0);
 

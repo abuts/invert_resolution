@@ -33,6 +33,8 @@ surf(ftm,'EdgeColor','none');
 [v_t,f_d] = vel_distribution(-dV_max:2*dV_max/(Nv-1):dV_max,V_char);
 figure
 plot(v_t,f_d);
+ax = gca;
+ax.XLabel.String = sprintf('Velocity/(%3.2g m/s)',V_char);
 ffv = fft(f_d);
 
 
@@ -45,25 +47,8 @@ surf(ftm,'EdgeColor','none');
 
 
 %fm = repmat(fm(1,:),size(fm,1),1);
-f_s_out = ifft2(fm);
+f_s_out = ifft2(fm)';
 
-% f_s_out = f_samp;
-% figure;
-% for i=1:numel(t_samp)
-%     conv_profile = zeros(size(v_s_out));
-%     for j=1:numel(v_samp)
-%         v_int = 0;
-%         if sum(f_samp(:,i)) ~= 0
-%             for k=1:numel(vI_range)-1
-%                 v_int = v_int+integral(@(dv)f1_kernel(dv,v_samp_norm,f_samp(:,i) ,v_s_out(j),V_char),vI_range(k),vI_range(k+1));
-%             end
-%             %            v_int = integral(@(dv)f1_kernel(dv,v_samp_norm,f_samp(:,i) ,v_s_out(j),V_char),V_min-4*dV_max,V_max+4*dV_max);
-%         end
-%         conv_profile(j) = v_int;
-%     end
-%     f_s_out(:,i) = conv_profile;
-%     plot(v_s_out.*v_s_out*(V_char*V_char*e_transf_const),conv_profile);
-% end
 
 
 

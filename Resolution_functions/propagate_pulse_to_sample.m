@@ -1,8 +1,8 @@
-function [f_samp,t_samp,v_samp,tau_char,V_char] = propagate_pulse_to_sample(n_en)
-% function simulates propagation of tabulated neutronic moderator pulse to
+function [f_samp,t_samp,v_samp,tau_char,V_char,V_pulse,L_sample] = propagate_pulse_to_sample(n_en)
+% function simulates the shape of tabulated neutronic moderator pulse at
 % sample after beeng cut by chopper. 
 %
-% simulation done for MERLIN, a run N22346
+% simulation done for MERLIN, the run N22346
 
 filename = 'mod_e_table.csv';
 persistent mat;
@@ -22,10 +22,10 @@ if exist('n_en','var')
     e_i = e_i(1:n_en); %
 end
 
-L = 10.0; % m
+L_chop = 10.0; % m
 L_samp = 1.8; % m
 
-[tau,tau_char,R_chop] = t_vs_e(e_i,L);
+[tau,tau_char,R_chop] = t_vs_e(e_i,L_chop);
 %L_det = 2.5; % m
 V_char = R_chop/tau_char; % m/sec
 
@@ -35,11 +35,13 @@ e_chop = cell(1,numel(tau));
 f_samp =  cell(1,numel(tau));
 t_samp = cell(1,numel(tau));
 v_samp = cell(1,numel(tau));
+V_pulse = zeros(size(tau));
 
 for i=1:numel(tau)
+    V_pulse(i) = L_chop/(tau(i)*tau_char)/V_char; % in chopper opening velocity
     % calculate time-velocity profile at chopper position for given chopper
     % opening time.
-    [fmod,tchop,vchop] = extract_moderator_f(in_mat,time_mod,Mod_energy,tau(i),L,tau_char,200);
+    [fmod,tchop,vchop] = extract_moderator_f(in_mat,time_mod,Mod_energy,tau(i),L_chop,tau_char,200);
     % convert velocity m/s to mEv
     vSq2mEv = 5.227e-6;  % s^2/m^2
     Echop = vchop.^2*vSq2mEv;
@@ -93,7 +95,7 @@ for i=1:numel(tau)
     %     surf(xi,yi,fmod{i},'EdgeColor','none');
     %
 end
-
+L_sample = L_samp+L_chop;
 %surf(min_mat);
 
 
