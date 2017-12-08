@@ -6,7 +6,7 @@ function [v,f_d,v_peaks] = vel_distribution(v,V_char)
 
 % energy peaks
 e_exc = [0,0.3,2,10,15];
-sigma = [60,60,40,80,160]/V_char;
+sigma = [60,60,10,80,160]/V_char;
 Ampl  = [10,9,5,10,10];
 
 e_transf_const = 5.22725e-6; % sec^2/m^2

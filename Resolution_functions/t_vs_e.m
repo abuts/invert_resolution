@@ -21,12 +21,11 @@ tau_char = R_ch/Gamma; % sec
 
 e_transf_const = 5.22725e-6; % sec^2/m^2
 
-tau1 = L*sqrt(e_transf_const./en);
+tau = L*sqrt(e_transf_const./en);
 %
 %tau0 = L*sqrt(e_transf_const./max(en));
 %t_step = pi/W_ch; %sec;
 %t_steps =tau0:t_step:tau0+t_step*(numel(en)-1);
 
 %tau = t_steps/tau_char;
-tau = tau1/tau_char;
 R_chop = R_ch/1000; % convert in meters

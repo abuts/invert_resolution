@@ -4,7 +4,7 @@ function chop_shape = chop_pulse(velocity,time,t_opening,R_chop)
 %
 % Additional parameters are:
 % t_opening -- chopper opening time.
-% R_chop    -- chopper radious
+% R_chop    -- chopper radius
 %Time has to be units of chopper opening time e.g.
 % units of Dt=H_chopper/(Omega*R_Chopper) where omega -- circular rotation
 %       velocity

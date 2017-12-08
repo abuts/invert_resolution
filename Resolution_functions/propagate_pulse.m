@@ -1,8 +1,8 @@
-function [f_out,t_out,v_out] = propagate_pulse(f_in,time_in,vel_in,L,tau_char)
+function [f_out,t_out,v_out] = propagate_pulse(f_in,time_in,vel_in,L)
 % Calculate interpolited time-velocity profile at the position L
 % 
 % mod_mat -- 2D moderator function in units tau(mks) vs 
-% time_mod - time axis at moderator  in chop opening
+% time_mod - time axis at moderator  (sec)
 % vel_mod  - velocity 
 % mod_Energy - energy at moderator array (in mEv)
 % tau -- time at choper to shift function around (in chopper opening time
@@ -16,7 +16,7 @@ function [f_out,t_out,v_out] = propagate_pulse(f_in,time_in,vel_in,L,tau_char)
 
 
 
-tau_shift = (L/tau_char)./vel_in; %
+tau_shift = L./vel_in; %
 
 tau_at_sample = bsxfun(@plus, time_in, tau_shift'); % t+L/v;
 
@@ -35,7 +35,7 @@ v_out = v_min:dv:v_max;
 
 [xb,yb]=meshgrid(time_in,vel_in);
 [xi,yi]= meshgrid(t_out,v_out);
-xi = xi - (L/tau_char)./yi; % t_samp-L/v;
+xi = xi - L./yi; % t_samp-L/v;
 
 
 f_out = interp2(xb,yb,f_in,xi,yi,'nearest',0);

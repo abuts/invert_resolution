@@ -1,4 +1,4 @@
-function [f_mod,t_chop,v_chop] = extract_moderator_f(in_mat,time_mod,mod_Energy,tau,L,tau_char,nip)
+function [f_mod,t_chop,v_chop] = extract_moderator_f(in_mat,time_mod,V_mod,tau,L,tau_char,V_char,nip)
 % in_mat -- 2D moderator function in units tau(mks) vs energy (mEv)
 % time_mod - time axis at moderator  in mks
 % lambda_mod - wavelength axis at moderator (in A)
@@ -12,19 +12,16 @@ function [f_mod,t_chop,v_chop] = extract_moderator_f(in_mat,time_mod,mod_Energy,
 %           time)
 % v_chop -- velocity axis for the profile above (in m/s)
 
-dt = 2/(nip-1);
+dt = 2*tau_char/(nip-1);
 
-t_chop = tau-1:dt:tau+1; % chopper opening time in units of characteristic time
+t_chop = (tau-tau_char:dt:tau+tau_char); % chopper opening time in sec
 
-En_transf = 437.384; % conversion from root of energy (in mEv) to neutron velocity m/sec
-%v_transf = 3.962e+3; % m/s (transform wavelength (A) into velocity)
-V_mod = En_transf*sqrt(mod_Energy); % velocity at moderator (m/sec);
-%V_mod = v_transf/lambda_mod; % velocity at moderator (m/sec);
 
-tau_mod = (L/tau_char)./V_mod; %
+
+tau_mod = L./V_mod; %
 
 tau_at_mod = bsxfun(@minus, t_chop, tau_mod'); % t-L/v;
-time_mod    = time_mod*(1.e-6/tau_char); % time at moderator in chopper opening times
+%time_mod    = time_mod*(1.e-6/tau_char); % time at moderator in chopper opening times
 tau_mod_min = min(time_mod);
 tau_mod_max = max(time_mod);
 
@@ -37,20 +34,30 @@ v_ch_min  = min(v_chop);
 v_ch_max  = max(v_chop);
 if v_ch_min == v_ch_max
     v_ch_min = v_ch_min-1;
-    v_ch_max = v_ch_max+1;    
+    v_ch_max = v_ch_max+1;
     dV = 2/(0.5*nip-1);
 else
     dV = (v_ch_max-v_ch_min)/(0.5*nip-1);
 end
 v_chop = v_ch_min:dV:v_ch_max;
 
-[xb,yb]=meshgrid(time_mod,V_mod);
+[xb,yb] =meshgrid(time_mod,V_mod);
 [xi,yi]= meshgrid(t_chop,v_chop);
-xi = xi - (L/tau_char)./yi;
+xi = xi - L./yi;
 
 f_mod = interp2(xb,yb,in_mat',xi,yi,'nearest',0);
 
-[tau1,tau2,t0,R,a0] = evaluate_tau(yi(:,1),f_mod(:,1));
+fh = findobj('type','figure', 'Name', 'Moderator pulse');
+if ~isempty(fh)
+    figure(fh)
+    hold on
+    %[xi,yi]=meshgrid(tchop/tau_char,vchop/V_char);
+    surf(xi/tau_char,yi/V_char,f_mod);
+    hold off    
+end
+
+
+%[tau1,tau2,t0,R,a0] = evaluate_tau(yi(:,1),f_mod(:,1));
 
 
 function y = ikeda(x,pin)
@@ -110,22 +117,22 @@ a0=0;
 %vSq2mEv = 5.227e-6;  % s^2/m^2
 %v_chop = v_chop.^2*vSq2mEv;
 %
-% Plot moderator 
+% Plot moderator
 % persistent sf;
 % if isempty(sf)
 %     sf = figure;
-%     contourf(xb,yb,in_mat');    
+%     contourf(xb,yb,in_mat');
 % else
 %     set(0, 'currentfigure', sf);
 % end
-% 
+%
 % patch = ones(size(xi))*16000;
 % hold('on');
 % surf(xi,yi,patch);
 % disp([xi(1,1),yi(1,1);xi(1,200),yi(1,200);xi(100,1),yi(100,1);xi(100,200),yi(100,200)])
-% 
-% 
-% 
-% 
+%
+%
+%
+%
 
 
