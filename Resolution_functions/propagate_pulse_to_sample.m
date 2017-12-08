@@ -45,7 +45,7 @@ norm   = zeros(size(tau));
 
 fh = findobj('type','figure', 'Name', 'Moderator pulse');
 if  isempty(fh)
-    figure('Name','Moderator pulse');    
+    figure('Name','Moderator pulse');
 else
     figure(fh);
 end
@@ -73,7 +73,14 @@ for i=1:numel(tau)
     
     t_chop{i} = tchop;
     %e_chop{i} = Echop;
-    figure('Name',sprintf('chop pulse for Ei=%3.1f',e_i(i)));
+    fn = sprintf('chop pulse for Ei=%3.1f',e_i(i));
+    fh = findobj('type','figure', 'Name', fn);
+    if  isempty(fh)
+        figure('Name',fn);
+    else
+        figure(fh);
+    end
+    
     [xi,yi]=meshgrid(tchop/tau_char,vchop/V_char);
     surf(xi,yi,fmod,'EdgeColor','none');
     ax = gca;
@@ -81,10 +88,11 @@ for i=1:numel(tau)
     ax.YLabel.String = sprintf('Velocity/(%3.2g m/s)',V_char);
     
     
-    v_chop_h  = vchop*tau_char; % Convert velocity into characteristic velocity used by chop pulse
+    %v_chop_h  = vchop*tau_char; % Convert velocity into characteristic velocity used by chop pulse
     % Calculate chopper pulse shape as function of time and neutrons velocity
     % at chopper position
-    fchop = chop_pulse(v_chop_h,tchop/tau_char,tau(i)/tau_char,R_chop);
+    fchop = chop_pulse(vchop*tau_char,tchop/tau_char,tau(i)/tau_char,R_chop);
+    %fchop = chop_pulse(vchop,tchop,tau(i),R_chop);
     surf(xi,yi,fchop,'EdgeColor','none');
     ax = gca;
     ax.XLabel.String = sprintf('Time/(%3.2g sec)',tau_char);
@@ -106,7 +114,7 @@ for i=1:numel(tau)
     
     
     % Calculate profile propagated to a sample.
-    [fsamp,tsamp,vsamp] = propagate_pulse(f_chop{i},tchop,vchop,L_samp,tau_char);
+    [fsamp,tsamp,vsamp] = propagate_pulse(f_chop{i},tchop,vchop,L_samp);
     [xi,yi]=meshgrid(tsamp/tau_char,vsamp/V_char);
     surf(xi,yi,fsamp,'EdgeColor','none');
     ax = gca;
@@ -133,7 +141,7 @@ max_pulse = max(norm);
 norm = norm/max_pulse;
 for i=1:numel(tau)
     f_samp{i} =  f_samp{i}/norm(i);
-    t_samp{i}  = t_samp{i}*tau_char;
+    t_samp{i}  = t_samp{i};
     v_samp{i}  = v_samp{i};
 end
 
