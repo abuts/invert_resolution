@@ -18,11 +18,11 @@ function [f_out,t_out,v_out] = propagate_pulse(f_in,time_in,vel_in,L)
 
 tau_shift = L./vel_in; %
 
-tau_at_sample = bsxfun(@plus, time_in, tau_shift'); % t+L/v;
+tau_final = bsxfun(@plus, time_in, tau_shift'); % t+L/v;
 
 non_zero = f_in>0;
-t_min = min(min((tau_at_sample(non_zero))));
-t_max = max(max((tau_at_sample(non_zero))));
+t_min = min(min((tau_final(non_zero))));
+t_max = max(max((tau_final(non_zero))));
 
 v_at_end=reshape(repmat(vel_in,1,numel(time_in)),numel(vel_in),numel(time_in));
 v_min = min(min((v_at_end(non_zero))));
@@ -38,5 +38,5 @@ v_out = v_min:dv:v_max;
 xi = xi - L./yi; % t_samp-L/v;
 
 
-f_out = interp2(xb,yb,f_in,xi,yi,'nearest',0);
+f_out = interp2(xb,yb,f_in,xi,yi,'linear',0);
 

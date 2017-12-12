@@ -1,6 +1,6 @@
 %function calc_
 
-[f_samp,t_samp,v_samp,tau_char,V_char,V_pulse,L_samp,t0_mod] = propagate_pulse_to_sample(5);
+[f_samp,t_samp,v_samp,tau_char,V_char,V_pulse,L_samp,t0_mod,norm] = propagate_pulse_to_sample(1);
 % [V_char]  = m/sec
 % [L_samp] = m;
 % [tau_char] = sec
@@ -13,13 +13,21 @@ for i=1:num_pulses
     %[f_as,t_as,v_as] = convolute_with_vel_distr(f_samp{i},t_samp{i},v_samp{i},tau_char,V_char);
     [f_as,t_as,v_as] = fft_convolute_with_vel_distr(f_samp{i},t_samp{i},v_samp{i},V_char);
     [xi,yi]=meshgrid(t_as/tau_char,v_as/V_char);
-    figure('Name',sprintf('Sample time/velocity profile N %d',i));
+    %
+    fn = sprintf('Sample time/velocity profile N %d',i);
+    fh = findobj('type','figure', 'Name', fn);
+    if  isempty(fh)
+        figure('Name',fn);
+    else
+        figure(fh);
+    end
     surf(xi,yi,f_as,'EdgeColor','none');
     ax = gca;
     ax.XLabel.String = sprintf('Time/(%3.2g sec)',tau_char);
     ax.YLabel.String = sprintf('Velocity/(%3.2g m/s)',V_char);
     
-    [f_det,t_det,v_det] = propagate_pulse(f_as,t_as,v_as,L_det);
+    %[f_det,t_det,v_det] = propagate_pulse(f_as,t_as,v_as,L_det);
+    [f_det,t_det,v_det] = fft_propagate_pulse(f_as,t_as,v_as,L_det);
     
     [xi,yi]=meshgrid(t_det/tau_char,v_det/V_char);
     figure('Name',sprintf('Detector time/velocity profile N %d',i));
@@ -27,7 +35,8 @@ for i=1:num_pulses
     ax = gca;
     ax.XLabel.String = sprintf('Time/(%3.2g sec)',tau_char);
     ax.YLabel.String = sprintf('Velocity/(%3.2g m/s)',V_char);
-    f_det_vs_t = sum(f_det,1)/size(f_det,1);
+    f_det_vs_t = sum(f_det,1)*norm(i)/size(f_det,1);
+    
     
     
     t0 = (L_samp+L_det)/(V_pulse(i));

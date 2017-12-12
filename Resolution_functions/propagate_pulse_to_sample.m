@@ -1,4 +1,4 @@
-function [f_samp,t_samp,v_samp,tau_char,V_char,V_pulse,L_sample,t0] = propagate_pulse_to_sample(n_en)
+function [f_samp,t_samp,v_samp,tau_char,V_char,V_pulse,L_sample,t0,norm] = propagate_pulse_to_sample(n_en)
 % function simulates the shape of tabulated neutronic moderator pulse at
 % sample after beeng cut by chopper.
 %
@@ -138,13 +138,13 @@ end
 %surf(min_mat);
 L_sample = L_samp+L_chop;
 max_pulse = max(norm);
-norm = norm/max_pulse;
+
 for i=1:numel(tau)
     f_samp{i} =  f_samp{i}/norm(i);
     t_samp{i}  = t_samp{i};
     v_samp{i}  = v_samp{i};
 end
-
+norm = norm./max_pulse;
 
 
 
