@@ -37,7 +37,7 @@ Imkl = @(m,k,l)(sum(dV.*exp(2i*pi*((m-k)./((1+Del)*(Del+j))-l*(Del+j)))));
 
 
 Nv = size(f_in,1);
-Nt = size(f_in,2);
+%Nt = size(f_in,2);
 % fft frequencies do not correspond to indexes as index m in fft array 
 % has frequency m-1 if m<N/2 and end-m if bigger;
 f_in_sp = fft2(f_in,Nv,Nt);
@@ -45,17 +45,19 @@ f_in_sp = fft2(f_in,Nv,Nt);
 Nv2 = floor(Nv/2);
 nW = [0:Nv2-1,Nv2:-1:1];
 
-Im = zeros(1,numel(nW));
-f_out_sp = zeros(size(f_in_sp));
-for k=1:Nv
+t_start=tic;
+f_out_sp = zeros(Nv,Nt);
+parfor k=1:Nv
     fprintf('k=%d#%d\n',k,Nv);
     for l=1:Nt
+        Im = zeros(1,numel(nW));        
         for mj=1:Nv
             Im(mj) = Imkl(nW(mj),nW(k),nW(l));
         end
         f_out_sp(k,l) = sum(f_in_sp(:,l).*Im');
     end
 end
+t_out = toc(t_start)/60 % convert in minutes
 f_out = ifft2(f_out_sp);
 
 
