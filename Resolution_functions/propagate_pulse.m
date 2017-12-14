@@ -28,15 +28,16 @@ v_at_end=reshape(repmat(vel_in,1,numel(time_in)),numel(vel_in),numel(time_in));
 v_min = min(min((v_at_end(non_zero))));
 v_max = max(max((v_at_end(non_zero))));
 
-dt = (t_max-t_min)/(numel(time_in)-1);
+dt = (t_max-t_min)/(max(numel(time_in),numel(vel_in))-1);
 t_out = t_min:dt:t_max;
 dv = (v_max -v_min)/(numel(vel_in)-1);
 v_out = v_min:dv:v_max;
 
+% Regrid on square grid;
 [xb,yb]=meshgrid(time_in,vel_in);
 [xi,yi]= meshgrid(t_out,v_out);
 xi = xi - L./yi; % t_samp-L/v;
 
 
-f_out = interp2(xb,yb,f_in,xi,yi,'linear',0);
+f_out = interp2(xb,yb,f_in,xi,yi,'nearest',0);
 

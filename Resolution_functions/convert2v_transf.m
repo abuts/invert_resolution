@@ -8,6 +8,7 @@ function v_scale = convert2v_transf(time_scale,L_det,L_sam,t0,v0)
 % t0 -- time of the pulse peak at moderator
 % v0 -- average velocity in the input burst
 %
+t_det = time_scale-t0;
 
-t_sample = L_sam/v0-t0;
-v_scale = L_det./(time_scale-t_sample)-v0;
+t_sample = L_sam/v0;
+v_scale = L_det./(t_det-t_sample)-v0;

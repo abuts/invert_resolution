@@ -105,12 +105,17 @@ for i=1:numel(tau)
     ax = gca;
     ax.XLabel.String = sprintf('Time/(%3.2g sec)',tau_char);
     ax.YLabel.String = sprintf('Velocity/(%3.2g m/s)',V_char);
+    view(0,90)
     %
     norm(i) = sum(reshape(f_chop{i},1,numel(f_chop{i})));
     
     fchs =  sum(f_chop{i},1);
     [~,im] = max(fchs);
-    t0(i) = tchop(im)-tau(i);
+    t0(i) = tchop(im);%-tau(i);
+    fchs =  sum(f_chop{i},2);
+    [~,im] = max(fchs);
+    V_pulse(i) = vchop(im);
+    
     
     
     % Calculate profile propagated to a sample.
@@ -120,6 +125,7 @@ for i=1:numel(tau)
     ax = gca;
     ax.XLabel.String = sprintf('Time/(%3.2g sec)',tau_char);
     ax.YLabel.String = sprintf('Velocity/(%3.2g m/s)',V_char);
+    view(0,90)    
     
     f_samp{i} = fsamp;
     t_samp{i} = tsamp;
@@ -136,7 +142,7 @@ for i=1:numel(tau)
     %
 end
 %surf(min_mat);
-L_sample = L_samp+L_chop;
+L_sample = L_samp; % +L_chop;
 max_pulse = max(norm);
 
 for i=1:numel(tau)

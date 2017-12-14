@@ -53,7 +53,8 @@ if ~isempty(fh)
     hold on
     %[xi,yi]=meshgrid(tchop/tau_char,vchop/V_char);
     surf(xi/tau_char,yi/V_char,f_mod);
-    hold off    
+    view(0,90);
+    hold off
 end
 
 
@@ -101,10 +102,6 @@ R = 1-C2/(2*aa*aa)-2*U;
 
 t0=0;
 a0=0;
-
-
-
-
 
 
 
