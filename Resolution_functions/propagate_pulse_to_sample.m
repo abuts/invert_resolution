@@ -30,6 +30,7 @@ L_chop = 10.0; % m
 L_samp = 1.8; % m
 
 [tau,tau_char,R_chop] = t_vs_e(e_i,L_chop);
+tau = tau+tau_char;
 %L_det = 2.5; % m
 V_char = R_chop/tau_char; % m/sec
 
