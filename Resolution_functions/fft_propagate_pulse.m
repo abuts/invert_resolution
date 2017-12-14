@@ -30,7 +30,7 @@ j=0:(Nt-dN);
 bin_bnd = Del/(1-Del)./(1+j/Nt);
 dV = bin_bnd(1:end-1)-bin_bnd(2:end);
 j = (0:Nt-dN-1)/Nt;
-Imkl = @(m,k,l)(sum(dV.*exp(2i*pi*((m-k)./((1+Del)*(Del+j))-l*(Del+j)))));
+Imkl = @(m,k,l)(sum(dV.*exp(2i*pi*((m-k)./((1-Del)*(Del+j))-l*(Del+j)))));
 %I1 = Imkl(1,1,1);
 %
 
@@ -57,7 +57,7 @@ parfor k=1:Nv
         f_out_sp(k,l) = sum(f_in_sp(:,l).*Im');
     end
 end
-t_out = toc(t_start)/60 % convert in minutes
+time_c = toc(t_start)/60 % convert in minutes
 f_out = ifft2(f_out_sp);
 
 

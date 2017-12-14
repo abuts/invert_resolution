@@ -31,7 +31,7 @@ for i=1:num_pulses
     
     [xi,yi]=meshgrid(t_det/tau_char,v_det/V_char);
     figure('Name',sprintf('Detector time/velocity profile N %d',i));
-    surf(xi,yi,f_det,'EdgeColor','none');
+    surf(xi,yi,abs(f_det),'EdgeColor','none');
     ax = gca;
     ax.XLabel.String = sprintf('Time/(%3.2g sec)',tau_char);
     ax.YLabel.String = sprintf('Velocity/(%3.2g m/s)',V_char);
