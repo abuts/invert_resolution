@@ -1,6 +1,6 @@
 %function calc_
 
-[f_samp,t_samp,v_samp,tau_char,V_char,V_pulse,L_samp,t0_chop,norm] = propagate_pulse_to_sample(4);
+[f_samp,t_samp,v_samp,tau_char,V_char,V_pulse,L_samp,t0_chop,norm] = propagate_pulse_to_sample(3);
 % [V_char]  = m/sec
 % [L_samp] = m;
 % [tau_char] = sec
