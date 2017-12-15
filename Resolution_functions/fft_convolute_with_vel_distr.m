@@ -1,4 +1,4 @@
-function [f_s_out,t_samp,v_s_out] = fft_convolute_with_vel_distr(f_samp,t_samp,v_samp,V_char)
+function [f_s_out,t_samp,v_s_out,Norma] = fft_convolute_with_vel_distr(f_samp,t_samp,v_samp,V_char)
 % Calculate sample velocity distribution for modelling and recovering
 %
 %
@@ -46,6 +46,7 @@ ft = fft2(f_samp,Nv,Nt);
 % caclculate velocity transfer distrubution in its own range but with
 % joing accuracy.
 [v_t,f_d] = vel_distribution(-dV_max:2*dV_max/(Nv-1):dV_max);
+Norma = sum(f_d)*dV_max/(Nv-1);
 figure(111)
 acolor 'b';
 plot(v_t/V_char,f_d);

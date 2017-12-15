@@ -14,7 +14,7 @@ function [tau,tau_char,R_chop] = t_vs_e(en,L)
 %
 % Chopper parameters:
 R_ch = 5; %mm
-W_ch = 2*pi*500; % Hz
+W_ch = 2*pi*200; % Hz
 H_ch = 0.2; % mm
 Gamma = W_ch*R_ch*R_ch/H_ch;
 tau_char = R_ch/Gamma; % sec
