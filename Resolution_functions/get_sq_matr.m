@@ -7,7 +7,7 @@ function [sig_mat,time_out,En_out]=get_sq_matr(mat,npoints)
 % incident energy (mEv) %wavelength, A
 energy = mat(:,1); % mEv;
 % pulse time (mks)
-time   = mat(:,2)*2e-6; % convert to sec;
+time   = mat(:,2)*1e-6; % convert to sec;
 %
 signal = mat(:,3);
 error  = mat(:,4); %
