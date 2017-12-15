@@ -1,4 +1,4 @@
-function [f_out,t_out,v_out] = fft_propagate_pulse(f_in,time_in,vel_in,L)
+function [f_out,t_out,v_out] = fftv_propagate_pulse(f_in,time_in,vel_in,L)
 % Calculate interpolited time-velocity profile at the position L using fft
 %
 % f_in     -- 2D signal function in units tau(mks) vs
@@ -26,11 +26,8 @@ dN = 1;
 v_out = vel_in;
 
 Del = dN/Nt;
-j=0:(Nt-dN);
-bin_bnd = Del/(1-Del)./(1+j/Nt);
-dV = bin_bnd(1:end-1)-bin_bnd(2:end);
-j = (0:Nt-dN-1)/Nt;
-Imkl = @(m,k,l)(sum(dV.*exp(2i*pi*((m-k)./((1-Del)*(Del+j))-l*(Del+j)))));
+j = (0:Nt-dN-1)/Nt/dN;
+Imkl = @(m,k,l)(sum(exp(2i*pi*((m-k)*Del*(1+j)/(1-Del)-l/(1+j)))));
 %I1 = Imkl(1,1,1);
 %
 
