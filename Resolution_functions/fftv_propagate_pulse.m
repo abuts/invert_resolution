@@ -16,31 +16,49 @@ v_min = min(vel_in);
 v_max = max(vel_in);
 tp_min = L/v_max+min(time_in);
 tp_max = L/v_min+max(time_in);
-dt = time_in(2) - time_in(1);
-if dt<2e-6
-    dt = 2e-6;
-end
-t_out = tp_min-dt:dt:tp_max;
+DT0 = max(time_in)-min(time_in);
+DV0 = v_max - v_min;
+dt = time_in(2)-time_in(1);
+%Nt = size(f_in,2);
+%dt = (tp_max-tp_min)/(Nt-1);
+% if dt<2e-6
+%     dt = 2e-6;
+% end
+t_out = tp_min:dt:tp_max;
 Nt = numel(t_out);
-dN = 1;
-v_out = vel_in;
 
-Del = dN/Nt;
-j = (0:Nt-dN-1)/Nt/dN;
-Imkl = @(m,k,l)(sum(exp(2i*pi*((m-k)*Del*(1+j)/(1-Del)-l/(1+j)))));
+v_out = vel_in;
+dV = vel_in(2)-vel_in(1);
+dN = v_min/dV;
+Nv = numel(vel_in);
+
+
+Del = dN/Nv;
+DelV = L/(DT0*DV0);
+j = (0:Nv-1)/Nv;
+Imkl = @(m,k,l)(sum(exp(2i*pi*((m-k)*(Del+j)-l*DelV./(Del+j)))))/Nv;
 %I1 = Imkl(1,1,1);
 %
 
 
 
-Nv = size(f_in,1);
-%Nt = size(f_in,2);
 % fft frequencies do not correspond to indexes as index m in fft array 
 % has frequency m-1 if m<N/2 and end-m if bigger;
 f_in_sp = fft2(f_in,Nv,Nt);
 % indexes of frequncies corresponging to V-frequencies in f_in_sp;
 Nv2 = floor(Nv/2);
-nW = [0:Nv2-1,-Nv2:1:-1];
+if  rem(Nv,2) >0
+    nW = [0:Nv2,-Nv2:1:-1];
+else
+    nW = [0:Nv2-1,-Nv2:1:-1];
+end
+Nt2 = floor(Nt/2);
+if  rem(Nt,2) >0
+    nT = [0:Nt2,-Nt2:1:-1];
+else
+    nT = [0:Nt2-1,-Nt2:1:-1];
+end
+
 
 t_start=tic;
 f_out_sp = zeros(Nv,Nt);
@@ -49,7 +67,7 @@ parfor k=1:Nv
     for l=1:Nt
         Im = zeros(1,numel(nW));        
         for mj=1:Nv
-            Im(mj) = Imkl(nW(mj),nW(k),nW(l));
+            Im(mj) = Imkl(nW(mj),nW(k),nT(l));
         end
         f_out_sp(k,l) = sum(f_in_sp(:,l).*Im');
     end

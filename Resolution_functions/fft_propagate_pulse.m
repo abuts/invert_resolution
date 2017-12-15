@@ -38,21 +38,32 @@ Imkl = @(m,k,l)(sum(dV.*exp(2i*pi*((m-k)./((1-Del)*(Del+j))-l*(Del+j)))));
 
 Nv = size(f_in,1);
 %Nt = size(f_in,2);
-% fft frequencies do not correspond to indexes as index m in fft array 
+% fft frequencies do not correspond to indexes as index m in fft array
 % has frequency m-1 if m<N/2 and end-m if bigger;
 f_in_sp = fft2(f_in,Nv,Nt);
 % indexes of frequncies corresponging to V-frequencies in f_in_sp;
 Nv2 = floor(Nv/2);
-nW = [0:Nv2-1,-Nv2:1:-1];
+if  rem(Nv,2) >0
+    nW = [0:Nv2,-Nv2:1:-1];
+else
+    nW = [0:Nv2-1,-Nv2:1:-1];
+end
+Nt2 = floor(Nt/2);
+if  rem(Nt,2) >0
+    nT = [0:Nt2,-Nt2:1:-1];
+else
+    nT = [0:Nt2-1,-Nt2:1:-1];
+end
+
 
 t_start=tic;
 f_out_sp = zeros(Nv,Nt);
 parfor k=1:Nv
     fprintf('k=%d#%d\n',k,Nv);
     for l=1:Nt
-        Im = zeros(1,numel(nW));        
+        Im = zeros(1,numel(nW));
         for mj=1:Nv
-            Im(mj) = Imkl(nW(mj),nW(k),nW(l));
+            Im(mj) = Imkl(nW(mj),nW(k),nT(l));
         end
         f_out_sp(k,l) = sum(f_in_sp(:,l).*Im');
     end
