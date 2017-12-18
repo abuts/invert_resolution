@@ -45,7 +45,12 @@ for i=1:num_pulses
     ax.YLabel.String = sprintf('Velocity/(%3.2g m/s)',V_char);
     view(0,90);
     f_det_vs_t = sum(f_det,1)*norm(i)/size(f_det,1);
-    
+%     pn = IX_dataset_1d(t_det/tau_char,f_det_vs_t);
+%     pn.x_axis = sprintf('Time/(%3.2g sec)',tau_char);
+%     pn.s_axis = 'Signal';
+%     acolor(colors(i));    
+%     dl(pn);
+%     keep_figure
     
     
     t0 = (L_samp+L_det)/(V_pulse(i));
