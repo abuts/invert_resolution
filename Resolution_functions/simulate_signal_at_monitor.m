@@ -27,8 +27,8 @@ for i=1:num_pulses
     ax.YLabel.String = sprintf('Velocity/(%3.2g m/s)',V_char);
     view(0,90);
     
-    [f_det,t_det,v_det] = propagate_pulse(f_as,t_as,v_as,L_det);
-    %[f_det,t_det,v_det] = fftv_propagate_pulse(f_as,t_as,v_as,L_det);
+    %[f_det,t_det,v_det] = propagate_pulse(f_as,t_as,v_as,L_det);
+    [f_det,t_det,v_det] = fftv_propagate_pulse(f_as,t_as,v_as,L_det);
     
     [xi,yi]=meshgrid(t_det/tau_char,v_det/V_char);
     
@@ -77,5 +77,4 @@ for i=1:num_pulses
     ax.YLabel.String = sprintf('Signal');
     
 end
-
 

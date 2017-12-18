@@ -36,7 +36,8 @@ Nv = numel(vel_in);
 Del = dN/Nv;
 DelV = L/(DT0*DV0);
 j = (0:Nv-1)/Nv;
-Imkl = @(m,k,l)(sum(exp(2i*pi*((m-k)*(Del+j)-l*DelV./(Del+j)))))/Nv;
+Imkl = @(m,k,l)(sum(exp(2i*pi*((m-k)*(Del+j)-l*DelV./(Del+j))))...
+    *exp(2i*pi*(m*(v_min/DV0+0.5)+0.5*l))/Nv);
 %I1 = Imkl(1,1,1);
 %
 
