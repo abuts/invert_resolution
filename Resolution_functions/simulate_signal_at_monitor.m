@@ -7,7 +7,7 @@ num_pulses = numel(t_samp);
 %t0 = [1]; % the equvalent time of moderator*chopper pulse arrival maximum, recalculated to
 % moderator position (like in SNS reduction)
 L_det = 2.5;
-colors = {'r','g','b','k','m'};
+colors = {'k','r','g','b','m'};
 f_max_1f = [];
 for i=1:num_pulses
     %[f_as,t_as,v_as] = convolute_with_vel_distr(f_samp{i},t_samp{i},v_samp{i},tau_char,V_char);
@@ -27,8 +27,8 @@ for i=1:num_pulses
     ax.YLabel.String = sprintf('Velocity/(%3.2g m/s)',V_char);
     view(0,90);
     
-    %[f_det,t_det,v_det] = propagate_pulse(f_as,t_as,v_as,L_det);
-    [f_det,t_det,v_det] = fftv_propagate_pulse(f_as,t_as,v_as,L_det);
+    [f_det,t_det,v_det] = propagate_pulse(f_as,t_as,v_as,L_det);
+    %[f_det,t_det,v_det] = fftv_propagate_pulse(f_as,t_as,v_as,L_det);
     
     [xi,yi]=meshgrid(t_det/tau_char,v_det/V_char);
     
@@ -63,16 +63,24 @@ for i=1:num_pulses
     dv = [dv,dv(end)];
     v0 = 0;
     %[~,im] = max(f_det_vs_t);
-    %v0 = v_transf(im);    
+    %v0 = v_transf(im);
     v_transf = v_transf-v0; % fixing elastic line
     Norm1 = sum(f_det_vs_t.*dv);
     mult = Norm/Norm1;
     f_det_vs_t = f_det_vs_t*mult;
-
-    figure(112)
-    plot(v_transf/V_char,f_det_vs_t);
-    hold on
-    ax = gca;
+    [v_transf,ind] = sort(v_transf);
+    f_det_vs_t = f_det_vs_t(ind);
+    
+    %pn = IX_dataset_1d(v_transf/V_char,f_det_vs_t./dv);
+    pn = IX_dataset_1d(v_transf/V_char,f_det_vs_t);
+    acolor(colors(i));
+    if i==1
+        [reduced_fh,ax]=dl(pn);
+    else
+        [reduced_fh,ax]=pl(pn,'name',reduced_fh.Name);
+    end
+    
+    %ax = gca;
     ax.XLabel.String = sprintf('Velocity transfer/(%3.2g m/s)',V_char);
     ax.YLabel.String = sprintf('Signal');
     
