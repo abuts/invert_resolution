@@ -1,33 +1,34 @@
-function [f_out,v_out] = fft_invert_propagation(ModPulse,f_det_vs_t,t_det,L)
-% Calculate interpolited time-velocity profile at the position L using fft
-%
-% f_in     -- 2D signal function in units tau(mks) vs
-% time_in  -- time axis for signal  (sec)
-% vel_in   -- velocity accis for signal (m/sec)
-% L        -- distance to the target
-% tau -- time at choper to shift function around (in chopper opening time
-%
-% Output:
-%  Interpolated fime-velocity profile at position L
-% f_out  --
-% t_out -- time axis for the profile above (sec)
-% v_out -- velocity axis for the profile above (in m/s)
-vel_in = L/t_det;
+function [f_out,dv_out] = fft_invert_propagation(f_samp,t_samp,v_samp,f_det_vs_t,t_det,L_det)
+% retrieve samle gain/loss velocity distribution given signal on the detector and 
+% and the smple incident beam time/velocity distribution. 
+
+fv_samp = sum(f_samp,2);
+ft_samp  = sum(f_samp,1);
+fv_norm = sum(fv_samp);
+ft_norm = sum(ft_samp);
+v_av = sum(fv_samp.*v_samp')/fv_norm;
+ts_av = sum(ft_samp.*t_samp)/ft_norm;
+
+[xi,yi] = meshgrid(t_det,v_samp);
+[xb,yb] = meshgrid(t_samp,v_samp);
+f_samp_in = interp2(xb,yb,f_samp,xi,yi,'nearest',0);
+
+t_det = t_det - ts_av;
+vel_in = L_det./(t_det);
 v_min  = min(vel_in);
 v_max  = max(vel_in);
-tp_min = min(time_in);
-tp_max = max(time_in);
+tp_min = min(t_det);
+tp_max = max(t_det);
 
 DV0 = v_max - v_min;
-dt = time_in(2)-time_in(1);
+dt = t_det(2)-t_det(1);
 %Nt = size(f_in,2);
 %dt = (tp_max-tp_min)/(Nt-1);
 % if dt<2e-6
 %     dt = 2e-6;
 % end
-t_out = tp_min:dt:tp_max;
-Nt = numel(t_out);
-
+Nt= numel(t_samp);
+Nv= floor(0.5*Nt);
 
 
 v_min_norm = v_min/DV0;
@@ -38,7 +39,7 @@ t_index = fft_ind(Nt);
 
 Imk = @(n,k)I_mk(n,k,v_min_norm,v_max_norm,v_index,t_index,Nv,Nt);
 
-I1 = Imkl(0,0);
+I1 = Imk(1,2);
 %
 
 
@@ -68,7 +69,7 @@ end
 int = cash(n,k);
 if isnan(int)
     ki = v_index(k);
-    ni = t_index(k);    
+    ni = t_index(n);    
     fun = @(v)(exp(2i*pi*(ki*v-v_min*ni./v)));
     int = integral(fun,v_min,v_max);
     cash(n,k) = int;

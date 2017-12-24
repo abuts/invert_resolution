@@ -88,6 +88,6 @@ for i=1:num_pulses
     %ax = gca;
     ax.XLabel.String = sprintf('Velocity transfer/(%3.2g m/s)',V_char);
     ax.YLabel.String = sprintf('Signal');
-    [f_out,v_out] = fft_invert_propagation(f_det_vs_t,t_det,L_det);
+    [f_out,v_out] = fft_invert_propagation(f_samp{i},t_samp{i},v_samp{i},f_det_vs_t,t_det,L_det);
 end
 

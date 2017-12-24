@@ -1,5 +1,7 @@
 function [f_s_out,t_samp,v_s_out,Norma] = fft_convolute_with_vel_distr(f_samp,t_samp,v_samp,V_char)
-% Calculate sample velocity distribution for modelling and recovering
+% Calculate time-velocity distribution for beam after propagating though sample given
+% time/velicity distribution of incident beam and model sample velocity
+% gain/loss probability.
 %
 %
 %   Detailed explanation goes here
