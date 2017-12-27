@@ -44,13 +44,24 @@ for i=1:num_pulses
     ax.XLabel.String = sprintf('Time/(%3.2g sec)',tau_char);
     ax.YLabel.String = sprintf('Velocity/(%3.2g m/s)',V_char);
     view(0,90);
+    %---------------------------------------------------
+    % signal at detector
     f_det_vs_t = sum(f_det,1)*norm(i)/size(f_det,1);
-%     pn = IX_dataset_1d(t_det/tau_char,f_det_vs_t);
-%     pn.x_axis = sprintf('Time/(%3.2g sec)',tau_char);
-%     pn.s_axis = 'Signal';
-%     acolor(colors(i));    
-%     dl(pn);
-%     keep_figure
+    %
+    pn = IX_dataset_1d(t_det/tau_char,f_det_vs_t);
+    pn.x_axis = sprintf('Time/(%3.2g sec)',tau_char);
+    pn.s_axis = 'Signal';
+    acolor(colors(i));
+    dl(pn);
+    keep_figure
+    
+    [f_det_conv,t_det_conv] = fft_propagate_pulse_Int(f_as,t_as,v_as,L_det);
+    p1 = IX_dataset_1d(t_det_conv/tau_char,abs(f_det_conv));
+    p1.x_axis = sprintf('Time/(%3.2g sec)',tau_char);
+    p1.s_axis = 'Signal';
+    dl(p1);
+    keep_figure
+    
     
     
     t0 = (L_samp+L_det)/(V_pulse(i));

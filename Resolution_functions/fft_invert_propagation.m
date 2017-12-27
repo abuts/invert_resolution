@@ -61,19 +61,7 @@ f_out_sp = f_in_sp(k,n).*f_out_sp;
 time_c = toc(t_start)/60 % convert in minutes
 f_out = ifft2(f_out_sp);
 
-function int = I_mk(n,k,v_min,v_max,v_index,t_index,Nv,Nt)
-persistent cash;
-if isempty(cash)
-    cash = ones(Nv,Nt)*NaN;
-end
-int = cash(n,k);
-if isnan(int)
-    ki = v_index(k);
-    ni = t_index(n);    
-    fun = @(v)(exp(2i*pi*(ki*v-v_min*ni./v)));
-    int = integral(fun,v_min,v_max);
-    cash(n,k) = int;
-end
+
 
 
 

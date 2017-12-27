@@ -1,6 +1,9 @@
 function ind = fft_ind(Np)
-% function returns indexes of the fourier components calculated usign fft 
-% for the transformation with NP points
+% function returns indexes of the fourier frequencies for a transformation
+% calculated using fft with NP points
+%
+% a correspondent frequency would be 2*pi*ind/DT where DT is the interval
+% of the transformation. 
 %
 Np2 = floor(Np/2);
 if  rem(Np,2) >0
