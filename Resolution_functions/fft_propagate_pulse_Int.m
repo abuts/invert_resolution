@@ -19,9 +19,9 @@ tp_min = L/v_max+min(time_in);
 tp_max = L/v_min+max(time_in);
 DT0 = tp_max-tp_min;
 dt = time_in(2) - time_in(1);
-% if dt<2e-6 % debugging -- not necessary in reality
-%     dt = 2e-6;
-% end
+if dt<2e-6 % debugging -- not necessary in reality
+    dt = 2e-6;
+end
 t_out = tp_min-dt:dt:tp_max;
 Nt = numel(t_out);
 Nv = numel(vel_in);
@@ -36,7 +36,7 @@ t_index = fft_ind(Nt);
 Imk = @(nv,kt)I_mk(nv,kt,v_min_norm,v_max_norm,v_index,t_index);
 
 
-I1 = Imk(2,2);
+I1 = Imk(1,2);
 %
 [xi,yi]= meshgrid(t_out,vel_in);
 xi = xi-L./yi;
