@@ -11,8 +11,8 @@ colors = {'k','r','g','b','m'};
 f_max_1f = [];
 for i=1:num_pulses
     %[f_as,t_as,v_as] = convolute_with_vel_distr(f_samp{i},t_samp{i},v_samp{i},tau_char,V_char);
-    [f_as,t_as,v_as,Norm] = fft_convolute_with_vel_distr(f_samp{i},t_samp{i},v_samp{i},V_char);
-    [xi,yi]=meshgrid(t_as/tau_char,v_as/V_char);
+    [f_afs,t_afs,v_afs,Norm] = fft_convolute_with_vel_distr(f_samp{i},t_samp{i},v_samp{i},V_char);
+    [xi,yi]=meshgrid(t_afs/tau_char,v_afs/V_char);
     %
     fn = sprintf('Sample time/velocity profile N %d',i);
     fh = findobj('type','figure', 'Name', fn);
@@ -21,13 +21,13 @@ for i=1:num_pulses
     else
         figure(fh);
     end
-    surf(xi,yi,f_as,'EdgeColor','none');
+    surf(xi,yi,f_afs,'EdgeColor','none');
     ax = gca;
     ax.XLabel.String = sprintf('Time/(%3.2g sec)',tau_char);
     ax.YLabel.String = sprintf('Velocity/(%3.2g m/s)',V_char);
     view(0,90);
     
-    [f_det,t_det,v_det] = propagate_pulse(f_as,t_as,v_as,L_det);
+    [f_det,t_det,v_det] = propagate_pulse(f_afs,t_afs,v_afs,L_det);
     %[f_det,t_det,v_det] = fftv_propagate_pulse(f_as,t_as,v_as,L_det);
     
     [xi,yi]=meshgrid(t_det/tau_char,v_det/V_char);
@@ -55,12 +55,16 @@ for i=1:num_pulses
     dl(pn);
     keep_figure
     
-    [f_det_conv,t_det_conv] = fft_propagate_pulse_Int(f_as,t_as,v_as,L_det);
+    [f_det_conv,t_det_conv] = fft_propagate_pulse_Int(f_afs,t_afs,v_afs,L_det);
     p1 = IX_dataset_1d(t_det_conv/tau_char,abs(f_det_conv));
     p1.x_axis = sprintf('Time/(%3.2g sec)',tau_char);
     p1.s_axis = 'Signal';
     dl(p1);
     keep_figure
+    p1.signal = imag(f_det_conv);
+    p1.s_axis = 'Img error';
+    dl(p1);
+ 
     
     
     
