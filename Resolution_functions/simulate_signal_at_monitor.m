@@ -54,8 +54,7 @@ for i=1:num_pulses
     acolor(colors(i));
     dl(pn);
     keep_figure
-    
-    [f_det_conv,t_det_conv] = fft_propagate_pulse_Int(f_afs,t_afs,v_afs,L_det);
+    [f_det_conv,t_det_conv] = fft_propagate_pulse_Int(f_afs,t_afs,v_afs,L_det,tau_char,V_char);
     p1 = IX_dataset_1d(t_det_conv/tau_char,abs(f_det_conv));
     p1.x_axis = sprintf('Time/(%3.2g sec)',tau_char);
     p1.s_axis = 'Signal';

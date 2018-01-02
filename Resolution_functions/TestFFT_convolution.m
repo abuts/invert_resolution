@@ -6,28 +6,50 @@ dT = t_max-t_min;
 t=t_min:dt:t_max;
 s = signal(t);
 Nt = numel(t);
+DN = Nt;
 
 plot(t,s);
 hold on
 pls = pulse(t);
 plot(t,pls);
 
-Ntp = Nt;
+Ntp = Nt+DN;
 fs = fft(s,Ntp);
 fp = fft(pls,Ntp);
+
+% i = 0:Ntp-1;
+% te = t_min + i*dt;
+
+% fst = ifft(fs);
+% fpt = ifft(fp);
+% hold on
+% plot(te,fst)
+% plot(te,fpt);
+
+
 % fs = fft(s);
 % fp = fft(pls);
 
 find = fft_ind(numel(fs));
-phase = 1i*pi*find*(1-(t_min+t_max)/dT); % 
+phase = 1i*pi*find*(1-(2*t_min+dt*(Ntp-1))/(dt*(Ntp-1))); %
 
 fc = fs.*fp.*exp(phase);
 conv = ifft(fc)/dT;
 if numel(t) ~= numel(conv)
-    dt = dT/(numel(conv)-1);
-    t = t_min:dt:t_max;
+    i = 0:Ntp-1;
+    t = t_min + i*dt;
 end
-plot(t,conv);
+plot(t,real(conv));
+if ~any(isreal(conv))
+    imp = imag(conv);
+    realmax = max(real(conv));
+    imgmax = max(imp);
+    if imgmax<10*realmax
+        fprintf('imaginary part renormalized from %e to %e\n',imgmax,0.1*realmax);
+        imp = imp*(0.1*realmax/imgmax);
+    end
+    plot(t,imp);
+end
 hold off
 
 function pls = pulse(t)
