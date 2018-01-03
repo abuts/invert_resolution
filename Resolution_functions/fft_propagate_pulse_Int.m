@@ -78,13 +78,14 @@ if isempty(f_con_mat)
         f_con_mat = ones(Nv,Nt)*NaN;
     end
 end
-v_min_norm = v_min/(DV0);
-v_max_norm = v_max/(DV0);
-Imk = @(nv,kt)I_mkvec(nv,kt,v_min_norm,v_max_norm,v_index,t_index);
 %I1 = Imk(1,Nt-1);
 
 t_start=tic;
 if any(isnan(reshape(f_con_mat,1,numel(f_con_mat))))
+    v_min_norm = v_min/(DV0);
+    v_max_norm = v_max/(DV0);
+    Imk = @(nv,kt)I_mkvec(nv,kt,v_min_norm,v_max_norm,v_index,t_index);
+    
     for m=1:Nv
         undef = isnan(f_con_mat(m,:));
         if ~any(undef)
@@ -94,7 +95,7 @@ if any(isnan(reshape(f_con_mat,1,numel(f_con_mat))))
         vec_mat = f_con_mat(m,:);
         for n=1:Nt
             if undef(n)
-                vec_mat(n) = Imk(m,n);
+                vec_mat(n) = DV0*Imk(m,n);
             end
         end
         f_arr{m} = vec_mat;
@@ -115,7 +116,7 @@ f_in_sp = f_in_sp.*f_con_mat;
 
 % f_in_sp = bsxfun(@times,f_in_sp,v_phase');
 f_out_sp = sum(f_in_sp.*f_con_mat,1);
-t_phase = (DV0)*exp(-1i*pi*t_index*((tp_min+tp_max)/(2*tp_max))); %
+t_phase =  exp(-1i*pi*t_index*((tp_min+tp_max)/(2*tp_max))); %
 %t_phase = (DV0)*exp(1i*pi*t_index); %
 f_out_sp = f_out_sp.*t_phase;
 %

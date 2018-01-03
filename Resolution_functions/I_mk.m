@@ -22,8 +22,20 @@ if kv~=0
         if max_val_n>max_val
             max_val_n = max_val_n-1;
         end
-        fun = @(v)(exp(2i*pi*(kv*v-v_min*nt./v))./(v.*v));
-        int = (exp(2i*pi*(kv*v_max-nt*v_r))-exp(2i*pi*(kv*v_min-nt)))/(2i*pi*kv);
+%        fun = @(v)(exp(2i*pi*(kv*v-v_min*nt./v))./(v.*v));
+%         int = (exp(2i*pi*(kv*v_max-nt*v_r))-exp(2i*pi*(kv*v_min-nt)))/(2i*pi*kv);
+%         if min_val_n<=max_val_n
+%             np = min_val_n:1:max_val_n;
+%             det = sqrt(0.25*np.^2/(kv*kv)+nt*v_min/kv);
+%             shi = np*0.25/kv;
+%             roots = [shi+det,shi-det];
+%             valid = roots>v_min&roots<v_max;
+%             wp = roots(valid);
+%             int = int-(nt*v_min/kv)*integral(fun,v_min,v_max,'Waypoints',wp,'RelTol',0,'AbsTol',1.e-10);
+%         else
+%             int = int-(nt*v_min/kv)*integral(fun,v_min,v_max,'RelTol',0,'AbsTol',1.e-10);
+%         end
+        fun = @(v)(exp(2i*pi*(kv*v-v_min*nt./v)));
         if min_val_n<=max_val_n
             np = min_val_n:1:max_val_n;
             det = sqrt(0.25*np.^2/(kv*kv)+nt*v_min/kv);
@@ -31,9 +43,9 @@ if kv~=0
             roots = [shi+det,shi-det];
             valid = roots>v_min&roots<v_max;
             wp = roots(valid);
-            int = int-(nt*v_min/kv)*integral(fun,v_min,v_max,'Waypoints',wp,'RelTol',0,'AbsTol',1.e-10);
+            int = integral(fun,v_min,v_max,'Waypoints',wp,'RelTol',0,'AbsTol',1.e-10);
         else
-            int = int-(nt*v_min/kv)*integral(fun,v_min,v_max,'RelTol',0,'AbsTol',1.e-10);
+            int = integral(fun,v_min,v_max,'RelTol',0,'AbsTol',1.e-10);
         end
         
         %                 fun0 = @(v)(exp(2i*pi*(kv*v-v_min*nt./v)));
@@ -55,9 +67,9 @@ else
         if max_val_n>max_val
             max_val_n = max_val_n-1;
         end
-          
-   
-        fun = @(v)(exp(-2i*pi*v_min*nt./v));        
+        
+        
+        fun = @(v)(exp(-2i*pi*v_min*nt./v));
         if min_val_n<=max_val_n
             np = min_val_n:1:max_val_n;
             roots = v_min*nt./np;
@@ -66,7 +78,7 @@ else
             int = integral(fun,v_min,v_max,'Waypoints',wp,'RelTol',0,'AbsTol',1.e-10);
         else
             int = integral(fun,v_min,v_max,'RelTol',0,'AbsTol',1.e-10);
-        end        
+        end
         %         int = v_max*exp(2i*pi*nt*v_r) - v_min*exp(2i*pi*nt)+...
         %             2i*pi*v_min*nt.*(expint(-2i*pi*nt*v_r)...
         %             -expint(-2i*pi*nt));
