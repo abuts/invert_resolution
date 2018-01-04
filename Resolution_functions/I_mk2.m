@@ -16,7 +16,7 @@ if kv~=0
 %         fun = @(u)(exp(2i*pi*u).*u./sqrt(u.*u+4*nt*kv*v_min));
 %         int = sin(2*pi*fp)/(2*pi) + integral(fun,-fp,fp)/kv;
         
-        fun0 = @(v)(exp(2i*pi*(kv*v-v_min*nt./v)));
+        fun0 = @(v)(cos(2*pi*(kv*v-v_min*nt./v)));
         int = integral(fun0,-0.5,0.5);
         
     end
