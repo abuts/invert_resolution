@@ -55,15 +55,15 @@ for i=1:num_pulses
     dl(pn);
     keep_figure
     [f_det_conv,t_det_conv] = fft_propagate_pulse_Int(f_afs,t_afs,v_afs,L_det,V_pulse(i),tau_char,V_char);
-%     [f_det_conv,t_det_conv] = propagate_pulse_Int(f_afs,t_afs,v_afs,L_det,V_pulse(i),tau_char,V_char);
-%     p1 = IX_dataset_1d(t_det_conv/tau_char,abs(f_det_conv));
-%     p1.x_axis = sprintf('Time/(%3.2g sec)',tau_char);
-%     p1.s_axis = 'Signal';
-%     dl(p1);
-%     keep_figure
-%     p1.signal = imag(f_det_conv);
-%     p1.s_axis = 'Img error';
-%     dl(p1);
+    %[f_det_conv,t_det_conv] = propagate_pulse_Int(f_afs,t_afs,v_afs,L_det,V_pulse(i),tau_char,V_char);
+    p1 = IX_dataset_1d(t_det_conv/tau_char,abs(f_det_conv));
+    p1.x_axis = sprintf('Time/(%3.2g sec)',tau_char);
+    p1.s_axis = 'Signal';
+    dl(p1);
+    keep_figure
+    p1.signal = imag(f_det_conv);
+    p1.s_axis = 'Img error';
+    dl(p1);
  
     
     
