@@ -19,22 +19,15 @@ tp_min = min(time_in);
 tp_max = L/v_min+max(time_in);
 DT0 = tp_max-tp_min;
 dt = time_in(2) - time_in(1);
-[xb,yb] = meshgrid(time_in,vel_in);
-% if dt<2e-6 % debugging -- not needed in reality
-%     dt = 2e-6;
-%     [t_int,dt] = adjust_step(min(time_in),max(time_in),dt);
-%     [xi,yi]= meshgrid(t_int,vel_in);
-%     f_in = interp2(xb,yb,f_in,xi,yi,'linear',0);
-%     xb = xi;
-%     yb  = yi;
-% end
+if dt<2e-6 % debugging -- not needed in reality
+    dt = 2e-6;
+end
 [t_out,dt,Nt] = adjust_step(tp_min,tp_max,dt);
 
 dv = vel_in(2)-vel_in(1);
 [v_out,dv,Nv] = adjust_step(-v_max,v_max,dv);
 
-DNv = Nv-numel(vel_in);
-
+[xb,yb] = meshgrid(time_in,vel_in);
 [xi,yi]= meshgrid(t_out,v_out);
 f_in = interp2(xb,yb,f_in,xi,yi,'linear',0);
 
@@ -54,6 +47,8 @@ DV0 = max(v_out)-min(v_out);
 % fft frequencies do not correspond to indexes as index m in fft array
 % has frequency m-1 if m<N/2 and end-m if bigger;
 f_in_sp = (fft2(f_in,Nv,Nt));
+
+% DNv = Nv-numel(vel_in);
 % v_phase =  exp(-1i*pi*v_index*DNv/(Nv-1)); % appears to shift zeros added at the end to zeros, added to the beginning
 % %
 % f_in_sp = bsxfun(@times,f_in_sp,v_phase');
