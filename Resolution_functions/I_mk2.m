@@ -6,9 +6,10 @@ nt = t_index(n_t);
 
 if kv~=0
     if nt==0
-        int = (exp(2i*pi*kv*v_max)-exp(2i*pi*kv*v_min))/(2i*pi*kv);
+        int = 0;
+        %int = (exp(1i*pi*kv)-exp(-1i*pi*kv))/(2i*pi*kv);
         %         fun0 = @(v)(exp(2i*pi*(kv*v)));
-        %         int0 = integral(fun0,v_min,v_max);
+        %         int0 = integral(fun0,-0.5,0.5);
         
     else
 %         fp = 0.5*kv-2*nt*v_min;
