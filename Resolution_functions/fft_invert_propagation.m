@@ -22,6 +22,10 @@ v_min = L_det/(tp_max-tp_min);
 
 dv = v_samp(2)-v_samp(1);
 [dv_out,dv,Nv] = adjust_step(-v_max,v_max,dv);
+% if Nv > Nt
+%     dt = 
+% end
+
 [xb,yb] = meshgrid(t_samp-t0,v_samp);
 [xi,yi] = meshgrid(t_in,dv_out);
 f_in = interp2(xb,yb,f_samp,xi,yi,'linear',0); % expand sample pulse onto the whole integration range

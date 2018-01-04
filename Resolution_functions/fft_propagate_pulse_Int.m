@@ -78,14 +78,14 @@ if isempty(f_con_mat)
         f_con_mat = ones(Nv,Nt)*NaN;
     end
 end
-%I1 = Imk(1,Nt-1);
+
 
 t_start=tic;
 if any(isnan(reshape(f_con_mat,1,numel(f_con_mat))))
     v_min_norm = v_min/(DV0);
     v_max_norm = v_max/(DV0);
     Imk = @(nv,kt)I_mkvec(nv,kt,v_min_norm,v_max_norm,v_index,t_index);
-    
+    %I1 = Imk(1,2);    
     for m=1:Nv
         undef = isnan(f_con_mat(m,:));
         if ~any(undef)
@@ -133,11 +133,11 @@ if numel(nv)>1 || numel(kt) > 1
         nvt = nv(mp);
         for np = 1:numel(kt)
             ktt = kt(np);
-            in(mp,np) = I_mk(nvt,ktt,v_min_norm,v_max_norm,v_index,t_index);
+            in(mp,np) = I_mk2(nvt,ktt,v_min_norm,v_max_norm,v_index,t_index);
         end
     end
 else
-    in = I_mk(nv,kt,v_min_norm,v_max_norm,v_index,t_index);
+    in = I_mk2(nv,kt,v_min_norm,v_max_norm,v_index,t_index);
 end
 
 
