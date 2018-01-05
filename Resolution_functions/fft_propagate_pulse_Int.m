@@ -24,7 +24,7 @@ if dt<2e-6 % debugging -- not needed in reality
 end
 [t_out,dt,Nt] = adjust_step(tp_min,tp_max,dt);
 
-dv = vel_in(2)-vel_in(1);
+dv = 2*v_max/(Nt-1);
 [v_out,dv,Nv] = adjust_step(-v_max,v_max,dv);
 
 [xb,yb] = meshgrid(time_in,vel_in);
@@ -66,7 +66,7 @@ if isempty(f_con_mat)
     if exist([cn,'.mat'],'file')
         disp(['***** loading ',cn]);
         cns = load(cn);
-        f_con_mat = cns.f_con_mat;
+        f_con_mat = cns.f_con_mat;        
     else
         disp(['***** processing ',cn]);
         f_arr = cell(Nv,1);
@@ -77,6 +77,8 @@ end
 
 t_start=tic;
 if any(isnan(reshape(f_con_mat,1,numel(f_con_mat))))
+    ws = warning('off','MATLAB:integral:MaxIntervalCountReached');
+    clob = onCleanup(warning(ws));
     v_min_norm = v_min/(DV0);
     v_max_norm = v_max/(DV0);
     Imk = @(nv,kt)I_mkvec(nv,kt,v_min_norm,v_max_norm,v_index,t_index);

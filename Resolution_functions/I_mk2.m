@@ -16,11 +16,12 @@ if kv~=0
         %         fun = @(u)(exp(2i*pi*u).*u./sqrt(u.*u+4*nt*kv*v_min));
         %         int = sin(2*pi*fp)/(2*pi) + integral(fun,-fp,fp)/kv;
         
-%         funI = @(u)(cos(2*pi*(kv./u-v_min*nt*u))./(u.*u));
-%         int1 = 2*integral(funI,2,Inf);
-%         
-%         funD = @(v)(cos(2*pi*(kv*v-v_min*nt./v)));
-%         int0 = integral(funD,-0.5,0.5);
+        funD = @(v)(cos(2*pi*(kv*v-v_min*nt./v)));
+        funI = @(u)(cos(2*pi*(kv./u-v_min*nt*u))./(u.*u));
+        %         int1 = 2*integral(funI,2,Inf);
+        %
+        
+        %         int0 = integral(funD,-0.5,0.5);
         AbsTol = 1.e-10;
         
         u0 = 2*pi*kv/v_min;
@@ -55,7 +56,7 @@ if kv~=0
             int = 2*(int20+int21);
         else
             funI = @(u)(cos(2*pi*(kv./u-v_min*nt*u))./(u.*u));
-            int = 2*integral(funI,2,Inf);            
+            int = 2*integral(funI,2,Inf);
         end
         
     end
