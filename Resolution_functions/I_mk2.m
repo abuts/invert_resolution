@@ -17,11 +17,11 @@ if kv~=0
         %         int = sin(2*pi*fp)/(2*pi) + integral(fun,-fp,fp)/kv;
         
         funD = @(v)(cos(2*pi*(kv*v-v_min*nt./v)));
-        funI = @(u)(cos(2*pi*(kv./u-v_min*nt*u))./(u.*u));
-        %         int1 = 2*integral(funI,2,Inf);
-        %
-        
-        %         int0 = integral(funD,-0.5,0.5);
+%         funI = @(u)(cos(2*pi*(kv./u-v_min*nt*u))./(u.*u));
+%         int1 = 2*integral(funI,2,Inf);
+%         
+%         
+%         int0 = integral(funD,-0.5,0.5);
         AbsTol = 1.e-10;
         
         u0 = 2*pi*kv/v_min;
@@ -51,9 +51,10 @@ if kv~=0
             betta = v_min*nt;
             alpha = kv;
             albet =alpha/betta;
-            int21 = 2*albet*cos(2*pi*betta/delta)*delta^3+(4*albet/3-(2*pi*alpha)^2)*intC;
-            
-            int = 2*(int20+int21);
+            int22 = 2*albet*cos(2*pi*betta/delta)*delta^3+(4*albet/3-(2*pi*alpha)^2)*intC;
+            arg = 2*pi*nt*v_min;
+            int21 = 2*delta*cos(arg/delta)+1i*arg*(expint(-1i*arg/delta)-expint(1i*arg/delta));
+            int   = 2*int20+int22+int21;
         else
             funI = @(u)(cos(2*pi*(kv./u-v_min*nt*u))./(u.*u));
             int = 2*integral(funI,2,Inf);
