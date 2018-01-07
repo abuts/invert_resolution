@@ -24,8 +24,8 @@ if kv~=0
 %         int0 = integral(funD,-0.5,0.5);
         AbsTol = 1.e-10;
         
-        u0 = 2*pi*kv/v_min;
-        delta = 1/u0;
+        delta = 1.e-3/abs(2*pi*kv);
+        u0 = 1/delta;
         if delta<0.5
             fd = @(v)(kv*v-v_min*nt./v);
             np = root_range(fd,delta,0.5);
@@ -75,10 +75,10 @@ else % kv==0
     end
 end
 
-function range = root_range(fun,min_val,max_val)
+function range = root_range(fun,min_lim,max_lim)
 
-min_val = min(fun(min_val),fun(max_val));
-max_val = max(fun(min_val),fun(max_val));
+min_val = min(fun(min_lim),fun(max_lim));
+max_val = max(fun(min_lim),fun(max_lim));
 
 min_val_n = round(min_val);
 if min_val_n<min_val

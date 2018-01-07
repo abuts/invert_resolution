@@ -78,7 +78,7 @@ end
 t_start=tic;
 if any(isnan(reshape(f_con_mat,1,numel(f_con_mat))))
     ws = warning('off','MATLAB:integral:MaxIntervalCountReached');
-    clob = onCleanup(warning(ws));
+    clob = onCleanup(@()warning(ws));
     v_min_norm = v_min/(DV0);
     v_max_norm = v_max/(DV0);
     Imk = @(nv,kt)I_mkvec(nv,kt,v_min_norm,v_max_norm,v_index,t_index);
