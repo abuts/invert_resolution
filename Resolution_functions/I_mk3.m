@@ -18,7 +18,7 @@ if kv~=0
         %         funI = @(u)(cos(2*pi*(kv./u-v_min*nt*u))./(u.*u));
         %         int1 = 2*integral(funI,2,Inf);
         %         int0 = integral(funD,-0.5,0.5);
-        int = interator(k_v,n_t,v_min);
+        int = interator(kv,nt,v_min);
     end
 else % kv==0
     if nt == 0
