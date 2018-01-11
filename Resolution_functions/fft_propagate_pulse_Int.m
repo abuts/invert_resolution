@@ -20,7 +20,7 @@ tp_max = L/v_min+max(time_in);
 DT0 = tp_max-tp_min;
 dt = time_in(2) - time_in(1);
 if dt<2e-6 % debugging -- not needed in reality
-    dt = 2e-6;
+    dt = 1e-5;
 end
 [t_out,dt,Nt] = adjust_step(tp_min,tp_max,dt);
 
@@ -66,7 +66,7 @@ if isempty(f_con_mat)
     if exist([cn,'.mat'],'file')
         disp(['***** loading ',cn]);
         cns = load(cn);
-        f_con_mat = cns.f_con_mat';
+        f_con_mat = cns.f_con_mat;
     else
         disp(['***** processing ',cn]);
         f_con_mat = ones(Nv,Nt)*NaN;
@@ -94,6 +94,8 @@ if any(isnan(reshape(f_con_mat,1,numel(f_con_mat))))
         end
         f_con_mat(m,:)= vec_mat;        
         if rem(m,5) == 0
+            fprintf('writing step %d#%d\n',m,Nv);
+ 
             cn = sprintf('CashNv%dNt%d',Nv,Nt);
             save(cn,'f_con_mat');
         end
