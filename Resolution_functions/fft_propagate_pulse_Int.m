@@ -66,40 +66,43 @@ if isempty(f_con_mat)
     if exist([cn,'.mat'],'file')
         disp(['***** loading ',cn]);
         cns = load(cn);
-        f_con_mat = cns.f_con_mat;
+        f_con_mat = cns.f_con_mat;        
     else
         disp(['***** processing ',cn]);
-        f_arr = cell(Nv,1);
         f_con_mat = ones(Nv,Nt)*NaN;
     end
 end
-
+f_arr = cell(Nv,1);
 
 t_start=tic;
 if any(isnan(reshape(f_con_mat,1,numel(f_con_mat))))
-    ws = warning('off','MATLAB:integral:MaxIntervalCountReached');
-    clob = onCleanup(@()warning(ws));
+%     ws = warning('off','MATLAB:integral:MaxIntervalCountReached');
+%     clob = onCleanup(@()warning(ws));
     v_min_norm = v_min/(DV0);
     v_max_norm = v_max/(DV0);
-    Imk = @(nv,kt)I_mkvec(nv,kt,v_min_norm,v_max_norm,v_index,t_index);
     %I1 = Imk(1,2);
-    parfor m=1:Nv
+    for m=1:Nv
         undef = isnan(f_con_mat(m,:));
         if ~any(undef)
             continue;
         end
         
         vec_mat = f_con_mat(m,:);
-        for n=1:Nt
+        parfor n=1:Nt
             if undef(n)
-                vec_mat(n) = DV0*Imk(m,n);
+                vec_mat(n) = DV0*I_mkvec(m,n,v_min_norm,v_max_norm,v_index,t_index);
             end
         end
         f_arr{m} = vec_mat;
-        if rem(m,10) == 0
-            fprintf('k=%d#%d\n',m,Nv);
-%             cn = sprintf('CashNv%dNt%d',Nv,Nt);
-%             save(cn,'f_con_mat');
+        if rem(m,5) == 0
+            fprintf('kv=%d#%d\n',m,Nv);
+            for ii=1:m
+                if ~isempty(f_arr{ii}) && any(isnan(f_con_mat(ii,:)))
+                    f_con_mat(ii,:) = f_arr{ii};
+                end
+            end
+            cn = sprintf('CashNv%dNt%d',Nv,Nt);
+            save(cn,'f_con_mat');
         end
     end
     f_con_mat = reshape([f_arr{:}],Nt,Nv)';
