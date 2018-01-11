@@ -5,11 +5,14 @@ function [f_samp,t_samp,v_samp,tau_char,V_char,V_pulse,L_sample,t0,norm] = propa
 % simulation done for MERLIN, the run N22346
 
 filename = 'mod_e_table.csv';
-persistent mat;
-
-if isempty(mat)
+if exist('mod_e_table.mat','file')
+    ld = load('mod_e_table.mat');
+    mat = ld.mat;
+else
     mat = xlsread(filename);
+    save('mod_e_table','mat');
 end
+
 % reshape input data in the format x,y,e into matrix with axis
 % time, energy and matrix, containing moderator pulse as function of these
 % variables, stored in square matrix. Need to know the real time axis
@@ -126,7 +129,7 @@ for i=1:numel(tau)
     ax = gca;
     ax.XLabel.String = sprintf('Time/(%3.2g sec)',tau_char);
     ax.YLabel.String = sprintf('Velocity/(%3.2g m/s)',V_char);
-    view(0,90)    
+    view(0,90)
     
     f_samp{i} = fsamp;
     t_samp{i} = tsamp;
