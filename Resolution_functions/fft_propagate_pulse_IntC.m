@@ -90,7 +90,7 @@ if any(isnan(reshape(f_con_mat,1,numel(f_con_mat))))
         vec_mat = f_con_mat(m,:);
         parfor n=1:Nt
             if undef(n)
-                vec_mat(n) = DV0*I_mkvec(m,n,v_min_norm,v_max_norm,v_index,t_index);
+                vec_mat(n) = I_mkvec(m,n,v_min_norm,v_max_norm,v_index,t_index);
             end
         end
         f_con_mat(m,:)= vec_mat;        
@@ -129,11 +129,11 @@ if numel(nv)>1 || numel(kt) > 1
         nvt = nv(mp);
         for np = 1:numel(kt)
             ktt = kt(np);
-            in(mp,np) = I_mk3C(nvt,ktt,v_min_norm,v_max_norm,v_index,t_index);
+            in(mp,np) = I_mk3(nvt,ktt,v_min_norm,v_max_norm,v_index,t_index);
         end
     end
 else
-    in = I_mk3C(nv,kt,v_min_norm,v_max_norm,v_index,t_index);
+    in = I_mk3(nv,kt,v_min_norm,v_max_norm,v_index,t_index);
 end
 
 
