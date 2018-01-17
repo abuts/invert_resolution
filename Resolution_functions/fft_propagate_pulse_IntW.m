@@ -73,14 +73,14 @@ if isempty(f_con_mat)
         f_con_mat = ones(Nv,Nt)*NaN;
     end
 end
+v_min_norm = v_min/(DV0);
+v_max_norm = v_max/(DV0);
+v_steps_norm = v_out/DV0;
 
 t_start=tic;
 if any(isnan(reshape(f_con_mat,1,numel(f_con_mat))))
     %     ws = warning('off','MATLAB:integral:MaxIntervalCountReached');
     %     clob = onCleanup(@()warning(ws));
-    v_min_norm = v_min/(DV0);
-    v_max_norm = v_max/(DV0);
-    v_steps_norm = v_out/DV0;
     %I1 = Imk(1,2);
     for n=1:Nt
         undef = isnan(f_con_mat(:,n));
@@ -94,15 +94,15 @@ if any(isnan(reshape(f_con_mat,1,numel(f_con_mat))))
                 vec_mat(m) = I_mkvec(m,n,v_min_norm,v_max_norm,v_index,t_index);
             end
         end
-%         nt = t_index(n);
-%         if nt ~= 0
-%             vec_mat = int_fitter(vec_mat,v_steps_norm,nt,v_min_norm,v_max_norm);
-%         end
-%         
-        f_con_mat(:,n)= vec_mat;        
+        %         nt = t_index(n);
+        %         if nt ~= 0
+        %             vec_mat = int_fitter(vec_mat,v_steps_norm,nt,v_min_norm,v_max_norm);
+        %         end
+        %
+        f_con_mat(:,n)= vec_mat;
         if rem(n,5) == 0
             fprintf('writing step %d#%d\n',n,Nv);
- 
+            
             cn = sprintf('CashNv%dNt%d',Nv,Nt);
             save(cn,'f_con_mat');
         end
@@ -118,7 +118,8 @@ v_phase =  exp(1i*pi*v_index);
 
 f_in_sp = bsxfun(@times,f_in_sp,v_phase');
 f_out_sp = sum(f_in_sp,1);
-t_phase =  exp(1i*pi*t_index*(1-(tp_min+tp_max)/(DT0))); %
+%t_phase =  exp(1i*pi*t_index*(1+2*v_min_norm-(tp_min+tp_max)/(DT0))); %
+t_phase =  exp(-2i*pi*t_index*v_min_norm); %
 %t_phase = exp(1i*pi*t_index); %
 
 f_out_sp = f_out_sp.*t_phase;
