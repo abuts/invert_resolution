@@ -1,5 +1,7 @@
 function [f_out,t_out] = fft_propagate_pulse_IntW(f_in,time_in,vel_in,L,V_pulse,t_char,v_char)
 % Calculate interpolited time-velocity profile at the position L using fft
+% W - version integrates from t_min = min(time_in)+L/v_max
+%                        to   t_max = max(time_in)+L/v_min;
 %
 % f_in     -- 2D signal function in units tau(mks) vs
 % time_in  -- time axis for signal  (sec)
@@ -23,12 +25,16 @@ dt = time_in(2) - time_in(1);
 %     dt = 2e-6;
 % end
 [t_out,dt,Nt] = adjust_step(tp_min,tp_max,dt);
+t_orig_min = min(time_in);
+t_orig_max = tp_max-L/v_max;
+dt0 = (t_orig_max-t_orig_min)/(Nt-1);
+[t_in_expanded,dt0,Nt] = adjust_step(t_orig_min,t_orig_max,dt0);
 
 dv = (v_max-v_min)/(Nt-1);
 [v_out,dv,Nv] = adjust_step(v_min,v_max,dv);
 
-[xb,yb] = meshgrid((time_in+L/v_max),vel_in);
-[xi,yi]= meshgrid(t_out,v_out);
+[xb,yb] = meshgrid(time_in,vel_in);
+[xi,yi]= meshgrid(t_in_expanded,v_out);
 f_in = interp2(xb,yb,f_in,xi,yi,'linear',0);
 
 v_index = fft_ind(Nv);
@@ -114,11 +120,17 @@ if any(isnan(reshape(f_con_mat,1,numel(f_con_mat))))
 end
 
 f_in_sp = f_in_sp.*f_con_mat;
-v_phase =  exp(1i*pi*v_index);
-
+v_phase =  exp(1i*pi*v_index*(v_max_norm));
+% 
 f_in_sp = bsxfun(@times,f_in_sp,v_phase');
+% f_t = ifft(f_in_sp);
+% [xi,yi] = meshgrid(t_out/t_char,v_out/v_char);
+% surf(xi,yi,abs(f_t),'Edgecolor','None');
+% view(0,90);
+
 f_out_sp = sum(f_in_sp,1);
 %t_phase =  exp(1i*pi*t_index*(1+2*v_min_norm-(tp_min+tp_max)/(DT0))); %
+%t_phase =  exp(-1i*pi*t_index*((tp_min+tp_max)/(DT0))); %
 t_phase =  exp(-2i*pi*t_index*v_min_norm); %
 %t_phase = exp(1i*pi*t_index); %
 
