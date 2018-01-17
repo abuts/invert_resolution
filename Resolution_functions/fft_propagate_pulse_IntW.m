@@ -19,9 +19,9 @@ tp_min = min(time_in)+L/v_max;
 tp_max = max(time_in)+L/v_min;
 DT0 = tp_max-tp_min;
 dt = time_in(2) - time_in(1);
-if dt<2e-6 % debugging -- not needed in reality
-    dt = 2e-6;
-end
+% if dt<2e-6 % debugging -- not needed in reality
+%     dt = 2e-6;
+% end
 [t_out,dt,Nt] = adjust_step(tp_min,tp_max,dt);
 
 dv = (v_max-v_min)/(Nt-1);
