@@ -1,4 +1,4 @@
-function fint = int_fitter(integrals,v_steps,nt,v_min,v_max)
+function fint = phase_fitter(integrals,v_steps,nt,v_min,v_max)
 %UNTITLED Summary of this function goes here
 %   Detailed explanation goes here
 Nv = numel(v_steps);
