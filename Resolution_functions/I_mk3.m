@@ -1,4 +1,4 @@
-function int = I_mk3C(k_v,n_t,v_min,v_max,v_index,t_index)
+function int = I_mk3(k_v,n_t,v_min,v_max,v_index,t_index)
 % v_min == v_min[cm/sec]/DV[cm/sec]
 % v_max == v_min[cm/sec]/DV[cm/sec]
 

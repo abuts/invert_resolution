@@ -20,11 +20,12 @@ tp_max = L/v_min+max(time_in);
 DT0 = tp_max-tp_min;
 dt = time_in(2) - time_in(1);
 if dt<2e-6 % debugging -- not needed in reality
-    dt = 1e-5;
+    dt = 2e-6;
 end
 [t_out,dt,Nt] = adjust_step(tp_min,tp_max,dt);
 
-dv = v_max/(Nt-1);
+%dv = v_max/(Nv-1);
+dv = 2*(vel_in(2)-vel_in(1));
 [v_out,dv,Nv] = adjust_step(0,v_max,dv);
 
 [xb,yb] = meshgrid(time_in,vel_in);
@@ -107,10 +108,10 @@ if any(isnan(reshape(f_con_mat,1,numel(f_con_mat))))
 end
 
 f_in_sp = f_in_sp.*f_con_mat;
-%v_phase =  exp(1i*pi*v_index);
+v_phase =  exp(1i*pi*v_index);
 
-% f_in_sp = bsxfun(@times,f_in_sp,v_phase');
-f_out_sp = sum(f_in_sp.*f_con_mat,1);
+f_in_sp = bsxfun(@times,f_in_sp,v_phase');
+f_out_sp = sum(f_in_sp,1);
 t_phase =  exp(1i*pi*t_index*(1-(tp_min+tp_max)/(2*tp_max))); %
 %t_phase = (DV0)*exp(1i*pi*t_index); %
 f_out_sp = f_out_sp.*t_phase;
