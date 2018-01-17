@@ -1,4 +1,6 @@
 %function calc_
+function simulate_signal_at_monitor()
+persistent conv_pl_h;
 
 [f_samp,t_samp,v_samp,tau_char,V_char,V_pulse,L_samp,t0_chop,norm] = propagate_pulse_to_sample(1);% [V_char]  = m/sec
 % [L_samp] = m;
@@ -52,9 +54,12 @@ for i=1:num_pulses
     pn.x_axis = sprintf('Time/(%3.2g sec)',tau_char);
     pn.s_axis = 'Signal';
     acolor(colors(i));
-    dl(pn);
+    if ~isempty(conv_pl_h)
+        make_current(conv_pl_h);
+    end
+    conv_pl_h=dl(pn);
     keep_figure
-    [f_det_conv,t_det_conv] = fft_propagate_pulse_IntC(f_afs,t_afs,v_afs,L_det,V_pulse(i),tau_char,V_char);
+    [f_det_conv,t_det_conv] = fft_propagate_pulse_IntW(f_afs,t_afs,v_afs,L_det,V_pulse(i),tau_char,V_char);
     %[f_det_conv,t_det_conv] = propagate_pulse_Int(f_afs,t_afs,v_afs,L_det,V_pulse(i),tau_char,V_char);
     p1 = IX_dataset_1d(t_det_conv/tau_char,abs(f_det_conv));
     p1.x_axis = sprintf('Time/(%3.2g sec)',tau_char);
@@ -64,9 +69,9 @@ for i=1:num_pulses
     p1.signal = imag(f_det_conv);
     p1.s_axis = 'Img error';
     dl(p1);
- 
     
     
+    break
     t0 = (L_samp+L_det)/(V_pulse(i));
     %     figure(111);
     %     hold on;

@@ -1,5 +1,6 @@
 function [f_out,t_out] = fft_propagate_pulse_IntC(f_in,time_in,vel_in,L,V_pulse,t_char,v_char)
 % Calculate interpolited time-velocity profile at the position L using fft
+% C - versuion integrates from 0 to t_max = max(time_in)+L/v_min;
 %
 % f_in     -- 2D signal function in units tau(mks) vs
 % time_in  -- time axis for signal  (sec)
