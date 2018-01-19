@@ -120,8 +120,8 @@ if any(isnan(reshape(f_con_mat,1,numel(f_con_mat))))
 end
 
 f_in_sp = f_in_sp.*f_con_mat;
+%
 v_phase =  exp(1i*pi*v_index*(v_max_norm));
-% 
 f_in_sp = bsxfun(@times,f_in_sp,v_phase');
 % f_t = ifft(f_in_sp);
 % [xi,yi] = meshgrid(t_out/t_char,v_out/v_char);

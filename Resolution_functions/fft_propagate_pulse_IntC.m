@@ -109,12 +109,12 @@ if any(isnan(reshape(f_con_mat,1,numel(f_con_mat))))
 end
 
 f_in_sp = f_in_sp.*f_con_mat;
-v_phase =  exp(1i*pi*v_index);
+%v_phase =  exp(1i*pi*v_index);
 
-f_in_sp = bsxfun(@times,f_in_sp,v_phase');
+%f_in_sp = bsxfun(@times,f_in_sp,v_phase');
 f_out_sp = sum(f_in_sp,1);
-t_phase =  exp(1i*pi*t_index*(1-(tp_min+tp_max)/(2*tp_max))); %
-%t_phase = (DV0)*exp(1i*pi*t_index); %
+%t_phase =  exp(1i*pi*t_index*(1-(tp_min+tp_max)/(2*tp_max))); %
+t_phase =exp(1i*pi*t_index); %
 f_out_sp = f_out_sp.*t_phase;
 %
 time_c = toc(t_start)/60; % convert in minutes

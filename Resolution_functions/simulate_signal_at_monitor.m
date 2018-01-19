@@ -59,7 +59,7 @@ for i=1:num_pulses
     end
     conv_pl_h=dl(pn);
     keep_figure
-    [f_det_conv,t_det_conv] = fft_propagate_pulse_IntW(f_afs,t_afs,v_afs,L_det,V_pulse(i),tau_char,V_char);
+    [f_det_conv,t_det_conv] = fft_propagate_pulse_IntC(f_afs,t_afs,v_afs,L_det,V_pulse(i),tau_char,V_char);
     %[f_det_conv,t_det_conv] = propagate_pulse_Int(f_afs,t_afs,v_afs,L_det,V_pulse(i),tau_char,V_char);
     p1 = IX_dataset_1d(t_det_conv/tau_char,abs(f_det_conv));
     p1.x_axis = sprintf('Time/(%3.2g sec)',tau_char);
