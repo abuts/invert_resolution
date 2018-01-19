@@ -1,11 +1,11 @@
-function int = I_mk4(k_v,n_t,v_min,v_max,v_index,t_index)
+function int = I_mk4(k_v,n_t,betta0,v_min,v_max,v_index,t_index)
 % v_min == v_min[cm/sec]/DV[cm/sec]
 % v_max == v_min[cm/sec]/DV[cm/sec]
 
 kv = v_index(k_v);
 nt = t_index(n_t);
 AbsErr = 1.e-12;
-betta = v_min*v_max*nt;
+betta = betta0*nt;
 
 if kv~=0
     if nt==0
