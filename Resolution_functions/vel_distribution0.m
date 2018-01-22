@@ -15,7 +15,8 @@ end
 
 % energy peaks
 e_exc = [0,0.3,2,10,15];
-sigma = [50,300,50,400,160];
+sigma = [10,60,5,80,160];
+%sigma = [50,300,50,400,160];
 Ampl  = [5,9,1,5,5];
 
 e_transf_const = 5.22725e-6; % sec^2/m^2
@@ -29,13 +30,5 @@ for i=1:numel(e_exc)
     f_d = f_d +par(i,1).*(exp(-(dv-par(i,2)).^2./par(i,3))+exp(-(dv+par(i,2)).^2./par(i,3)))./sqrt(pi*par(i,3));
 end
 
-
-
 %plot(v.*v*(V_char*V_char*e_transf_const),f_d);
-
-
-
-
-
-
 
