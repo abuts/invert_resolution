@@ -12,7 +12,7 @@ dV_scat_max = sqrt(e_max/e_transf_const);
 
 % energy peaks
 e_exc = [0,0.3,2,10,15];
-sigma = [10,60,5,80,160];
+sigma = [50,300,50,400,160];
 Ampl  = [5,9,1,5,5];
 
 e_transf_const = 5.22725e-6; % sec^2/m^2

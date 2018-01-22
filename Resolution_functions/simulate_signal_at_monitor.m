@@ -1,7 +1,7 @@
 function simulate_signal_at_monitor()
 persistent conv_pl_h;
 
-[f_samp,t_samp,v_samp,tau_char,V_char,V_pulse,L_samp,t0_chop,norm] = propagate_pulse_to_sample(1);% [V_char]  = m/sec
+[f_samp,t_samp,v_samp,tau_char,V_char,V_pulse,L_samp,t0_chop,norm] = propagate_pulse_to_sample(3);% [V_char]  = m/sec
 % [L_samp] = m;
 % [tau_char] = sec
 num_pulses = numel(t_samp);
@@ -83,7 +83,7 @@ for i=1:num_pulses
     dl(p1);
     
     
-   break
+    continue
     t0 = (L_samp+L_det)/(V_pulse(i));
     %     figure(111);
     %     hold on;
@@ -105,7 +105,7 @@ for i=1:num_pulses
     mult = Norm/Norm1;
     f_det_vs_t_co = f_det_vs_t*mult;
     [v_transf,ind] = sort(v_transf);
-    f_det_vs_t_co = f_det_vs_t_co(ind);    
+    f_det_vs_t_co = f_det_vs_t_co(ind);
     %pn = IX_dataset_1d(v_transf/V_char,f_det_vs_t./dv);
     pn = IX_dataset_1d(v_transf/V_char,f_det_vs_t_co);
     acolor(colors(i));

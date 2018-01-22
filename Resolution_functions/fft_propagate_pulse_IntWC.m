@@ -128,6 +128,7 @@ view(0,90)
 ft_stignal1D = sum(ft_signal_test,1);
 signal_test1D = ifft(ft_stignal1D);
 figure(23)
+hold off
 plot(t_out/t_char,signal_test1D);
 hold on
 plot(t_out/t_char,f_out);
@@ -138,24 +139,43 @@ hold off
 
 %f_det_sp = fft(f_det,Nt);
 %
-f_vel_sp = filter_and_test(f_in_sp_test,f_out_sp);
+t_phase = exp(-1i*pi*t_index); %
+ft_stignal1D = ft_stignal1D.*t_phase ;
+
+[f_vel_sp,vel_ind] = filter_and_test(f_in_sp_test,ft_stignal1D,25,25);
+
 vel_dist = ifft(f_vel_sp);
+figure(25);
+plot(real(vel_dist));
+figure(26);
+plot(imag(vel_dist));
 
-function vel_spectra = filter_and_test(dirf_matrix,signal_spectra,N_v_left,N_t_left)
 
-dirf_matrix = fftshift(dirf_matrix);
-signal_spectra = fftshift(signal_spectra);
+function [vel_spectra,vel_left] = filter_and_test(dirf_matrix,signal_spectra,Nv_left,Nt_left)
+
+%dirf_matrix = fftshift(dirf_matrix);
+%signal_spectra = fftshift(signal_spectra);
 [Nv,Nt] = size(dirf_matrix);
-if ~exist('N_t_left','var')
-    N_t_left = Nt;
+if ~exist('Nt_left','var')
+    Nt_left = Nt;
 end
-if N_v_left>Nv
-    N_v_left = Nv;
-end
-v_center = floor(Nv/2);
-t_center = floor(Nt/2);
 
+if Nv_left>Nv
+    Nv_left = Nv;
+end
+Nv_left = floor(Nv_left/2);
+Nt_left = floor(Nt_left/2);
+dirf_matrix = dirf_matrix([1:Nv_left+1,Nv-Nv_left:Nv],[1:Nt_left+1,Nt-Nt_left:Nt]);
+signal_spectra = signal_spectra([1:Nt_left+1,Nt-Nt_left:Nt]);
 
 
 vel_spectra  = linsolve((dirf_matrix)',(signal_spectra)');
+Nv_ind = fft_ind(Nv);
+Nv_left = Nv_ind([1:Nv_left+1,Nv-Nv_left:Nv]);
+Nv_left = fftshift(Nv_left);
+vel_left = fftshift(vel_spectra);
+
+figure(24);
+plot(Nv_left,abs(vel_left));
+
 
