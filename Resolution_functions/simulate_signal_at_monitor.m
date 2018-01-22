@@ -28,7 +28,8 @@ for i=1:num_pulses
     ax.YLabel.String = sprintf('Velocity/(%3.2g m/s)',V_char);
     view(0,90);
     
-    [f_det,t_det,v_det] = propagate_pulse(f_afs,t_afs,v_afs,L_det);
+    t_range = max(t_afs)-min(t_afs);
+    [f_det,t_det,v_det] = propagate_pulse(f_afs,t_afs,v_afs,L_det,t_range);
     %[f_det,t_det,v_det] = fftv_propagate_pulse(f_as,t_as,v_as,L_det);
     
     [xi,yi]=meshgrid(t_det/tau_char,v_det/V_char);
@@ -69,7 +70,8 @@ for i=1:num_pulses
     %---------------------------------------------------
     %
     keep_figure
-    [f_det_conv,t_det_conv] = fft_propagate_pulse_IntW(f_afs,t_afs,v_afs,L_det,V_pulse(i),tau_char,V_char);
+    %[f_det_conv,t_det_conv,v_max] = fft_propagate_pulse_IntW(f_afs,t_afs,v_afs,L_det,V_pulse(i),tau_char,V_char);
+    [f_det_conv,t_det_conv,v_max] = fft_propagate_pulse_IntWC(f_samp{i},t_samp{i},v_samp{i},L_det,V_pulse(i),tau_char,V_char);
     %[f_det_conv,t_det_conv] = propagate_pulse_Int(f_afs,t_afs,v_afs,L_det,V_pulse(i),tau_char,V_char);
     p1 = IX_dataset_1d(t_det_conv/tau_char,abs(f_det_conv));
     p1.x_axis = sprintf('Time/(%3.2g sec)',tau_char);
@@ -81,7 +83,7 @@ for i=1:num_pulses
     dl(p1);
     
     
-    break
+   break
     t0 = (L_samp+L_det)/(V_pulse(i));
     %     figure(111);
     %     hold on;
@@ -101,12 +103,11 @@ for i=1:num_pulses
     v_transf = v_transf-v0; % fixing elastic line
     Norm1 = sum(f_det_vs_t.*dv);
     mult = Norm/Norm1;
-    f_det_vs_t = f_det_vs_t*mult;
+    f_det_vs_t_co = f_det_vs_t*mult;
     [v_transf,ind] = sort(v_transf);
-    f_det_vs_t = f_det_vs_t(ind);
-    
+    f_det_vs_t_co = f_det_vs_t_co(ind);    
     %pn = IX_dataset_1d(v_transf/V_char,f_det_vs_t./dv);
-    pn = IX_dataset_1d(v_transf/V_char,f_det_vs_t);
+    pn = IX_dataset_1d(v_transf/V_char,f_det_vs_t_co);
     acolor(colors(i));
     if i==1
         [reduced_fh,ax]=dl(pn);
@@ -117,7 +118,7 @@ for i=1:num_pulses
     %ax = gca;
     ax.XLabel.String = sprintf('Velocity transfer/(%3.2g m/s)',V_char);
     ax.YLabel.String = sprintf('Signal');
-    [f_out,v_out] = fft_invert_propagation(f_samp{i},t_samp{i},v_samp{i},f_det_vs_t,t_det,L_det);
+    [f_out,v_out] = fft_invert_propagation(f_samp{i},t_samp{i},v_samp{i},f_det_vs_t,t_det,L_det,v_max,tau_char,V_char);
     p_con = IX_dataset_1d(v_out/V_char,abs(f_out));
     p_con.x_axis = sprintf('Velocity Transfer/(%3.2g sec)',V_char);
     p_con.s_axis = 'probability';

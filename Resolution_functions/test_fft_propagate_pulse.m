@@ -32,6 +32,8 @@ V_pulse = v_s ; % not used
 
 f_in = zeros(Nv,Nt_in);
 f_in(Nvs ,Nts) = Nv*Nt;
+f_in(Nvs-10 ,Nts) = 0.5*Nv*Nt;
+
 
 
 

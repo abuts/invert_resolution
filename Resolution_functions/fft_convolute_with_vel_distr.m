@@ -1,80 +1,96 @@
-function [f_s_out,t_samp,v_s_out,Norma] = fft_convolute_with_vel_distr(f_samp,t_samp,v_samp,V_char)
+function [f_s_out,t_samp,v_s_out,Norma,ft_sample,ft_vt] = fft_convolute_with_vel_distr(f_samp,t_samp,v_samp,V_char,noplot)
 % Calculate time-velocity distribution for beam after propagating though sample given
 % time/velicity distribution of incident beam and model sample velocity
 % gain/loss probability.
 %
 %
 %   Detailed explanation goes here
+if exist('noplot','var')
+    noplot = true;
+else
+    noplot = false;
+end
 
 
 
-Nvp= 1024;
-e_max = 25;
+dvs = v_samp(2)-v_samp(1);
+[vel_transf,f_d,v_peaks] = vel_distribution0(dvs);
 
-e_transf_const = 5.22725e-6; % sec^2/m^2
-dV_scat_max = sqrt(e_max/e_transf_const);
+dV_scat_max = max(vel_transf);
+
+
 
 %v_samp_norm = v_samp/V_char;
 V_min_fin = min(v_samp)-dV_scat_max;
 if V_min_fin<0
+    
     V_min_fin = 0;
 end
-V_max = max(v_samp)+dV_scat_max;
+V_max_fin = max(v_samp)+dV_scat_max;
+
+
 
 %dV = (V_max-V_min)/(Nvp-1);
-dV = 2*V_max/(2*Nvp-1);
+dV = vel_transf(2)-vel_transf(1);
 nSource_pts = floor((max(v_samp)-min(v_samp))/dV);
 if nSource_pts < 16
     dV = (max(v_samp)-min(v_samp))/16;
     %nSource_pts = 16;
 end
-vi = -V_max:dV:V_max;
+vi =V_min_fin:dV:V_max_fin;
 [xi,yi] = meshgrid(t_samp,vi);
 [xb,yb] = meshgrid(t_samp,v_samp);
 
-f_samp = interp2(xb,yb,f_samp,xi,yi,'nearest',0);
-
-
-fh = findobj('type','figure', 'Name', 'sample distribution');
-if  isempty(fh)
-    figure('Name','sample distribution');
-else
-    figure(fh);
-end
-surf(xi,yi/V_char,f_samp,'EdgeColor','none');
-ax = gca;
-%ax.XLabel.String = sprintf('Time/(%3.2g sec)',tau_char);
-ax.YLabel.String = sprintf('Velocity/(%3.2g m/s)',V_char);
-view(0,90);
+f_samp = interp2(xb,yb,f_samp,xi,yi,'linear',0);
+v_sh = 0.5*(V_min_fin+V_max_fin);
+% extend velocity transfer function onto the full scattering scale
+f_d = interp1(vel_transf,f_d,vi-v_sh,'linear',0);
+vel_transf = vi-v_sh;
 
 
 Nv = numel(vi);
 Nt = size(f_samp,2);
 
-ft = fft2(f_samp);
+% caclculate velocity transfer distrubution in its own range but with
+% joing accuracy.
+Norma = sum(f_d)*(max(vel_transf)-min(vel_transf))/(Nv-1);
+f_d = f_d/Norma;
+
+
+if ~noplot
+    fh = findobj('type','figure', 'Name', 'sample distribution');
+    if  isempty(fh)
+        figure('Name','sample distribution');
+    else
+        figure(fh);
+    end
+    surf(xi,yi/V_char,f_samp,'EdgeColor','none');
+    ax = gca;
+    %ax.XLabel.String = sprintf('Time/(%3.2g sec)',tau_char);
+    ax.YLabel.String = sprintf('Velocity/(%3.2g m/s)',V_char);
+    view(0,90);
+end
+ft_sample = fft2(f_samp);
 ind = fft_ind(Nv);
 phase = exp(1i*pi*ind); % correct for symmetric integration range only
 
 %ftm = abs(fftshift(ft));
 %surf(ftm,'EdgeColor','none');
+ft_vt = fft(f_d);
 
+if ~noplot
+    figure(111)
+    acolor 'b';
+    plot(vel_transf/V_char,f_d);
+    ax = gca;
+    ax.XLabel.String = sprintf('Velocity/(%3.2g m/s)',V_char);
+    figure(112);
+    plot(abs(ft_vt));
+end
 
-% caclculate velocity transfer distrubution in its own range but with
-% joing accuracy.
-[v_t,f_d] = vel_distribution(vi);
-Norma = sum(f_d)*(max(v_t)-min(v_t))/(Nv-1);
-f_d = f_d/Norma;
-figure(111)
-acolor 'b';
-plot(v_t/V_char,f_d);
-ax = gca;
-ax.XLabel.String = sprintf('Velocity/(%3.2g m/s)',V_char);
-ffv = fft(f_d);
-ffv = ffv.*phase;
+ft_vt = ft_vt.*phase;
+fm = bsxfun(@times,ft_sample,ft_vt');
 
-
-
-fm = bsxfun(@times,ft,ffv');
 %fm = ft.*repmat(ffv',1,numel(t_samp));
 %fm = fftshift(fm);
 %ftm = abs(fftshift(fm));
@@ -84,25 +100,22 @@ fm = bsxfun(@times,ft,ffv');
 %fm = repmat(fm(1,:),size(fm,1),1);
 f_s_out = ifft2(fm);
 
-fh = findobj('type','figure', 'Name', 'convoluted distribution');
-if  isempty(fh)
-    figure('Name','convoluted distribution');
-else
-    figure(fh);
+if ~noplot
+    fh = findobj('type','figure', 'Name', 'convoluted distribution');
+    if  isempty(fh)
+        figure('Name','convoluted distribution');
+    else
+        figure(fh);
+    end
+    %[xi,yi]= meshgrid();
+    surf(xi,yi/V_char,f_s_out,'EdgeColor','none');
+    view(0,90);
+    
 end
-surf(xi,yi/V_char,f_s_out,'EdgeColor','none');
-view(0,90);
 % ax = gca;
 % %ax.XLabel.String = sprintf('Time/(%3.2g sec)',tau_char);
 % ax.YLabel.String = sprintf('Velocity/(%3.2g m/s)',V_char);
-
-
-v_s_out = V_min_fin:dV:V_max;
-[xi,yi] = meshgrid(t_samp,v_s_out);
-[xb,yb] = meshgrid(t_samp,vi);
-f_s_out = interp2(xb,yb,f_s_out,xi,yi,'cubic',0);
-
-
+v_s_out = vi;
 
 
 
