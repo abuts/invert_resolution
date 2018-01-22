@@ -27,9 +27,9 @@ tp_min = min(time_in)+L/v_max;
 tp_max = max(time_in)+L/v_min;
 DT0 = tp_max-tp_min;
 dt = time_in(2) - time_in(1);
-% if dt<2e-6 % debugging -- not needed in reality
-%     dt = 2e-6;
-% end
+if dt<2e-6 % debugging -- not needed in reality
+    dt = 2e-6;
+end
 % detector time scale
 [t_out,dt,Nt] = adjust_step(tp_min,tp_max,dt);
 % the sample time to reflect onto the detector time
@@ -40,7 +40,7 @@ dt0 = (t_orig_max-t_orig_min)/(Nt-1);
 
 dv = (vel_in(2)-vel_in(1));
 %dv = 3*(vel_in(2)-vel_in(1));
-%dv  = (v_max-v_min)/(Nt-1);
+dv  = (v_max-v_min)/(Nt-1);
 [v_out,dv,Nv] = adjust_step(v_min,v_max,dv);
 
 [xb,yb] = meshgrid(time_in,vel_in);
@@ -115,6 +115,22 @@ ft_f_in_exp = ifft2(f_in_expanded);
 
 f_in_sp_test = ft_f_in_exp.*f_con_mat;
 
+if numel(ft_vt) ~=size(f_in_sp_test,1)
+    [vel_transf,f_d] = vel_distribution0(dv);
+
+    if numel(ft_vt) ~=size(f_in_sp_test,1)
+        % extend velocity transfer function onto the full scattering scale
+        v_sh = 0.5*(v_min+v_max);        
+        f_d = interp1(vel_transf,f_d,v_out-v_sh,'linear',0);
+    end
+
+    ft_vt = fft(f_d);
+    ind = fft_ind(numel(ft_vt));
+    phase = exp(1i*pi*ind); % correct for symmetric integration range only
+    ft_vt = ft_vt.*phase;
+end
+
+
 ft_signal_test = bsxfun(@times,f_in_sp_test,ft_vt');
 ft_signal_test = bsxfun(@times,ft_signal_test,t_phase );
 signal_test2D  = ifft2(ft_signal_test);
@@ -142,8 +158,9 @@ hold off
 t_phase = exp(-1i*pi*t_index); %
 ft_stignal1D = ft_stignal1D.*t_phase ;
 
-[f_vel_sp,vel_ind] = filter_and_test(f_in_sp_test,ft_stignal1D,25,25);
+[f_vel_sp,vel_ind] = filter_and_test(f_in_sp_test,ft_stignal1D,155);
 
+f_vel_sp= f_vel_sp.*exp(1i*pi*vel_ind)' ;
 vel_dist = ifft(f_vel_sp);
 figure(25);
 plot(real(vel_dist));
@@ -151,7 +168,7 @@ figure(26);
 plot(imag(vel_dist));
 
 
-function [vel_spectra,vel_left] = filter_and_test(dirf_matrix,signal_spectra,Nv_left,Nt_left)
+function [vel_spectra,Nv_left] = filter_and_test(dirf_matrix,signal_spectra,Nv_left,Nt_left)
 
 %dirf_matrix = fftshift(dirf_matrix);
 %signal_spectra = fftshift(signal_spectra);
@@ -177,5 +194,6 @@ vel_left = fftshift(vel_spectra);
 
 figure(24);
 plot(Nv_left,abs(vel_left));
+Nv_left = fftshift(Nv_left);
 
 
