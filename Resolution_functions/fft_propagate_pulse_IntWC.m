@@ -117,13 +117,13 @@ f_in_sp_test = ft_f_in_exp.*f_con_mat;
 
 if numel(ft_vt) ~=size(f_in_sp_test,1)
     [vel_transf,f_d] = vel_distribution0(dv);
-
+    
     if numel(ft_vt) ~=size(f_in_sp_test,1)
         % extend velocity transfer function onto the full scattering scale
-        v_sh = 0.5*(v_min+v_max);        
+        v_sh = 0.5*(v_min+v_max);
         f_d = interp1(vel_transf,f_d,v_out-v_sh,'linear',0);
     end
-
+    
     ft_vt = fft(f_d);
     ind = fft_ind(numel(ft_vt));
     phase = exp(1i*pi*ind); % correct for symmetric integration range only
@@ -157,15 +157,52 @@ hold off
 %
 t_phase = exp(-1i*pi*t_index); %
 ft_stignal1D = ft_stignal1D.*t_phase ;
+np= 155;
+while isnumeric(np) &&np>0
+    fprintf(' filtering using %d harmonics\n',np);
+    [f_vel_sp,vel_ind] = filter_and_test(f_in_sp_test,ft_stignal1D,np);
+    f_vel_sp= f_vel_sp.*exp(1i*pi*vel_ind)' ;
+    vel_dist = ifft(f_vel_sp);
+    
+    %max_h_num = max(abs(vel_ind));
+    dV_period = DV0/2;
+    dv_pres = 2*dV_period/(numel(f_vel_sp)-1);
+    dv_steps = -dV_period:dv_pres:dV_period;
+    figure(25);
+    plot(dv_steps/v_char,real(vel_dist));
+    figure(26);
+    plot(dv_steps/v_char,imag(vel_dist));
+    
+    np = input('Enter number of harmonics to use in the filter or 0 to exit:>> ');
+end
 
-[f_vel_sp,vel_ind] = filter_and_test(f_in_sp_test,ft_stignal1D,155);
+persistent stor;
+if isempty(stor)
+    stor = struct();
+end
+pulse_name = ['pls',num2str(round(V_pulse))];
+stor.(pulse_name) = [vel_ind',f_vel_sp,dv_steps',vel_dist];
 
-f_vel_sp= f_vel_sp.*exp(1i*pi*vel_ind)' ;
-vel_dist = ifft(f_vel_sp);
-figure(25);
-plot(real(vel_dist));
-figure(26);
-plot(imag(vel_dist));
+fnms = fieldnames(stor);
+[dv,f_d] = vel_distribution0(dv);
+f_d = f_d/sum(f_d);
+p_con= IX_dataset_1d(dv/v_char,f_d);
+p_con.x_axis = sprintf('Velocity Transfer/(%3.2g sec)',v_char);
+p_con.s_axis = 'probability';
+acolor('b');
+%dl(p_con)
+colors = {'k','r','g','b','m'};
+for i=1:numel(fnms)
+    dat = stor.(fnms{i});
+    p_con.x = real(dat(:,3)/v_char);
+    sig = dat(:,4)/sum(real(dat(:,4)));
+    p_con.signal = real(sig);
+    p_con.error = imag(sig);
+    
+    acolor(colors{i});
+    pl(p_con);
+end
+keep_figure;
 
 
 function [vel_spectra,Nv_left] = filter_and_test(dirf_matrix,signal_spectra,Nv_left,Nt_left)
