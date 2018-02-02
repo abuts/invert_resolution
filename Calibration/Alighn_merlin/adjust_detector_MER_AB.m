@@ -23,8 +23,8 @@ deg_vs_rad=180/pi;% 57.29578;
 
 tube_len_short=1.234; %active length of short packs
 tube_len_long =2.900; % active length of a MERLIN detector (m)
-low_short_tube_pos   = -1.5; % the position of
-high_short_tube_pos  = 0.17;
+low_short_tube_pos   = -1.5; % the position of the beginning of the lower short tube in the tubes stack
+high_short_tube_pos  = 0.17; % the position of the beginning of the  higher short tube in the tubes stack
 %z_shift=0.833;   %the vertical shift of the short packs of the centre line (in m)
 nDet = 512;
 xbin_short=tube_len_short/nDet;% size of each bin for short packs on door 3
