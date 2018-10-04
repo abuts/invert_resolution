@@ -12,7 +12,7 @@ colors = {'k','r','g','b','m'};
 f_max_1f = [];
 for i=1:num_pulses
     %[f_as,t_as,v_as] = convolute_with_vel_distr(f_samp{i},t_samp{i},v_samp{i},tau_char,V_char);
-    [f_afs,t_afs,v_afs,Norm] = fft_convolute_with_vel_distr(f_samp{i},t_samp{i},v_samp{i},V_char);
+    [f_afs,t_afs,v_afs,Norm] = fft_convolute_with_vel_distr(f_samp{i},t_samp{i},v_samp{i},V_char,'noplot');
     [xi,yi]=meshgrid(t_afs/tau_char,v_afs/V_char);
     %
     fn = sprintf('Sample time/velocity profile N %d',i);
