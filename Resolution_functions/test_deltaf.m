@@ -3,9 +3,9 @@ function test_deltaf
 %
 
 % check fft(Delta(v-V0)) = Sum_n{exp(-i*Omega_n*V0)}
-Np=64;
-iV = 32;
-RangeMin = -1;
+Np=33;
+iV = 17;
+RangeMin = 1;
 RangeMax =  3;
 Range0 = 0.5*(RangeMax+RangeMin);
 Range = RangeMax-RangeMin;
@@ -28,8 +28,9 @@ theor_sp = exp(-1i*(V0-Range0)*Omega_n);
 %theor_sp = zeros(size(DeltaF1)); %
 %theor_sp(iV) = Np*exp(1i*omg(iV)*Range0);
 theoR = ifft(theor_sp);
-theoRR = sum((exp(1i*(xx-V0).*Omega_n')),1)/(Np-1);
-plot(xx,real(DeltaF1),':',xx,real(delR),'*',xx,real(theoRR),'o',xx,real(theoR));
+theor_rev = (sum((exp(1i*(xx-V0).*Omega_n')),1) - 0.5*(exp(1i*(xx-V0).*Omega_n(1))+exp(1i*(xx-V0).*Omega_n(end))))/(Np-1);
+%theor_rev = (sum((exp(1i*(xx).*Omega_n')),1))/(Np-1);
+plot(xx,real(DeltaF1),':',xx,real(delR),'*',xx,real(theor_rev),'o',xx,real(theoR));
 if any(abs(imag(DeltaF1))>1.e-9) || any(abs(imag(delR))>1.e-9) || any(abs(imag(theoR))>1.e-9)
     hold on;
     plot(xx,imag(DeltaF1),':',xx,imag(delR),'*',xx,imag(theoR));
@@ -38,21 +39,15 @@ end
 
 
 
-expR = IX_dataset_1d(fftshift(Omega_n/(2*pi)),fftshift(real(spec)));
-expI = IX_dataset_1d(fftshift(Omega_n/(2*pi)),fftshift(imag(spec)));
-
+expT = IX_dataset_1d(fftshift(Omega_n/(2*pi)),(180/pi)*fftshift(atan2(imag(spec),real(spec))));
 acolor('r');
 aline('-');
-dl(expR);
-aline('--');
-pd(expI);
+dl(expT);
 
-theorR = IX_dataset_1d(fftshift(Omega_n/(2*pi)),fftshift(real(theor_sp)));
-theorI = IX_dataset_1d(fftshift(Omega_n/(2*pi)),fftshift(imag(theor_sp)));
+theorR = IX_dataset_1d(fftshift(Omega_n/(2*pi)),(180/pi)*fftshift(atan2(imag(theor_sp),real(theor_sp))));
 acolor('b');
 aline('-');
-pd(theorR);
-aline('--')
-pd(theorI);
+pl(theorR);
+
 
 
