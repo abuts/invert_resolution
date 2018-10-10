@@ -1,4 +1,4 @@
-function test_ie_propagate_df
+function test_ie_propagate_df_direct
 %
 % calculations according to T1B -pp1:3 document from 2018/10/01
 %

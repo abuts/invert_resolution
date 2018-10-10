@@ -4,7 +4,7 @@ function test_deltaf
 
 % check fft(Delta(v-V0)) = Sum_n{exp(-i*Omega_n*V0)}
 Np=33;
-iV = 17;
+iV = 19;
 RangeMin = 1;
 RangeMax =  3;
 Range0 = 0.5*(RangeMax+RangeMin);
@@ -29,6 +29,8 @@ theor_sp = exp(-1i*(V0-Range0)*Omega_n);
 %theor_sp(iV) = Np*exp(1i*omg(iV)*Range0);
 theoR = ifft(theor_sp);
 theor_rev = (sum((exp(1i*(xx-V0).*Omega_n')),1) - 0.5*(exp(1i*(xx-V0).*Omega_n(1))+exp(1i*(xx-V0).*Omega_n(end))))/(Np-1);
+[omg1,sf1] = sft(xx,DeltaF1,ind);
+[myt,myf] = isft(omg1,sf1,xx);
 %theor_rev = (sum((exp(1i*(xx).*Omega_n')),1))/(Np-1);
 plot(xx,real(DeltaF1),':',xx,real(delR),'*',xx,real(theor_rev),'o',xx,real(theoR));
 if any(abs(imag(DeltaF1))>1.e-9) || any(abs(imag(delR))>1.e-9) || any(abs(imag(theoR))>1.e-9)
