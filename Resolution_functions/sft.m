@@ -1,4 +1,4 @@
-function [omega,sf] = sft(t,f,ind)
+function [omega,sf,e_w_matrix] = sft(t,f,ind)
 % slow Fourier transformation.
 % Inputs:
 % x -- vector of x-axis of the signal
@@ -24,11 +24,11 @@ if ~exist('ind','var')
         ind = -Np2:Np2-1;
     end
 end
-t_min = t(1);
-t_max = t(end);
-dT = t_max-t_min;
-omega = (2*pi/dT)*ind;
+dt = max(t(2:end)-t(1:end-1));
+%
+omega = (2*pi/(Np*dt))*ind; % Important! period is wider than t_max - t_min
+
 e_w_matrix = exp(-1i*omega.*t'); % omega changes along rows.
 
-sf = sum(e_w_matrix.*repmat(f',1,Np),1)/(Np-1);
+sf = sum(e_w_matrix.*repmat(f',1,Np),1)/(Np);
 %omega = omega;

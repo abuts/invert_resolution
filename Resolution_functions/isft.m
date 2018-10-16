@@ -21,10 +21,11 @@ if ~exist('t','var')
     Np2 = floor(Np/2);
     omega_max = max(abs(omega));
     T = 2*pi*Np2/omega_max;
-    dt = T/(Np-1);
+    dt = T/Np;
     t = dt*(0:Np-1);
 end
 
 e_w_matrix = exp(1i*omega.*t'); % omega changes along rows.
 
 f = sum(e_w_matrix.*repmat(sf,Np,1),2);
+f=f';
