@@ -1,4 +1,4 @@
-function [omega,sf,e_w_matrix] = sft(t,f,ind)
+function [omega,sf] = sft(t,f,ind)
 % slow Fourier transformation conserving phase
 % Inputs:
 % x -- vector of x-axis of the signal
@@ -9,6 +9,9 @@ function [omega,sf,e_w_matrix] = sft(t,f,ind)
 %
 if size(t,2) ~= 1
     t = t';
+
+end
+if size(f,1) ~= numel(t)
     f = f'; % t change in f shoule be located in a column.
 end
 

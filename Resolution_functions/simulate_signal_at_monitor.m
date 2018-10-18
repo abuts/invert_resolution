@@ -56,22 +56,21 @@ for i=1:num_pulses
     acolor(colors(i));
     if ~isempty(conv_pl_h)
         make_current(conv_pl_h);
-        
     end
     conv_pl_h=pl(pn);
     %
     %---------------------------------------------------
-    %     [f_out,t_out] = propagate_pulse_Integral(f_afs,t_afs,v_afs,L_det,V_pulse(i),tau_char,V_char);
-    %     pn = IX_dataset_1d(t_out/tau_char,f_out);
-    %     pn.signal = f_out;
-    %     pn.x = t_out/tau_char;
+    [f_det_conv,t_det_conv] = InvertPulse2(f_samp{i},t_samp{i},v_samp{i},t_det,f_det_vs_t,L_det,V_pulse(i),tau_char,V_char,conv_pl_h);
+    %     pn = IX_dataset_1d(f_det_conv/tau_char,f_det_conv);
+    %     pn.signal = f_det_conv;
+    %     pn.x = t_det_conv/tau_char;
     %     acolor(colors(i+1));
     %     dl(pn)
     %---------------------------------------------------
     %
     keep_figure
     %[f_det_conv,t_det_conv,v_max] = fft_propagate_pulse_IntW(f_afs,t_afs,v_afs,L_det,V_pulse(i),tau_char,V_char);
-    [f_det_conv,t_det_conv,v_max] = fft_propagate_pulse_IntWC(f_samp{i},t_samp{i},v_samp{i},L_det,V_pulse(i),tau_char,V_char);
+    %[f_det_conv,t_det_conv,v_max] = fft_propagate_pulse_IntWC(f_samp{i},t_samp{i},v_samp{i},L_det,V_pulse(i),tau_char,V_char);
     %[f_det_conv,t_det_conv] = propagate_pulse_Int(f_afs,t_afs,v_afs,L_det,V_pulse(i),tau_char,V_char);
     p1 = IX_dataset_1d(t_det_conv/tau_char,abs(f_det_conv));
     p1.x_axis = sprintf('Time/(%3.2g sec)',tau_char);

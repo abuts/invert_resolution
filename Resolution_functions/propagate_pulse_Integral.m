@@ -1,4 +1,4 @@
-function [f_out,t_out] = propagate_pulse_Integral(f_in,time_in,vel_in,L,V_pulse,t_char,v_char)
+function [f_out,t_out,v_max] = propagate_pulse_Integral(f_in,time_in,vel_in,L,V_pulse,t_char,v_char)
 % Calculate interpolited time-velocity profile at the position L using fft
 %
 % f_in     -- 2D signal function in units tau(mks) vs
@@ -9,9 +9,16 @@ function [f_out,t_out] = propagate_pulse_Integral(f_in,time_in,vel_in,L,V_pulse,
 %
 % Output:
 %  Interpolated fime-velocity profile at position L
-% f_out  --
+% f_out -- probabilty distribution for a signal to occur at the time
+%          specified
 % t_out -- time axis for the profile above (sec)
-% v_out -- velocity axis for the profile above (in m/s)
+%
+cache_name = pulse_name(V_pulse,'detector_pulse');
+if exist([cache_name,'.mat'],'file')
+    load(cache_name,'t_out','f_out','v_max');
+    return;
+end
+
 v_min = min(vel_in);
 v_max = max(vel_in);
 
@@ -31,6 +38,8 @@ for i=1:Nt
         fprintf('step %d#%d\n',i,Nt);
     end
 end
+
+save(cache_name,'t_out','f_out','v_max');
 
 
 
