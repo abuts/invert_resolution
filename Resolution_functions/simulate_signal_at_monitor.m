@@ -48,11 +48,15 @@ for i=1:num_pulses
     view(0,90);
     %---------------------------------------------------
     % signal at detector
-    f_det_vs_t = sum(f_det,1)*norm(i)/size(f_det,1);
+
+    f_det_vs_t = sum(f_det,1);
+    Norm = sum(f_det_vs_t)*tau_char*(t_det(2)-t_det(1));
+    f_det_vs_t = f_det_vs_t/Norm;
+    
     %
     pn = IX_dataset_1d(t_det/tau_char,f_det_vs_t);
     pn.x_axis = sprintf('Time/(%3.2g sec)',tau_char);
-    pn.s_axis = 'Signal';
+    pn.s_axis = 'Signal/per unit time';
     acolor(colors(i));
     if ~isempty(conv_pl_h)
         make_current(conv_pl_h);
@@ -60,21 +64,11 @@ for i=1:num_pulses
     conv_pl_h=pl(pn);
     %
     %---------------------------------------------------
-    [f_det_conv,t_det_conv] = InvertPulse2(f_samp{i},t_samp{i},v_samp{i},t_det,f_det_vs_t,L_det,V_pulse(i),tau_char,V_char,conv_pl_h);
-    %     pn = IX_dataset_1d(f_det_conv/tau_char,f_det_conv);
-    %     pn.signal = f_det_conv;
-    %     pn.x = t_det_conv/tau_char;
-    %     acolor(colors(i+1));
-    %     dl(pn)
+    [f_det_conv,v_det_conv] = InvertPulse2(f_samp{i},t_samp{i},v_samp{i},t_det,f_det_vs_t,L_det,V_pulse(i),tau_char,V_char,conv_pl_h);
     %---------------------------------------------------
-    %
-    keep_figure
-    %[f_det_conv,t_det_conv,v_max] = fft_propagate_pulse_IntW(f_afs,t_afs,v_afs,L_det,V_pulse(i),tau_char,V_char);
-    %[f_det_conv,t_det_conv,v_max] = fft_propagate_pulse_IntWC(f_samp{i},t_samp{i},v_samp{i},L_det,V_pulse(i),tau_char,V_char);
-    %[f_det_conv,t_det_conv] = propagate_pulse_Int(f_afs,t_afs,v_afs,L_det,V_pulse(i),tau_char,V_char);
-    p1 = IX_dataset_1d(t_det_conv/tau_char,abs(f_det_conv));
-    p1.x_axis = sprintf('Time/(%3.2g sec)',tau_char);
-    p1.s_axis = 'Signal';
+    p1 = IX_dataset_1d(v_det_conv/V_char,abs(f_det_conv));
+    p1.x_axis = sprintf('Velocity transfer/(%3.2g m/sec)',V_char);
+    p1.s_axis = 'probability density ';
     dl(p1);
     keep_figure
     p1.signal = imag(f_det_conv);
@@ -82,7 +76,7 @@ for i=1:num_pulses
     dl(p1);
     
     
-    continue
+    %continue
     t0 = (L_samp+L_det)/(V_pulse(i));
     %     figure(111);
     %     hold on;
@@ -114,18 +108,18 @@ for i=1:num_pulses
         [reduced_fh,ax]=pl(pn,'name',reduced_fh.Name);
     end
     
-    %ax = gca;
-    ax.XLabel.String = sprintf('Velocity transfer/(%3.2g m/s)',V_char);
-    ax.YLabel.String = sprintf('Signal');
-    [f_out,v_out] = fft_invert_propagation(f_samp{i},t_samp{i},v_samp{i},f_det_vs_t,t_det,L_det,v_max,tau_char,V_char);
-    p_con = IX_dataset_1d(v_out/V_char,abs(f_out));
-    p_con.x_axis = sprintf('Velocity Transfer/(%3.2g sec)',V_char);
-    p_con.s_axis = 'probability';
-    dl(p_con);
-    keep_figure
-    p_con.signal = imag(f_out);
-    p_con.s_axis = 'Img error';
-    dl(p1);
+%     %ax = gca;
+%     ax.XLabel.String = sprintf('Velocity transfer/(%3.2g m/sec)',V_char);
+%     ax.YLabel.String = sprintf('Signal');
+%     [f_out,v_out] = fft_invert_propagation(f_samp{i},t_samp{i},v_samp{i},f_det_vs_t,t_det,L_det,v_max,tau_char,V_char);
+%     p_con = IX_dataset_1d(v_out/V_char,abs(f_out));
+%     p_con.x_axis = sprintf('Velocity Transfer/(%3.2g m/sec)',V_char);
+%     p_con.s_axis = 'probability';
+%     dl(p_con);
+%     keep_figure
+%     p_con.signal = imag(f_out);
+%     p_con.s_axis = 'Img error';
+%     dl(p1);
     
 end
 

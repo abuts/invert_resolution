@@ -21,12 +21,17 @@ if size(sf,1) == Np %let's arrange sf in rows
 end
 Nspec = size(sf,1);
 
-if ~exist('t','var')
+if ~exist('t','var') || any(size(t) ~=size(omega))
+    if ~exist('t','var') 
+        t_min = 0;
+    else
+        t_min = min(t);        
+    end
     Np2 = floor(Np/2);
     omega_max = max(abs(omega));
     T = 2*pi*Np2/omega_max;
     dt = T/Np;
-    t = dt*(0:Np-1);
+    t = t_min+dt*(0:Np-1);
 else
     if size(t,1)~=1
         t=t'; % let's arrange t into rows

@@ -51,9 +51,11 @@ vel_transf = vi-v_sh;
 Nv = numel(vi);
 Nt = size(f_samp,2);
 
+dv0  = vel_transf(2)-vel_transf(1);
+dVf = max(vel_transf)-min(vel_transf);
 % caclculate velocity transfer distrubution in its own range but with
 % joing accuracy.
-Norma = sum(f_d)*(max(vel_transf)-min(vel_transf))/(Nv-1);
+Norma = sum(f_d)*dVf/(Nv-1);
 f_d = f_d/Norma;
 
 
@@ -85,7 +87,9 @@ if ~noplot
     ax = gca;
     ax.XLabel.String = sprintf('Velocity/(%3.2g m/s)',V_char);
     figure(112);
-    plot(abs(ft_vt));
+    ind = fft_ind(numel(ft_vt));
+    freq = (1/(dv0*Nv))*ind;
+    plot(freq,abs(ft_vt));
 end
 
 ft_vt = ft_vt.*phase;
