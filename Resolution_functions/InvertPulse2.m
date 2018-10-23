@@ -1,5 +1,9 @@
 function [v_distr,vel_steps] =  InvertPulse2(f_samp,t_samp,v_samp,t_det,f_det_vs_t,L_det,V_pulse,tau_char,V_char,conv_pl_h)
 
+if ~exist('conv_pl_h','var')
+    conv_pl_h = [];
+end
+
 % velocities of the incoming pulse
 v0_min  = min(v_samp);
 v0_max  = max(v_samp);
@@ -10,8 +14,25 @@ dv      = dV0/(Nv0-1);
 
 % velocities at the arrival
 dT_samp  = max(t_samp)-min(t_samp);
-T_min = min(t_det)-min(t_samp);
-T_max = max(t_det)-min(t_samp)+dT_samp;
+if isempty(t_det) % event mode, f_det_vs_t is sequence of events
+    event_mode = true;
+    td_min = min(f_det_vs_t);    
+    td_max = max(f_det_vs_t);            
+else
+    if all(size(t_det) ==[1,2])
+        event_mode = true;            
+        td_min = t_det(1);    
+        td_max = t_det(2);       
+        
+    else
+        event_mode = false;    
+        td_min = min(t_det);    
+        td_max = max(t_det);        
+    end
+end
+T_min = td_min -min(t_samp);
+T_max = td_max -min(t_samp)+dT_samp;
+
 
 V_max = L_det/T_min;
 V_min = L_det/T_max;
@@ -44,13 +65,18 @@ f_sampI = interp2(xb,yb,f_samp,xi,yi,'linear',0);
 
 ti = L_det./(v2_range);
 ti = sort(ti);
-t_rel = t_samp-min(t_samp);
+if event_mode
+   [tbin_edges,t_bins] = build_bins(ti+min(t_samp));    
+   fd = histcounts(f_det_vs_t,tbin_edges);
+   f_det_vs_t = fd./t_bins;
+else
+end
 
 cache_file_name = pulse_name(V_pulse,'resolution_matrix');
 if exist([cache_file_name,'.mat'],'file')
     load([cache_file_name,'.mat'],'res_matrix','omega_v','ti');
 else
-    
+    t_rel = t_samp-min(t_samp);    
     [omega_v,rm_t] = sft(v2_range,f_sampI,ind);
     
     res_matrix = zeros(Nv,Nv);
@@ -70,7 +96,11 @@ check_propagation(res_matrix,ti+min(t_samp),vel_steps,tau_char,conv_pl_h)
 
 
 % invert propagation:
-intensity =  interp1(t_det-min(t_samp) ,f_det_vs_t,ti,'linear',0);
+if event_mode
+    intensity = f_det_vs_t;
+else
+    intensity =  interp1(t_det-min(t_samp) ,f_det_vs_t,ti,'linear',0);
+end
 
 in  = input('Enter number of harmonics to keep or "q" to finish: ','s');
 
@@ -109,11 +139,12 @@ f_t = sum(res_matrix.*sv',1);
 [tis,ind] = sort(ti);
 f_t = f_t(ind);
 
-bin_centers = 0.5*(tis(1:end-1)+tis(2:end));
-dt_0 = tis(2)-tis(1);
-dt_e = tis(end)-tis(end-1);
-bin_centers = [bin_centers(1)-dt_0,bin_centers,bin_centers(end)+dt_e];
-dt = bin_centers(2:end)-bin_centers(1:end-1);
+[~,dt]=build_bins(tis);
+% bin_centers = 0.5*(tis(1:end-1)+tis(2:end));
+% dt_0 = tis(2)-tis(1);
+% dt_e = tis(end)-tis(end-1);
+% bin_centers = [bin_centers(1)-dt_0,bin_centers,bin_centers(end)+dt_e];
+% dt = bin_centers(2:end)-bin_centers(1:end-1);
 Norm =tau_char*(real(f_t)*dt');
 f_t = f_t/Norm;
 
