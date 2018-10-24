@@ -22,22 +22,17 @@ end
 Np = size(t,1);
 Nmat = size(f,2);
 if ~exist('ind','var')
-    if  rem(Np,2) >0
-        Np2 = floor((Np-1)/2);
-        ind = [0:Np2,-Np2:1:-1];
-    else
-        Np2 = floor(Np/2);
-        ind = [0:Np2,-(Np2-1):1:-1];
-    end
+    ind = fft_ind(Np);
 end
-% only equal step works
-dt = max(t(2:end)-t(1:end-1));
+
+[t_edges,t_bins] = build_bins(t);
+dT = max(t_edges)-min(t_edges);
 %
-omega = (2*pi/(Np*dt))*ind; % Important! period is wider than t_max - t_min
-e_w_matrix = exp(-1i*omega.*t); % omega changes along rows.
+omega = (2*pi/dT)*ind; % Important! period is wider than t_max - t_min
+e_w_matrix = exp(-1i*omega.*t).*repmat(t_bins',1,Np); % omega changes along rows, t-along columns.
 
 sf = zeros(Nmat,Np);
 for i=1:Nmat
-    sf(i,:) = sum(e_w_matrix.*repmat(f(:,i),1,Np),1)/(Np);
+    sf(i,:) = sum(e_w_matrix.*repmat(f(:,i),1,Np),1)/dT;
 end
 %omega = omega';

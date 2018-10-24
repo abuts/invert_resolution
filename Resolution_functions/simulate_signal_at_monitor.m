@@ -72,7 +72,7 @@ for i=1:num_pulses
     vsample = v_samp{i};
     t_chop = t0_chop(i);
     save(pulse_data_file_name,'tsample','fsample','vsample','V_pulseI','t_det','f_det_vs_t','L_det','L_samp','t_chop','tau_char','V_char');
-    [f_det_conv,v_det_conv] = InvertPulse2(fsample,tsample,vsample,t_det,f_det_vs_t,L_det,V_pulseI,tau_char,V_char,conv_pl_h);
+    [f_det_conv,v_det_conv] = InvertPulse3(fsample,tsample,vsample,t_det,f_det_vs_t,L_det,V_pulseI,tau_char,V_char,conv_pl_h);
     
     [~,dv_four] = build_bins(v_det_conv);
     Norm0  = abs(f_det_conv*dv_four');

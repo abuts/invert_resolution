@@ -33,6 +33,7 @@ theor_rev = (sum((exp(1i*(xx-V0).*Omega_n')),1))/Np;
 [omg1,sf1] = sft(xx,DeltaF1,ind);
 [myt,myf] = isft(omg1,sf1,xx);
 %theor_rev = (sum((exp(1i*(xx).*Omega_n')),1))/(Np-1);
+assertElementsAlmostEqual(DeltaF1,myf)
 plot(xx,real(DeltaF1),':',xx,real(delR),'*',xx,real(theor_rev),'o',xx,real(theoR),myt,myf,'+');
 if any(any(abs(imag(DeltaF1'))>1.e-9)) || any(any(abs(imag(delR'))>1.e-9)) || any(abs(imag(theoR))>1.e-9)
     hold on;
