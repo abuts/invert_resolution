@@ -99,7 +99,7 @@ end
 Err = check_difraction_matrix(difr_matrix,v2_range,omega_v,omega_t,L_det);
 fprintf(' Total error from the diffraction matrix: (%g,%g)\n',real(Err),imag(Err));
 
-phase_shift = exp(1i*omega_t*T_max);
+phase_shift = exp(1i*omega_t*2*T_max);
 rm = rm.*phase_shift;
 
 res_matrix = rm.*difr_matrix;

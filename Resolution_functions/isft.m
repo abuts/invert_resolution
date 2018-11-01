@@ -13,7 +13,7 @@ if size(omega,1) ~= 1 % let's arrange omege into rows.
 end
 Np = numel(omega);
 if ~any(size(sf)==Np)
-    error('ISFT:invalid_argument',' number of omega values and number of harmonics coefficients have to be equal');
+    error('ISFT:invalid_argument',' number of omega values and number of harmonic coefficients have to be equal');
 end
 
 if size(sf,1) == Np %let's arrange sf in rows

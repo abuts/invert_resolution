@@ -54,7 +54,12 @@ for i=1:num_pulses
     f_det_vs_t = sum(f_det,1);
     Norm0 = sum(f_det_vs_t)*tau_char*(t_det(2)-t_det(1));
     f_det_vs_t = f_det_vs_t/Norm0;
+
     
+    %Norm1 = sum(sum(f_afs,1))*tau_char*(t_afs(2)-t_afs(1));    
+    f_samp_vs_t = sum(f_afs,1)/Norm0;
+
+
     %
     t_sampl_min = min(t_samp{i});
     pn = IX_dataset_1d((t_det-t_sampl_min)/tau_char,f_det_vs_t);
@@ -64,7 +69,11 @@ for i=1:num_pulses
     if ~isempty(conv_pl_h)
         make_current(conv_pl_h);
     end
+    acolor('k');
     conv_pl_h=pl(pn);
+    acolor('g');
+    pn = IX_dataset_1d((t_afs-t_sampl_min)/tau_char,f_samp_vs_t);
+    pl(pn);
     %
     %---------------------------------------------------
     V_pulseI  = V_pulse(i);
