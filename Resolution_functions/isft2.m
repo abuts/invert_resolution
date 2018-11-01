@@ -53,6 +53,7 @@ end
 
 f = zeros(Nt,Nv);
 for j=1:Nv
+    fprintf(' step: N%d#%d\n',j,Nv);    
     for i=1:Nt
         ex_mat = exp(1i*(omega_t*t(i)+omega_v*v(j)));
         f(i,j) = sum(reshape(sf.*ex_mat,1,Nv*Nt));

@@ -1,7 +1,7 @@
 function simulate_signal_at_monitor()
 persistent conv_pl_h;
 
-[f_samp,t_samp,v_samp,tau_char,V_char,V_pulse,L_samp,t0_chop,norm] = propagate_pulse_to_sample(2);% [V_char]  = m/sec
+[f_samp,t_samp,v_samp,tau_char,V_char,V_pulse,L_samp,t0_chop,norm] = propagate_pulse_to_sample(3);% [V_char]  = m/sec
 % [L_samp] = m;
 % [tau_char] = sec
 num_pulses = numel(t_samp);
@@ -11,9 +11,10 @@ L_det = 2.5;
 colors = {'k','r','g','b','m'};
 f_max_1f = [];
 recovered_dirst_h = [];
+vel_distr_fun = @vel_distribution_delta;
 for i=1:num_pulses
     %[f_as,t_as,v_as] = convolute_with_vel_distr(f_samp{i},t_samp{i},v_samp{i},tau_char,V_char);
-    [f_afs,t_afs,v_afs,Norm0] = fft_convolute_with_vel_distr(f_samp{i},t_samp{i},v_samp{i},V_char,'noplot');
+    [f_afs,t_afs,v_afs,Norm0] = fft_convolute_with_vel_distr(f_samp{i},t_samp{i},v_samp{i},V_char,true,vel_distr_fun);
     [xi,yi]=meshgrid(t_afs/tau_char,v_afs/V_char);
     %
     fn = sprintf('Sample time/velocity profile N %d',i);
@@ -23,7 +24,7 @@ for i=1:num_pulses
     else
         figure(fh);
     end
-    surf(xi,yi,f_afs,'EdgeColor','none');
+    surf(xi,yi,abs(f_afs),'EdgeColor','none');
     ax = gca;
     ax.XLabel.String = sprintf('Time/(%3.2g sec)',tau_char);
     ax.YLabel.String = sprintf('Velocity/(%3.2g m/s)',V_char);
@@ -66,13 +67,13 @@ for i=1:num_pulses
     %
     %---------------------------------------------------
     V_pulseI  = V_pulse(i);
-    pulse_data_file_name = pulse_name(V_pulseI,'input_data');
+    pulse_data_file_name = pulse_name(V_pulseI,'delta_input_data');
     tsample = t_samp{i};
     fsample = f_samp{i};
     vsample = v_samp{i};
     t_chop = t0_chop(i);
     save(pulse_data_file_name,'tsample','fsample','vsample','V_pulseI','t_det','f_det_vs_t','L_det','L_samp','t_chop','tau_char','V_char');
-    [f_det_conv,v_det_conv] = InvertPulse3(fsample,tsample,vsample,t_det,f_det_vs_t,L_det,V_pulseI,tau_char,V_char,conv_pl_h);
+    [f_det_conv,v_det_conv] = InvertPulse3(fsample,tsample,vsample,t_det,f_det_vs_t,L_det,V_pulseI,tau_char,V_char,conv_pl_h,vel_distr_fun);
     
     [~,dv_four] = build_bins(v_det_conv);
     Norm0  = abs(f_det_conv*dv_four');

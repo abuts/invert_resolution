@@ -1,8 +1,14 @@
-function [v_distr,vel_steps] =  InvertPulse3(f_samp,t_samp,v_samp,t_det,f_det_vs_t,L_det,V_pulse,tau_char,V_char,conv_pl_h)
+function [v_distr,vel_steps] =  InvertPulse3(f_samp,t_samp,v_samp,t_det,f_det_vs_t,L_det,V_pulse,tau_char,V_char,conv_pl_h,varargin)
 
 if ~exist('conv_pl_h','var')
     conv_pl_h = [];
 end
+if nargin > 5
+    vel_distr = varargin{1};
+else
+    vel_distr = @vel_distribution0;
+end
+
 
 % velocities of the incoming pulse
 v0_min  = min(v_samp);
@@ -13,8 +19,13 @@ dV0     = v0_max-v0_min;
 dv      = dV0/(Nv0-1);
 
 % velocities at the arrival
-dT_samp  = max(t_samp)-min(t_samp);
-if isempty(t_det) % event mode, f_det_vs_t is sequence of events
+T_samp_min = min(t_samp); % Zero point, all time should start from this
+dT_samp  = max(t_samp)-T_samp_min;
+dt_samp = t_samp(2)-t_samp(1);
+t_samp  = t_samp-T_samp_min;
+if isempty(t_det) % event mode, f_det_vs_t is sequence of events.
+    % Check the events starging time!
+    f_det_vs_t = f_det_vs_t-T_samp_min;
     event_mode = true;
     td_min = min(f_det_vs_t);
     td_max = max(f_det_vs_t);
@@ -26,16 +37,18 @@ else
         
     else
         event_mode = false;
+        t_det = t_det-T_samp_min;
         td_min = min(t_det);
         td_max = max(t_det);
     end
 end
-T_min = td_min -min(t_samp);
-T_max = td_max -min(t_samp);
+% Detector's signal time interval
+T_min = td_min;
+T_max = td_max;
 
 
 V_max = L_det/T_min;
-V_min = L_det/(T_max-dT_samp); % Not well tested. Can be just forced!
+V_min = L_det/T_max; %
 dV = (V_max -V_min);
 if dV <= 0
     error('INVERT_PULSE3:invalid_argument',' wrong detector"s time range (smaller than sample time range)')
@@ -54,23 +67,26 @@ Nv = numel(v2_range);
 ti = L_det./(v2_range);
 ti = sort(ti);
 if event_mode
-    [tbin_edges,t_bins] = build_bins(ti+min(t_samp));
+    [tbin_edges,t_bins] = build_bins(ti);
     fd = histcounts(f_det_vs_t,tbin_edges);
     f_det_vs_t = fd./t_bins;
 end
 
-cache_file_name = pulse_name(V_pulse,'resolutionFFT_matrix');
+cache_file_name = pulse_name(V_pulse,'resolution_delta_matrix');
 if exist([cache_file_name,'.mat'],'file')
     load([cache_file_name,'.mat'],'rm','difr_matrix','omega_v','omega_t','ti');
+    t_range = T_min:dt_samp:T_max;    
     if difr_matrix == 0
         difr_matrix=calc_difr_matrix(omega_v,omega_t,v2_range,ti);
+        save(cache_file_name,'difr_matrix','rm','omega_v','omega_t','ti');        
     end
 else
-    [tb,vb] = meshgrid(t_samp-min(t_samp)+T_min,v_samp); % time is shifted -- phase shift ignored ?
-    [tpi,vpi] = meshgrid(ti,v2_range);
+    [tb,vb] = meshgrid(t_samp+T_min,v_samp); % time is shifted -- phase shift ignored ?
+    t_range = T_min:dt_samp:T_max;
+    [tpi,vpi] = meshgrid(t_range,v2_range);
     f_samp_extended = interp2(tb,vb,f_samp,tpi,vpi,'linear',0);
     
-    [omega_t,omega_v,rm] = sft2(ti,v2_range,f_samp_extended);
+    [omega_t,omega_v,rm] = sft2(t_range,v2_range,f_samp_extended');
     difr_matrix = 0;
     save(cache_file_name,'difr_matrix','rm','omega_v','omega_t','ti');
     
@@ -80,7 +96,7 @@ end
 res_matrix = rm.*difr_matrix;
 vel_steps = v2_range-V_avrg;
 
-check_propagation(res_matrix,ti+min(t_samp),vel_steps,tau_char,conv_pl_h)
+check_propagation(res_matrix,t_range,omega_t,vel_steps,tau_char,conv_pl_h,vel_distr)
 
 
 % invert propagation:
@@ -117,26 +133,22 @@ end
 %
 
 
-function check_propagation(res_matrix,ti,vel_transf,tau_char,conv_pl_h)
+function check_propagation(res_matrix,t_range,omega_t,vel_transf,tau_char,conv_pl_h,vel_distr)
 
-[vel_transf,f_d] = vel_distribution0(vel_transf);
+[vel_transf,f_d] = vel_distr(vel_transf);
 [omega_dv,sv] = sft(vel_transf,f_d);
 
-f_t = sum(res_matrix.*sv',1);
+f_nm = sum(res_matrix.*sv,2);
 
-[tis,ind] = sort(ti);
-f_t = f_t(ind);
+[t_range,f_t] = isft(omega_t,f_nm,t_range);
 
-[~,dt]=build_bins(tis);
-% bin_centers = 0.5*(tis(1:end-1)+tis(2:end));
-% dt_0 = tis(2)-tis(1);
-% dt_e = tis(end)-tis(end-1);
-% bin_centers = [bin_centers(1)-dt_0,bin_centers,bin_centers(end)+dt_e];
-% dt = bin_centers(2:end)-bin_centers(1:end-1);
+
+
+[~,dt]=build_bins(t_range);
 Norm =tau_char*(real(f_t)*dt');
 f_t = f_t/Norm;
 
-pn = IX_dataset_1d(tis/tau_char,real(f_t));
+pn = IX_dataset_1d(t_range/tau_char,real(f_t));
 pn.x_axis = sprintf('Time/(%3.2g sec)',tau_char);
 pn.s_axis = 'Signal/Per unit time';
 acolor('r');
@@ -145,14 +157,15 @@ if ~isempty(conv_pl_h)
 end
 
 pl(pn);
-pimg = IX_dataset_1d(tis/tau_char,imag(f_t));
+pimg = IX_dataset_1d(t_range/tau_char,imag(f_t));
 pl(pimg)
 
 function difr_matrix=calc_difr_matrix(omega_v,omega_t,v2_range,ti)
 Nv = numel(omega_v);
-difr_matrix = zeros(Nv,Nv);
+Nt = numel(omega_t);
+difr_matrix = zeros(Nt,Nv);
 for m=1:Nv
-    for n=1:Nv
+    for n=1:Nt
         difr_matrix(n,m) =sum(exp(1i*(omega_v(m)*v2_range-omega_t(n)*ti)));
     end
 end

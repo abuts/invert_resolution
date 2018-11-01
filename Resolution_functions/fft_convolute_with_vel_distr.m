@@ -1,27 +1,32 @@
-function [f_s_out,t_samp,v_s_out,Norma,ft_sample,ft_vt] = fft_convolute_with_vel_distr(f_samp,t_samp,v_samp,V_char,noplot)
+function [f_s_out,t_samp,v_s_out,Norma,ft_sample,ft_vt] = fft_convolute_with_vel_distr(f_samp,t_samp,v_samp,V_char,no_plot,varargin)
 % Calculate time-velocity distribution for beam after propagating though sample given
 % time/velicity distribution of incident beam and model sample velocity
 % gain/loss probability.
 %
 %
 %   Detailed explanation goes here
-if exist('noplot','var')
-    noplot = true;
+if exist('no_plot','var')
+    noplot = no_plot;
 else
     noplot = false;
+end
+if nargin > 5
+    vel_distr = varargin{1};
+else
+    vel_distr = @vel_distribution0;
 end
 
 
 
 dvs = v_samp(2)-v_samp(1);
-[vel_transf,f_d,v_peaks] = vel_distribution0(dvs);
+[vel_transf,f_d,v_peaks] = vel_distr(dvs);
 
 dV_scat_max = max(vel_transf);
 
 
 
 %v_samp_norm = v_samp/V_char;
-V_min_fin = min(v_samp)-dV_scat_max;
+V_min_fin = min(v_samp)-abs(min(vel_transf));
 if V_min_fin<0
     
     V_min_fin = 0;
@@ -88,8 +93,8 @@ if ~noplot
     ax.XLabel.String = sprintf('Velocity/(%3.2g m/s)',V_char);
     figure(112);
     ind = fft_ind(numel(ft_vt));
-    freq = (1/(dv0*Nv))*ind;
-    plot(freq,abs(ft_vt));
+    freq = fftshift((1/(dv0*Nv))*ind);
+    plot(freq,fftshift(abs(ft_vt)));
 end
 
 ft_vt = ft_vt.*phase;
@@ -112,13 +117,17 @@ if ~noplot
         figure(fh);
     end
     %[xi,yi]= meshgrid();
-    surf(xi,yi/V_char,f_s_out,'EdgeColor','none');
+    surf(xi,yi/V_char,abs(f_s_out),'EdgeColor','none');
     view(0,90);
     
 end
 % ax = gca;
 % %ax.XLabel.String = sprintf('Time/(%3.2g sec)',tau_char);
 % ax.YLabel.String = sprintf('Velocity/(%3.2g m/s)',V_char);
+if max(max(imag(f_s_out)))>1.e-9
+    warning('substantial imaginary part of the propagated distribution')
+end
+f_s_out = abs(f_s_out);
 v_s_out = vi;
 
 
