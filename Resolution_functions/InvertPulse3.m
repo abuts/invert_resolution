@@ -65,7 +65,7 @@ Nv = numel(v2_range);
 
 
 ti = L_det./(v2_range);
-ti = sort(ti);
+%ti = sort(ti);
 if event_mode
     [tbin_edges,t_bins] = build_bins(ti);
     fd = histcounts(f_det_vs_t,tbin_edges);
@@ -75,12 +75,13 @@ end
 cache_file_name = pulse_name(V_pulse,'resolution_delta_matrix');
 if exist([cache_file_name,'.mat'],'file')
     load([cache_file_name,'.mat'],'rm','difr_matrix','omega_v','omega_t','ti');
-    t_range = T_min:dt_samp:T_max;    
+    t_range = T_min:dt_samp:T_max;
     if difr_matrix == 0
-        difr_matrix=calc_difr_matrix(omega_v,omega_t,v2_range,ti);
-        save(cache_file_name,'difr_matrix','rm','omega_v','omega_t','ti');        
+        difr_matrix=calc_difr_matrix(omega_v,omega_t,v2_range,L_det);
+        save(cache_file_name,'difr_matrix','rm','omega_v','omega_t','ti');
     end
 else
+    % original signal at sample projected to detector position.
     [tb,vb] = meshgrid(t_samp+T_min,v_samp); % time is shifted -- phase shift ignored ?
     t_range = T_min:dt_samp:T_max;
     [tpi,vpi] = meshgrid(t_range,v2_range);
@@ -90,13 +91,22 @@ else
     difr_matrix = 0;
     save(cache_file_name,'difr_matrix','rm','omega_v','omega_t','ti');
     
-    difr_matrix=calc_difr_matrix(omega_v,omega_t,v2_range,ti);
+    difr_matrix=calc_difr_matrix(omega_v,omega_t,v2_range,L_det);
     save(cache_file_name,'difr_matrix','rm','omega_v','omega_t','ti');
 end
+%[difr_matrix,Err]=calc_difr_matrix(omega_v,omega_t,v2_range,L_det);
+%fprintf(' Total error of the diffraction matrix: %g\n',Err);
+Err = check_difraction_matrix(difr_matrix,v2_range,omega_v,omega_t,L_det);
+fprintf(' Total error from the diffraction matrix: (%g,%g)\n',real(Err),imag(Err));
+
+phase_shift = exp(1i*omega_t*T_max);
+rm = rm.*phase_shift;
+
 res_matrix = rm.*difr_matrix;
 vel_steps = v2_range-V_avrg;
 
-check_propagation(res_matrix,t_range,omega_t,vel_steps,tau_char,conv_pl_h,vel_distr)
+
+check_propagation(res_matrix,t_range,ti,omega_t,vel_steps,tau_char,conv_pl_h,vel_distr)
 
 
 % invert propagation:
@@ -133,7 +143,7 @@ end
 %
 
 
-function check_propagation(res_matrix,t_range,omega_t,vel_transf,tau_char,conv_pl_h,vel_distr)
+function check_propagation(res_matrix,t_range,ti,omega_t,vel_transf,tau_char,conv_pl_h,vel_distr)
 
 [vel_transf,f_d] = vel_distr(vel_transf);
 [omega_dv,sv] = sft(vel_transf,f_d);
@@ -141,8 +151,8 @@ function check_propagation(res_matrix,t_range,omega_t,vel_transf,tau_char,conv_p
 f_nm = sum(res_matrix.*sv,2);
 
 [t_range,f_t] = isft(omega_t,f_nm,t_range);
-
-
+%[t_range,ind] = sort(ti);
+%f_t = f_t(ind);
 
 [~,dt]=build_bins(t_range);
 Norm =tau_char*(real(f_t)*dt');
@@ -151,21 +161,67 @@ f_t = f_t/Norm;
 pn = IX_dataset_1d(t_range/tau_char,real(f_t));
 pn.x_axis = sprintf('Time/(%3.2g sec)',tau_char);
 pn.s_axis = 'Signal/Per unit time';
-acolor('r');
+acolor('b');
 if ~isempty(conv_pl_h)
     make_current(conv_pl_h);
 end
 
 pl(pn);
 pimg = IX_dataset_1d(t_range/tau_char,imag(f_t));
+acolor('r');
 pl(pimg)
-
-function difr_matrix=calc_difr_matrix(omega_v,omega_t,v2_range,ti)
+%--------------------------------------------------------------------------
+function [difr_matrix,Err]=calc_difr_matrix(omega_v,omega_t,v_range,L_det)
 Nv = numel(omega_v);
 Nt = numel(omega_t);
+ti = L_det./v_range;
+
+if nargout>1
+    calc_error = true;
+else
+    calc_error = false;
+end
+
+v_peak = v_range(10);
+% dv_j = (v_range-v_peak);
+% exp2 = exp(1i*omega_v.*dv_j');
+% SM = sum(exp2,2)/Nv;
+% ST = exp(1i*omega_t(1)*(L_det/v_peak-ti'));
+% Int = sum(SM.*ST);
+if calc_error
+    test_row = 1i*zeros(1,Nt);
+end
 difr_matrix = zeros(Nt,Nv);
-for m=1:Nv
-    for n=1:Nt
-        difr_matrix(n,m) =sum(exp(1i*(omega_v(m)*v2_range-omega_t(n)*ti)));
+for n=1:Nt
+    for m=1:Nv
+        difr_matrix(n,m) =sum(exp(1i*(omega_v(m)*v_range-omega_t(n)*ti)));
+    end
+    if calc_error
+        exp2 = exp(-1i*(omega_v*v_peak-omega_t(n)*L_det/v_peak));
+        test_row(n) = sum(exp2.*difr_matrix(n,:))/Nv;
     end
 end
+if calc_error
+    Err = sum(test_row)/Nt-1;
+end
+%--------------------------------------------------------------------------
+function Err = check_difraction_matrix(difr_matrix,v_range,omega_v,omega_t,L_det)
+
+Nt = numel(omega_t);
+Nv = numel(omega_v);
+
+v_peak = v_range(end-1);
+
+exps = exp(-1i*omega_v*v_peak);
+Err_row = 1i*zeros(1,Nt);
+for n=1:Nt
+    expi  = exps*exp(1i*omega_t(n)*L_det/v_peak);
+    
+    
+    LH = sum(expi.*difr_matrix(n,:))/Nv;
+    difr  = 1-LH;
+    Err_row(n) = difr;
+%     difr_ph = atan2(imag(difr),real(difr))*180/pi;
+%     fprintf('n: %d Difr: (%f, %f) mod: %f, phase: %f\n',n,real(difr),imag(difr),abs(difr),difr_ph);
+end
+Err = sum(Err_row);

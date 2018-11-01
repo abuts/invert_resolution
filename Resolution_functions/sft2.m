@@ -38,7 +38,7 @@ omega_v = (2*pi/dV)*ind_v;
 dv_dt= t_bins'.*v_bins; % omega changes along rows, t -- along columns
 
 sf = zeros(Npt,Npv);
-for m=1:Npv
+parfor m=1:Npv
     fprintf(' step N%d#%d\n',m,Npv);
     for n=1:Npt       
         omgf = exp(-1i*(omega_t(n)*t+omega_v(m)*v)).*dv_dt;

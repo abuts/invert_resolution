@@ -45,7 +45,7 @@ for i=1:num_pulses
     end
     surf(xi,yi,abs(f_det),'EdgeColor','none');
     ax = gca;
-    ax.XLabel.String = sprintf('Time/(%3.2g sec)',tau_char);
+    ax.XLabel.String = sprintf('(Det time (-min(t_samp)))/(%3.2g sec)',tau_char);
     ax.YLabel.String = sprintf('Velocity/(%3.2g m/s)',V_char);
     view(0,90);
     %---------------------------------------------------
@@ -56,7 +56,8 @@ for i=1:num_pulses
     f_det_vs_t = f_det_vs_t/Norm0;
     
     %
-    pn = IX_dataset_1d(t_det/tau_char,f_det_vs_t);
+    t_sampl_min = min(t_samp{i});
+    pn = IX_dataset_1d((t_det-t_sampl_min)/tau_char,f_det_vs_t);
     pn.x_axis = sprintf('Time/(%3.2g sec)',tau_char);
     pn.s_axis = 'Signal/per unit time';
     acolor(colors(i));
