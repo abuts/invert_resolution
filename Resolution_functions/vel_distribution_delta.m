@@ -32,4 +32,5 @@ for i=1:numel(e_exch)
 end
 
 %plot(dv.*dv*(e_transf_const),f_d);
+%plot(dv,f_d);
 
