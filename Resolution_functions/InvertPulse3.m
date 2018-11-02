@@ -59,7 +59,7 @@ V_avrg = 0.5*(V_max + V_min);
 %Dv = (dV-dV0)/2;
 
 
-v2_range = V_min+0.5*dv:dv:V_max;
+v2_range = V_min:dv:V_max;
 
 Nv = numel(v2_range);
 t_range = T_min:dt_samp:T_max;
@@ -73,12 +73,12 @@ if event_mode
     f_det_vs_t = fd./t_bins;
 end
 
-cache_file_name = pulse_name(V_pulse,'resolution_matrix3');
+cache_file_name = pulse_name(V_pulse,'resolution_delta_matrix');
 if exist([cache_file_name,'.mat'],'file')
-    load([cache_file_name,'.mat'],'rm','difr_matrix','omega_v','omega_t','ti');
+    load([cache_file_name,'.mat'],'rm','difr_matrix','omega_v','omega_t');
     if difr_matrix == 0
         difr_matrix=calc_difr_matrix(omega_v,omega_t,v2_range,L_det);
-        save(cache_file_name,'difr_matrix','rm','omega_v','omega_t','ti');
+        save(cache_file_name,'difr_matrix','rm','omega_v','omega_t');
     end
 else
     % original signal at sample projected to detector position.
@@ -88,31 +88,45 @@ else
     
     [omega_t,omega_v,rm] = sft2(t_range,v2_range,f_samp_extended');
     difr_matrix = 0;
-    save(cache_file_name,'difr_matrix','rm','omega_v','omega_t','ti');
+    save(cache_file_name,'difr_matrix','rm','omega_v','omega_t');
     
     difr_matrix=calc_difr_matrix(omega_v,omega_t,v2_range,L_det);
-    save(cache_file_name,'difr_matrix','rm','omega_v','omega_t','ti');
+    save(cache_file_name,'difr_matrix','rm','omega_v','omega_t');
 end
 %[difr_matrix,Err]=calc_difr_matrix(omega_v,omega_t,v2_range,L_det);
 %fprintf(' Total error of the diffraction matrix: %g\n',Err);
 Err = check_difraction_matrix(difr_matrix,v2_range,omega_v,omega_t,L_det);
 fprintf(' Total error from the diffraction matrix: (%g,%g)\n',real(Err),imag(Err));
 
-phase_shift = exp(1i*omega_t*2*T_max);
+phase_shift = exp(-1i*omega_t*T_min);
 rm = rm.*phase_shift;
 
 res_matrix = rm.*difr_matrix;
-vel_steps = v2_range-V_avrg;
+vel_steps = v2_range;
 
 
-check_propagation(res_matrix,t_range,omega_t,vel_steps,tau_char,conv_pl_h,vel_distr)
+[fte,t_steps]=check_propagation(res_matrix,t_range,omega_t,vel_steps,tau_char,conv_pl_h,vel_distr);
+%check_propagation(res_matrix,t_range,omega_t,vel_steps,tau_char,conv_pl_h,vel_distr);
 
 
 % invert propagation:
 if event_mode
     intensity = f_det_vs_t;
 else
-    intensity =  interp1(t_det,f_det_vs_t,t_range,'linear',0);
+    intensity = fte;
+    %intensity =  interp1(t_det,f_det_vs_t,t_range,'linear',0);
+    %intensity =  interp1(t_steps,fte,t_range,'linear',0);
+    if  ~isempty(conv_pl_h)
+        make_current(conv_pl_h);
+        [~,dt]=build_bins(t_range);
+        Norm =tau_char*(real(intensity)*dt');
+        intensity_v = intensity/Norm;
+        
+        pn = IX_dataset_1d(t_range/tau_char,real(intensity_v));
+        acolor('y');
+        pl(pn);
+    end
+    
 end
 [~,s_int] = sft(t_range,intensity);
 
@@ -121,23 +135,27 @@ in  = input('Enter number of harmonics to keep or "q" to finish: ','s');
 while true
     n_harm_left = textscan(in,'%d');
     n_harm_left = n_harm_left{1};
+    if n_harm_left == 0
+        break;
+    end
     fprintf(' processing %d harmonics\n',n_harm_left);
-
+    
     
     [rm,int_r,omega_vr] = p_filter3(res_matrix,s_int,omega_v,omega_t,n_harm_left);
     
     Sm = linsolve(rm,conj(int_r'));
     
-    [vel_steps,v_distr] = isft(omega_vr,Sm);
+    [vel_steps,v_distr] = isft(omega_vr,Sm,min(v2_range));
     fn = sprintf('Recoverted velocity transfer distribuion');
     fh = findobj('type','figure', 'Name', fn);
+    
     if  isempty(fh)
         figure('Name',fn);
     else
         figure(fh);
     end
-    plot(vel_steps/V_char,real(v_distr),vel_steps/V_char,imag(v_distr))
-    in = input('Enter number of harmonics to keep or "q" to finish: ','s');
+    plot(vel_steps/V_char,abs(v_distr),vel_steps/V_char,imag(v_distr))
+    in = input('Enter number of harmonics to keep or q/0 to finish: ','s');
     if strncmpi(in,'q',1)
         break;
     end
@@ -145,9 +163,10 @@ end
 %
 
 
-function check_propagation(res_matrix,t_range,omega_t,vel_transf,tau_char,conv_pl_h,vel_distr)
+function [f_t,t_range]=check_propagation(res_matrix,t_range,omega_t,vel_transf,tau_char,conv_pl_h,vel_distr)
 
-[vel_transf,f_d] = vel_distr(vel_transf);
+dvs = vel_transf(2)-vel_transf(1);
+[vel_transf,f_d] = vel_distr(dvs);
 [omega_dv,sv] = sft(vel_transf,f_d);
 
 f_nm = sum(res_matrix.*sv,2);
@@ -184,7 +203,7 @@ else
     calc_error = false;
 end
 
-v_peak = v_range(10);
+v_peak = v_range(20);
 % dv_j = (v_range-v_peak);
 % exp2 = exp(1i*omega_v.*dv_j');
 % SM = sum(exp2,2)/Nv;
@@ -223,7 +242,7 @@ for n=1:Nt
     LH = sum(expi.*difr_matrix(n,:))/Nv;
     difr  = 1-LH;
     Err_row(n) = difr;
-%     difr_ph = atan2(imag(difr),real(difr))*180/pi;
-%     fprintf('n: %d Difr: (%f, %f) mod: %f, phase: %f\n',n,real(difr),imag(difr),abs(difr),difr_ph);
+    %     difr_ph = atan2(imag(difr),real(difr))*180/pi;
+    %     fprintf('n: %d Difr: (%f, %f) mod: %f, phase: %f\n',n,real(difr),imag(difr),abs(difr),difr_ph);
 end
 Err = sum(Err_row);

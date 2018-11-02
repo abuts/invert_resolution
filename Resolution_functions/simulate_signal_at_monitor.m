@@ -11,13 +11,13 @@ L_det = 2.5;
 colors = {'k','r','g','b','m'};
 f_max_1f = [];
 recovered_dirst_h = [];
-vel_distr_fun = @vel_distribution;
+vel_distr_fun = @vel_distribution_delta;
 for i=1:num_pulses
     %[f_as,t_as,v_as] = convolute_with_vel_distr(f_samp{i},t_samp{i},v_samp{i},tau_char,V_char);
     [f_afs,t_afs,v_afs,Norm0] = fft_convolute_with_vel_distr(f_samp{i},t_samp{i},v_samp{i},V_char,true,vel_distr_fun);
     [xi,yi]=meshgrid(t_afs/tau_char,v_afs/V_char);
     %
-    fn = sprintf('Sample time/velocity profile N %d',i);
+    fn = sprintf('After-Sample time/velocity profile N %d',i);
     fh = findobj('type','figure', 'Name', fn);
     if  isempty(fh)
         figure('Name',fn);
@@ -34,7 +34,7 @@ for i=1:num_pulses
     [f_det,t_det,v_det] = propagate_pulse(f_afs,t_afs,v_afs,L_det,t_range);
     %[f_det,t_det,v_det] = fftv_propagate_pulse(f_as,t_as,v_as,L_det);
     
-    [xi,yi]=meshgrid(t_det/tau_char,v_det/V_char);
+    [xi,yi]=meshgrid((t_det-min(t_afs))/tau_char,v_det/V_char);
     
     fn = sprintf('Detector time/velocity profile N %d',i);
     fh = findobj('type','figure', 'Name', fn);
@@ -45,7 +45,7 @@ for i=1:num_pulses
     end
     surf(xi,yi,abs(f_det),'EdgeColor','none');
     ax = gca;
-    ax.XLabel.String = sprintf('(Det time (-min(t_samp)))/(%3.2g sec)',tau_char);
+    ax.XLabel.String = sprintf('(Det time -min(t_{samp}))/(%3.2g sec)',tau_char);
     ax.YLabel.String = sprintf('Velocity/(%3.2g m/s)',V_char);
     view(0,90);
     %---------------------------------------------------
@@ -63,7 +63,7 @@ for i=1:num_pulses
     %
     t_sampl_min = min(t_samp{i});
     pn = IX_dataset_1d((t_det-t_sampl_min)/tau_char,f_det_vs_t);
-    pn.x_axis = sprintf('Time/(%3.2g sec)',tau_char);
+    pn.x_axis = sprintf('Time -min(t_{samp})/(%3.2g sec)',tau_char);
     pn.s_axis = 'Signal/per unit time';
     acolor(colors(i));
     if ~isempty(conv_pl_h)
@@ -83,20 +83,20 @@ for i=1:num_pulses
     vsample = v_samp{i};
     t_chop = t0_chop(i);
     save(pulse_data_file_name,'tsample','fsample','vsample','V_pulseI','t_det','f_det_vs_t','L_det','L_samp','t_chop','tau_char','V_char');
-    [f_det_conv,v_det_conv] = InvertPulse3(fsample,tsample,vsample,t_det,f_det_vs_t,L_det,V_pulseI,tau_char,V_char,conv_pl_h,vel_distr_fun);
+    [f_det_dec,v_det_dec] = InvertPulse3(fsample,tsample,vsample,t_det,f_det_vs_t,L_det,V_pulseI,tau_char,V_char,conv_pl_h,vel_distr_fun);
     
-    [~,dv_four] = build_bins(v_det_conv);
-    Norm0  = abs(f_det_conv*dv_four');
+    [~,dv_four] = build_bins(v_det_dec);
+    Norm0  = abs(f_det_dec*dv_four');
     
     %---------------------------------------------------
     
     acolor('b');
-    p1 = IX_dataset_1d(v_det_conv/V_char,abs(f_det_conv));
+    p1 = IX_dataset_1d(v_det_dec/V_char,abs(f_det_dec));
     p1.x_axis = sprintf('Velocity transfer/(%3.2g m/sec)',V_char);
     p1.s_axis = 'probability density ';
     if isempty(recovered_dirst_h)
         recovered_dirst_h= dl(p1);
-        [vel_transf_source,f_d_source] = vel_distr_fun(v_det_conv);
+        [vel_transf_source,f_d_source] = vel_distr_fun(v_det_dec);
         acolor('g');
         [~,dv_four] = build_bins(vel_transf_source);
         NormI = f_d_source*dv_four';
@@ -107,7 +107,7 @@ for i=1:num_pulses
         recovered_dirst_h= pl(p1);
     end
     acolor('r');
-    p1.signal = imag(f_det_conv);
+    p1.signal = imag(f_det_dec);
     p1.s_axis = 'Img error';
     pl(p1);
     

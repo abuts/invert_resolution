@@ -27,9 +27,8 @@ if ~exist('t','var') || any(size(t) ~=size(omega))
     else
         t_min = min(t);        
     end
-    Np2 = floor(Np/2);
-    omega_max = max(abs(omega));
-    T = 2*pi*Np2/omega_max;
+    omega_1 = omega(1);
+    T = 2*pi/omega_1;
     dt = T/Np;
     t = t_min+dt*(0:Np-1);
 else
