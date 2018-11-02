@@ -113,8 +113,8 @@ vel_steps = v2_range;
 if event_mode
     intensity = f_det_vs_t;
 else
-    intensity = fte;
-    %intensity =  interp1(t_det,f_det_vs_t,t_range,'linear',0);
+    %intensity = fte;
+    intensity =  interp1(t_det,f_det_vs_t,t_range,'linear',0);
     %intensity =  interp1(t_steps,fte,t_range,'linear',0);
     if  ~isempty(conv_pl_h)
         make_current(conv_pl_h);
@@ -145,7 +145,7 @@ while true
     
     Sm = linsolve(rm,conj(int_r'));
     
-    [vel_steps,v_distr] = isft(omega_vr,Sm,min(v2_range));
+    [vel_steps,v_distr] = isft(omega_vr,Sm,min(v2_range)-V_avrg);
     fn = sprintf('Recoverted velocity transfer distribuion');
     fh = findobj('type','figure', 'Name', fn);
     
@@ -165,8 +165,10 @@ end
 
 function [f_t,t_range]=check_propagation(res_matrix,t_range,omega_t,vel_transf,tau_char,conv_pl_h,vel_distr)
 
-dvs = vel_transf(2)-vel_transf(1);
-[vel_transf,f_d] = vel_distr(dvs);
+v_min = min(vel_transf);
+v_max = max(vel_transf);
+V_av = 0.5*(v_min+v_max);
+[vel_transf,f_d] = vel_distr(vel_transf-V_av);
 [omega_dv,sv] = sft(vel_transf,f_d);
 
 f_nm = sum(res_matrix.*sv,2);
