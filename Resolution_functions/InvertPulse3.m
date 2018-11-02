@@ -62,20 +62,20 @@ V_avrg = 0.5*(V_max + V_min);
 v2_range = V_min+0.5*dv:dv:V_max;
 
 Nv = numel(v2_range);
+t_range = T_min:dt_samp:T_max;
 
 
-ti = L_det./(v2_range);
+%ti = L_det./(v2_range);
 %ti = sort(ti);
 if event_mode
-    [tbin_edges,t_bins] = build_bins(ti);
+    [tbin_edges,t_bins] = build_bins(t_range);
     fd = histcounts(f_det_vs_t,tbin_edges);
     f_det_vs_t = fd./t_bins;
 end
 
-cache_file_name = pulse_name(V_pulse,'resolution_delta_matrix');
+cache_file_name = pulse_name(V_pulse,'resolution_matrix3');
 if exist([cache_file_name,'.mat'],'file')
     load([cache_file_name,'.mat'],'rm','difr_matrix','omega_v','omega_t','ti');
-    t_range = T_min:dt_samp:T_max;
     if difr_matrix == 0
         difr_matrix=calc_difr_matrix(omega_v,omega_t,v2_range,L_det);
         save(cache_file_name,'difr_matrix','rm','omega_v','omega_t','ti');
@@ -83,7 +83,6 @@ if exist([cache_file_name,'.mat'],'file')
 else
     % original signal at sample projected to detector position.
     [tb,vb] = meshgrid(t_samp+T_min,v_samp); % time is shifted -- phase shift ignored ?
-    t_range = T_min:dt_samp:T_max;
     [tpi,vpi] = meshgrid(t_range,v2_range);
     f_samp_extended = interp2(tb,vb,f_samp,tpi,vpi,'linear',0);
     
@@ -106,15 +105,16 @@ res_matrix = rm.*difr_matrix;
 vel_steps = v2_range-V_avrg;
 
 
-check_propagation(res_matrix,t_range,ti,omega_t,vel_steps,tau_char,conv_pl_h,vel_distr)
+check_propagation(res_matrix,t_range,omega_t,vel_steps,tau_char,conv_pl_h,vel_distr)
 
 
 % invert propagation:
 if event_mode
     intensity = f_det_vs_t;
 else
-    intensity =  interp1(t_det-min(t_samp) ,f_det_vs_t,ti,'linear',0);
+    intensity =  interp1(t_det,f_det_vs_t,t_range,'linear',0);
 end
+[~,s_int] = sft(t_range,intensity);
 
 in  = input('Enter number of harmonics to keep or "q" to finish: ','s');
 
@@ -122,11 +122,13 @@ while true
     n_harm_left = textscan(in,'%d');
     n_harm_left = n_harm_left{1};
     fprintf(' processing %d harmonics\n',n_harm_left);
-    [rm,omega_vr] = p_filter(res_matrix,omega_v,n_harm_left);
+
     
-    Sm = linsolve(conj(rm'),intensity');
+    [rm,int_r,omega_vr] = p_filter3(res_matrix,s_int,omega_v,omega_t,n_harm_left);
     
-    [vel_steps,v_distr] = isft(omega_vr,Sm,vel_steps);
+    Sm = linsolve(rm,conj(int_r'));
+    
+    [vel_steps,v_distr] = isft(omega_vr,Sm);
     fn = sprintf('Recoverted velocity transfer distribuion');
     fh = findobj('type','figure', 'Name', fn);
     if  isempty(fh)
@@ -143,7 +145,7 @@ end
 %
 
 
-function check_propagation(res_matrix,t_range,ti,omega_t,vel_transf,tau_char,conv_pl_h,vel_distr)
+function check_propagation(res_matrix,t_range,omega_t,vel_transf,tau_char,conv_pl_h,vel_distr)
 
 [vel_transf,f_d] = vel_distr(vel_transf);
 [omega_dv,sv] = sft(vel_transf,f_d);

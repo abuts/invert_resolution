@@ -11,7 +11,7 @@ L_det = 2.5;
 colors = {'k','r','g','b','m'};
 f_max_1f = [];
 recovered_dirst_h = [];
-vel_distr_fun = @vel_distribution_delta;
+vel_distr_fun = @vel_distribution;
 for i=1:num_pulses
     %[f_as,t_as,v_as] = convolute_with_vel_distr(f_samp{i},t_samp{i},v_samp{i},tau_char,V_char);
     [f_afs,t_afs,v_afs,Norm0] = fft_convolute_with_vel_distr(f_samp{i},t_samp{i},v_samp{i},V_char,true,vel_distr_fun);
@@ -96,8 +96,7 @@ for i=1:num_pulses
     p1.s_axis = 'probability density ';
     if isempty(recovered_dirst_h)
         recovered_dirst_h= dl(p1);
-        dvs = vsample(2)-vsample(1);
-        [vel_transf_source,f_d_source] = vel_distribution0(dvs);
+        [vel_transf_source,f_d_source] = vel_distr_fun(v_det_conv);
         acolor('g');
         [~,dv_four] = build_bins(vel_transf_source);
         NormI = f_d_source*dv_four';
