@@ -22,6 +22,7 @@ Ampl  = [5,9,1,5,5];
 e_transf_const = 5.22725e-6; % sec^2/m^2
 v_peaks  = sqrt(e_exc/e_transf_const);
 
+
 sig22 = 2*sigma.*sigma;
 par = [Ampl',v_peaks',sig22'];
 
