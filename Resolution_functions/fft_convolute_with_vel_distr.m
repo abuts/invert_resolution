@@ -19,50 +19,53 @@ end
 
 
 dvs = v_samp(2)-v_samp(1);
-[vel_transf,f_d,v_peaks] = vel_distr(dvs);
+[~,~,~,dV_scat_max] = vel_distr(dvs);
 
-dV_scat_max = max(vel_transf);
+%dV_scat_max = max(vel_transf);
 
 
 
 %v_samp_norm = v_samp/V_char;
-V_min_fin = min(v_samp)-abs(min(vel_transf));
+V_min_fin = min(v_samp)-dV_scat_max;
 if V_min_fin<0
-    
     V_min_fin = 0;
 end
 V_max_fin = max(v_samp)+dV_scat_max;
 
 
 
-%dV = (V_max-V_min)/(Nvp-1);
-dV = vel_transf(2)-vel_transf(1);
+dV = dvs;
 nSource_pts = floor((max(v_samp)-min(v_samp))/dV);
 if nSource_pts < 16
     dV = (max(v_samp)-min(v_samp))/16;
     %nSource_pts = 16;
 end
 vi =V_min_fin:dV:V_max_fin;
+[~,v_bins] = build_bins(vi);
+[~,t_bins] =  build_bins(t_samp);
 [xi,yi] = meshgrid(t_samp,vi);
 [xb,yb] = meshgrid(t_samp,v_samp);
 
 f_samp = interp2(xb,yb,f_samp,xi,yi,'linear',0);
-v_sh = 0.5*(V_min_fin+V_max_fin);
-% extend velocity transfer function onto the full scattering scale
-f_d = interp1(vel_transf,f_d,vi-v_sh,'linear',0);
-vel_transf = vi-v_sh;
 
 
 Nv = numel(vi);
 Nt = size(f_samp,2);
 
-dv0  = vel_transf(2)-vel_transf(1);
-dVf = max(vel_transf)-min(vel_transf);
+bin_mat = v_bins'.*t_bins;
+Norma = sum(reshape(f_samp.*bin_mat,1,Nt*Nv));
+f_samp = f_samp/Norma;
+
+v_sh = 0.5*(V_min_fin+V_max_fin);
 % caclculate velocity transfer distrubution in its own range but with
 % joing accuracy.
-Norma = sum(f_d)*dVf/(Nv-1);
-f_d = f_d/Norma;
+% extend velocity transfer function onto the full scattering scale
+[vel_transf,f_d] = vel_distr(vi-v_sh);
 
+
+
+Norma = f_d*v_bins';
+f_d = f_d/Norma;
 
 if ~noplot
     fh = findobj('type','figure', 'Name', 'sample distribution');
@@ -93,12 +96,13 @@ if ~noplot
     ax.XLabel.String = sprintf('Velocity/(%3.2g m/s)',V_char);
     figure(112);
     ind = fft_ind(numel(ft_vt));
-    freq = fftshift((1/(dv0*Nv))*ind);
+    freq = fftshift((1/(dV*Nv))*ind);
     plot(freq,fftshift(abs(ft_vt)));
 end
 
 ft_vt = ft_vt.*phase;
-fm = bsxfun(@times,ft_sample,ft_vt');
+%fm = bsxfun(@times,ft_sample,ft_vt');
+fm = ft_sample.*ft_vt';
 
 %fm = ft.*repmat(ffv',1,numel(t_samp));
 %fm = fftshift(fm);

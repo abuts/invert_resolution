@@ -35,14 +35,14 @@ if ~exist('dV','var') || isempty(dV)
 end
 omega_v = (2*pi/dV)*ind_v;
 
-dv_dt= t_bins'.*v_bins; % omega changes along rows, t -- along columns
+%dv_dt= t_bins'.*v_bins; % omega changes along rows, t -- along columns
 
 sf = zeros(Npt,Npv);
 parfor m=1:Npv
     fprintf(' step N%d#%d\n',m,Npv);
-    for n=1:Npt       
-        omgf = exp(-1i*(omega_t(n)*t+omega_v(m)*v)).*dv_dt;
-        sf(n,m) = sum(reshape(f.*omgf,1,Npt*Npv))/(dV*dT);
+    for n=1:Npt                                      % let's try equal step for the time being.
+        omgf = exp(-1i*(omega_t(n)*t+omega_v(m)*v)); %.*dv_dt;
+        sf(n,m) = sum(reshape(f.*omgf,1,Npt*Npv))/(Npt*Npv);
     end
 end
 omega_t = omega_t';
