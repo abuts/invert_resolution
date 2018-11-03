@@ -1,7 +1,7 @@
 function recover_distribution(data_file_name)
 
 if ~exist('data_file_name','var')
-    data_file_name= 'Pulse_V520588_input_data.mat';
+    data_file_name= 'Pulse_V520588_delta_input_data.mat';
 end
 load(data_file_name,'tsample','fsample','vsample','V_pulseI','t_det','f_det_vs_t','L_det','L_samp','t_chop','tau_char','V_char');
 
@@ -9,8 +9,8 @@ load(data_file_name,'tsample','fsample','vsample','V_pulseI','t_det','f_det_vs_t
 f_det_counts = build_distribution(t_det,f_det_vs_t,10000);
 t_min = min(t_det);
 t_max = max(t_det);
-
-[f_det_conv,v_det_conv] = InvertPulse2(fsample,tsample,vsample,[t_min,t_max],f_det_counts,L_det,V_pulseI,tau_char,V_char);
+%                         InvertPulse3(f_samp,t_samp, v_samp,   t_det,       f_det_vs_t,  L_det,V_pulse, tau_char,V_char,conv_pl_h,varargin)
+[f_det_conv,v_det_conv] = InvertPulse3(fsample,tsample,vsample,[t_min,t_max],f_det_counts,L_det,V_pulseI,tau_char,V_char,[],@vel_distribution_delta);
 
 [~,dv_four] = build_bins(v_det_conv);
 Norm0  = abs(f_det_conv*dv_four');

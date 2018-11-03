@@ -2,8 +2,8 @@ function distr = build_distribution(bin_centers,f_distr,num_points)
 
 
 [~,bins] = build_bins(bin_centers);
-norma   = f_distr*bins';
-f_distr = f_distr/norma;
+norma   = abs(f_distr)*bins';
+f_distr = abs(f_distr)/norma;
 prod_function = cumsum(f_distr.*bins);
 %Nip = numel(f_distr);
 

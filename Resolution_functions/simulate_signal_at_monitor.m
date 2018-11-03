@@ -11,7 +11,7 @@ L_det = 2.5;
 colors = {'k','r','g','b','m'};
 f_max_1f = [];
 recovered_dirst_h = [];
-vel_distr_fun = @vel_distribution0;
+vel_distr_fun = @vel_distribution_delta;
 for i=1:num_pulses
     %[f_as,t_as,v_as] = convolute_with_vel_distr(f_samp{i},t_samp{i},v_samp{i},tau_char,V_char);
     [f_afs,t_afs,v_afs,Norm0] = fft_convolute_with_vel_distr(f_samp{i},t_samp{i},v_samp{i},V_char,true,vel_distr_fun);
@@ -77,7 +77,8 @@ for i=1:num_pulses
     %
     %---------------------------------------------------
     V_pulseI  = V_pulse(i);
-    pulse_data_file_name = pulse_name(V_pulseI,'delta_input_data');
+    dn = vel_distr_fun('Name');
+    pulse_data_file_name = pulse_name(V_pulseI,[dn,'_input_data']);
     tsample = t_samp{i};
     fsample = f_samp{i};
     vsample = v_samp{i};

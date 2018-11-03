@@ -2,6 +2,14 @@ function [dv,f_d,v_peaks,dV_scat_max] = vel_distribution_delta(dvs)
 % Calculate sample probabilityh distribution for velocity transfer 
 % for modelling and recovering
 % 
+if ~isnumeric(dvs)
+    dv = 'delta';
+    f_d = [];
+    v_peaks = [];
+    dV_scat_max = [];
+    return
+end
+
 % The range of the energy to calculate the delta-function:
 de_range = 0.4; %25;
 % energy peaks

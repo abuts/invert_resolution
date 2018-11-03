@@ -32,8 +32,8 @@ if isempty(t_det) % event mode, f_det_vs_t is sequence of events.
 else
     if all(size(t_det) ==[1,2])
         event_mode = true;
-        td_min = t_det(1);
-        td_max = t_det(2);
+        td_min = t_det(1)-T_samp_min;
+        td_max = t_det(2)-T_samp_min;
         
     else
         event_mode = false;
@@ -63,17 +63,17 @@ v2_range = V_min:dv:V_max;
 
 Nv = numel(v2_range);
 t_range = T_min:dt_samp:T_max;
-
+Nt = numel(t_range);
 
 %ti = L_det./(v2_range);
 %ti = sort(ti);
 if event_mode
     [tbin_edges,t_bins] = build_bins(t_range);
-    fd = histcounts(f_det_vs_t,tbin_edges);
+    fd = histcounts(f_det_vs_t-T_samp_min,tbin_edges);
     f_det_vs_t = fd./t_bins;
 end
-
-cache_file_name = pulse_name(V_pulse,'resolution_matrix');
+name = vel_distr('name');
+cache_file_name = pulse_name(V_pulse,[name,'_resolution_matrix'],Nt,Nv);
 if exist([cache_file_name,'.mat'],'file')
     load([cache_file_name,'.mat'],'rm','difr_matrix','omega_v','omega_t');
     if difr_matrix == 0
@@ -113,8 +113,8 @@ vel_steps = v2_range;
 if event_mode
     intensity = f_det_vs_t;
 else
-    %intensity = fte;
-    intensity =  interp1(t_det,f_det_vs_t,t_range,'linear',0);
+    intensity = fte;
+    %intensity =  interp1(t_det,f_det_vs_t,t_range,'linear',0);
     %intensity =  interp1(t_steps,fte,t_range,'linear',0);
     if  ~isempty(conv_pl_h)
         make_current(conv_pl_h);
@@ -126,6 +126,11 @@ else
         acolor('y');
         pl(pn);
     end
+%     pulse_data_file_name = pulse_name(V_pulse,[name,'_input_data']);
+%     load(pulse_data_file_name,'tsample','fsample','vsample','V_pulseI','t_det','f_det_vs_t','L_det','L_samp','t_chop','tau_char','V_char');
+%     t_det = t_range;
+%     f_det_vs_t = intensity_v;
+%     save(pulse_data_file_name,'tsample','fsample','vsample','V_pulseI','t_det','f_det_vs_t','L_det','L_samp','t_chop','tau_char','V_char');
     
 end
 [~,s_int] = sft(t_range,intensity);
