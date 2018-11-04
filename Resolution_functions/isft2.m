@@ -28,6 +28,7 @@ end
 Nt = size(omega_t,1);
 Nv = size(omega_v,2);
 
+
 if size(sf,1)~= Nt || size(sf,2)~= Nv
     error('ISFT2:invalid_argument',' inconsistent number of omega axis and harmonics matrix');
 end
@@ -63,8 +64,7 @@ end
 
 function  t = build_inverse_axis(omega,t_min)
 Np = numel(omega);
-Np2 = floor(Np/2);
-omega_max = max(abs(omega));
-T = 2*pi*Np2/omega_max;
+omega_1 = omega(2);
+T = 2*pi/omega_1;
 dt = T/Np;
 t = t_min+dt*(0:Np-1);
