@@ -9,6 +9,7 @@ load(data_file_name,'tsample','fsample','vsample','V_pulseI','t_det','f_det_vs_t
 f_det_counts = build_distribution(t_det,f_det_vs_t,10000);
 t_min = min(t_det);
 t_max = max(t_det);
+histogram(f_det_counts,100);
 %                         InvertPulse3(f_samp,t_samp, v_samp,   t_det,       f_det_vs_t,  L_det,V_pulse, tau_char,V_char,conv_pl_h,varargin)
 [f_det_conv,v_det_conv] = InvertPulse3(fsample,tsample,vsample,[t_min,t_max],f_det_counts,L_det,V_pulseI,tau_char,V_char,[],@vel_distribution0);
 

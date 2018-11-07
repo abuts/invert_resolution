@@ -1,4 +1,4 @@
-function [v_distr,vel_steps] =  InvertPulse3(f_samp,t_samp,v_samp,t_det,f_det_vs_t,L_det,V_pulse,tau_char,V_char,conv_pl_h,varargin)
+function [v_distr,vel_steps] =  InvertPulse3a(f_samp,t_samp,v_samp,t_det,f_det_vs_t,L_det,V_pulse,tau_char,V_char,conv_pl_h,varargin)
 
 if ~exist('conv_pl_h','var')
     conv_pl_h = [];
@@ -73,7 +73,7 @@ if event_mode
     f_det_vs_t = fd./t_bins;
 end
 name = vel_distr('name');
-cache_file_name = pulse_name(V_pulse,[name,'_resolution_matrix'],Nt,Nv);
+cache_file_name = pulse_name(V_pulse,[name,'_resolutionTW_matrix'],Nt,Nv);
 if exist([cache_file_name,'.mat'],'file')
     load([cache_file_name,'.mat'],'rm','difr_matrix','omega_v','omega_t');
     if difr_matrix == 0

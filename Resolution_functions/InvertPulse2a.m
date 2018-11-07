@@ -1,4 +1,4 @@
-function [v_distr,vel_steps] =  InvertPulse2(f_samp,t_samp,v_samp,t_det,f_det_vs_t,L_det,V_pulse,tau_char,V_char,conv_pl_h,vel_distr_fun)
+function [v_distr,vel_steps] =  InvertPulse2a(f_samp,t_samp,v_samp,t_det,f_det_vs_t,L_det,V_pulse,tau_char,V_char,conv_pl_h,vel_distr_fun)
 if ~exist('conv_pl_h','var')
     conv_pl_h = [];
 end
@@ -11,49 +11,44 @@ Nv0     = numel(v_samp);
 dV0     = v0_max-v0_min;
 dv      = dV0/(Nv0-1);
 
-% velocities at the arrival
-dT_samp  = max(t_samp)-min(t_samp);
-if isempty(t_det) % event mode, f_det_vs_t is sequence of events
+if isempty(t_det) % event mode, f_det_vs_t is sequence of events.
+    % Check the events starging time!
+    f_det_vs_t = f_det_vs_t-T_samp_min;
     event_mode = true;
-    td_min = min(f_det_vs_t);    
-    td_max = max(f_det_vs_t);            
+    td_min = min(f_det_vs_t);
+    td_max = max(f_det_vs_t);
 else
     if all(size(t_det) ==[1,2])
-        event_mode = true;            
-        td_min = t_det(1);    
-        td_max = t_det(2);       
+        event_mode = true;
+        td_min = t_det(1)-T_samp_min;
+        td_max = t_det(2)-T_samp_min;
         
     else
-        event_mode = false;    
-        td_min = min(t_det);    
-        td_max = max(t_det);        
+        event_mode = false;
+        t_det = t_det-T_samp_min;
+        td_min = min(t_det);
+        td_max = max(t_det);
     end
 end
-T_min = td_min -min(t_samp);
-T_max = td_max -min(t_samp)+dT_samp;
+% Detector's signal time interval
+T_min = td_min;
+T_max = td_max;
+
 
 
 V_max = L_det/T_min;
 V_min = L_det/T_max;
 dV = (V_max -V_min);
 V_avrg = 0.5*(V_max + V_min);
-
+v2_range = V_min:dv:V_max;
+t
 % maximal accessible interval of velocity change due to the sample scattering
 %Dv = (dV-dV0)/2;
 
 
-v2_range = V_min+0.5*dv:dv:V_max;
 
 Nv = numel(v2_range);
-ind = fft_ind(Nv);
-% if  rem(Nv,2) >0
-%     Nv2 = floor((Nv-1)/2);
-%     ind = -Nv2:Nv2;
-% else
-%     Nv2 = floor(Nv/2);
-%     ind = -Nv2:Nv2-1;
-% end
-
+%Nt = 
 
 
 [xb,yb] = meshgrid(t_samp,v_samp);
@@ -71,12 +66,13 @@ if event_mode
 else
 end
 
-cache_file_name = pulse_name(V_pulse,'resolution_matrix');
+name = vel_distr('name');
+cache_file_name = pulse_name(V_pulse,[name,'_TW_resolution_matrix'],Nt,Nv);
 if exist([cache_file_name,'.mat'],'file')
-    load([cache_file_name,'.mat'],'res_matrix','omega_v','ti');
+    load([cache_file_name,'.mat'],'res_data','difr_matrix','omega_v','ti');
 else
     t_rel = t_samp-min(t_samp);    
-    [omega_v,rm_t] = sft(v2_range,f_sampI,ind);
+    [omega_v,rm_t] = sfft(v2_range,f_sampI);
     
     res_matrix = zeros(Nv,Nv);
     for i=1:numel(ti)

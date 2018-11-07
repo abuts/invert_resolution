@@ -1,11 +1,11 @@
 function test_fftf_1D
 % testing filter, related to standard fft transformation.
 
-t = (1:10000)*0.01;
+t = (1:1000)*0.01;
 
 fd = fdistr(t);
 plot(t,fd);
-distr = build_distribution(t,fd,100000);
+distr = build_distribution(t,fd,1000);
 
 [bedg,bin] = build_bins(t);
 fc = histcounts(distr,bedg);
@@ -16,7 +16,7 @@ plot(t,fc);
 
 [X, f, y, y2] = fftf_1D(t, fc, [],20);
 
-[X, f, y, y2] = fftf_1D(t, fc, [],10);
+[X, f, y, y2] = fftf_1D(t, fc, [],15);
 [X, f, y, y2] = fftf_1D(t, fc, [],50);
 
 
