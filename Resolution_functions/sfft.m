@@ -22,13 +22,14 @@ Np = size(t,1);
 
 [t_edges,t_bins] = build_bins(t);
 dT = max(t_edges)-min(t_edges);
+dt = dT/Np;
 ind = fft_ind(Np);
 omega = (2*pi/dT)*ind; % Important! period is wider than t_max - t_min by one step
 
 t_min_s = min(t);
 shift = exp(1i*t_min_s*omega);
 
-t_bins = (t_bins.*shift)'*(Np/dT);
+t_bins = (t_bins.*shift)'/dt;
 %
 sf = fft(f).*t_bins;
 

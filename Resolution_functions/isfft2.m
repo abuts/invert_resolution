@@ -36,7 +36,7 @@ end
 
 if exist('t','var')
     t_min_s = min(t);
-    shift_t = exp(-1i*t_min_s*omega_t);
+    shift_t = exp(1i*t_min_s*omega_t);
     
     if any(size(t) ~=size(omega_t))
         t = build_inverse_axis(omega_t,t_min_s);
@@ -52,7 +52,7 @@ else
 end
 if exist('v','var')
     v_min_s = min(v);    
-    shift_v = exp(-1i*v_min_s *omega_v);    
+    shift_v = exp(1i*v_min_s *omega_v);    
     if size(v) ~=size(omega_v)
         t = build_inverse_axis(omega_v,v_min_s);
     end

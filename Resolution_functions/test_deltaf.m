@@ -5,8 +5,8 @@ function test_deltaf
 % check fft(Delta(v-V0)) = Sum_n{exp(-i*Omega_n*V0)}
 Np=32;
 iV = 5;
-RangeMin = 1;
-RangeMax =  2;
+RangeMin = 5;
+RangeMax =  8;
 Range = RangeMax-RangeMin;
 dx = Range/Np;
 V0 = RangeMin+(iV-1)*dx;
@@ -63,6 +63,9 @@ acolor('g');
 aline('-');
 pd(sft_s );
 
+[sft_spec,sft_omega]=p_filter1(sft_spec,sft_omega,Np/4);
+[sft_tr,rev_sft_specr] = isfft(sft_omega,sft_spec,xx);
+plot(sft_tr,rev_sft_specr);
 
 
 L=10;
@@ -75,7 +78,7 @@ V0 = V_i+(iV-1)*dV;
 vu = L./vi;
 vu = sort(vu);
 
-f = exp(-(vi-V0).^2/0.01);
+f = exp(-(vi-V0).^2/0.1);
 fu =exp(-(vu-L/V0).^2/0.01);
 fn0 = sprintf('direct and inverse distribution');
 fh = findobj('type','figure', 'Name', fn0);
@@ -85,7 +88,9 @@ else
     hold off
     figure(fh);
 end
-plot(vi,f,'r-o',vu,fu,'g-+');
+%plot(vi,f,'r-o',vu,fu,'g-+');
+%plot(vi,f,'r-o');
+plot(vu,fu,'g-+');
 
 [omg_dir,sft_dir_spec] = sfft(vi,f);
 [omg_rev,sft_rev_spec] = sfft(vu,fu);
@@ -97,7 +102,9 @@ else
     hold off
     figure(fh1);
 end
-plot(omg_dir/2*pi,abs(sft_dir_spec),'r-o',omg_rev,abs(sft_rev_spec),'g:+');
+%plot(omg_dir/2*pi,abs(sft_dir_spec),'r-o',omg_rev,abs(sft_rev_spec),'g:+');
+%plot(omg_dir/2*pi,abs(sft_dir_spec),'r-o');
+plot(omg_rev,abs(sft_rev_spec),'g:+')
 
 [vi,fdr] = isfft(omg_dir,sft_dir_spec,vi);
 [vu,frr] = isfft(omg_rev,sft_rev_spec,vu);
@@ -105,4 +112,6 @@ plot(omg_dir/2*pi,abs(sft_dir_spec),'r-o',omg_rev,abs(sft_rev_spec),'g:+');
 fh = findobj('type','figure', 'Name', fn0);
 figure(fh);
 hold on
-plot(vi,fdr,'r:<',vu,frr,'g:>');
+%plot(vi,fdr,'r:<',vu,frr,'g:>');
+%plot(vi,fdr,'r:<');
+plot(vu,frr,'g:>');

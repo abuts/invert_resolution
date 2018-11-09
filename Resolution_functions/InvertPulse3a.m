@@ -86,7 +86,7 @@ else
     [tpi,vpi] = meshgrid(t_range,v2_range);
     f_samp_extended = interp2(tb,vb,f_samp,tpi,vpi,'linear',0);
     
-    [omega_t,omega_v,rm] = sft2(t_range,v2_range,f_samp_extended');
+    [omega_t,omega_v,rm] = sfft2(t_range,v2_range,f_samp_extended');
     difr_matrix = 0;
     save(cache_file_name,'difr_matrix','rm','omega_v','omega_t');
     
@@ -104,8 +104,8 @@ rm = rm.*phase_shift;
 res_matrix = rm.*difr_matrix;
 vel_steps = v2_range;
 
-
-[fte,t_steps]=check_propagation(res_matrix,t_range,omega_t,vel_steps,tau_char,conv_pl_h,vel_distr);
+[nt_block,nv_block] = p_filter_block(Nt,Nv,500000,5000000);
+[fte,t_steps]=check_propagation(res_matrix,t_range,omega_t,vel_steps,tau_char,conv_pl_h,vel_distr,nt_block,nv_block);
 %check_propagation(res_matrix,t_range,omega_t,vel_steps,tau_char,conv_pl_h,vel_distr);
 
 
@@ -114,12 +114,12 @@ if event_mode
     intensity = f_det_vs_t;
 else
     %intensity = real(fte);
-    intensity =  interp1(t_det,f_det_vs_t,t_range,'linear',0);
+    intensity =  interp1(t_det,f_det_vs_t,t_range,'linear',0)';
     %intensity =  interp1(t_steps,fte,t_range,'linear',0);
     if  ~isempty(conv_pl_h)
         make_current(conv_pl_h);
         [~,dt]=build_bins(t_range);
-        Norm =tau_char*(real(intensity)*dt');
+        Norm =tau_char*sum(real(intensity).*dt');
         intensity_v = intensity/Norm;
         
         pn = IX_dataset_1d(t_range/tau_char,real(intensity_v));
@@ -133,7 +133,7 @@ else
 %     save(pulse_data_file_name,'tsample','fsample','vsample','V_pulseI','t_det','f_det_vs_t','L_det','L_samp','t_chop','tau_char','V_char');
     
 end
-[~,s_int] = sft(t_range,intensity);
+[~,s_int] = sfft(t_range,intensity);
 
 
 in  = input('Enter number of harmonics to keep or "q" to finish: ','s');
@@ -147,13 +147,15 @@ while true
     fprintf(' processing %d harmonics\n',n_harm_left);
     
     
-    int_r = p_filter3a(s_int,omega_t,n_harm_left);
-    Sm = pinv(res_matrix,1.e-6)*conj(int_r');% linsolve(res_matrix,conj(int_r'));    
-    %Sm = linsolve(rm,conj(int_r'));
+    [rm,int_r,omega_vt,omega_tt] = p_filter3(res_matrix,s_int,omega_v,omega_t,n_harm_left);   
+    %Sm = pinv(res_matrix,1.e-6)*conj(int_r');% linsolve(res_matrix,conj(int_r'));    
+    Sm = linsolve(rm,int_r);
 
+    SM = zeros(size(omega_v));
+    [nt_block,nv_block] = p_filter_block(size(res_matrix,1),size(res_matrix,2),n_harm_left,n_harm_left);    
+    SM(nv_block) = Sm;
     
-
-    [vel_steps,v_distr] = isft(omega_v,Sm,min(v2_range)-V_avrg);
+    [vel_steps,v_distr] = isfft(omega_v,SM,min(v2_range)-V_avrg);
     fn = sprintf('Recoverted velocity transfer distribuion');
     fh = findobj('type','figure', 'Name', fn);
     
@@ -168,25 +170,45 @@ while true
         break;
     end
 end
+v_distr = real(v_distr)';
 %
 
 
-function [f_t,t_range]=check_propagation(res_matrix,t_range,omega_t,vel_transf,tau_char,conv_pl_h,vel_distr)
+function [f_t,t_range]=check_propagation(res_matrix,t_range,omega_t,vel_transf,tau_char,conv_pl_h,vel_distr,nt_range,nv_range)
+
+if ~exist('nv_range','var')
+    filter = false;
+else
+    filter = true;    
+end
 
 v_min = min(vel_transf);
 v_max = max(vel_transf);
 V_av = 0.5*(v_min+v_max);
 [vel_transf,f_d] = vel_distr(vel_transf-V_av);
-[omega_dv,sv] = sft(vel_transf,f_d);
+[~,sv] = sfft(vel_transf,f_d);
+if filter
+    svv = zeros(size(sv));
+    svv(nv_range) = sv(nv_range);
+    svv = conj(svv');
+    rm = res_matrix(nt_range,:);
+else
+    svv = conj(sv');
+    rm = res_matrix;
+end
 
-f_nm = sum(res_matrix.*sv,2);
-
-[t_range,f_t] = isft(omega_t,f_nm,t_range);
+fr_nm = sum(rm.*svv,2);
+if filter
+    f_nm(nt_range) = fr_nm;
+else
+    f_nm = fr_nm;
+end
+[t_range,f_t] = isfft(omega_t,f_nm,t_range);
 %[t_range,ind] = sort(ti);
 %f_t = f_t(ind);
 
 [~,dt]=build_bins(t_range);
-Norm =tau_char*(real(f_t)*dt');
+Norm =tau_char*sum(real(f_t).*dt');
 f_t = f_t/Norm;
 
 pn = IX_dataset_1d(t_range/tau_char,real(f_t));

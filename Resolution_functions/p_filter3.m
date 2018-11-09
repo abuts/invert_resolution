@@ -3,33 +3,16 @@ function [rm,ft_reduced,omega_vt,omega_tt] = p_filter3(res_matrix,ft_signal,omeg
 % harmonics
 
 [n_omega_t,n_omega_v] = size(res_matrix);
-n_omega_t_range = get_cental_block(n_omega_t,n_harm_left);
-n_omega_v_range = get_cental_block(n_omega_v,n_harm_left);
+[nt_block,nv_block] = p_filter_block(n_omega_t,n_omega_v,50,n_harm_left);    
 
 
 
-rm = fftshift(res_matrix);
-rm = fftshift(rm(n_omega_t_range,n_omega_v_range));
-
-ft_reduced = fftshift(ft_signal);
-ft_reduced = fftshift(ft_reduced(n_omega_t_range));
-
-omega_vt  = fftshift(omega_v);
-omega_vt  = fftshift(omega_vt(n_omega_v_range));
-omega_tt  = fftshift(omega_t);
-omega_tt  = fftshift(omega_tt(n_omega_t_range));
+rm = res_matrix(nt_block,nv_block);
+ft_reduced = ft_signal(nt_block);
 
 
-function block = get_cental_block(n_total,n_selected)
-left_cent = floor(n_total/2);
-if n_selected>= left_cent
-    block = 1:n_total;
-    return;
-end
-start_s  = left_cent-n_selected+1;
-if rem(n_total,2) > 0
-    end_s    = left_cent+1+n_selected;
-else
-    end_s    = left_cent+n_selected;
-end
-block = start_s:end_s;
+omega_vt  = omega_v(nv_block);
+omega_tt  = omega_t(nt_block);
+
+
+

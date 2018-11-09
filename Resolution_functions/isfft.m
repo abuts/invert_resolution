@@ -39,7 +39,7 @@ else
             ' inconsistent time and omega axis');
     end
     t_min_s = min(t);
-    shift = exp(-1i*t_min_s*omega');
+    shift = exp(1i*t_min_s*omega');
     t_bins = (t_bins.*shift)'*(Np/dT);
 end
 
