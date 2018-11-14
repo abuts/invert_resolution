@@ -43,9 +43,10 @@ v_bins = v_bins.*shift_v*(Npv/dV);
 
 
 
+
 dv_dt= t_bins.*v_bins; % omega changes along rows, t -- along columns
 
-sf = fft2(f).*dv_dt;
+sf = fft2(f,Npt,Npv).*dv_dt;
 
 % sf = zeros(Npt,Npv);
 % parfor m=1:Npv
