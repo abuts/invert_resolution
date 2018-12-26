@@ -71,9 +71,9 @@ for i=1:num_pulses
     end
     acolor('k');
     conv_pl_h=pl(pn);
-    acolor('g');
-    pn = IX_dataset_1d((t_afs-t_sampl_min)/tau_char,f_samp_vs_t);
-    pl(pn);
+%     acolor('g');
+%     pn = IX_dataset_1d((t_afs-t_sampl_min)/tau_char,f_samp_vs_t);
+%     pl(pn);
     %
     %---------------------------------------------------
     V_pulseI  = V_pulse(i);
@@ -84,7 +84,7 @@ for i=1:num_pulses
     vsample = v_samp{i};
     t_chop = t0_chop(i);
     save(pulse_data_file_name,'tsample','fsample','vsample','V_pulseI','t_det','f_det_vs_t','L_det','L_samp','t_chop','tau_char','V_char');
-    [f_det_dec,v_det_dec] = InvertPulse3(fsample,tsample,vsample,t_det,f_det_vs_t,L_det,V_pulseI,tau_char,V_char,conv_pl_h,vel_distr_fun);
+    [f_det_dec,v_det_dec] = InvertPulse2a(fsample,tsample,vsample,t_det,f_det_vs_t,L_det,V_pulseI,tau_char,V_char,conv_pl_h,vel_distr_fun);
     
     [~,dv_four] = build_bins(v_det_dec);
     Norm0  = abs(f_det_dec*dv_four');

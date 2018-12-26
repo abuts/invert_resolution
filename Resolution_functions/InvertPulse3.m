@@ -113,8 +113,8 @@ vel_steps = v2_range;
 if event_mode
     intensity = f_det_vs_t;
 else
-    intensity = fte;
-    %intensity =  interp1(t_det,f_det_vs_t,t_range,'linear',0);
+    %intensity = real(fte);
+    intensity =  interp1(t_det,f_det_vs_t,t_range,'linear',0);
     %intensity =  interp1(t_steps,fte,t_range,'linear',0);
     if  ~isempty(conv_pl_h)
         make_current(conv_pl_h);
@@ -123,7 +123,7 @@ else
         intensity_v = intensity/Norm;
         
         pn = IX_dataset_1d(t_range/tau_char,real(intensity_v));
-        acolor('y');
+        acolor('g');
         pl(pn);
     end
 %     pulse_data_file_name = pulse_name(V_pulse,[name,'_input_data']);
@@ -134,6 +134,7 @@ else
     
 end
 [~,s_int] = sft(t_range,intensity);
+
 
 in  = input('Enter number of harmonics to keep or "q" to finish: ','s');
 
@@ -146,11 +147,13 @@ while true
     fprintf(' processing %d harmonics\n',n_harm_left);
     
     
-    [rm,int_r,omega_vr] = p_filter3(res_matrix,s_int,omega_v,omega_t,n_harm_left);
+    int_r = p_filter3a(s_int,omega_t,n_harm_left);
+    Sm = pinv(res_matrix,1.e-6)*conj(int_r');% linsolve(res_matrix,conj(int_r'));    
+    %Sm = linsolve(rm,conj(int_r'));
+
     
-    Sm = linsolve(rm,conj(int_r'));
-    
-    [vel_steps,v_distr] = isft(omega_vr,Sm,min(v2_range)-V_avrg);
+
+    [vel_steps,v_distr] = isft(omega_v,Sm,min(v2_range)-V_avrg);
     fn = sprintf('Recoverted velocity transfer distribuion');
     fh = findobj('type','figure', 'Name', fn);
     
@@ -217,7 +220,7 @@ v_peak = v_range(20);
 % ST = exp(1i*omega_t(1)*(L_det/v_peak-ti'));
 % Int = sum(SM.*ST);
 if calc_error
-    test_row = 1i*zeros(1,Nt);
+    test_row = zeros(1,Nt);
 end
 difr_matrix = zeros(Nt,Nv);
 for n=1:Nt

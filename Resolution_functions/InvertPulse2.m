@@ -1,5 +1,4 @@
-function [v_distr,vel_steps] =  InvertPulse2(f_samp,t_samp,v_samp,t_det,f_det_vs_t,L_det,V_pulse,tau_char,V_char,conv_pl_h)
-
+function [v_distr,vel_steps] =  InvertPulse2(f_samp,t_samp,v_samp,t_det,f_det_vs_t,L_det,V_pulse,tau_char,V_char,conv_pl_h,vel_distr_fun)
 if ~exist('conv_pl_h','var')
     conv_pl_h = [];
 end
