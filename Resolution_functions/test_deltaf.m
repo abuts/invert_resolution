@@ -43,17 +43,20 @@ end
 
 
 
-expT = IX_dataset_1d(fftshift(Omega_n/(2*pi)),(180/pi)*fftshift(atan2(imag(spec(1,:)),real(spec(1,:)))));
+%expT = IX_dataset_1d(fftshift(Omega_n/(2*pi)),(180/pi)*fftshift(atan2(imag(spec(1,:)),real(spec(1,:)))));
+expT = IX_dataset_1d((Omega_n/(2*pi)),(180/pi)*(atan2(imag(spec(1,:)),real(spec(1,:)))));
 acolor('r');
 aline('-');
 dl(expT);
 
-theorR = IX_dataset_1d(fftshift(Omega_n/(2*pi)),(180/pi)*fftshift(atan2(imag(theor_sp),real(theor_sp))));
+%theorR = IX_dataset_1d(fftshift(Omega_n/(2*pi)),(180/pi)*fftshift(atan2(imag(theor_sp),real(theor_sp))));
+theorR = IX_dataset_1d((Omega_n/(2*pi)),(180/pi)*(atan2(imag(theor_sp),real(theor_sp))));
 acolor('b');
 aline('-');
 pl(theorR);
 
-sft_s = IX_dataset_1d(fftshift(omg1/(2*pi)),(180/pi)*fftshift(atan2(imag(sf1(1,:)),real(sf1(1,:)))));
+%sft_s = IX_dataset_1d(fftshift(omg1/(2*pi)),(180/pi)*fftshift(atan2(imag(sf1(1,:)),real(sf1(1,:)))));
+sft_s = IX_dataset_1d((omg1/(2*pi)),(180/pi)*(atan2(imag(sf1(1,:)),real(sf1(1,:)))));
 acolor('g');
 aline(':');
 pl(sft_s );

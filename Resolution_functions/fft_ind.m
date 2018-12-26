@@ -21,7 +21,7 @@ else
     Np2 = floor(Np/2);
     ind = [0:Np2-1,-Np2:1:-1];
 end
-
+%ind = 0:Np-1;
 
 
 

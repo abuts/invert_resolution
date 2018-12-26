@@ -8,17 +8,20 @@ n_omega_v_range = get_cental_block(n_omega_v,n_harm_left);
 
 
 
-rm = fftshift(res_matrix);
-rm = fftshift(rm(n_omega_t_range,n_omega_v_range));
+% rm = fftshift(rm(n_omega_t_range,n_omega_v_range));
+rm = res_matrix(n_omega_t_range,n_omega_v_range);
 
-ft_reduced = fftshift(ft_signal);
-ft_reduced = fftshift(ft_reduced(n_omega_t_range));
+%ft_reduced = fftshift(ft_reduced(n_omega_t_range));
+ft_reduced = ft_signal(n_omega_t_range);
 
-omega_vt  = fftshift(omega_v);
-omega_vt  = fftshift(omega_vt(n_omega_v_range));
-omega_tt  = fftshift(omega_t);
-omega_tt  = fftshift(omega_tt(n_omega_t_range));
+omega_vt  = redefine_omega(omega_v,numel(n_omega_v_range));
+omega_tt  = redefine_omega(omega_t,numel(n_omega_t_range));
 
+function new_omega = redefine_omega(old_omega,Np)
+
+omg = old_omega(2);
+ind = fft_ind(Np);
+new_omega = ind*omg;
 
 function block = get_cental_block(n_total,n_selected)
 left_cent = floor(n_total/2);
@@ -26,10 +29,9 @@ if n_selected>= left_cent
     block = 1:n_total;
     return;
 end
-start_s  = left_cent-n_selected+1;
 if rem(n_total,2) > 0
-    end_s    = left_cent+1+n_selected;
+    block = [1:n_selected+1,n_total-n_selected+1:n_total];
 else
-    end_s    = left_cent+n_selected;
+    block = [1:n_selected,n_total-n_selected+1:n_total];
 end
-block = start_s:end_s;
+

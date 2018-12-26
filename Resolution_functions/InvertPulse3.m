@@ -73,7 +73,7 @@ if event_mode
     f_det_vs_t = fd./t_bins;
 end
 name = vel_distr('name');
-cache_file_name = pulse_name(V_pulse,[name,'_resolution_matrix'],Nt,Nv);
+cache_file_name = pulse_name(V_pulse,[name,'_FFTresolution_matrix'],Nt,Nv);
 if exist([cache_file_name,'.mat'],'file')
     load([cache_file_name,'.mat'],'rm','difr_matrix','omega_v','omega_t');
     if difr_matrix == 0
@@ -100,7 +100,7 @@ fprintf(' Total error from the diffraction matrix: (%g,%g)\n',real(Err),imag(Err
 
 phase_shift = exp(-1i*omega_t*T_min);
 rm = rm.*phase_shift;
-
+% 
 res_matrix = rm.*difr_matrix;
 vel_steps = v2_range;
 
