@@ -1,5 +1,7 @@
-function [v_distr,vel_steps] =  InvertPulse3(f_samp,t_samp,v_samp,t_det,f_det_vs_t,L_det,V_pulse,tau_char,V_char,conv_pl_h,varargin)
-
+function [v_distr,vel_steps] =  InvertPulse3_ba(f_samp,t_samp,v_samp,t_det,f_det_vs_t,L_det,V_pulse,tau_char,V_char,conv_pl_h,varargin)
+% the sample inversion routine demonstrating the possibility of inverting
+% distribution function
+%
 if ~exist('conv_pl_h','var')
     conv_pl_h = [];
 end
@@ -86,7 +88,7 @@ else
     [tpi,vpi] = meshgrid(t_range,v2_range);
     f_samp_extended = interp2(tb,vb,f_samp,tpi,vpi,'linear',0);
     
-    [omega_t,omega_v,rm] = sfft2(t_range,v2_range,f_samp_extended');
+    [omega_t,omega_v,rm] = sft2(t_range,v2_range,f_samp_extended');
     difr_matrix = 0;
     save(cache_file_name,'difr_matrix','rm','omega_v','omega_t');
     
@@ -113,7 +115,7 @@ vel_steps = v2_range;
 if event_mode
     intensity = f_det_vs_t;
 else
-    intensity = real(fte);
+    intensity = fte;
     %intensity =  interp1(t_det,f_det_vs_t,t_range,'linear',0);
     %intensity =  interp1(t_steps,fte,t_range,'linear',0);
     if  ~isempty(conv_pl_h)
@@ -123,7 +125,7 @@ else
         intensity_v = intensity/Norm;
         
         pn = IX_dataset_1d(t_range/tau_char,real(intensity_v));
-        acolor('g');
+        acolor('y');
         pl(pn);
     end
 %     pulse_data_file_name = pulse_name(V_pulse,[name,'_input_data']);
@@ -135,7 +137,6 @@ else
 end
 [~,s_int] = sft(t_range,intensity);
 
-
 in  = input('Enter number of harmonics to keep or "q" to finish: ','s');
 
 while true
@@ -146,14 +147,12 @@ while true
     end
     fprintf(' processing %d harmonics\n',n_harm_left);
     
-    [rm,ft_reduced,omega_vt,omega_tt] = p_filter3(res_matrix,ft_signal,omega_v,omega_t,n_harm_left);
-    int_r = p_filter3a(s_int,omega_t,n_harm_left);
-    %Sm = pinv(res_matrix,1.e-6)*conj(int_r');% linsolve(res_matrix,conj(int_r'));    
-    Sm = linsolve(rm,conj(int_r'));
-
     
-
-    [vel_steps,v_distr] = isft(omega_v,Sm,min(v2_range)-V_avrg);
+    [rm,int_r,omega_vr] = p_filter3_ba(res_matrix,s_int,omega_v,omega_t,n_harm_left);
+    
+    Sm = linsolve(rm,conj(int_r'));
+    
+    [vel_steps,v_distr] = isft(omega_vr,Sm,min(v2_range)-V_avrg);
     fn = sprintf('Recoverted velocity transfer distribuion');
     fh = findobj('type','figure', 'Name', fn);
     
@@ -220,7 +219,7 @@ v_peak = v_range(20);
 % ST = exp(1i*omega_t(1)*(L_det/v_peak-ti'));
 % Int = sum(SM.*ST);
 if calc_error
-    test_row = zeros(1,Nt);
+    test_row = 1i*zeros(1,Nt);
 end
 difr_matrix = zeros(Nt,Nv);
 for n=1:Nt
