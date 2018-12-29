@@ -115,9 +115,9 @@ vel_steps = v2_range;
 if event_mode
     intensity = f_det_vs_t;
 else
-    intensity = fte;
+    %intensity = real(fte);
     %intensity =  interp1(t_det,f_det_vs_t,t_range,'linear',0);
-    %intensity =  interp1(t_steps,fte,t_range,'linear',0);
+    intensity =  interp1(t_steps,fte,t_range,'linear',0);
     if  ~isempty(conv_pl_h)
         make_current(conv_pl_h);
         [~,dt]=build_bins(t_range);

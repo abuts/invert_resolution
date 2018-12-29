@@ -3,7 +3,7 @@ function [rm,ft_reduced,omega_vt,omega_tt] = p_filter3(res_matrix,ft_signal,omeg
 % harmonics
 
 [n_omega_t,n_omega_v] = size(res_matrix);
-[nt_block,nv_block] = p_filter_block(n_omega_t,n_omega_v,50,n_harm_left);    
+[nt_block,nv_block] = p_filter_block(n_omega_t,n_omega_v,50000,n_harm_left);    
 
 
 

@@ -113,8 +113,8 @@ vel_steps = v2_range;
 if event_mode
     intensity = f_det_vs_t;
 else
-    intensity = real(fte);
-    %intensity =  interp1(t_det,f_det_vs_t,t_range,'linear',0);
+    %intensity = real(fte);
+    intensity =  interp1(t_det,f_det_vs_t,t_range,'linear',0);
     %intensity =  interp1(t_steps,fte,t_range,'linear',0);
     if  ~isempty(conv_pl_h)
         make_current(conv_pl_h);
@@ -146,14 +146,13 @@ while true
     end
     fprintf(' processing %d harmonics\n',n_harm_left);
     
-    [rm,ft_reduced,omega_vt,omega_tt] = p_filter3(res_matrix,ft_signal,omega_v,omega_t,n_harm_left);
-    int_r = p_filter3a(s_int,omega_t,n_harm_left);
+    [rm,int_r,omega_vt] = p_filter3(res_matrix,s_int,omega_v,omega_t,n_harm_left);
     %Sm = pinv(res_matrix,1.e-6)*conj(int_r');% linsolve(res_matrix,conj(int_r'));    
     Sm = linsolve(rm,conj(int_r'));
 
     
 
-    [vel_steps,v_distr] = isft(omega_v,Sm,min(v2_range)-V_avrg);
+    [vel_steps,v_distr] = isft(omega_vt,Sm,min(v2_range)-V_avrg);
     fn = sprintf('Recoverted velocity transfer distribuion');
     fh = findobj('type','figure', 'Name', fn);
     
