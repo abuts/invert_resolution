@@ -1,5 +1,5 @@
 function [v_distr,vel_steps] =  InvertPulse_a3(f_samp,t_samp,v_samp,t_det,f_det_vs_t,L_det,V_pulse,tau_char,V_char,conv_pl_h,varargin)
-
+% invert pulse using amplitude-based filtration
 if ~exist('conv_pl_h','var')
     conv_pl_h = [];
 end
@@ -98,7 +98,7 @@ end
 Err = check_difraction_matrix(difr_matrix,v2_range,omega_v,omega_t,L_det);
 fprintf(' Total error from the diffraction matrix: (%g,%g)\n',real(Err),imag(Err));
 
-phase_shift = exp(-1i*omega_t*T_min);
+phase_shift = exp(-1i*omega_t*(T_min-10*dt_samp));
 rm = rm.*phase_shift;
 %
 %[n_max,m_max]  = find_max_ind(rm,1.e-6);
