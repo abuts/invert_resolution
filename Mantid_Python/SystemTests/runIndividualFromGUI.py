@@ -1,7 +1,7 @@
 ﻿'''
 This is provided for testing purposes. It allows you to run the single system test
-within Mantid environent
-It can be useful for debugging because the errors do not alway 'get out' of
+within Mantid environment
+It can be useful for debugging because the errors do not always 'get out' of
 the sub-process used for running the tests in the regular way
 '''
 
