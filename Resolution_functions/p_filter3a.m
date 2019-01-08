@@ -1,4 +1,4 @@
-function [ft_reduced,omega_vt,n_omega_v_range] = p_filter3a(ft_signal,omega_v,n_harm_left)
+function [res_matrix,ft_reduced,omega_vt,omega_t] = p_filter3a(res_matrix,ft_signal,omega_v,omega_t,n_harm_left)
 % P-filter to work together with  InvertPulse3 to keep selected number of
 % harmonics
 

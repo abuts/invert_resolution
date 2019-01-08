@@ -1,4 +1,4 @@
-function simulate_signal_at_monitor()
+function simulate_signal_at_detector()
 persistent conv_pl_h;
 
 [f_samp,t_samp,v_samp,tau_char,V_char,V_pulse,L_samp,t0_chop,norm] = propagate_pulse_to_sample(3);% [V_char]  = m/sec
@@ -76,16 +76,11 @@ for i=1:num_pulses
 %     pl(pn);
     %
     %---------------------------------------------------
-    V_pulseI  = V_pulse(i);
-    dn = vel_distr_fun('Name');
-    pulse_data_file_name = pulse_name(V_pulseI,[dn,'_input_data']);
-    tsample = t_samp{i};
-    fsample = f_samp{i};
-    vsample = v_samp{i};
-    t_chop = t0_chop(i);
-    save(pulse_data_file_name,'tsample','fsample','vsample','V_pulseI','t_det','f_det_vs_t','L_det','L_samp','t_chop','tau_char','V_char');
-    [f_det_dec,v_det_dec] = InvertPulse2a(fsample,tsample,vsample,t_det,f_det_vs_t,L_det,V_pulseI,tau_char,V_char,conv_pl_h,vel_distr_fun);
-    
+    ds = data_saver(vel_distr_fun,t_samp{i},v_samp{i},f_samp{i},...
+        V_pulse(i),t0_chop(i),...
+        t_det,f_det_vs_t,L_det,L_samp,tau_char,V_char);
+    [f_det_dec,v_det_dec] = InvertPulse3(ds,conv_pl_h);
+    stop;
     [~,dv_four] = build_bins(v_det_dec);
     Norm0  = abs(f_det_dec*dv_four');
     

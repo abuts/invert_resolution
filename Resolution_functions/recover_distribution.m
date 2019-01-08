@@ -11,7 +11,7 @@ t_min = min(t_det);
 t_max = max(t_det);
 histogram(f_det_counts,100);
 %                         InvertPulse3(f_samp,t_samp, v_samp,   t_det,       f_det_vs_t,  L_det,V_pulse, tau_char,V_char,conv_pl_h,varargin)
-[f_det_conv,v_det_conv] = InvertPulse3a(fsample,tsample,vsample,[t_min,t_max],f_det_counts,L_det,V_pulseI,tau_char,V_char,[],@vel_distribution0);
+[f_det_conv,v_det_conv] = InvertPulse3(fsample,tsample,vsample,[t_min,t_max],f_det_counts,L_det,V_pulseI,tau_char,V_char,[],@vel_distribution0);
 
 [~,dv_four] = build_bins(v_det_conv);
 Norm0  = abs(f_det_conv*dv_four');

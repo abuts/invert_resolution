@@ -1,13 +1,12 @@
-function [v_distr,vel_steps] =  InvertPulse3(ds,conv_pl_h)
-
-[t_samp,v_samp,f_samp,  ...
-    V_pulse,tau_chop,...
-    t_det,f_det_vs_t,...
-    L_det,L_samp,tau_char,V_char,...
-    vel_distr] = ds.get_data();
-
+function [v_distr,vel_steps] =  InvertPulse_a3(f_samp,t_samp,v_samp,t_det,f_det_vs_t,L_det,V_pulse,tau_char,V_char,conv_pl_h,varargin)
+% invert pulse using amplitude-based filtration
 if ~exist('conv_pl_h','var')
     conv_pl_h = [];
+end
+if nargin > 5
+    vel_distr = varargin{1};
+else
+    vel_distr = @vel_distribution0;
 end
 
 
@@ -99,7 +98,7 @@ end
 Err = check_difraction_matrix(difr_matrix,v2_range,omega_v,omega_t,L_det);
 fprintf(' Total error from the diffraction matrix: (%g,%g)\n',real(Err),imag(Err));
 
-phase_shift = exp(-1i*omega_t*T_min);
+phase_shift = exp(-1i*omega_t*(T_min-10*dt_samp));
 rm = rm.*phase_shift;
 %
 %[n_max,m_max]  = find_max_ind(rm,1.e-6);
@@ -116,8 +115,9 @@ if event_mode
     intensity = f_det_vs_t;
 else
     %intensity = real(fte);
-    intensity =  interp1(t_steps,real(fte),t_range,'linear',0);
-    %intensity =  interp1(t_det,f_det_vs_t,t_range,'linear',0);
+    %intensity =  interp1(t_steps,real(fte),t_range,'linear',0);
+    
+    intensity =  interp1(t_det,f_det_vs_t,t_range,'linear',0);
     
     if  ~isempty(conv_pl_h)
         make_current(conv_pl_h);
@@ -138,24 +138,23 @@ else
 end
 [~,s_int] = sft(t_range,intensity);
 
-sv = svds(res_matrix,1);
-in  = input('Enter accuracy and sigma avrg if requested or "q" to finish: ','s');
+
+in  = input('Enter amplitude of harmonics to keep or "q" to finish: ','s');
 
 while true
-    in_val = textscan(in,'%f');
-    eps = in_val{1};
+    eps = textscan(in,'%f');
+    eps = eps{1};
     if eps < 0
         break;
     end
-    fprintf(' keeping singular values larger than: %f\n',eps*sv);
-    Sm = lsqminnorm(res_matrix, conj(s_int'), eps*sv);
-    %     neglect = abs(S)<=1.e-4*max(abs(diag(S)));
-    %     S(neglect) = 0;
-    %     Sm = s_int*U*S*V;
-    %[rm,int_r,omega_vt] = p_filter3(res_matrix,s_int,omega_v,omega_t,n_harm_left);
+    fprintf(' processing %d harmonics\n',eps);
+    
+    [res_matr,int_r,omega_vt] = pa_filter3(res_matrix,s_int,omega_v,omega_t,eps,rm);
+    %rm = res_matrix;
+    
     %Sm = pinv(res_matrix,1.e-6)*conj(int_r');% linsolve(res_matrix,conj(int_r'));
-    %Sm = linsolve(rm,conj(int_r'));
-    [Sm,omega_vt] = symmeterize_spectrum(Sm,omega_v);
+    Sm = linsolve(res_matr,conj(int_r'));
+    [Sm,omega_vt] = symmeterize_spectrum(Sm,omega_vt);
     
     
     [vel_steps,v_distr] = isft(omega_vt,Sm,min(v2_range)-V_avrg);
@@ -168,7 +167,7 @@ while true
         figure(fh);
     end
     plot(vel_steps/V_char,abs(v_distr),vel_steps/V_char,imag(v_distr))
-    in  = input('Enter accuracy and sigma avrg if requested or "q" to finish: ','s');
+    in = input('Enter number of harmonics to keep or q/0 to finish: ','s');
     if strncmpi(in,'q',1)
         break;
     end
