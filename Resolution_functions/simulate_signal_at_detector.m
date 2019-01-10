@@ -76,11 +76,14 @@ for i=1:num_pulses
 %     pl(pn);
     %
     %---------------------------------------------------
-    ds = data_saver(vel_distr_fun,t_samp{i},v_samp{i},f_samp{i},...
+    in_data = data_saver(vel_distr_fun,t_samp{i},v_samp{i},f_samp{i},...
         V_pulse(i),t0_chop(i),...
         t_det,f_det_vs_t,L_det,L_samp,tau_char,V_char);
-    [f_det_dec,v_det_dec] = InvertPulse3(ds,conv_pl_h);
-    stop;
+    in_data.use_velocity_scale=false;
+    [f_det_dec,v_det_dec] = InvertPulse3(in_data,conv_pl_h);
+    meta(11)
+    close(conv_pl_h);
+    conv_pl_h = [];
     [~,dv_four] = build_bins(v_det_dec);
     Norm0  = abs(f_det_dec*dv_four');
     
@@ -90,6 +93,7 @@ for i=1:num_pulses
     p1 = IX_dataset_1d(v_det_dec/V_char,abs(f_det_dec));
     p1.x_axis = sprintf('Velocity transfer/(%3.2g m/sec)',V_char);
     p1.s_axis = 'probability density ';
+    continue;  
     if isempty(recovered_dirst_h)
         recovered_dirst_h= dl(p1);
         [vel_transf_source,f_d_source] = vel_distr_fun(v_det_dec);
