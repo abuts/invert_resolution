@@ -140,7 +140,7 @@ while true
     if eps < 0
         break;
     end
-    fprintf('To select conditionality %f and keeping singular values larger than: %f and applying Gaussian filder with sigma=%f \n ',eps,eps*sv,sigma);
+    fprintf('Selected conditionality %f. Keep singular values >=: %f; Gaussian filder with sigma=%f \n ',eps,eps*sv,sigma);
     int_r = g_filter(omega_t,s_int,sigma);
     Sm = lsqminnorm(res_matrix, conj(int_r'), eps*sv);
     %     neglect = abs(S)<=1.e-4*max(abs(diag(S)));
