@@ -1,9 +1,9 @@
 function [f_out,t_out,v_out] = propagate_pulse(f_in,time_in,vel_in,L,t_exp)
 % Calculate interpolited time-velocity profile at the position L
-% 
-% f_in   -- 2D moderator function in units tau(mks) vs 
+%
+% f_in   -- 2D moderator function in units tau(mks) vs
 % time_in - time axis at moderator  (sec)
-% time_in  - velocity 
+% time_in  - velocity
 % mod_Energy - energy at moderator array (in mEv)
 % tau -- time at choper to shift function around (in chopper opening time
 % units)
@@ -33,7 +33,11 @@ v_max = max(max((v_at_end(non_zero))));
 dt = (t_max-t_min)/(max(numel(time_in),numel(vel_in))-1);
 t_out = t_min:dt:t_max;
 dv = (v_max -v_min)/(numel(vel_in)-1);
-v_out = v_min:dv:v_max;
+if dv == 0
+    v_out = vel_in;
+else
+    v_out = v_min:dv:v_max;
+end
 
 % Regrid on square grid;
 [xb,yb]=meshgrid(time_in,vel_in);

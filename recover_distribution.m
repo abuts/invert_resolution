@@ -10,7 +10,7 @@ t_det = in_data.ds.t_det;
 f_det_vs_t  = in_data.ds.f_det_vs_t;
 
 
-f_det_counts = build_distribution(t_det,f_det_vs_t,100000);
+f_det_counts = build_distribution(t_det,f_det_vs_t,100000000);
 t_min = min(t_det);
 t_max = max(t_det);
 hh=histogram(f_det_counts,100);

@@ -81,7 +81,7 @@ for i=1:num_pulses
         t_det,f_det_vs_t,L_det,L_samp,tau_char,V_char);
     in_data.use_velocity_scale=false;
     [f_det_dec,v_det_dec] = InvertPulse3(in_data,conv_pl_h);
-    meta(11)
+    %meta(11)
     close(conv_pl_h);
     conv_pl_h = [];
     [~,dv_four] = build_bins(v_det_dec);

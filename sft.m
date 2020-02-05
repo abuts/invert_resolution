@@ -7,6 +7,7 @@ function [omega,sf] = sft(t,f,ind)
 % omega -- signal frequencies
 % sf    -- amplitudes of Fourier harmonics
 %
+% Note: Invers transformation should be calculated using isft
 if size(t,2) ~= 1
     t = t';
 

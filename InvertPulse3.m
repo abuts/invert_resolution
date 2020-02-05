@@ -28,11 +28,11 @@ t_samp  = t_samp-T_samp_min;
 [td_min,td_max,event_mode,t_det,f_det_vs_t] = select_det_scale(t_det,f_det_vs_t,T_samp_min);
 % Detector's signal time interval
 T_min = td_min;
-T_max = td_max;
+T_max = td_max+dT_samp;
 
 
 V_max = L_det/T_min;
-V_min = L_det/T_max; %
+V_min = L_det/td_max; %
 dV = (V_max -V_min);
 if dV <= 0
     error('INVERT_PULSE3:invalid_argument',' wrong detector"s time range (smaller than sample time range)')
@@ -61,15 +61,6 @@ if event_mode
 end
 fprintf('Defining diffraction equation with [%d,%d] elements\n',Nt,Nv);
 
-% name = vel_distr('name');
-% cache_file_name = pulse_name(V_pulse,[name,'_FFTresolution_matrix'],Nt,Nv);
-% if exist([cache_file_name,'.mat'],'file')
-%     load([cache_file_name,'.mat'],'rm','difr_matrix','omega_v','omega_t');
-%     if difr_matrix == 0
-%         difr_matrix=calc_difr_matrix(omega_v,omega_t,v2_range,L_det);
-%         save(cache_file_name,'difr_matrix','rm','omega_v','omega_t');
-%     end
-% else
 % original signal at sample projected to detector position.
 [tb,vb] = meshgrid(t_samp+T_min,v_samp); % time is shifted -- phase shift ignored ?
 [tpi,vpi] = meshgrid(t_range,v2_range);
@@ -82,12 +73,12 @@ f_samp_extended = interp2(tb,vb,f_samp,tpi,vpi,'linear',0);
 difr_matrix=calc_difr_matrix(omega_v,omega_t,v2_range,L_det);
 %    save(cache_file_name,'difr_matrix','rm','omega_v','omega_t');
 %end
-%[difr_matrix,Err]=calc_difr_matrix(omega_v,omega_t,v2_range,L_det);
-%fprintf(' Total error of the diffraction matrix: %g\n',Err);
-Err = check_difraction_matrix(difr_matrix,v2_range,omega_v,omega_t,L_det);
+% evaluate diffraction matrix on the basis of the equations, derived from
+% propagaing delta-function
+Err = check_difraction_matrix(difr_matrix,v2_range,omega_v,omega_t,L_det,numel(v2_range)-1);
 fprintf(' Total error from the diffraction matrix: (%g,%g)\n',real(Err),imag(Err));
 
-phase_shift = exp(-1i*omega_t*T_min);
+phase_shift = exp(1i*omega_t*(T_min));
 rm = rm.*phase_shift;
 %
 %[n_max,m_max]  = find_max_ind(rm,1.e-6);
@@ -102,10 +93,17 @@ vel_steps = v2_range;
 % invert propagation:
 if event_mode
     intensity = f_det_vs_t;
+    [~,dt]=build_bins(t_range);
+    Norm =tau_char*(real(intensity)*dt');
+    intensity_v = intensity/Norm;
+    
+    pn = IX_dataset_1d(t_range/tau_char,real(intensity_v));
+    acolor('g');
+    pl(pn);
 else
     %intensity = real(fte);
-    intensity =  interp1(t_steps,real(fte),t_range,'linear',0);
-    %intensity =  interp1(t_det,f_det_vs_t,t_range,'linear',0);
+    %intensity =  interp1(t_steps,real(fte),t_range,'linear',0);
+    intensity =  interp1(t_det,f_det_vs_t,t_range,'linear',0);
     in_data.ds.f_det_vs_t = interp1(t_steps,real(fte),t_det,'linear',0);
     in_data.save_data();
     if  ~isempty(conv_pl_h)
@@ -153,6 +151,7 @@ while true
     
     
     [vel_steps,v_distr] = isft(omega_vt,Sm,min(v2_range)-V_avrg);
+    %[vel_steps,v_distr] = isft(omega_vt,Sm,min(v2_range));
     fn = sprintf('Recoverted velocity transfer distribuion');
     fh = findobj('type','figure', 'Name', fn);
     
@@ -167,7 +166,8 @@ while true
         break;
     end
 end
-close(fh);
+%close(fh);
+figure
 %
 
 
@@ -212,7 +212,7 @@ ti = L_det./v_range;
 % else
 %     calc_error = false;
 % end
-% 
+%
 % v_peak = v_range(20);
 % dv_j = (v_range-v_peak);
 % exp2 = exp(1i*omega_v.*dv_j');
@@ -245,12 +245,12 @@ difr_matrix = t_mat*v_mat;
 %     end
 % end
 %--------------------------------------------------------------------------
-function Err = check_difraction_matrix(difr_matrix,v_range,omega_v,omega_t,L_det)
+function Err = check_difraction_matrix(difr_matrix,v_range,omega_v,omega_t,L_det,n_peak)
 
 Nt = numel(omega_t);
 Nv = numel(omega_v);
 
-v_peak = v_range(end-1);
+v_peak = v_range(n_peak);
 
 exps = exp(-1i*omega_v*v_peak);
 Err_row = 1i*zeros(1,Nt);
@@ -264,7 +264,8 @@ for n=1:Nt
     %     difr_ph = atan2(imag(difr),real(difr))*180/pi;
     %     fprintf('n: %d Difr: (%f, %f) mod: %f, phase: %f\n',n,real(difr),imag(difr),abs(difr),difr_ph);
 end
-Err = sum(Err_row);
+[~,ind] = max(abs(Err_row));
+Err = Err_row(ind);
 
 function [td_min,td_max,event_mode,t_det,f_det_vs_t] = select_det_scale(t_det,f_det_vs_t,T_samp_min)
 if isempty(t_det) % event mode, f_det_vs_t is sequence of events.
