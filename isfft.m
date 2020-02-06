@@ -22,7 +22,7 @@ end
 Nspec = size(sf,2);
 if ~exist('t','var')
     t=build_t(omega,0);
-    t_bins = ones(1,Np);
+    t_bins = ones(Np,1);
 else
     if size(t,2) ~= 1
         t=t'; % let's arrange t into columns

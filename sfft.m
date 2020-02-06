@@ -27,9 +27,9 @@ ind = fft_ind(Np);
 omega = (2*pi/dT)*ind; % Important! period is wider than t_max - t_min by one step
 
 t_min_s = min(t);
-shift = exp(1i*t_min_s*omega);
+shift = exp(-1i*t_min_s*omega);
 
-t_bins = (t_bins.*shift)'/dt;
+t_bins = conj(t_bins.*shift)'/dt;
 %
 sf = fft(f).*t_bins;
 

@@ -20,12 +20,21 @@ end
 
 tau_shift = L./vel_in; %
 
-tau_final = bsxfun(@plus, time_in, tau_shift'); % t+L/v;
+
+%tau_final = bsxfun(@plus, time_in, tau_shift'); % t+L/v;
+
+
+add_time_max = max(tau_shift); % additional time, the slowest particle achieve the detector;
+add_time_min = min(tau_shift); % the time max velocity arrive at the detector
+
+t_min = min(time_in)+add_time_min;
+t_max = max(time_in)+add_time_max; % the time the slowest particle recorded at the end ot the
+% sample time frame arrives at the detector
 
 non_zero = f_in>0;
-t_min = min(min((tau_final(non_zero))));
-t_max = max(max((tau_final(non_zero))))+t_exp;
-
+% t_min = min(min((tau_final(non_zero))));
+% t_max = max(max((tau_final(non_zero))))+t_exp;
+% 
 v_at_end=reshape(repmat(vel_in,1,numel(time_in)),numel(vel_in),numel(time_in));
 v_min = min(min((v_at_end(non_zero))));
 v_max = max(max((v_at_end(non_zero))));

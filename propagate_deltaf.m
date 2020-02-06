@@ -7,17 +7,18 @@ V_pulse = 50; % delta function at given V;
 t_afs = 0:0.1:100;
 dv = 0.1;
 v_afs = 1:dv:100;
+t_ind = 50;
 ind = floor(((V_pulse - min(v_afs)))/dv)+1;
 f_afs = zeros(numel(v_afs),numel(t_afs));
-f_afs(ind,1) = 1;
+f_afs(ind,t_ind) = 1;
 
 
 L_det = 50;
 t_range = max(t_afs)-min(t_afs);
 [f_det,t_det,v_det] = propagate_pulse(f_afs,t_afs,v_afs,L_det,t_range);
 ft = sum(f_det,1);
-[omg1,fts] = sft(t_det,ft);
-[tr,ftr] = isft(omg1,fts);
+[omg1,fts] = sfft(t_det,ft);
+[tr,ftr] = isfft(omg1,fts,t_det);
 plot(t_det,ft);
 hold on
 plot(tr,ftr);

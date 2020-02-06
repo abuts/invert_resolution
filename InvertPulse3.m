@@ -102,8 +102,8 @@ if event_mode
     pl(pn);
 else
     %intensity = real(fte);
-    %intensity =  interp1(t_steps,real(fte),t_range,'linear',0);
-    intensity =  interp1(t_det,f_det_vs_t,t_range,'linear',0);
+    intensity =  interp1(t_steps,real(fte),t_range,'linear',0);
+    %intensity =  interp1(t_det,f_det_vs_t,t_range,'linear',0);
     in_data.ds.f_det_vs_t = interp1(t_steps,real(fte),t_det,'linear',0);
     in_data.save_data();
     if  ~isempty(conv_pl_h)
@@ -123,7 +123,7 @@ else
     %     save(pulse_data_file_name,'tsample','fsample','vsample','V_pulseI','t_det','f_det_vs_t','L_det','L_samp','t_chop','tau_char','V_char');
     
 end
-[omega_t,s_int] = sft(t_range,intensity);
+[omega_t,s_int] = sfft(t_range,intensity);
 
 sv = svds(res_matrix,1);
 %in  = input('Enter accuracy and sigma avrg if requested or "q" to finish: ','s');
@@ -140,7 +140,7 @@ while true
     end
     fprintf('Selected conditionality %f. Keep singular values >=: %f; Gaussian filder with sigma=%f \n ',eps,eps*sv,sigma);
     int_r = g_filter(omega_t,s_int,sigma);
-    Sm = lsqminnorm(res_matrix, conj(int_r'), eps*sv);
+    Sm = lsqminnorm(res_matrix, int_r, eps*sv);
     %     neglect = abs(S)<=1.e-4*max(abs(diag(S)));
     %     S(neglect) = 0;
     %     Sm = s_int*U*S*V;
@@ -150,7 +150,7 @@ while true
     [Sm,omega_vt] = symmeterize_spectrum(Sm,omega_v);
     
     
-    [vel_steps,v_distr] = isft(omega_vt,Sm,min(v2_range)-V_avrg);
+    [vel_steps,v_distr] = isfft(omega_vt,Sm,min(v2_range)-V_avrg);
     %[vel_steps,v_distr] = isft(omega_vt,Sm,min(v2_range));
     fn = sprintf('Recoverted velocity transfer distribuion');
     fh = findobj('type','figure', 'Name', fn);
